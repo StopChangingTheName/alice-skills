@@ -2,6 +2,9 @@ from flask import Flask, request
 import logging
 import json
 
+with open('Data.json', encoding='utf8') as f:
+    data = json.loads(f.read())['test']
+    print(data)
 
 app = Flask(__name__)  # приложение
 logging.basicConfig(level=logging.INFO)  # логгируем данные
@@ -55,6 +58,7 @@ def handle_dialog(req, res):
     # Сюда дойдем только, если пользователь не новый,
     # и разговор с Алисой уже был начат
     pass  # заглушка, будет функция ИГРЫ, то есть тестирования
+
 
 
 
