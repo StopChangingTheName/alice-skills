@@ -1,12 +1,13 @@
 from flask import Flask, request
 import logging
 import json
-
+from flask_ngrok import run_with_ngrok
 with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']
     print(data)
 
 app = Flask(__name__)  # приложение
+run_with_ngrok(app)
 logging.basicConfig(level=logging.INFO)  # логгируем данные
 sessionStorage = {}  # инфа о юзерах
 
