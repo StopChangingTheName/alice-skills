@@ -4,12 +4,12 @@ from flask_ngrok import run_with_ngrok
 import json
 import random
 import copy
+
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
     # альтернатива для вас:
     # with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей
-
 
 app = Flask(__name__)
 run_with_ngrok(app)
@@ -41,15 +41,16 @@ def handle_dialog(req, res):
     user_id = req['session']['user_id']
     # если 1 раз
     if req['session']['new']:
+        arr = copy.deepcopy(data)
+        random.shuffle(arr)  # перемешанная data
         sessionStorage[user_id] = {
             'suggests': [
                 "Случайные даты",
                 "Закрыть"
             ],
-            'test': random.shuffle(copy.deepcopy(data)),
+            'test': arr,
             'id': 1
         }
-
         res['response']['text'] = 'Привет! Выбери режим:'
 
         res['response']['buttons'] = [
@@ -64,12 +65,12 @@ def handle_dialog(req, res):
         res['response']['end_session'] = True
         return
 
-    if req['request']['command'] in sessionStorage[user_id]['test'['id']['answer']]:
-        res['response']['text'] = 'Правильно!'
+    if req['request']['original_utterance'].lower() in sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer']:
+        res['response']['text'] = 'Верно!'
 
-    res['response']['text'] = sessionStorage[user_id]['test'['id']['question']]
-    print(data[sessionStorage[user_id]['id']]['question'])
-    print(data[sessionStorage[user_id]['id']]['answer'])
+    res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
+    print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question'])
+    print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer'])
     res['response']['buttons'] = [
         {'title': suggest, 'hide': True}
         for suggest in sessionStorage[user_id]['suggests']
