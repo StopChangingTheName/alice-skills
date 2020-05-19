@@ -49,7 +49,8 @@ def handle_dialog(req, res):
                 "Закрыть"
             ],
             'test': arr,
-            'id': 0
+            'id': 0,
+            'lastQ': False
         }
         res['response']['text'] = 'Привет! Выбери режим:'
 
@@ -58,26 +59,31 @@ def handle_dialog(req, res):
             for suggest in sessionStorage[user_id]['suggests']
         ]
         return
-
-    # если в нашем запросе 'закрыть' заканчиваем сессию
-    if req['request']['original_utterance'].lower() in ['закрыть', 'стоп']:
-        res['response']['text'] = 'Пока!'
-        res['response']['end_session'] = True
-        return
-
-    res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
-
-    if req['request']['original_utterance'].lower() == sessionStorage[user_id]['test'][sessionStorage[user_id]['id']-1][
-        'answer']:
-        res['response']['text'] = f"Верно! Следующий вопрос: {res['response']['text']}"
+    if not sessionStorage[user_id]['lastQ']:
+        res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
+        sessionStorage[user_id]['lastQ'] = True
     else:
-        res['response']['text'] = f"Неверно, правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer']}.Следующий вопрос: {res['response']['text']}"
+        # если в нашем запросе 'закрыть' заканчиваем сессию
+        if req['request']['original_utterance'].lower() in ['закрыть', 'стоп']:
+            res['response']['text'] = 'Пока!'
+            res['response']['end_session'] = True
+            return
 
-    res['response']['buttons'] = [
-        {'title': suggest, 'hide': True}
-        for suggest in sessionStorage[user_id]['suggests']
-    ]
-    sessionStorage[user_id]['id'] += 1
+        res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
+
+        if req['request']['original_utterance'].lower() == \
+                sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
+                    'answer']:
+            res['response']['text'] = f"Верно! Следующий вопрос: {res['response']['text']}"
+        else:
+            res['response'][
+                'text'] = f"Неверно, правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer']}.Следующий вопрос: {res['response']['text']}"
+
+        res['response']['buttons'] = [
+            {'title': suggest, 'hide': True}
+            for suggest in sessionStorage[user_id]['suggests']
+        ]
+        sessionStorage[user_id]['id'] += 1
 
 
 if __name__ == '__main__':
