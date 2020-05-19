@@ -46,6 +46,7 @@ def main():
 
 
 def handle_dialog(req, res):
+    bank = shuffling(data)
     user_id = req['session']['user_id']
     # если 1 раз
     if req['session']['new']:
@@ -63,11 +64,12 @@ def handle_dialog(req, res):
         ]
         return
 
-    if req['request']['original_utterance'].lower() == "Привет":
+    if req['request']['original_utterance'].lower() == bank['answer']:
         res['response']['text'] = 'Правильно!'
-        res['response']['end_session'] = True
+        # res['response']['end_session'] = True
         return
-    res['response']['text'] = 'smth'
+
+    res['response']['text'] = bank['question']
     res['response']['buttons'] = [
         {'title': suggest, 'hide': True}
         for suggest in sessionStorage[user_id]['suggests']
