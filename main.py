@@ -2,12 +2,23 @@ from flask import Flask, request
 import logging
 from flask_ngrok import run_with_ngrok
 import json
+import random
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
     # альтернатива для вас:
     # with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей
+
+
+def shuffling(array):
+    rand = random.randint(1, len(array))
+    return {
+        'question': array[rand]['question'],
+        'answer': array[rand]['answer']
+    }
+
+
 app = Flask(__name__)
 run_with_ngrok(app)
 
@@ -19,7 +30,6 @@ sessionStorage = {}
 @app.route('/post', methods=['POST'])
 def main():
     logging.info('Request: %r', request.json)
-
     response = {
         'session': request.json['session'],
         'version': request.json['version'],
@@ -62,10 +72,6 @@ def handle_dialog(req, res):
         {'title': suggest, 'hide': True}
         for suggest in sessionStorage[user_id]['suggests']
     ]
-
-
-# def shuffling(data):
-
 
 
 if __name__ == '__main__':
