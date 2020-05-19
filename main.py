@@ -2,20 +2,26 @@ from flask import Flask, request
 import logging
 import json
 from flask_ngrok import run_with_ngrok
-with open('Data.json', encoding='utf8') as f:
+import os
+
+# не удаляйте этот путь т.к. у меня проблема с открытием data.json
+with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
+    # альтернатива для вас:
+    # with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']
-    print(data)
 
-app = Flask(__name__)  # приложение
+app = Flask(__name__)
 run_with_ngrok(app)
-logging.basicConfig(level=logging.INFO)  # логгируем данные
-sessionStorage = {}  # инфа о юзерах
+
+logging.basicConfig(level=logging.INFO)
+
+sessionStorage = {}
 
 
-# Обработка пришедшей инфы Алисой
 @app.route('/post', methods=['POST'])
 def main():
-    logging.info(f'Request: {request.json!r}')
+    logging.info('Request: %r', request.json)
+
     response = {
         'session': request.json['session'],
         'version': request.json['version'],
@@ -24,14 +30,10 @@ def main():
         }
     }
 
-    # Отправляем request.json и response в функцию handle_dialog.
-    # Она сформирует оставшиеся поля JSON, которые отвечают
-    # непосредственно за ведение диалога
     handle_dialog(request.json, response)
 
-    logging.info(f'Response:  {response!r}')
+    logging.info('Response: %r', request.json)
 
-    # Преобразовываем в JSON и возвращаем
     return json.dumps(response)
 
 
@@ -39,28 +41,37 @@ def handle_dialog(req, res):
     user_id = req['session']['user_id']
 
     if req['session']['new']:
-        # Это новый пользователь.
-        # Инициализируем сессию и поприветствуем его.
-        # Запишем подсказки, которые мы ему покажем в первый раз
-
         sessionStorage[user_id] = {
             'suggests': [
-                "Не хочу.",
-                "Не буду.",
-                "Отстань!",
+                "Случайные даты",
+                "Закончить"
             ]
         }
-        # Заполняем текст ответа
-        res['response']['text'] = 'Привет! Купи слона!'
-        # Получим подсказки
+
+        res['response']['text'] = 'Привет! Выбери режим:'
+
         res['response']['buttons'] = get_suggests(user_id)
         return
 
-    # Сюда дойдем только, если пользователь не новый,
-    # и разговор с Алисой уже был начат
-    pass  # заглушка, будет функция ИГРЫ, то есть тестирования
+    if req['request']['original_utterance'].lower() in [
+        #правильная дата в data.json
+
+    ]:
+        res['response']['text'] = 'Правильно!'
+        return
+
+    res['response']['buttons'] = get_suggests(user_id)
 
 
+def get_suggests(user_id):
+    session = sessionStorage[user_id]
+
+    suggests = [
+        {'title': suggest, 'hide': True}
+        for suggest in session['suggests']
+    ]
+
+    return suggests
 
 
 if __name__ == '__main__':
