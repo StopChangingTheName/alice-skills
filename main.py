@@ -1,15 +1,13 @@
 from flask import Flask, request
 import logging
-import json
 from flask_ngrok import run_with_ngrok
-import os
+import json
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
     # альтернатива для вас:
     # with open('Data.json', encoding='utf8') as f:
-    data = json.loads(f.read())['test']
-
+    data = json.loads(f.read())['test']  # массив из словарей
 app = Flask(__name__)
 run_with_ngrok(app)
 
@@ -44,7 +42,7 @@ def handle_dialog(req, res):
         sessionStorage[user_id] = {
             'suggests': [
                 "Случайные даты",
-            ]
+            ],
         }
 
         res['response']['text'] = 'Привет! Выбери режим:'
@@ -59,12 +57,15 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Правильно!'
         res['response']['end_session'] = True
         return
-
-    res['response']['text'] = 'Дата из json'
+    res['response']['text'] = 'smth'
     res['response']['buttons'] = [
         {'title': suggest, 'hide': True}
         for suggest in sessionStorage[user_id]['suggests']
     ]
+
+
+# def shuffling(data):
+
 
 
 if __name__ == '__main__':
