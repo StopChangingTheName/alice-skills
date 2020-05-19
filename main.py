@@ -49,7 +49,7 @@ def handle_dialog(req, res):
                 "Закрыть"
             ],
             'test': arr,
-            'id': 1
+            'id': 0
         }
         res['response']['text'] = 'Привет! Выбери режим:'
 
@@ -64,7 +64,7 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
         return
-    
+
     res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
     print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question'])
     print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer'])
@@ -72,6 +72,7 @@ def handle_dialog(req, res):
     if req['request']['original_utterance'].lower() in sessionStorage[user_id]['test'][sessionStorage[user_id]['id']][
         'answer']:
         res['response']['text'] = 'Верно!'
+        print('NICE')
 
     res['response']['buttons'] = [
         {'title': suggest, 'hide': True}
