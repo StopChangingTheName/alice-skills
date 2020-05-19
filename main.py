@@ -66,10 +66,14 @@ def handle_dialog(req, res):
             for suggest in sessionStorage[user_id]['suggests']
         ]
         return
-
-    if req['request']['original_utterance'].lower() == "Закрыть":
+    # если в нашем запросе 'закрыть' заканчиваем сессию
+    if req['request']['original_utterance'].lower() in ['закрыть', 'стоп']:
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
+        return
+
+    if req['request']['original_utterance'] in bank['answer']:
+        res['response']['text'] = 'Правильно!'
         return
 
     res['response']['text'] = bank['question']
