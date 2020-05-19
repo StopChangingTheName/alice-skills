@@ -3,20 +3,12 @@ import logging
 from flask_ngrok import run_with_ngrok
 import json
 import random
-
+import copy
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
     # альтернатива для вас:
     # with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей
-
-
-def shuffling(array):
-    rand = random.randint(1, len(array))
-    return {
-        'question': array[rand]['question'],
-        'answer': array[rand]['answer']
-    }
 
 
 app = Flask(__name__)
@@ -46,8 +38,6 @@ def main():
 
 
 def handle_dialog(req, res):
-    bank = shuffling(data)
-    print(bank)
     user_id = req['session']['user_id']
     # если 1 раз
     if req['session']['new']:
@@ -56,7 +46,8 @@ def handle_dialog(req, res):
                 "Случайные даты",
                 "Закрыть"
             ],
-            'lastQ': ''
+            'test': random.shuffle(copy.deepcopy(data)),
+            'id': 1
         }
 
         res['response']['text'] = 'Привет! Выбери режим:'
@@ -73,16 +64,17 @@ def handle_dialog(req, res):
         res['response']['end_session'] = True
         return
 
-    if req['request']['original_utterance'] in bank['answer']:
-        print('YES')
+    if req['request']['command'] in sessionStorage[user_id]['test'['id']['answer']]:
         res['response']['text'] = 'Правильно!'
-        res['response']['end_session'] = False
 
-    res['response']['text'] = bank['question']
+    res['response']['text'] = sessionStorage[user_id]['test'['id']['question']]
+    print(data[sessionStorage[user_id]['id']]['question'])
+    print(data[sessionStorage[user_id]['id']]['answer'])
     res['response']['buttons'] = [
         {'title': suggest, 'hide': True}
         for suggest in sessionStorage[user_id]['suggests']
     ]
+    sessionStorage[user_id]['id'] += 1
 
 
 if __name__ == '__main__':
