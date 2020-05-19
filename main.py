@@ -60,7 +60,7 @@ def handle_dialog(req, res):
         ]
         return
     if not sessionStorage[user_id]['lastQ']:
-        res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
+        res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']-1]['question']
         sessionStorage[user_id]['lastQ'] = True
     else:
         # если в нашем запросе 'закрыть' заканчиваем сессию
@@ -74,12 +74,12 @@ def handle_dialog(req, res):
         print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer'])
         print('моё ', req['request']['original_utterance'].lower())
         if req['request']['original_utterance'].lower() == \
-                sessionStorage[user_id]['test'][sessionStorage[user_id]['id']][
+                sessionStorage[user_id]['test'][sessionStorage[user_id]['id']-1][
                     'answer']:
             res['response']['text'] = f"Верно! Следующий вопрос: {res['response']['text']}"
         else:
             res['response'][
-                'text'] = f"Неверно, правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer']}.Следующий вопрос: {res['response']['text']}"
+                'text'] = f"Неверно, правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id']-1]['answer']}.Следующий вопрос: {res['response']['text']}"
 
         res['response']['buttons'] = [
             {'title': suggest, 'hide': True}
