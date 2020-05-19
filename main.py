@@ -64,13 +64,15 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
         return
-
-    if req['request']['original_utterance'].lower() in sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer']:
-        res['response']['text'] = 'Верно!'
-
+    
     res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
     print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question'])
     print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer'])
+
+    if req['request']['original_utterance'].lower() in sessionStorage[user_id]['test'][sessionStorage[user_id]['id']][
+        'answer']:
+        res['response']['text'] = 'Верно!'
+
     res['response']['buttons'] = [
         {'title': suggest, 'hide': True}
         for suggest in sessionStorage[user_id]['suggests']
