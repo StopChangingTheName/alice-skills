@@ -70,9 +70,11 @@ def handle_dialog(req, res):
             return
 
         res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
-
+        print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question'])
+        print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer'])
+        print('моё ', req['request']['original_utterance'].lower())
         if req['request']['original_utterance'].lower() == \
-                sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
+                sessionStorage[user_id]['test'][sessionStorage[user_id]['id']][
                     'answer']:
             res['response']['text'] = f"Верно! Следующий вопрос: {res['response']['text']}"
         else:
