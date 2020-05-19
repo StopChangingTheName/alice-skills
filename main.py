@@ -83,7 +83,7 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': True}
             for suggest in sessionStorage[user_id]['suggests']
         ]
-        sessionStorage[user_id]['id'] += 1
+    sessionStorage[user_id]['id'] += 1
 
 
 if __name__ == '__main__':
