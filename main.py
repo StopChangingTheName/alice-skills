@@ -66,13 +66,12 @@ def handle_dialog(req, res):
         return
 
     res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
-    print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question'])
-    print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer'])
-
-    if req['request']['original_utterance'].lower() in sessionStorage[user_id]['test'][sessionStorage[user_id]['id']][
+    print('Вопрос: ', sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question'])
+    print('Ответ: ', sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer'])
+    print('Введенное мною: ', req['request']['original_utterance'].lower())
+    if req['request']['original_utterance'].lower() == sessionStorage[user_id]['test'][sessionStorage[user_id]['id']][
         'answer']:
         res['response']['text'] = 'Верно!'
-        print('NICE')
 
     res['response']['buttons'] = [
         {'title': suggest, 'hide': True}
