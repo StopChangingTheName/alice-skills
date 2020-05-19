@@ -39,39 +39,28 @@ def main():
 
 def handle_dialog(req, res):
     user_id = req['session']['user_id']
-
+    # если 1 раз
     if req['session']['new']:
         sessionStorage[user_id] = {
             'suggests': [
                 "Случайные даты",
-                "Закончить"
             ]
         }
 
         res['response']['text'] = 'Привет! Выбери режим:'
 
-        res['response']['buttons'] = get_suggests(user_id)
+        res['response']['buttons'] = sessionStorage[user_id]['suggests']
         return
 
     if req['request']['original_utterance'].lower() in [
-        #правильная дата в data.json
-
+        # проверка на равенство дат
     ]:
         res['response']['text'] = 'Правильно!'
+        res['response']['end_session'] = False
         return
 
-    res['response']['buttons'] = get_suggests(user_id)
-
-
-def get_suggests(user_id):
-    session = sessionStorage[user_id]
-
-    suggests = [
-        {'title': suggest, 'hide': True}
-        for suggest in session['suggests']
-    ]
-
-    return suggests
+    res['response']['text'] = 'Дата из json'
+    res['response']['buttons'] = sessionStorage[user_id]['suggests']
 
 
 if __name__ == '__main__':
