@@ -90,7 +90,7 @@ def handle_dialog(req, res):
                 res['response']['text'] = f"Верно! Следующий вопрос: {res['response']['text']}"
             else:
                 res['response'][
-                    'text'] = f"Неверно, правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']} .Следующий вопрос: {res['response']['text']}"
+                    'text'] = f"Неверно, правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']}. \nСледующий вопрос: {res['response']['text']}"
 
         sessionStorage[user_id]['id'] += 1
 
