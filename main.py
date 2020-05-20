@@ -1,10 +1,12 @@
-from flask import Flask, request
-import logging
-from flask_ngrok import run_with_ngrok
-import json
-import random
 import copy
-from portrait import portraits, get_last_name
+import json
+import logging
+import random
+
+from flask import Flask, request
+from flask_ngrok import run_with_ngrok
+
+from portrait import portraits
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
@@ -25,6 +27,8 @@ right = ['Отлично!', 'Правильно!', 'Супер!', 'Точно!',
 wrong = ['Ой!', 'Не то!', 'Ты ошибся!', 'Немного не то!', 'Неверно!', 'Неправильно!', 'Ошибочка!']
 
 _next = ['Далее', 'Следующий вопрос', 'Продолжим', 'Следующая дата']
+
+wtf = ['Прости, не понимаю тебя', 'Можешь повторить, пожалуйста?', 'Повтори, пожалуйста', 'Прости, не слышу тебя']
 
 
 @app.route('/post', methods=['POST'])
@@ -79,20 +83,19 @@ def handle_dialog(req, res):
     if req['request']['original_utterance'].lower() == 'картины':
         sessionStorage[user_id]['mode'] = 'картины'
     else:
-        res['response']['text'] = 'Извини, я тебя не поняла, повтори ещё раз'
+        res['response']['text'] = random.choice(wtf)
 
     if sessionStorage[user_id]['mode'] == 'случайные даты':
         if not sessionStorage[user_id]['lastQ']:
-            res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['question']
+            res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
             sessionStorage[user_id]['lastQ'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
             print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question'])
             print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer'])
             print('моё ', req['request']['original_utterance'].lower())
-            if req['request']['original_utterance'].lower() == \
-                    sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
-                        'answer']:
+            if sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
+                'answer'].lower() in req['request']['original_utterance'].lower():
                 res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
             else:
                 res['response'][
@@ -114,8 +117,8 @@ def handle_dialog(req, res):
         else:
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
-            if req['request']['original_utterance'].lower() == \
-                    sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower():
+            if sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower() \
+                    in req['request']['original_utterance'].lower():
                 res['response']['card']['title'] = random.choice(right)
             else:
                 res['response']['card']['title'] \
@@ -134,7 +137,7 @@ def handle_dialog(req, res):
         pass
 
     # если в нашем запросе 'закрыть' заканчиваем сессию
-    if req['request']['original_utterance'].lower() in ['закрыть', 'стоп']:
+    if 'закрыть' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
         return
