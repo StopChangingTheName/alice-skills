@@ -9,7 +9,7 @@ from portrait import portraits
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
-    # альтернатива для вас:
+# альтернатива для вас:
 with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей
 
@@ -27,6 +27,11 @@ wrong = ['Ой!', 'Не то!', 'Ты ошибся!', 'Немного не то!
 _next = ['Далее', 'Следующий вопрос', 'Продолжим', 'Следующая дата']
 
 wtf = ['Прости, не понимаю тебя', 'Можешь повторить, пожалуйста?', 'Повтори, пожалуйста', 'Прости, не слышу тебя']
+
+
+@app.route('/')
+def index():
+    return 'hello'
 
 
 @app.route('/post', methods=['POST'])
