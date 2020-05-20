@@ -57,7 +57,8 @@ def handle_dialog(req, res):
             'mode': '',
             'attempt': 0,  # попытка отгадать портрет
             'portrait_id': '',
-            "portrait_surname": ''
+            "portrait_surname": '',
+            'lastPic': False
         }
         res['response']['text'] = 'Привет! Выбери режим:'
 
@@ -98,22 +99,30 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['id'] += 1
 
     if sessionStorage[user_id]['mode'] == 'картины':
-        if sessionStorage[user_id]['attempt'] == 0:  # точка входа в диалог с портретами
-            sessionStorage[user_id]['portrait_surname'] = random.choice(list(portraits))
-            sessionStorage[user_id]['portrait_id'] = portraits.get(sessionStorage[user_id]['portrait_surname'], None)
+        if not sessionStorage[user_id]['lastPic']:
+            sessionStorage[user_id]['arrayPic'] = list(portraits)
+            sessionStorage[user_id]['idPic'] = 0
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
-            res['response']['card']['title'] = 'то изображен на фотографии?'
-            res['response']['card']['image_id'] = sessionStorage[user_id]['portrait_id']
-            # res['response']['text'] = 'Кто изображен на фотографии?'
-            sessionStorage[user_id]['attempt'] = 1  # ждем ответа
+            res['response']['card']['title'] = 'Кто изображен на фотографии?'
+            res['response']['card']['image_id'] = \
+                portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
+            sessionStorage[user_id]['lastPic'] = True
         else:
-            surname = get_last_name(req)  # поиск фамилии
-            # if surname.replace(' ', '').lower() == portrait_surname:
-            res['response']['text'] = 'Угадал!'
-            # else:
-            #   res['response']['text'] = 'кек'
-            # тут продолжение игры
+            res['response']['card'] = {}
+            res['response']['card']['type'] = 'BigImage'
+            if req['request']['original_utterance'].lower() == \
+                    sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower():
+                res['response']['card']['title'] = 'Верно!'
+            else:
+                res['response']['card']['title'] \
+                    = f"Ты ошибся, правильный ответ: {sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}"
+            res['response']['card']['image_id'] = \
+                portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
+            res['response']['card']['title'] += ' Кто изображен на фотографии?'
+        res['response']['text'] = ''
+        sessionStorage[user_id]['idPic'] += 1
+
     if sessionStorage[user_id]['mode'] == 'термины':
         pass
 
