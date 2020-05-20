@@ -8,9 +8,9 @@ from flask import Flask, request
 from portrait import portraits
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
-with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
+# with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
     # альтернатива для вас:
-    # with open('Data.json', encoding='utf8') as f:
+with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей
 
 app = Flask(__name__)
@@ -29,7 +29,7 @@ _next = ['Далее', 'Следующий вопрос', 'Продолжим', 
 wtf = ['Прости, не понимаю тебя', 'Можешь повторить, пожалуйста?', 'Повтори, пожалуйста', 'Прости, не слышу тебя']
 
 
-@app.route('/post', methods=['POST'])
+@app.route('/', methods=['POST'])
 def main():
     logging.info('Request: %r', request.json)
     response = {
@@ -39,12 +39,16 @@ def main():
             'end_session': False
         }
     }
-
+    index()
     handle_dialog(request.json, response)
 
     logging.info('Response: %r', request.json)
 
     return json.dumps(response)
+
+
+def index():
+    return "App works!"
 
 
 def handle_dialog(req, res):
