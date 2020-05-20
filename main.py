@@ -81,11 +81,11 @@ def handle_dialog(req, res):
 
     if 'случайные даты' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'случайные даты'
+    else:
+        res['response']['text'] = random.choice(wtf)
 
     if req['request']['original_utterance'].lower() == 'картины':
         sessionStorage[user_id]['mode'] = 'картины'
-    else:
-        res['response']['text'] = random.choice(wtf)
 
     if sessionStorage[user_id]['mode'] == 'случайные даты':
         if not sessionStorage[user_id]['lastQ']:
