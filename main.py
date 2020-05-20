@@ -29,7 +29,7 @@ _next = ['Далее', 'Следующий вопрос', 'Продолжим', 
 wtf = ['Прости, не понимаю тебя', 'Можешь повторить, пожалуйста?', 'Повтори, пожалуйста', 'Прости, не слышу тебя']
 
 
-@app.route('/', methods=['POST'])
+@app.route('/post', methods=['POST'])
 def main():
     logging.info('Request: %r', request.json)
     response = {
@@ -39,16 +39,11 @@ def main():
             'end_session': False
         }
     }
-    index()
     handle_dialog(request.json, response)
 
     logging.info('Response: %r', request.json)
 
     return json.dumps(response)
-
-
-def index():
-    return "App works!"
 
 
 def handle_dialog(req, res):
