@@ -19,6 +19,13 @@ logging.basicConfig(level=logging.INFO)
 
 sessionStorage = {}
 
+# реакции для более живого разговора
+right = ['Отлично!', 'Правильно!', 'Супер!', 'Точно!', 'Верно!', 'Хорошо!', 'Неплохо!']
+
+wrong = ['Ой!', 'Не то!', 'Ты ошибся!', 'Немного не то!', 'Неверно!', 'Неправильно!', 'Ошибочка!']
+
+_next = ['Далее', 'Следующий вопрос', 'Продолжим', 'Следующая дата']
+
 
 @app.route('/post', methods=['POST'])
 def main():
@@ -48,7 +55,7 @@ def handle_dialog(req, res):
             'suggests': [
                 "Случайные даты",
                 "Картины",
-                "Закрыть",
+                "Закрыть ❌",
             ],
             'test': arr,
             'id': 0,
@@ -86,10 +93,10 @@ def handle_dialog(req, res):
             if req['request']['original_utterance'].lower() == \
                     sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
                         'answer']:
-                res['response']['text'] = f"Верно! Следующий вопрос: {res['response']['text']}"
+                res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
             else:
                 res['response'][
-                    'text'] = f"Неверно, правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']}. \nСледующий вопрос: {res['response']['text']}"
+                    'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
 
         sessionStorage[user_id]['id'] += 1
 
@@ -109,10 +116,10 @@ def handle_dialog(req, res):
             res['response']['card']['type'] = 'BigImage'
             if req['request']['original_utterance'].lower() == \
                     sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower():
-                res['response']['card']['title'] = 'Верно!'
+                res['response']['card']['title'] = random.choice(right)
             else:
                 res['response']['card']['title'] \
-                    = f"Ты ошибся, правильный ответ: {sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}."
+                    = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}."
 
             if sessionStorage[user_id]['idPic'] == len(sessionStorage[user_id]['arrayPic']):
                 random.shuffle(sessionStorage[user_id]['arrayPic'])
