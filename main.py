@@ -4,6 +4,7 @@ from flask_ngrok import run_with_ngrok
 import json
 import random
 import copy
+from portrait import portraits, get_last_name
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
@@ -54,7 +55,10 @@ def handle_dialog(req, res):
             'test': arr,
             'id': 0,
             'lastQ': False,
-            'mode': ''
+            'mode': '',
+            'attempt': 0,  # попытка отгадать портрет
+            'portrait_id': '',
+            "portrait_surname": ''
         }
         res['response']['text'] = 'Привет! Выбери режим:'
 
@@ -91,7 +95,22 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['id'] += 1
 
     if sessionStorage[user_id]['mode'] == 'картины':
-        pass
+        if sessionStorage[user_id]['attempt'] == 0:  # точка входа в диалог с портретами
+            sessionStorage[user_id]['portrait_surname'] = random.choice(list(portraits))
+            sessionStorage[user_id]['portrait_id'] = portraits.get(sessionStorage[user_id]['portrait_surname'], None)
+            res['response']['card'] = {}
+            res['response']['card']['type'] = 'BigImage'
+            res['response']['card']['title'] = 'то изображен на фотографии?'
+            res['response']['card']['image_id'] = sessionStorage[user_id]['portrait_id']
+            # res['response']['text'] = 'Кто изображен на фотографии?'
+            sessionStorage[user_id]['attempt'] = 1  # ждем ответа
+        else:
+            surname = get_last_name(req)  # поиск фамилии
+            # if surname.replace(' ', '').lower() == portrait_surname:
+            res['response']['text'] = 'Угадал!'
+            # else:
+            #   res['response']['text'] = 'кек'
+            # тут продолжение игры
     if sessionStorage[user_id]['mode'] == 'термины':
         pass
 
