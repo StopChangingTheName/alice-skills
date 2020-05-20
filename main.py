@@ -63,7 +63,7 @@ def handle_dialog(req, res):
             for suggest in sessionStorage[user_id]['suggests']
         ]
         return
-
+    # ставим режим
     if req['request']['original_utterance'].lower() == 'случайные даты':
         sessionStorage[user_id]['mode'] = 'случайные даты'
     if req['request']['original_utterance'].lower() == 'картины':
@@ -76,12 +76,6 @@ def handle_dialog(req, res):
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['question']
             sessionStorage[user_id]['lastQ'] = True
         else:
-            # если в нашем запросе 'закрыть' заканчиваем сессию
-            if req['request']['original_utterance'].lower() in ['закрыть', 'стоп']:
-                res['response']['text'] = 'Пока!'
-                res['response']['end_session'] = True
-                return
-
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
             print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question'])
             print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer'])
@@ -94,11 +88,18 @@ def handle_dialog(req, res):
                 res['response'][
                     'text'] = f"Неверно, правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']}.Следующий вопрос: {res['response']['text']}"
 
-            res['response']['buttons'] = [
-                {'title': suggest, 'hide': True}
-                for suggest in sessionStorage[user_id]['suggests']
-            ]
         sessionStorage[user_id]['id'] += 1
+
+    if sessionStorage[user_id]['mode'] == 'картины':
+        pass
+    if sessionStorage[user_id]['mode'] == 'термины':
+        pass
+
+    # если в нашем запросе 'закрыть' заканчиваем сессию
+    if req['request']['original_utterance'].lower() in ['закрыть', 'стоп']:
+        res['response']['text'] = 'Пока!'
+        res['response']['end_session'] = True
+        return
 
 
 if __name__ == '__main__':
