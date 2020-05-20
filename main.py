@@ -65,12 +65,14 @@ def handle_dialog(req, res):
         ]
         return
     # ставим режим
-    if req['request']['original_utterance'].lower() == 'случайные даты':
+
+    if 'случайные даты' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'случайные даты'
+
     if req['request']['original_utterance'].lower() == 'картины':
         sessionStorage[user_id]['mode'] = 'картины'
-    # if req['request']['original_utterance'].lower() == 'термины':
-    #     sessionStorage[user_id]['mode'] = 'термины'
+    else:
+        res['response']['text'] = 'Извини, я тебя не поняла, повтори ещё раз'
 
     if sessionStorage[user_id]['mode'] == 'случайные даты':
         if not sessionStorage[user_id]['lastQ']:
