@@ -50,10 +50,9 @@ def handle_dialog(req, res):
                 "Картины",
                 "Термины",
                 "Закрыть",
-                "В меню",
             ],
             'test': arr,
-            'id': 0,
+            'id': 0,  # номер вопроса
             'lastQ': False,
             'mode': '',
             'attempt': 0,  # попытка отгадать портрет
@@ -70,10 +69,14 @@ def handle_dialog(req, res):
     # ставим режим
     if req['request']['original_utterance'].lower() == 'случайные даты':
         sessionStorage[user_id]['mode'] = 'случайные даты'
+
     if req['request']['original_utterance'].lower() == 'картины':
         sessionStorage[user_id]['mode'] = 'картины'
+        return
     if req['request']['original_utterance'].lower() == 'термины':
         sessionStorage[user_id]['mode'] = 'термины'
+    if req['request']['original_utterance'].lower() == 'в меню':
+        sessionStorage[user_id]['mode'] = 'меню'
 
     if sessionStorage[user_id]['mode'] == 'случайные даты':
         if not sessionStorage[user_id]['lastQ']:
@@ -119,6 +122,11 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
         return
+
+    res['response']['buttons'] = [
+        {'title': suggest, 'hide': True}
+        for suggest in sessionStorage[user_id]['suggests']
+    ]
 
 
 if __name__ == '__main__':
