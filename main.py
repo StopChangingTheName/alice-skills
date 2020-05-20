@@ -97,6 +97,7 @@ def handle_dialog(req, res):
     if sessionStorage[user_id]['mode'] == 'картины':
         if not sessionStorage[user_id]['lastPic']:
             sessionStorage[user_id]['arrayPic'] = list(portraits)
+            random.shuffle(sessionStorage[user_id]['arrayPic'])
             sessionStorage[user_id]['idPic'] = 0
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
@@ -112,7 +113,11 @@ def handle_dialog(req, res):
                 res['response']['card']['title'] = 'Верно!'
             else:
                 res['response']['card']['title'] \
-                    = f"Ты ошибся, правильный ответ: {sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}"
+                    = f"Ты ошибся, правильный ответ: {sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}."
+
+            if sessionStorage[user_id]['idPic'] == len(sessionStorage[user_id]['arrayPic']):
+                random.shuffle(sessionStorage[user_id]['arrayPic'])
+                sessionStorage[user_id]['idPic'] = 0
             res['response']['card']['image_id'] = \
                 portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
             res['response']['card']['title'] += ' Кто изображен на фотографии?'
