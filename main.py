@@ -7,9 +7,9 @@ import copy
 from portrait import portraits, get_last_name
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
-#with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
-# альтернатива для вас:
-with open('Data.json', encoding='utf8') as f:
+with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
+    # альтернатива для вас:
+    # with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей
 
 app = Flask(__name__)
@@ -48,9 +48,7 @@ def handle_dialog(req, res):
             'suggests': [
                 "Случайные даты",
                 "Картины",
-                "Термины",
                 "Закрыть",
-                "В меню",
             ],
             'test': arr,
             'id': 0,
@@ -58,7 +56,8 @@ def handle_dialog(req, res):
             'mode': '',
             'lastPic': False
         }
-        res['response']['text'] = 'Привет! Выбери режим:'
+        res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории. ' \
+                                  'Какой режим ты хочешь выбрать: случайные даты или портреты исторических личностей?'
 
         res['response']['buttons'] = [
             {'title': suggest, 'hide': True}
@@ -70,8 +69,8 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['mode'] = 'случайные даты'
     if req['request']['original_utterance'].lower() == 'картины':
         sessionStorage[user_id]['mode'] = 'картины'
-    if req['request']['original_utterance'].lower() == 'термины':
-        sessionStorage[user_id]['mode'] = 'термины'
+    # if req['request']['original_utterance'].lower() == 'термины':
+    #     sessionStorage[user_id]['mode'] = 'термины'
 
     if sessionStorage[user_id]['mode'] == 'случайные даты':
         if not sessionStorage[user_id]['lastQ']:
@@ -130,6 +129,10 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
         return
+    res['response']['buttons'] = [
+        {'title': suggest, 'hide': True}
+        for suggest in sessionStorage[user_id]['suggests'][2:]
+    ]
 
 
 if __name__ == '__main__':
