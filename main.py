@@ -7,9 +7,9 @@ import copy
 from portrait import portraits, get_last_name
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
-with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
-    # альтернатива для вас:
-    # with open('Data.json', encoding='utf8') as f:
+#with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
+# альтернатива для вас:
+with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей
 
 app = Flask(__name__)
@@ -57,8 +57,6 @@ def handle_dialog(req, res):
             'lastQ': False,
             'mode': '',
             'lastPic': False
-            # 'portrait_id': '',
-            # "portrait_surname": ''
         }
         res['response']['text'] = 'Привет! Выбери режим:'
 
@@ -97,6 +95,7 @@ def handle_dialog(req, res):
     if sessionStorage[user_id]['mode'] == 'картины':
         if not sessionStorage[user_id]['lastPic']:
             sessionStorage[user_id]['arrayPic'] = list(portraits)
+            random.shuffle(sessionStorage[user_id]['arrayPic'])
             sessionStorage[user_id]['idPic'] = 0
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
@@ -112,7 +111,11 @@ def handle_dialog(req, res):
                 res['response']['card']['title'] = 'Верно!'
             else:
                 res['response']['card']['title'] \
-                    = f"Ты ошибся, правильный ответ: {sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}"
+                    = f"Ты ошибся, правильный ответ: {sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}."
+
+            if sessionStorage[user_id]['idPic'] == len(sessionStorage[user_id]['arrayPic']):
+                random.shuffle(sessionStorage[user_id]['arrayPic'])
+                sessionStorage[user_id]['idPic'] = 0
             res['response']['card']['image_id'] = \
                 portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
             res['response']['card']['title'] += ' Кто изображен на фотографии?'
