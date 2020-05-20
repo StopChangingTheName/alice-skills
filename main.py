@@ -46,7 +46,10 @@ def handle_dialog(req, res):
         sessionStorage[user_id] = {
             'suggests': [
                 "Случайные даты",
-                "Закрыть"
+                "Картины",
+                "Термины",
+                "Закрыть",
+                "В меню",
             ],
             'test': arr,
             'id': 0,
@@ -59,6 +62,8 @@ def handle_dialog(req, res):
             for suggest in sessionStorage[user_id]['suggests']
         ]
         return
+
+    if res['']
     if not sessionStorage[user_id]['lastQ']:
         res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']-1]['question']
         sessionStorage[user_id]['lastQ'] = True
