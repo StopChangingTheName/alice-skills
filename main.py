@@ -11,8 +11,8 @@ from portrait import portraits
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
 # альтернатива для вас:
 with open('Data.json', encoding='utf8') as f:
-    data = json.loads(f.read())['test']  # массив из словарей
-
+    data = json.loads(f.read())['test']  # массив из словарей дат
+    terms = json.loads(f.read())['terms']  # same из терминов
 app = Flask(__name__)
 run_with_ngrok(app)
 logging.basicConfig(level=logging.INFO)
@@ -55,8 +55,11 @@ def handle_dialog(req, res):
     user_id = req['session']['user_id']
     # если 1 раз
     if req['session']['new']:
+        # перемешивание дат и терминов
         arr = copy.deepcopy(data)
-        random.shuffle(arr)  # перемешанная data
+        term = copy.deepcopy(terms)
+        random.shuffle(arr)
+        random.shuffle(term)
         sessionStorage[user_id] = {
             'suggests': [
                 "Случайные даты",
@@ -69,6 +72,7 @@ def handle_dialog(req, res):
                 "Меню"
             ],
             'test': arr,
+            'term': term,
             'id': 0,
             'lastQ': False,
             'mode': '',
@@ -167,7 +171,6 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
         ]
-        #  res['response']['end_session'] = True
         return
 
     res['response']['buttons'] = [
