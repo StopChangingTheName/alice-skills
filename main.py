@@ -107,11 +107,13 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
 
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-                                  'Нажми кнопку "меню"'
+                                  'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
+                                  'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
         res['response']['buttons'] = [
-            {'title': suggest, 'hide': True}
-            for suggest in sessionStorage[user_id]['slicedsuggests']
+            {'title': suggest, 'hide': False}
+            for suggest in sessionStorage[user_id]['suggests']
         ]
+        return
 
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
