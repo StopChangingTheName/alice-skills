@@ -73,6 +73,7 @@ def handle_dialog(req, res):
                 "Закрыть навык ❌",
                 "Меню"
             ],
+            "nick": None,
             'id': 0,
             'mode': '',
             'lastPic': False,
@@ -91,14 +92,24 @@ def handle_dialog(req, res):
             'terID': 0
         }
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
+                                  'Введи свой никнейм для сохранения!'
+
+        # res['response']['buttons'] = [
+        #     {'title': suggest, 'hide': False}
+        #     for suggest in sessionStorage[user_id]['suggests'][:4]
+        # ]
+        return
+
+    if sessionStorage[user_id]['nick'] is None:
+        sessionStorage[user_id]['nick'] = req['request']['original_utterance']
+        res['response']['text'] = 'Приятно познакомиться!\n ' \
                                   'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
 
         res['response']['buttons'] = [
-            {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests'][:4]
-        ]
-        return
+             {'title': suggest, 'hide': False}
+             for suggest in sessionStorage[user_id]['suggests'][:4]
+         ]
 
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
@@ -199,7 +210,7 @@ def handle_dialog(req, res):
         cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?)",
                     (
                     id_ + 1,
-                    'Test', # Заглушка для имени
+                    sessionStorage[user_id]['nick'], # Заглушка для имени
                     test_count,
                     pic_count,
                     ter_count,
