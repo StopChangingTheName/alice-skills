@@ -1,3 +1,4 @@
+from werkzeug.security import generate_password_hash, check_password_hash
 
 portraits = {
     'Петр 1': '965417/24d6b2e32bbbd4bbc005',
@@ -26,3 +27,11 @@ def get_last_name(req):
     for entity in req['request']['nlu']['entities']:
         if entity['type'] == 'YANDEX.FIO':
             return entity['value'].get('last_name', None)
+
+
+def hash_pass(pswd):
+    return generate_password_hash(pswd)
+
+
+def unhash_pass(hash, user_id):
+    return check_password_hash(hash, user_id)

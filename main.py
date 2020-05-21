@@ -5,7 +5,7 @@ import random
 from flask_ngrok import run_with_ngrok
 import sqlite3
 from flask import Flask, request
-from portrait import portraits
+from portrait import portraits, hash_pass, unhash_pass
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
@@ -19,6 +19,11 @@ run_with_ngrok(app)
 logging.basicConfig(level=logging.INFO)
 
 sessionStorage = {}
+
+x = hash_pass('Hello')
+print(x)
+print(unhash_pass(x, 'Hello'))
+
 
 # реакции для более живого разговора
 right = ['Отлично!', 'Правильно!', 'Супер!', 'Точно!', 'Верно!', 'Хорошо!', 'Неплохо!']
