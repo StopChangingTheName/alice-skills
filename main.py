@@ -4,7 +4,6 @@ import logging
 import random
 
 from flask import Flask, request
-
 from portrait import portraits
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
