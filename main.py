@@ -95,6 +95,7 @@ def handle_dialog(req, res):
         }
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения!'
+        return
 
     if sessionStorage[user_id]['nick'] is None:
         tag = str(random.randint(0, 10001))
@@ -107,6 +108,7 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
         ]
+        return
 
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
@@ -118,8 +120,9 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
         ]
+        return
 
-    # ставим режим
+        # ставим режим
     if 'даты' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'случайные даты'
 
@@ -145,7 +148,6 @@ def handle_dialog(req, res):
                     'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
 
         sessionStorage[user_id]['id'] += 1
-        return
 
     if sessionStorage[user_id]['mode'] == 'картины':
         if not sessionStorage[user_id]['lastPic']:
@@ -177,7 +179,6 @@ def handle_dialog(req, res):
             res['response']['card']['title'] += ' Кто изображен на фотографии?'
         res['response']['text'] = ''
         sessionStorage[user_id]['idPic'] += 1
-        return
 
     if sessionStorage[user_id]['mode'] == 'термины':
         if not sessionStorage[user_id]['lastT']:
@@ -193,7 +194,6 @@ def handle_dialog(req, res):
                 res['response'][
                     'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
-        return 
 
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
