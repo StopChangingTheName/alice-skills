@@ -163,13 +163,13 @@ def handle_dialog(req, res):
             sessionStorage[user_id]['lastT'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
-            if sessionStorage[user_id]['test'][sessionStorage[user_id]['terID'] - 1][
+            if sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1][
                 'answer'].lower() in req['request']['original_utterance'].lower():
                 res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                 sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
             else:
                 res['response'][
-                    'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
+                    'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
 
     # если в нашем запросе 'закрыть' заканчиваем сессию
