@@ -101,8 +101,10 @@ def handle_dialog(req, res):
         return
 
     if sessionStorage[user_id]['nick'] is None:
-        sessionStorage[user_id]['nick'] = req['request']['original_utterance']
-        res['response']['text'] = 'Приятно познакомиться!\n ' \
+        tag = str(random.randint(0, 10001))
+        sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
+
+        res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                   'Нажми кнопку "меню"'
 
         res['response']['buttons'] = [
