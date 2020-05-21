@@ -148,6 +148,7 @@ def handle_dialog(req, res):
                     'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
 
         sessionStorage[user_id]['id'] += 1
+        return
 
     if sessionStorage[user_id]['mode'] == 'картины':
         if not sessionStorage[user_id]['lastPic']:
@@ -179,6 +180,7 @@ def handle_dialog(req, res):
             res['response']['card']['title'] += ' Кто изображен на фотографии?'
         res['response']['text'] = ''
         sessionStorage[user_id]['idPic'] += 1
+        return
 
     if sessionStorage[user_id]['mode'] == 'термины':
         if not sessionStorage[user_id]['lastT']:
@@ -194,6 +196,7 @@ def handle_dialog(req, res):
                 res['response'][
                     'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
+        return 
 
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
