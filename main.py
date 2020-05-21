@@ -160,14 +160,14 @@ def handle_dialog(req, res):
         cur = con.cursor()  # Вот тут будем заносить данные в БД
         return
     if 'меню' in req['request']['original_utterance'].lower():
-        res['response']['end_session'] = True
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории. ' \
                                   'Какой режим ты хочешь выбрать: случайные даты, портреты исторических личностей или ' \
                                   'термины? '
         res['response']['buttons'] = [
-            {'title': suggest, 'hide': True}
+            {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
         ]
+        #  res['response']['end_session'] = True
         return
 
     res['response']['buttons'] = [
