@@ -2,7 +2,7 @@ import copy
 import json
 import logging
 import random
-
+from flask_ngrok import run_with_ngrok
 from flask import Flask, request
 from portrait import portraits
 
@@ -13,7 +13,7 @@ with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей
 
 app = Flask(__name__)
-
+run_with_ngrok(app)
 logging.basicConfig(level=logging.INFO)
 
 sessionStorage = {}
@@ -60,7 +60,9 @@ def handle_dialog(req, res):
             'suggests': [
                 "Случайные даты",
                 "Картины",
+                "Термины",
                 "Закрыть ❌",
+                "Меню"
             ],
             'test': arr,
             'id': 0,
@@ -69,24 +71,25 @@ def handle_dialog(req, res):
             'lastPic': False
         }
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории. ' \
-                                  'Какой режим ты хочешь выбрать: случайные даты или портреты исторических личностей?'
+                                  'Какой режим ты хочешь выбрать: случайные даты, портреты исторических личностей или ' \
+                                  'термины? '
 
         res['response']['buttons'] = [
-            {'title': suggest, 'hide': True}
-            for suggest in sessionStorage[user_id]['suggests']
+            {'title': suggest, 'hide': False}
+            for suggest in sessionStorage[user_id]['suggests'][:4]
         ]
         return
     # ставим режим
 
     if 'даты' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'случайные даты'
-    else:
-        res['response']['text'] = random.choice(wtf)
 
-    if 'картины' in req['request']['original_utterance'].lower() or 'потреты' in req['request']['original_utterance'].lower():
+    if 'картины' in req['request']['original_utterance'].lower() or 'потреты' in req['request'][
+        'original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'картины'
-    else:
-        res['response']['text'] = random.choice(wtf)
+
+    if 'термины' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'термины'
 
     if sessionStorage[user_id]['mode'] == 'случайные даты':
         if not sessionStorage[user_id]['lastQ']:
@@ -144,9 +147,21 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
         return
+    if 'меню' in req['request']['original_utterance'].lower():
+        res['response']['end_session'] = True
+        res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории. ' \
+                                  'Какой режим ты хочешь выбрать: случайные даты, портреты исторических личностей или ' \
+                                  'термины? '
+        res['response']['buttons'] = [
+            {'title': suggest, 'hide': False}
+            for suggest in sessionStorage[user_id]['suggests'][:4]
+        ]
+
+        return
+
     res['response']['buttons'] = [
         {'title': suggest, 'hide': True}
-        for suggest in sessionStorage[user_id]['suggests'][2:]
+        for suggest in sessionStorage[user_id]['suggests'][3:]
     ]
 
 
