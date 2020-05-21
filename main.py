@@ -138,7 +138,17 @@ def handle_dialog(req, res):
             else:
                 res['response']['card']['title'] \
                     = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}."
-
+            # доп проверка для меню
+            if 'меню' in req['request']['original_utterance'].lower():
+                res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории. ' \
+                                          'Какой режим ты хочешь выбрать: случайные даты, портреты исторических личностей или ' \
+                                          'термины? '
+                res['response']['buttons'] = [
+                    {'title': suggest, 'hide': False}
+                    for suggest in sessionStorage[user_id]['suggests']
+                ]
+                #  res['response']['end_session'] = True
+                return
             if sessionStorage[user_id]['idPic'] == len(sessionStorage[user_id]['arrayPic']):
                 random.shuffle(sessionStorage[user_id]['arrayPic'])
                 sessionStorage[user_id]['idPic'] = 0
