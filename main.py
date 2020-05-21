@@ -108,7 +108,7 @@ def handle_dialog(req, res):
 
         res['response']['buttons'] = [
              {'title': suggest, 'hide': False}
-             for suggest in sessionStorage[user_id]['suggests'][:4]
+             for suggest in sessionStorage[user_id]['suggests']
          ]
 
     if 'меню' in req['request']['original_utterance'].lower():
