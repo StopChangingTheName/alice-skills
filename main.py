@@ -212,6 +212,7 @@ def handle_dialog(req, res):
         cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?)",
                     (
                     id_ + 1,
+                    'user_id',
                     sessionStorage[user_id]['nick'], # Заглушка для имени
                     test_count,
                     pic_count,
