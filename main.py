@@ -209,7 +209,7 @@ def handle_dialog(req, res):
         pic_count = sessionStorage[user_id]['pic_count']
         ter_count = sessionStorage[user_id]['ter_count']
         id_ = len(cur.execute("SELECT * FROM u").fetchall())
-        cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?)",
+        cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
                     (
                         id_ + 1,
                         'user_id',
