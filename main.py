@@ -113,9 +113,6 @@ def handle_dialog(req, res):
             for suggest in sessionStorage[user_id]['slicedsuggests']
         ]
 
-    if sessionStorage[user_id]['nick'] is not None and req['request']['original_utterance'].lower() != 'меню':
-        res['response']['text'] = random.choice(wtf)
-
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
