@@ -12,6 +12,7 @@ from portrait import portraits
 # альтернатива для вас:
 with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей дат
+with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
 app = Flask(__name__)
 run_with_ngrok(app)
