@@ -113,7 +113,6 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
         ]
-        return
 
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
@@ -204,8 +203,6 @@ def handle_dialog(req, res):
 
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
-        res['response']['text'] = 'Пока!'
-        res['response']['end_session'] = True
         con = sqlite3.connect("users.db")
         cur = con.cursor()  # Вот тут будем заносить данные в БД
         test_count = sessionStorage[user_id]['test_count']
@@ -224,6 +221,8 @@ def handle_dialog(req, res):
                     )
                     )
         con.commit()
+        res['response']['text'] = 'Пока!'
+        res['response']['end_session'] = True
         return
 
     res['response']['buttons'] = [
