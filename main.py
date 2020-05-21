@@ -95,11 +95,6 @@ def handle_dialog(req, res):
         }
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения!'
-
-        # res['response']['buttons'] = [
-        #     {'title': suggest, 'hide': False}
-        #     for suggest in sessionStorage[user_id]['suggests'][:4]
-        # ]
         return
 
     if sessionStorage[user_id]['nick'] is None:
@@ -113,7 +108,6 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
         ]
-        return 
 
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
@@ -127,7 +121,6 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
         ]
-        return
 
     # ставим режим
     if 'даты' in req['request']['original_utterance'].lower():
