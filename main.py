@@ -71,15 +71,22 @@ def handle_dialog(req, res):
                 "Закрыть ❌",
                 "Меню"
             ],
-            'test': arr,
-            'term': term,
             'id': 0,
-            'lastQ': False,
             'mode': '',
             'lastPic': False,
+            # переменные для дат
+            'test': arr,
+            'lastQ': False,
+
+            # очки для БД
             'test_count': 0,
             'pic_count': 0,
-            'ter_count': 0
+            'ter_count': 0,
+
+            # переменные для терминов
+            'term': term,
+            'lastT': False,
+            'terID': 0
         }
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории. ' \
                                   'Какой режим ты хочешь выбрать: случайные даты, портреты исторических личностей или ' \
@@ -108,13 +115,10 @@ def handle_dialog(req, res):
             sessionStorage[user_id]['lastQ'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
-            print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question'])
-            print(sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['answer'])
-            print('моё ', req['request']['original_utterance'].lower())
             if sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
                 'answer'].lower() in req['request']['original_utterance'].lower():
                 res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
-                sessionStorage[user_id]['test_count'] += 1
+                sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
             else:
                 res['response'][
                     'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
@@ -138,7 +142,7 @@ def handle_dialog(req, res):
             if sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower() \
                     in req['request']['original_utterance'].lower():
                 res['response']['card']['title'] = random.choice(right)
-                sessionStorage[user_id]['pic_count'] += 1
+                sessionStorage[user_id]['pic_count'] += 1  # Сохранение очков по картинкам
             else:
                 res['response']['card']['title'] \
                     = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}."
@@ -153,8 +157,19 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['idPic'] += 1
 
     if sessionStorage[user_id]['mode'] == 'термины':
-        sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
-        pass
+        if not sessionStorage[user_id]['lastT']:
+            res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
+            sessionStorage[user_id]['lastT'] = True
+        else:
+            res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
+            if sessionStorage[user_id]['test'][sessionStorage[user_id]['terID'] - 1][
+                'answer'].lower() in req['request']['original_utterance'].lower():
+                res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
+            else:
+                res['response'][
+                    'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
+        sessionStorage[user_id]['terID'] += 1
 
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
