@@ -62,6 +62,9 @@ def handle_dialog(req, res):
                 "Случайные даты",
                 "Картины",
                 "Термины",
+                "Закрыть ❌"
+            ],
+            'slicedsuggests': [
                 "Закрыть ❌",
                 "Меню"
             ],
@@ -163,13 +166,13 @@ def handle_dialog(req, res):
                                   'термины? '
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests'][:4]
+            for suggest in sessionStorage[user_id]['suggests']
         ]
         return
 
     res['response']['buttons'] = [
         {'title': suggest, 'hide': True}
-        for suggest in sessionStorage[user_id]['suggests'][3:]
+        for suggest in sessionStorage[user_id]['slicedsuggests']
     ]
 
 
