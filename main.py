@@ -165,7 +165,7 @@ def handle_dialog(req, res):
                                   'Какой режим ты хочешь выбрать: случайные даты, портреты исторических личностей или ' \
                                   'термины? '
         res['response']['buttons'] = [
-            {'title': suggest, 'hide': False}
+            {'title': suggest, 'hide': True}
             for suggest in sessionStorage[user_id]['suggests']
         ]
         return
