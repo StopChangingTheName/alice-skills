@@ -165,7 +165,6 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests'][:4]
         ]
-
         return
 
     res['response']['buttons'] = [
