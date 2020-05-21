@@ -2,7 +2,7 @@ import copy
 import json
 import logging
 import random
-
+import sqlite3
 from flask import Flask, request
 from portrait import portraits
 
@@ -143,6 +143,8 @@ def handle_dialog(req, res):
     if 'закрыть' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
+        con = sqlite3.connect("users.db")
+        cur = con.cursor()  # Вот тут будем заносить данные в БД
         return
     res['response']['buttons'] = [
         {'title': suggest, 'hide': True}
