@@ -108,9 +108,8 @@ def handle_dialog(req, res):
 
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                   'Нажми кнопку "меню"'
-        if 'меню' in req['request']['original_utterance'].lower() == False:
+        if req['request']['original_utterance'].lower() != 'меню':
             res['response']['text'] = random.choice(wtf)
-            
         res['response']['buttons'] = [
             {'title': suggest, 'hide': True}
             for suggest in sessionStorage[user_id]['slicedsuggests']
