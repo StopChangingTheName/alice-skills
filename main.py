@@ -118,6 +118,8 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['lastQ'] = False
         sessionStorage[user_id]['lastPic'] = False
         sessionStorage[user_id]['lastT'] = False
+        sessionStorage[user_id]['terID'] = 0
+        sessionStorage[user_id]['id'] = 0
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
