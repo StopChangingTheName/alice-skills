@@ -23,7 +23,6 @@ x = hash_pass('Hello')
 print(x)
 print(unhash_pass(x, 'Hello'))
 
-
 # реакции для более живого разговора
 right = ['Отлично!', 'Правильно!', 'Супер!', 'Точно!', 'Верно!', 'Хорошо!', 'Неплохо!']
 
@@ -112,9 +111,9 @@ def handle_dialog(req, res):
                                   'Нажми кнопку "меню"'
 
         res['response']['buttons'] = [
-             {'title': suggest, 'hide': False}
-             for suggest in sessionStorage[user_id]['suggests']
-         ]
+            {'title': suggest, 'hide': False}
+            for suggest in sessionStorage[user_id]['suggests']
+        ]
 
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
@@ -215,15 +214,15 @@ def handle_dialog(req, res):
         id_ = len(cur.execute("SELECT * FROM u").fetchall())
         cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?)",
                     (
-                    id_ + 1,
-                    'user_id',
-                    sessionStorage[user_id]['nick'], # Заглушка для имени
-                    test_count,
-                    pic_count,
-                    ter_count,
-                    test_count + pic_count + ter_count
+                        id_ + 1,
+                        'user_id',
+                        sessionStorage[user_id]['nick'],  # Заглушка для имени
+                        test_count,
+                        pic_count,
+                        ter_count,
+                        test_count + pic_count + ter_count
                     )
-                )
+                    )
         con.commit()
         return
 

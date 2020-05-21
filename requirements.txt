@@ -1,4 +1,4 @@
-flask~=1.1.2
+flask
 gunicorn
 flask-login
-Werkzeug~=1.0.1
+Werkzeug
