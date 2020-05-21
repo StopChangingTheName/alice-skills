@@ -2,7 +2,6 @@ import copy
 import json
 import logging
 import random
-from flask_ngrok import run_with_ngrok
 import sqlite3
 from flask import Flask, request
 from portrait import portraits, hash_pass, unhash_pass
