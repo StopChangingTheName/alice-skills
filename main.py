@@ -99,7 +99,7 @@ def handle_dialog(req, res):
 
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения!'
-        return res['session_state']['value']
+        return
 
     if not sessionStorage[user_id]['addNick']:
         tag = str(random.randint(0, 10001))
