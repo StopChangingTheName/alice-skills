@@ -47,6 +47,11 @@ def main():
         'version': request.json['version'],
         'response': {
             'end_session': False
+        },
+        "state": {
+            "session": {
+                "value": 10
+            }
         }
     }
     handle_dialog(request.json, response)
