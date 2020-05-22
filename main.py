@@ -31,6 +31,44 @@ _next = ['Далее', 'Следующий вопрос', 'Продолжим', 
 wtf = ['Прости, не понимаю тебя', 'Можешь повторить, пожалуйста?', 'Повтори, пожалуйста', 'Прости, не слышу тебя']
 
 
+def config(user_id):
+    # перемешивание дат и терминов
+    arr = copy.deepcopy(data)
+    term = copy.deepcopy(terms)
+    random.shuffle(arr)
+    random.shuffle(term)
+    sessionStorage[user_id] = {
+        'suggests': [
+            "Даты 🕰",
+            "Картины 🌄",
+            "Термины 📚",
+            "Рейтинг 🏆",
+            "Закрыть навык ❌"
+        ],
+        'slicedsuggests': [
+            "Закрыть навык ❌",
+            "Меню"
+        ],
+        "nick": None,
+        'id': 0,
+        'mode': '',
+        'lastPic': False,
+        # переменные для дат
+        'test': arr,
+        'lastQ': False,
+
+        # очки для БД
+        'test_count': 0,
+        'pic_count': 0,
+        'ter_count': 0,
+
+        # переменные для терминов
+        'term': term,
+        'lastT': False,
+        'terID': 0
+    }
+
+
 @app.route('/records')
 def records():
     con = sqlite3.connect("users.db")
@@ -63,41 +101,7 @@ def handle_dialog(req, res):
     # если 1 раз
     if req['session']['new']:
 
-        # перемешивание дат и терминов
-        arr = copy.deepcopy(data)
-        term = copy.deepcopy(terms)
-        random.shuffle(arr)
-        random.shuffle(term)
-        sessionStorage[user_id] = {
-            'suggests': [
-                "Даты 🕰",
-                "Картины 🌄",
-                "Термины 📚",
-                "Рейтинг 🏆",
-                "Закрыть навык ❌"
-            ],
-            'slicedsuggests': [
-                "Закрыть навык ❌",
-                "Меню"
-            ],
-            "nick": None,
-            'id': 0,
-            'mode': '',
-            'lastPic': False,
-            # переменные для дат
-            'test': arr,
-            'lastQ': False,
-
-            # очки для БД
-            'test_count': 0,
-            'pic_count': 0,
-            'ter_count': 0,
-
-            # переменные для терминов
-            'term': term,
-            'lastT': False,
-            'terID': 0
-        }
+        config(user_id)
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения:'
         return
@@ -114,7 +118,6 @@ def handle_dialog(req, res):
         ]
         return
 
-
     if 'меню' in req['request']['original_utterance'].lower() or \
             'рейтинг' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
@@ -129,7 +132,6 @@ def handle_dialog(req, res):
         res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                            'url': 'https://alice-skills-1--t1logy.repl.co/records'})
         res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
-        res['response']['text'] = f"{random.choice(wtf)}\nВыбери вариант из предложенных :)"
         return
 
         # ставим режим
@@ -164,6 +166,7 @@ def handle_dialog(req, res):
         con.commit()
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
+        #config(user_id) # на случай если захочет заново играть БЕЗ перезапуска навыка
         return
 
     if sessionStorage[user_id]['mode'] == 'случайные даты':
@@ -247,3 +250,4 @@ def handle_dialog(req, res):
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
+    #app.run()
