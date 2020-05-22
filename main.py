@@ -96,7 +96,7 @@ def handle_dialog(req, res):
             'lastT': False,
             'terID': 0
         }
-        res['response']['session_state']['value'] = 10
+        res['session_state']['value'] = 10
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения!'
         return
