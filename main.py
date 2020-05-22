@@ -3,8 +3,7 @@ import json
 import logging
 import random
 import sqlite3
-import os
-from flask import Flask, request
+from flask import Flask, request, render_template
 from portrait import portraits, hash_pass, unhash_pass
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
@@ -33,9 +32,13 @@ _next = ['Далее', 'Следующий вопрос', 'Продолжим', 
 wtf = ['Прости, не понимаю тебя', 'Можешь повторить, пожалуйста?', 'Повтори, пожалуйста', 'Прости, не слышу тебя']
 
 
-@app.route('/')
-def index():
-    return 'hello'
+@app.route('/records')
+def records():
+    con = sqlite3.connect("users.db")
+    cur = con.cursor()
+    persons = cur.execute("SELECT * FROM u").fetchall()
+    persons = sorted(persons, key=lambda x: -x[-1])
+    return render_template('records.html', title='Рекорды | ЕГЭ', persons=persons)
 
 
 @app.route('/post', methods=['POST'])
@@ -235,4 +238,4 @@ def handle_dialog(req, res):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="127.0.0.1", port=8080)
