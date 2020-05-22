@@ -48,9 +48,6 @@ def main():
         'response': {
             'end_session': False
         },
-        "user_state_update": {
-            "nick": '',
-        },
     }
     handle_dialog(request.json, response)
 
@@ -81,7 +78,7 @@ def handle_dialog(req, res):
                 "Меню"
             ],
             "nick": '',
-            "addNick": False,
+            "addNick": True,
             'id': 0,
             'mode': '',
             'lastPic': False,
@@ -104,12 +101,13 @@ def handle_dialog(req, res):
                                   'Введи свой никнейм для сохранения!'
         return
 
-    if res['user_state_update']['nick'] == '':
+    if not sessionStorage[user_id]['addNick']:
         tag = str(random.randint(0, 10001))
-        res['user_state_update']['nick'] = req['request']['original_utterance'] + "#" + tag
-        res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {res["user_state_update"]["nick"]}\n' \
+        sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
+        res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage["user_id"]["nick"]}\n' \
                                   'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
+        sessionStorage[user_id]['addNick'] = False
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
