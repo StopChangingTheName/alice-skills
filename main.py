@@ -108,7 +108,7 @@ def handle_dialog(req, res):
     if sessionStorage[user_id]['nick'] is None:
         con = sqlite3.connect("users.db")
         cur = con.cursor()
-        cur.execute(f"SELECT * FROM u WHERE nick = {req['request']['original_utterance']};")
+        cur.execute(f"SELECT * FROM u WHERE nick = '{req['request']['original_utterance']}';")
         found = cur.fetchall()
         if found is None:
             tag = str(random.randint(0, 10001))
@@ -132,6 +132,9 @@ def handle_dialog(req, res):
                 {'title': suggest, 'hide': False}
                 for suggest in sessionStorage[user_id]['suggests'][:3]
             ]
+            res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
+                                               'url': 'https://alice-skills-1--t1logy.repl.co/records'})
+            res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
         return
 
     if 'меню' in req['request']['original_utterance'].lower() or \
