@@ -48,7 +48,7 @@ def main():
         'response': {
             'end_session': False
         },
-        'session_state': request.json['session_state']
+        'session_state': {}
     }
     handle_dialog(request.json, response)
 
