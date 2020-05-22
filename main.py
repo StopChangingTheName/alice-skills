@@ -78,7 +78,7 @@ def handle_dialog(req, res):
                 "Меню"
             ],
             "nick": '',
-            "addNick": True,
+            "addNick": False,
             'id': 0,
             'mode': '',
             'lastPic': False,
@@ -107,7 +107,7 @@ def handle_dialog(req, res):
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage["user_id"]["nick"]}\n' \
                                   'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
-        sessionStorage[user_id]['addNick'] = False
+        sessionStorage[user_id]['addNick'] = True
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
