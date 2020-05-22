@@ -48,6 +48,7 @@ def main():
         'response': {
             'end_session': False
         },
+        'session_state': request.json['session_state']
     }
     handle_dialog(request.json, response)
 
@@ -96,7 +97,7 @@ def handle_dialog(req, res):
             'lastT': False,
             'terID': 0
         }
-
+        res['session_state']['value'] = 10
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения!'
         return
@@ -112,6 +113,7 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
         ]
+        return
 
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
