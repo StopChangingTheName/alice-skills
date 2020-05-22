@@ -114,8 +114,11 @@ def handle_dialog(req, res):
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests']
+            for suggest in sessionStorage[user_id]['suggests'][:3]
         ]
+        res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
+                                           'url': 'https://alice-skills-1--t1logy.repl.co/records'})
+        res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
         return
 
     if 'меню' in req['request']['original_utterance'].lower() or \
