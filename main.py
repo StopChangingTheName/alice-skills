@@ -100,7 +100,7 @@ def handle_dialog(req, res):
                                   'Введи свой никнейм для сохранения!'
         return
 
-    if not sessionStorage[user_id]['nick']:
+    if not sessionStorage[user_id]['addNick']:
         tag = str(random.randint(0, 10001))
         sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
         sessionStorage[user_id]['addNick'] = True
