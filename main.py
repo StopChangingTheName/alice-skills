@@ -58,6 +58,7 @@ def main():
 
 
 def handle_dialog(req, res):
+    res['session_state']['value'] = 10
     user_id = req['session']['user_id']
     # если 1 раз
     if req['session']['new']:
@@ -78,7 +79,7 @@ def handle_dialog(req, res):
                 "Закрыть навык ❌",
                 "Меню"
             ],
-            "nick": '',
+            "nick": None,
             "addNick": False,
             'id': 0,
             'mode': '',
@@ -97,7 +98,7 @@ def handle_dialog(req, res):
             'lastT': False,
             'terID': 0
         }
-        res['session_state']['value'] = 10
+
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения!'
         return
