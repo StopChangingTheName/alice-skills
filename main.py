@@ -80,6 +80,8 @@ def handle_dialog(req, res):
                 "Закрыть навык ❌",
                 "Меню"
             ],
+            "nick": '',
+            "addNick": False,
             'id': 0,
             'mode': '',
             'lastPic': False,
