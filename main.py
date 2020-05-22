@@ -6,6 +6,7 @@ import sqlite3
 import os
 from flask import Flask, request
 from portrait import portraits, hash_pass, unhash_pass
+
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
 # альтернатива для вас:
@@ -13,7 +14,6 @@ with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей дат
 with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
-
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -103,6 +103,13 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения!'
         res['session_state']['nick'] = req['request']['original_utterance']
+        res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {res["session_state"]["nick"]}\n' \
+                                  'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
+                                  'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
+        res['response']['buttons'] = [
+            {'title': suggest, 'hide': False}
+            for suggest in sessionStorage[user_id]['suggests']
+        ]
         return
 
     # if res['session_state']['nick'] is None:
