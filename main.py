@@ -97,7 +97,6 @@ def handle_dialog(req, res):
             'lastT': False,
             'terID': 0
         }
-        res['session_state']['nick'] = ''
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения:'
         return
@@ -230,4 +229,4 @@ def handle_dialog(req, res):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0", port=8080)
