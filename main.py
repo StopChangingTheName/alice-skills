@@ -124,10 +124,13 @@ def handle_dialog(req, res):
                                                'url': 'https://alice-skills-1--t1logy.repl.co/records'})
             res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
         else:
-            sessionStorage[user_id]['nick'] = found
+            sessionStorage[user_id]['nick'] = found[1]
             res['response']['text'] = f"Привет, {sessionStorage[user_id]['nick']}! Продолжим тренировку. " \
                                       f"'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                       'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'"
+            sessionStorage[user_id]['test_count'] = found[2]
+            sessionStorage[user_id]['pic_count'] = found[3]
+            sessionStorage[user_id]['ter_count'] = found[4]
             res['response']['buttons'] = [
                 {'title': suggest, 'hide': False}
                 for suggest in sessionStorage[user_id]['suggests'][:3]
@@ -171,17 +174,29 @@ def handle_dialog(req, res):
         test_count = sessionStorage[user_id]['test_count']
         pic_count = sessionStorage[user_id]['pic_count']
         ter_count = sessionStorage[user_id]['ter_count']
-        id_ = len(cur.execute("SELECT * FROM u").fetchall())
-        cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
-                    (
-                        id_ + 1,
-                        sessionStorage[user_id]['nick'],  # Заглушка для имени
-                        test_count,
-                        pic_count,
-                        ter_count,
-                        test_count + pic_count + ter_count
-                    )
-                    )
+        cur.execute(f"SELECT * FROM u WHERE nick = '{sessionStorage[user_id]['nick']}';")
+        if cur.fetchone() is None:
+            id_ = len(cur.execute("SELECT * FROM u").fetchall())
+            cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
+                        (
+                            id_ + 1,
+                            sessionStorage[user_id]['nick'],  # Заглушка для имени
+                            test_count,
+                            pic_count,
+                            ter_count,
+                            test_count + pic_count + ter_count
+                        )
+                        )
+        else:
+            cur.execute("UPDATE films SET (test_count, pic_count, ter_count, summa) = (?,?,?,?) WHERE nick = ?;",
+                        (
+                            test_count,
+                            pic_count,
+                            ter_count,
+                            test_count + pic_count + ter_count,
+                            sessionStorage[user_id]['nick']
+                        )
+                        )
         con.commit()
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
