@@ -17,8 +17,6 @@ with open('Data.json', encoding='utf8') as f:
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
-from flask_ngrok import run_with_ngrok
-run_with_ngrok(app)
 sessionStorage = {}
 
 x = hash_pass('Hello')
