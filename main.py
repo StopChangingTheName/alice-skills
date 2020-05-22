@@ -5,7 +5,7 @@ import random
 import sqlite3
 from flask import Flask, request, render_template
 from portrait import portraits, hash_pass, unhash_pass
-
+from flask_ngrok import run_with_ngrok
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
 # альтернатива для вас:
@@ -15,6 +15,7 @@ with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
 
 app = Flask(__name__)
+run_with_ngrok(app)
 logging.basicConfig(level=logging.INFO)
 sessionStorage = {}
 x = hash_pass('Hello')
@@ -96,29 +97,41 @@ def main():
 
 
 def handle_dialog(req, res):
-
     user_id = req['session']['user_id']
     # если 1 раз
     if req['session']['new']:
-
         config(user_id)
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения:'
         return
 
     if sessionStorage[user_id]['nick'] is None:
-        tag = str(random.randint(0, 10001))
-        sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
-        res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-                                  'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
-                                  'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
-        res['response']['buttons'] = [
-            {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests'][:3]
-        ]
-        res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
-                                           'url': 'https://alice-skills-1--t1logy.repl.co/records'})
-        res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+        con = sqlite3.connect("users.db")
+        cur = con.cursor()
+        cur.execute(f"SELECT * FROM u WHERE nick = {req['request']['original_utterance']};")
+        found = cur.fetchall()
+        if found is None:
+            tag = str(random.randint(0, 10001))
+            sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
+            res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
+                                      'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
+                                      'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
+            res['response']['buttons'] = [
+                {'title': suggest, 'hide': False}
+                for suggest in sessionStorage[user_id]['suggests'][:3]
+            ]
+            res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
+                                               'url': 'https://alice-skills-1--t1logy.repl.co/records'})
+            res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+        else:
+            sessionStorage[user_id]['nick'] = found
+            res['response']['text'] = f"Привет, {sessionStorage[user_id]['nick']}! Продолжим тренировку. " \
+                                      f"'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
+                                      'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'"
+            res['response']['buttons'] = [
+                {'title': suggest, 'hide': False}
+                for suggest in sessionStorage[user_id]['suggests'][:3]
+            ]
         return
 
     if 'меню' in req['request']['original_utterance'].lower() or \
@@ -169,7 +182,7 @@ def handle_dialog(req, res):
         con.commit()
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
-        #config(user_id) # на случай если захочет заново играть БЕЗ перезапуска навыка
+        # config(user_id) # на случай если захочет заново играть БЕЗ перезапуска навыка
         return
 
     if sessionStorage[user_id]['mode'] == 'случайные даты':
@@ -252,5 +265,5 @@ def handle_dialog(req, res):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080)
-    #app.run()
+    # app.run(host="0.0.0.0", port=8080)
+    app.run()
