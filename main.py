@@ -17,7 +17,8 @@ with open('Data.json', encoding='utf8') as f:
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
-
+from flask_ngrok import run_with_ngrok
+run_with_ngrok(app)
 sessionStorage = {}
 
 x = hash_pass('Hello')
@@ -97,7 +98,6 @@ def handle_dialog(req, res):
             'lastT': False,
             'terID': 0
         }
-        res['session_state']['nick'] = ''
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения:'
         return
@@ -136,6 +136,30 @@ def handle_dialog(req, res):
 
     if 'термины' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'термины'
+
+    # если в нашем запросе 'закрыть' заканчиваем сессию
+    if 'закрыть' in req['request']['original_utterance'].lower():
+        # con = sqlite3.connect("users.db")
+        # cur = con.cursor()  # Вот тут будем заносить данные в БД
+        # test_count = sessionStorage[user_id]['test_count']
+        # pic_count = sessionStorage[user_id]['pic_count']
+        # ter_count = sessionStorage[user_id]['ter_count']
+        # id_ = len(cur.execute("SELECT * FROM u").fetchall())
+        # cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
+        #             (
+        #                 id_ + 1,
+        #                 'user_id',
+        #                 sessionStorage[user_id]['nick'],  # Заглушка для имени
+        #                 test_count,
+        #                 pic_count,
+        #                 ter_count,
+        #                 test_count + pic_count + ter_count
+        #             )
+        #             )
+        # con.commit()
+        res['response']['text'] = 'Пока!'
+        res['response']['end_session'] = True
+        return
 
     if sessionStorage[user_id]['mode'] == 'случайные даты':
         if not sessionStorage[user_id]['lastQ']:
@@ -199,36 +223,14 @@ def handle_dialog(req, res):
                     'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
 
-    # если в нашем запросе 'закрыть' заканчиваем сессию
-    elif 'закрыть' in req['request']['original_utterance'].lower():
-        # con = sqlite3.connect("users.db")
-        # cur = con.cursor()  # Вот тут будем заносить данные в БД
-        # test_count = sessionStorage[user_id]['test_count']
-        # pic_count = sessionStorage[user_id]['pic_count']
-        # ter_count = sessionStorage[user_id]['ter_count']
-        # id_ = len(cur.execute("SELECT * FROM u").fetchall())
-        # cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
-        #             (
-        #                 id_ + 1,
-        #                 'user_id',
-        #                 sessionStorage[user_id]['nick'],  # Заглушка для имени
-        #                 test_count,
-        #                 pic_count,
-        #                 ter_count,
-        #                 test_count + pic_count + ter_count
-        #             )
-        #             )
-        # con.commit()
-        res['response']['text'] = 'Пока!'
-        res['response']['end_session'] = True
-        return
     else:
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
         ]
-        res['response']['text'] = "Не поняла тебя... Выбери вариант из предложенных :)"
+        res['response']['text'] = f"{random.choice(wtf)}\nВыбери вариант из предложенных :)"
         return
+
     res['response']['buttons'] = [
         {'title': suggest, 'hide': True}
         for suggest in sessionStorage[user_id]['slicedsuggests']
