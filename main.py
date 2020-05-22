@@ -19,8 +19,8 @@ logging.basicConfig(level=logging.INFO)
 sessionStorage = {}
 
 x = hash_pass('Hello')
-print(x)
-print(unhash_pass(x, 'Hello'))
+# print(x)
+# print(unhash_pass(x, 'Hello'))
 
 # реакции для более живого разговора
 right = ['Отлично!', 'Правильно!', 'Супер!', 'Точно!', 'Верно!', 'Хорошо!', 'Неплохо!']
@@ -108,6 +108,7 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
         ]
+        return
 
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
