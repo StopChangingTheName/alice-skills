@@ -102,13 +102,12 @@ def handle_dialog(req, res):
                                   'Введи свой никнейм для сохранения!'
         return
 
-    if not sessionStorage[user_id]['addNick']:
+    if sessionStorage[user_id]['nick'] is None:
         tag = str(random.randint(0, 10001))
         sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                   'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
-        sessionStorage[user_id]['addNick'] = True
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
