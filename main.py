@@ -3,9 +3,8 @@ import json
 import logging
 import random
 import sqlite3
-import os
+from portrait import portraits
 from flask import Flask, request
-from portrait import portraits, hash_pass, unhash_pass
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
@@ -19,9 +18,6 @@ app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 sessionStorage = {}
 
-x = hash_pass('Hello')
-# print(x)
-# print(unhash_pass(x, 'Hello'))
 
 # реакции для более живого разговора
 right = ['Отлично!', 'Правильно!', 'Супер!', 'Точно!', 'Верно!', 'Хорошо!', 'Неплохо!']
