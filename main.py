@@ -2,10 +2,10 @@ import copy
 import json
 import logging
 import random
-from flask_ngrok import run_with_ngrok
 import sqlite3
+import os
 from flask import Flask, request
-from portrait import portraits
+from portrait import portraits, hash_pass, unhash_pass
 
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
@@ -14,11 +14,15 @@ with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей дат
 with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
+
 app = Flask(__name__)
-run_with_ngrok(app)
 logging.basicConfig(level=logging.INFO)
 
 sessionStorage = {}
+
+x = hash_pass('Hello')
+# print(x)
+# print(unhash_pass(x, 'Hello'))
 
 # реакции для более живого разговора
 right = ['Отлично!', 'Правильно!', 'Супер!', 'Точно!', 'Верно!', 'Хорошо!', 'Неплохо!']
@@ -43,7 +47,9 @@ def main():
         'version': request.json['version'],
         'response': {
             'end_session': False
-        }
+        },
+        'session_state': {
+        },
     }
     handle_dialog(request.json, response)
 
@@ -53,9 +59,11 @@ def main():
 
 
 def handle_dialog(req, res):
+
     user_id = req['session']['user_id']
     # если 1 раз
     if req['session']['new']:
+
         # перемешивание дат и терминов
         arr = copy.deepcopy(data)
         term = copy.deepcopy(terms)
@@ -74,6 +82,7 @@ def handle_dialog(req, res):
                 "Меню"
             ],
             "nick": None,
+            "addNick": False,
             'id': 0,
             'mode': '',
             'lastPic': False,
@@ -91,26 +100,22 @@ def handle_dialog(req, res):
             'lastT': False,
             'terID': 0
         }
+        res['session_state']['nick'] = ''
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
-                                  'Введи свой никнейм для сохранения!'
-
-        # res['response']['buttons'] = [
-        #     {'title': suggest, 'hide': False}
-        #     for suggest in sessionStorage[user_id]['suggests'][:4]
-        # ]
+                                  'Введи свой никнейм для сохранения:'
         return
 
-    if sessionStorage[user_id]['nick'] is None:
+    if sessionStorage[user_id]['nick'] == None:
         tag = str(random.randint(0, 10001))
-        sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
-
-        res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-                                  'Нажми кнопку "меню"'
-
+        res['session_state']['nick'] = req['request']['original_utterance'] + "#" + tag
+        res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {res["session_state"]["nick"]}\n' \
+                                  'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
+                                  'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
         res['response']['buttons'] = [
-             {'title': suggest, 'hide': False}
-             for suggest in sessionStorage[user_id]['suggests']
-         ]
+            {'title': suggest, 'hide': False}
+            for suggest in sessionStorage[user_id]['suggests']
+        ]
+        return
 
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
@@ -118,15 +123,13 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['lastQ'] = False
         sessionStorage[user_id]['lastPic'] = False
         sessionStorage[user_id]['lastT'] = False
-        sessionStorage[user_id]['terID'] = 0
-        sessionStorage[user_id]['id'] = 0
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests']
         ]
         return
 
-    # ставим режим
+        # ставим режим
     if 'даты' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'случайные даты'
 
@@ -201,26 +204,26 @@ def handle_dialog(req, res):
 
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
+        # con = sqlite3.connect("users.db")
+        # cur = con.cursor()  # Вот тут будем заносить данные в БД
+        # test_count = sessionStorage[user_id]['test_count']
+        # pic_count = sessionStorage[user_id]['pic_count']
+        # ter_count = sessionStorage[user_id]['ter_count']
+        # id_ = len(cur.execute("SELECT * FROM u").fetchall())
+        # cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
+        #             (
+        #                 id_ + 1,
+        #                 'user_id',
+        #                 sessionStorage[user_id]['nick'],  # Заглушка для имени
+        #                 test_count,
+        #                 pic_count,
+        #                 ter_count,
+        #                 test_count + pic_count + ter_count
+        #             )
+        #             )
+        # con.commit()
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
-        con = sqlite3.connect("users.db")
-        cur = con.cursor()  # Вот тут будем заносить данные в БД
-        test_count = sessionStorage[user_id]['test_count']
-        pic_count = sessionStorage[user_id]['pic_count']
-        ter_count = sessionStorage[user_id]['ter_count']
-        id_ = len(cur.execute("SELECT * FROM u").fetchall())
-        cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?)",
-                    (
-                        id_ + 1,
-                        'user_id',
-                        sessionStorage[user_id]['nick'],  # Заглушка для имени
-                        test_count,
-                        pic_count,
-                        ter_count,
-                        test_count + pic_count + ter_count
-                    )
-                    )
-        con.commit()
         return
 
     res['response']['buttons'] = [

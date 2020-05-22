@@ -1,4 +1,4 @@
 flask
 gunicorn
-sqlite3
-flask_login
+flask-login
+Werkzeug
