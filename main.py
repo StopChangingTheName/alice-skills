@@ -100,12 +100,12 @@ def handle_dialog(req, res):
             'lastT': False,
             'terID': 0
         }
-        res['session_state']['nick'] = '#'
+        res['session_state']['nick'] = ''
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения:'
         return
 
-    if res['session_state']['nick'] == '#':
+    if sessionStorage[user_id]['nick'] == None:
         tag = str(random.randint(0, 10001))
         res['session_state']['nick'] = req['request']['original_utterance'] + "#" + tag
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {res["session_state"]["nick"]}\n' \
