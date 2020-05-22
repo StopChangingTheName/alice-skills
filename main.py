@@ -153,6 +153,26 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
         return
+    
+    # автосохранение данных если юзер например закрыл вкладку а не нажал закрыть
+    if res['response']['end_session'] == True:
+        con = sqlite3.connect("users.db")
+        cur = con.cursor()  # Вот тут будем заносить данные в БД
+        test_count = sessionStorage[user_id]['test_count']
+        pic_count = sessionStorage[user_id]['pic_count']
+        ter_count = sessionStorage[user_id]['ter_count']
+        id_ = len(cur.execute("SELECT * FROM u").fetchall())
+        cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
+                    (
+                        id_ + 1,
+                        sessionStorage[user_id]['nick'],  # Заглушка для имени
+                        test_count,
+                        pic_count,
+                        ter_count,
+                        test_count + pic_count + ter_count
+                    )
+                    )
+        con.commit()
 
     if sessionStorage[user_id]['mode'] == 'случайные даты':
         if not sessionStorage[user_id]['lastQ']:
