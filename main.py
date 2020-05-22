@@ -5,7 +5,6 @@ import random
 import sqlite3
 from flask import Flask, request, render_template
 from portrait import portraits, hash_pass, unhash_pass
-from flask_ngrok import run_with_ngrok
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
 # альтернатива для вас:
@@ -15,7 +14,6 @@ with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
 
 app = Flask(__name__)
-run_with_ngrok(app)
 logging.basicConfig(level=logging.INFO)
 sessionStorage = {}
 x = hash_pass('Hello')
@@ -284,5 +282,5 @@ def handle_dialog(req, res):
 
 
 if __name__ == '__main__':
-    # app.run(host="0.0.0.0", port=8080)
-    app.run()
+    app.run(host="0.0.0.0", port=8080)
+    # app.run()
