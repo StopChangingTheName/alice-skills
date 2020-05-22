@@ -152,7 +152,7 @@ def handle_dialog(req, res):
 
         sessionStorage[user_id]['id'] += 1
 
-    if sessionStorage[user_id]['mode'] == 'картины':
+    elif sessionStorage[user_id]['mode'] == 'картины':
         if not sessionStorage[user_id]['lastPic']:
             sessionStorage[user_id]['arrayPic'] = list(portraits)
             random.shuffle(sessionStorage[user_id]['arrayPic'])
@@ -183,7 +183,7 @@ def handle_dialog(req, res):
         res['response']['text'] = ''
         sessionStorage[user_id]['idPic'] += 1
 
-    if sessionStorage[user_id]['mode'] == 'термины':
+    elif sessionStorage[user_id]['mode'] == 'термины':
         if not sessionStorage[user_id]['lastT']:
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
             sessionStorage[user_id]['lastT'] = True
@@ -199,7 +199,7 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['terID'] += 1
 
     # если в нашем запросе 'закрыть' заканчиваем сессию
-    if 'закрыть' in req['request']['original_utterance'].lower():
+    elif 'закрыть' in req['request']['original_utterance'].lower():
         # con = sqlite3.connect("users.db")
         # cur = con.cursor()  # Вот тут будем заносить данные в БД
         # test_count = sessionStorage[user_id]['test_count']
@@ -221,7 +221,13 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
         return
-
+    else:
+        res['response']['buttons'] = [
+            {'title': suggest, 'hide': False}
+            for suggest in sessionStorage[user_id]['suggests']
+        ]
+        res['response']['text'] = "Не поняла тебя... Выбери вариант из предложенных :)"
+        return
     res['response']['buttons'] = [
         {'title': suggest, 'hide': True}
         for suggest in sessionStorage[user_id]['slicedsuggests']
