@@ -17,7 +17,6 @@ with open('Data.json', encoding='utf8') as f:
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
 sessionStorage = {}
-
 x = hash_pass('Hello')
 # print(x)
 # print(unhash_pass(x, 'Hello'))
@@ -115,7 +114,9 @@ def handle_dialog(req, res):
         ]
         return
 
-    if 'меню' in req['request']['original_utterance'].lower():
+
+    if 'меню' in req['request']['original_utterance'].lower() or \
+            'рейтинг' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
         sessionStorage[user_id]['lastQ'] = False
@@ -123,8 +124,12 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['lastT'] = False
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests']
+            for suggest in sessionStorage[user_id]['suggests'][:3]
         ]
+        res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
+                                           'url': 'https://alice-skills-1--t1logy.repl.co/records'})
+        res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+        res['response']['text'] = f"{random.choice(wtf)}\nВыбери вариант из предложенных :)"
         return
 
         # ставим режим
@@ -226,8 +231,11 @@ def handle_dialog(req, res):
     else:
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests']
+            for suggest in sessionStorage[user_id]['suggests'][:3]
         ]
+        res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
+                                           'url': 'https://alice-skills-1--t1logy.repl.co/records'})
+        res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
         res['response']['text'] = f"{random.choice(wtf)}\nВыбери вариант из предложенных :)"
         return
 
