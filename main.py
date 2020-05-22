@@ -60,7 +60,6 @@ def handle_dialog(req, res):
     user_id = req['session']['user_id']
     # если 1 раз
     if req['session']['new']:
-        res['session_state']['value'] = 10
         # перемешивание дат и терминов
         arr = copy.deepcopy(data)
         term = copy.deepcopy(terms)
@@ -117,6 +116,7 @@ def handle_dialog(req, res):
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
+        res['session_state']['value'] = 10
         sessionStorage[user_id]['lastQ'] = False
         sessionStorage[user_id]['lastPic'] = False
         sessionStorage[user_id]['lastT'] = False
