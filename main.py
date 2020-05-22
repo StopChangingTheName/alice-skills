@@ -139,24 +139,23 @@ def handle_dialog(req, res):
 
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
-        # con = sqlite3.connect("users.db")
-        # cur = con.cursor()  # Вот тут будем заносить данные в БД
-        # test_count = sessionStorage[user_id]['test_count']
-        # pic_count = sessionStorage[user_id]['pic_count']
-        # ter_count = sessionStorage[user_id]['ter_count']
-        # id_ = len(cur.execute("SELECT * FROM u").fetchall())
-        # cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
-        #             (
-        #                 id_ + 1,
-        #                 'user_id',
-        #                 sessionStorage[user_id]['nick'],  # Заглушка для имени
-        #                 test_count,
-        #                 pic_count,
-        #                 ter_count,
-        #                 test_count + pic_count + ter_count
-        #             )
-        #             )
-        # con.commit()
+        con = sqlite3.connect("users.db")
+        cur = con.cursor()  # Вот тут будем заносить данные в БД
+        test_count = sessionStorage[user_id]['test_count']
+        pic_count = sessionStorage[user_id]['pic_count']
+        ter_count = sessionStorage[user_id]['ter_count']
+        id_ = len(cur.execute("SELECT * FROM u").fetchall())
+        cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
+                    (
+                        id_ + 1,
+                        sessionStorage[user_id]['nick'],  # Заглушка для имени
+                        test_count,
+                        pic_count,
+                        ter_count,
+                        test_count + pic_count + ter_count
+                    )
+                    )
+        con.commit()
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
         return
