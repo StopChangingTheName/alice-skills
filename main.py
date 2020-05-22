@@ -48,12 +48,9 @@ def main():
         'response': {
             'end_session': False
         },
-        "state": {
-            "session": {
-                "nick": None,
-                "score": 0
-            }
-        }
+        "session_state": {
+            "nick": None
+        },
     }
     handle_dialog(request.json, response)
 
@@ -108,7 +105,7 @@ def handle_dialog(req, res):
 
     if not sessionStorage[user_id]['addNick']:
         tag = str(random.randint(0, 10001))
-        res['state']['session']['nick'] = req['request']['original_utterance'] + "#" + tag
+        res['session_state']['nick'] = req['request']['original_utterance'] + "#" + tag
         sessionStorage[user_id]['addNick'] = True
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                   'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
