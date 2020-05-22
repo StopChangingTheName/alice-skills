@@ -101,6 +101,7 @@ def handle_dialog(req, res):
 
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения!'
+        print(req['request']['original_utterance'])
         return
 
     if sessionStorage[user_id]['nick'] is None:
