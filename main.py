@@ -49,7 +49,7 @@ def main():
             'end_session': False
         },
         "session_state": {
-            "nick": None
+            "nick": ''
         },
     }
     handle_dialog(request.json, response)
@@ -80,7 +80,6 @@ def handle_dialog(req, res):
                 "Закрыть навык ❌",
                 "Меню"
             ],
-            'addNick': False,
             'id': 0,
             'mode': '',
             'lastPic': False,
@@ -103,11 +102,10 @@ def handle_dialog(req, res):
                                   'Введи свой никнейм для сохранения!'
         return
 
-    if not sessionStorage[user_id]['addNick']:
+    if res['session_state']['nick'] == '':
         tag = str(random.randint(0, 10001))
         res['session_state']['nick'] = req['request']['original_utterance'] + "#" + tag
-        sessionStorage[user_id]['addNick'] = True
-        res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
+        res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {res["session_state"]["nick"]}\n' \
                                   'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
         res['response']['buttons'] = [
