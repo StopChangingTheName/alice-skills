@@ -96,10 +96,10 @@ def handle_dialog(req, res):
             'lastT': False,
             'terID': 0
         }
-        res['session_state']['value'] = 10
+
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения!'
-        return
+        return res['session_state']['value']
 
     if not sessionStorage[user_id]['addNick']:
         tag = str(random.randint(0, 10001))
