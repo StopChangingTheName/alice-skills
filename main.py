@@ -96,6 +96,7 @@ def handle_dialog(req, res):
             'lastT': False,
             'terID': 0
         }
+        res['response']['session_state']['value'] = 10
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения!'
         return
@@ -116,7 +117,6 @@ def handle_dialog(req, res):
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
-        res['session_state']['value'] = 10
         sessionStorage[user_id]['lastQ'] = False
         sessionStorage[user_id]['lastPic'] = False
         sessionStorage[user_id]['lastT'] = False
