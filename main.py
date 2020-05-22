@@ -49,7 +49,7 @@ def main():
             'end_session': False
         },
         'session_state': {
-
+            'nick'
         },
     }
     handle_dialog(request.json, response)
