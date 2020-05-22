@@ -60,9 +60,11 @@ def main():
 
 
 def handle_dialog(req, res):
+
     user_id = req['session']['user_id']
     # если 1 раз
     if req['session']['new']:
+        res['session_state']['nick'] = None
         # перемешивание дат и терминов
         arr = copy.deepcopy(data)
         term = copy.deepcopy(terms)
@@ -101,8 +103,12 @@ def handle_dialog(req, res):
         }
 
         res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
-                                  'Введи свой никнейм для сохранения!'
-        res['session_state']['nick'] = req['request']['original_utterance']
+                                  'Введи свой никнейм для сохранения:'
+        return
+
+    if res['session_state']['nick'] is None:
+        tag = str(random.randint(0, 10001))
+        res['session_state']['nick'] = req['request']['original_utterance'] + "#" + tag
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {res["session_state"]["nick"]}\n' \
                                   'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
@@ -111,18 +117,6 @@ def handle_dialog(req, res):
             for suggest in sessionStorage[user_id]['suggests']
         ]
         return
-
-    # if res['session_state']['nick'] is None:
-    #     tag = str(random.randint(0, 10001))
-    #     sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
-    #     res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-    #                               'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
-    #                               'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
-    #     res['response']['buttons'] = [
-    #         {'title': suggest, 'hide': False}
-    #         for suggest in sessionStorage[user_id]['suggests']
-    #     ]
-    #     return
 
     if 'меню' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
