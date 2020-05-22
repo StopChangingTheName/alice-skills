@@ -105,7 +105,7 @@ def handle_dialog(req, res):
                                   'Введи свой никнейм для сохранения:'
         return
 
-    if req['state']['nick'] == '#':
+    if res['session_state']['nick'] == '#':
         tag = str(random.randint(0, 10001))
         res['session_state']['nick'] = req['request']['original_utterance'] + "#" + tag
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {res["session_state"]["nick"]}\n' \
