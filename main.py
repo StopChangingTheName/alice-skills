@@ -110,6 +110,7 @@ def handle_dialog(req, res):
         cur = con.cursor()
         cur.execute(f"SELECT * FROM u WHERE nick = '{req['request']['original_utterance']}';")
         found = cur.fetchall()
+        con.commit()
         if found is None:
             tag = str(random.randint(0, 10001))
             sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
