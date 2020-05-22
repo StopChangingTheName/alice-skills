@@ -5,7 +5,7 @@ import random
 import sqlite3
 from flask import Flask, request
 from portrait import portraits, hash_pass, unhash_pass
-
+from flask_ngrok import run_with_ngrok
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
 # альтернатива для вас:
@@ -13,7 +13,10 @@ with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей дат
 with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
+
+
 app = Flask(__name__)
+run_with_ngrok(app)
 logging.basicConfig(level=logging.INFO)
 
 sessionStorage = {}
@@ -75,7 +78,8 @@ def handle_dialog(req, res):
                 "Закрыть навык ❌",
                 "Меню"
             ],
-            "nick": None,
+            "nick": '',
+            "addNick": False,
             'id': 0,
             'mode': '',
             'lastPic': False,
@@ -97,10 +101,10 @@ def handle_dialog(req, res):
                                   'Введи свой никнейм для сохранения!'
         return
 
-    if sessionStorage[user_id]['nick'] is None:
+    if not sessionStorage[user_id]['nick']:
         tag = str(random.randint(0, 10001))
-        sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
-
+        sessionStorage[user_id]['nick'] = req['request']['original_utterance'].lower() + "#" + tag
+        sessionStorage[user_id]['addNick'] = True
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                   'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
