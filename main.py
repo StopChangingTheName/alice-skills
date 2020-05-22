@@ -104,14 +104,8 @@ def handle_dialog(req, res):
         return
 
     if sessionStorage[user_id]['nick'] is None:
-        con = sqlite3.connect("users.db")
-        cur = con.cursor()
-        cur.execute(f"SELECT * FROM u WHERE nick = '{req['request']['original_utterance']}';")
-        found = cur.fetchall()
-        con.commit()
-        if found is None:
             tag = str(random.randint(0, 10001))
-            sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
+            sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + tag
             res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                       'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                       'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
@@ -122,22 +116,7 @@ def handle_dialog(req, res):
             res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                                'url': 'https://alice-skills-1--t1logy.repl.co/records'})
             res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
-        else:
-            sessionStorage[user_id]['nick'] = found[1]
-            res['response']['text'] = f"Привет, {sessionStorage[user_id]['nick']}! Продолжим тренировку. " \
-                                      f"'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
-                                      'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'"
-            sessionStorage[user_id]['test_count'] = found[2]
-            sessionStorage[user_id]['pic_count'] = found[3]
-            sessionStorage[user_id]['ter_count'] = found[4]
-            res['response']['buttons'] = [
-                {'title': suggest, 'hide': False}
-                for suggest in sessionStorage[user_id]['suggests'][:3]
-            ]
-            res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
-                                               'url': 'https://alice-skills-1--t1logy.repl.co/records'})
-            res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
-        return
+            return
 
     if 'меню' in req['request']['original_utterance'].lower() or \
             'рейтинг' in req['request']['original_utterance'].lower():
