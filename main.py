@@ -211,15 +211,15 @@ def handle_dialog(req, res):
         id_ = len(cur.execute("SELECT * FROM u").fetchall())
         cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?)",
                     (
-                    id_ + 1,
-                    'user_id',
-                    sessionStorage[user_id]['nick'], # Заглушка для имени
-                    test_count,
-                    pic_count,
-                    ter_count,
-                    test_count + pic_count + ter_count
+                        id_ + 1,
+                        'user_id',
+                        sessionStorage[user_id]['nick'],  # Заглушка для имени
+                        test_count,
+                        pic_count,
+                        ter_count,
+                        test_count + pic_count + ter_count
                     )
-                )
+                    )
         con.commit()
         return
 
