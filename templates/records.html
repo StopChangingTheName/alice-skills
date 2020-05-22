@@ -5,6 +5,7 @@
 <div class="col-md6 border rounded">
     <table class="table">
         <tr class="bg-danger">
+            <td class="table-active">№</td>
             <td class="table-active">Ник</td>
             <td class="table-active">Баллы за даты</td>
             <td class="table-active">Баллы за картины</td>
@@ -13,6 +14,7 @@
         </tr>
         {% for p in persons%}
         <tr class="bg-danger">
+            <td class="table-active">{{loop.index}}</td>
             <td class="table-active">{{p[1]}}</td>
             <td class="table-active">{{p[2]}}</td>
             <td class="table-active">{{p[3]}}</td>
