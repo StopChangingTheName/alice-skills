@@ -3,9 +3,9 @@ import json
 import logging
 import random
 import sqlite3
+import os
 from flask import Flask, request
 from portrait import portraits, hash_pass, unhash_pass
-from flask_ngrok import run_with_ngrok
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
 # альтернатива для вас:
@@ -16,7 +16,6 @@ with open('Data.json', encoding='utf8') as f:
 
 
 app = Flask(__name__)
-run_with_ngrok(app)
 logging.basicConfig(level=logging.INFO)
 
 sessionStorage = {}
@@ -103,7 +102,7 @@ def handle_dialog(req, res):
 
     if not sessionStorage[user_id]['nick']:
         tag = str(random.randint(0, 10001))
-        sessionStorage[user_id]['nick'] = req['request']['original_utterance'].lower() + "#" + tag
+        sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
         sessionStorage[user_id]['addNick'] = True
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                   'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
@@ -230,4 +229,5 @@ def handle_dialog(req, res):
 
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
