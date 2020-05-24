@@ -229,8 +229,13 @@ def handle_dialog(req, res):
                 res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                 sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
             else:
+                answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']
+                if '-' in answer:
+                    answer += ' годах'
+                else:
+                    answer = 'в ' + answer + ' году'
                 res['response'][
-                    'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
+                    'text'] = f"{random.choice(wrong)} Правильный ответ: {answer}. \n{random.choice(_next)}: {res['response']['text']}"
 
         sessionStorage[user_id]['id'] += 1
 
