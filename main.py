@@ -164,7 +164,7 @@ def handle_dialog(req, res):
                                                'url': 'https://alice-skills-1--t1logy.repl.co/records'})
             res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
           
-        except KeyError:
+        except Exception:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения:'
         return
@@ -309,6 +309,6 @@ def handle_dialog(req, res):
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
-    # from flask_ngrok import run_with_ngrok
+    # from fl ask_ngrok import run_with_ngrok
     # run_with_ngrok(app)
     # app.run()
