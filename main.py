@@ -197,7 +197,7 @@ def handle_dialog(req, res):
                         )
                         )
         else:
-            cur.execute("UPDATE films SET (test_count, pic_count, ter_count, summa) = (?,?,?,?) WHERE nick = ?;",
+            cur.execute("UPDATE films SET (date_count, pic_count, ter_count, summa) = (?,?,?,?) WHERE nick = ?;",
                         (
                             test_count,
                             pic_count,
