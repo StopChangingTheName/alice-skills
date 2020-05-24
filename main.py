@@ -14,7 +14,12 @@ with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
 
 app = Flask(__name__)
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    filename='example.log',
+    format='%(asctime)s %(levelname)s %(name)s %(message)s'
+)
+from flask_ngrok import run_with_ngrok
+run_with_ngrok(app)
 sessionStorage = {}
 x = hash_pass('Hello')
 # print(x)
@@ -116,6 +121,7 @@ def handle_dialog(req, res):
             res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                                'url': 'https://alice-skills-1--t1logy.repl.co/records'})
             res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+
             return
 
     if 'меню' in req['request']['original_utterance'].lower() or \
@@ -178,6 +184,12 @@ def handle_dialog(req, res):
         con.commit()
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
+        res['user_state_update'] = {
+            'nick': sessionStorage[user_id]['nick'],
+            'test_count': sessionStorage[user_id]['test_count'],
+            'pic_count': sessionStorage[user_id]['pic_count'],
+            'ter_count': sessionStorage[user_id]['ter_count']
+        }
         # config(user_id) # на случай если захочет заново играть БЕЗ перезапуска навыка
         return
 
@@ -261,5 +273,5 @@ def handle_dialog(req, res):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080)
-    # app.run()
+    #app.run(host="0.0.0.0", port=8080)
+    app.run()
