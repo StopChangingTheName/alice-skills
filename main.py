@@ -18,8 +18,7 @@ logging.basicConfig(
     filename='example.log',
     format='%(asctime)s %(levelname)s %(name)s %(message)s'
 )
-from flask_ngrok import run_with_ngrok
-run_with_ngrok(app)
+
 sessionStorage = {}
 x = hash_pass('Hello')
 # print(x)
@@ -127,7 +126,7 @@ def handle_dialog(req, res):
             ]
             res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                                'url': 'https://alice-skills-1--t1logy.repl.co/records'})
-            res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+          
         except KeyError:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения:'
@@ -135,7 +134,7 @@ def handle_dialog(req, res):
 
     if sessionStorage[user_id]['nick'] is None:
             tag = str(random.randint(0, 10001))
-            sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + tag
+            sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + '#'+ tag
             res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                       'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                       'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
@@ -295,5 +294,5 @@ def handle_dialog(req, res):
 
 
 if __name__ == '__main__':
-    #app.run(host="0.0.0.0", port=8080)
-    app.run()
+    app.run(host="0.0.0.0", port=8080)
+    #app.run()
