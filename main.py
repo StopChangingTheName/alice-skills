@@ -33,6 +33,8 @@ _next = ['Далее', 'Следующий вопрос', 'Продолжим', 
 
 wtf = ['Прости, не понимаю тебя', 'Можешь повторить, пожалуйста?', 'Повтори, пожалуйста', 'Прости, не слышу тебя']
 
+goodbye = ['Пока!', 'До встречи!', 'Будем на связи!', 'Рада была пообщаться!', 'Пока-пока!']
+
 
 def config(user_id):
     # перемешивание дат и терминов
@@ -208,7 +210,7 @@ def handle_dialog(req, res):
                         )
 
         con.commit()
-        res['response']['text'] = 'Пока!'
+        res['response']['text'] = random.choice(goodbye)
         res['response']['end_session'] = True
         res['user_state_update'] = {
             'nick': sessionStorage[user_id]['nick']
