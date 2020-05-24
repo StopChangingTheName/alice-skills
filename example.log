@@ -392,3 +392,39 @@ sqlite3.OperationalError: no such table: films
 2020-05-24 18:42:27,359 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:42:27] "[37mPOST /post HTTP/1.1[0m" 200 -
 2020-05-24 18:42:30,094 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:42:30] "[37mPOST /post HTTP/1.1[0m" 200 -
 2020-05-24 18:42:32,439 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:42:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:56:18,820 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 18:56:19,026 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:56:19] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 18:56:20,022 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:56:20] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-24 18:56:20,285 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:56:20] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-24 18:57:02,920 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 18:57:03,811 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:57:03] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 18:57:05,185 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:57:05] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-24 18:57:05,491 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:57:05] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-24 18:57:07,637 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:57:07] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:57:23,430 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 18:57:23,731 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:57:23] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 18:57:25,455 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:57:25] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-24 18:57:25,935 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:57:25] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-24 18:58:09,529 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:58:09] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-24 18:58:09,790 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:58:09] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-24 18:58:11,525 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:58:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:59:08,320 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 18:59:08,514 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:59:08] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 18:59:13,188 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:59:13] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-24 18:59:13,482 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:59:13] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-24 18:59:53,586 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:59:53] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:00:08,322 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 19:00:08,585 INFO werkzeug 172.18.0.1 - - [24/May/2020 19:00:08] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 19:00:10,285 INFO werkzeug 172.18.0.1 - - [24/May/2020 19:00:10] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-24 19:00:10,646 INFO werkzeug 172.18.0.1 - - [24/May/2020 19:00:10] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-24 19:00:22,658 INFO werkzeug 172.18.0.1 - - [24/May/2020 19:00:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:00:50,165 INFO werkzeug 172.18.0.1 - - [24/May/2020 19:00:50] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 19:00:59,424 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 19:00:59,722 INFO werkzeug 172.18.0.1 - - [24/May/2020 19:00:59] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 19:01:00,863 INFO werkzeug 172.18.0.1 - - [24/May/2020 19:01:00] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-24 19:01:01,131 INFO werkzeug 172.18.0.1 - - [24/May/2020 19:01:01] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-24 19:01:08,735 INFO werkzeug 172.18.0.1 - - [24/May/2020 19:01:08] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:01:18,097 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 19:01:18,339 INFO werkzeug 172.18.0.1 - - [24/May/2020 19:01:18] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 19:01:18,956 INFO werkzeug 172.18.0.1 - - [24/May/2020 19:01:18] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-24 19:01:19,305 INFO werkzeug 172.18.0.1 - - [24/May/2020 19:01:19] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
