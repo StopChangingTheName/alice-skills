@@ -111,12 +111,12 @@ def handle_dialog(req, res):
             user = cur.execute(f"SELECT * FROM u WHERE nick = '{req['state']['user']['nick']}';").fetchone()
 
             res['response']['text'] = \
-                f"Привет, {req['state']['user']['nick']} Продолжим тренировку! " \
+                f"Привет, {req['state']['user']['nick']}! Продолжим тренировку! " \
                     f"Твои очки (даты, картины, термины): {user[2]}, " \
                     f"{user[3]}, {user[4]}"
 
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
-            sessionStorage[user_id]['date_count'] = user[2]
+            sessionStorage[user_id]['test_count'] = user[2]
             sessionStorage[user_id]['pic_count'] = user[3]
             sessionStorage[user_id]['ter_count'] = user[4]
 
@@ -126,6 +126,7 @@ def handle_dialog(req, res):
             ]
             res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                                'url': 'https://alice-skills-1--t1logy.repl.co/records'})
+            res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
           
         except KeyError:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
@@ -134,7 +135,7 @@ def handle_dialog(req, res):
 
     if sessionStorage[user_id]['nick'] is None:
             tag = str(random.randint(0, 10001))
-            sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + '#'+ tag
+            sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
             res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                       'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
                                       'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
