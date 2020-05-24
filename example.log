@@ -308,3 +308,49 @@ sqlite3.OperationalError: no such table: films
 2020-05-24 19:54:37,311 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:54:37] "[37mPOST /post HTTP/1.1[0m" 200 -
 2020-05-24 19:55:24,287 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:55:24] "[37mPOST /post HTTP/1.1[0m" 200 -
 2020-05-24 19:55:31,206 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:55:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:12:13,113 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 18:12:13,420 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:12:13] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 18:12:16,566 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:12:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:12:21,473 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:12:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:12:27,772 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:12:27] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:12:28,210 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:12:28] "[31m[1mGET /post HTTP/1.1[0m" 405 -
+2020-05-24 18:12:29,972 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:12:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:13:11,832 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:13:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:13:25,899 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 18:13:26,859 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:13:26] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 18:13:30,631 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:13:30] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:13:34,458 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:13:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:13:36,616 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:13:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:13:39,995 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:13:39] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:14:09,342 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:14:09] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:15:05,633 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 18:15:05,827 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:15:05] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 18:15:08,360 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:15:08] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:15:09,084 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:15:09] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:15:11,422 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:15:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:15:13,214 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:15:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:15:32,002 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 18:15:32,226 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:15:32] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 18:15:34,645 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:15:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:15:36,166 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:15:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:15:38,346 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:15:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:16:15,174 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:16:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:17:11,212 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:17:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:17:36,802 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 18:17:37,125 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:17:37] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 18:17:42,028 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:17:42] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:19:11,297 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:19:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:20:11,396 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:20:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:20:30,389 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:20:30] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:20:31,167 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:20:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:20:51,243 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:20:51] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:20:54,419 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:20:54] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:21:14,862 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:21:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:22:10,800 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:22:10] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:22:38,223 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 18:22:38,416 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:22:38] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 18:22:44,708 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:22:44] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:22:47,698 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:22:47] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:23:07,323 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:23:07] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 18:23:35,233 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:23:35] "[31m[1mGET /post HTTP/1.1[0m" 405 -
+2020-05-24 18:24:07,515 INFO werkzeug 172.18.0.1 - - [24/May/2020 18:24:07] "[37mPOST /post HTTP/1.1[0m" 200 -
