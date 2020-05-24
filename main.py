@@ -74,6 +74,38 @@ def config(user_id):
     }
 
 
+def write_in_base(user_id):
+    con = sqlite3.connect("users.db")
+    cur = con.cursor()  # Вот тут будем заносить данные в БД
+    test_count = sessionStorage[user_id]['test_count']
+    pic_count = sessionStorage[user_id]['pic_count']
+    ter_count = sessionStorage[user_id]['ter_count']
+    cur.execute(f"SELECT * FROM u WHERE nick = '{sessionStorage[user_id]['nick']}';")
+    if cur.fetchone() is None:
+        id_ = len(cur.execute("SELECT * FROM u").fetchall())
+        cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
+                    (
+                        id_ + 1,
+                        sessionStorage[user_id]['nick'],  # Заглушка для имени
+                        test_count,
+                        pic_count,
+                        ter_count,
+                        test_count + pic_count + ter_count
+                    )
+                    )
+    else:
+        cur.execute("UPDATE u SET (date_count, pic_count, ter_count, summa) = (?,?,?,?) WHERE nick = ?;",
+                    (
+                        test_count,
+                        pic_count,
+                        ter_count,
+                        test_count + pic_count + ter_count,
+                        sessionStorage[user_id]['nick']
+                    )
+                    )
+    con.commit()
+
+
 @app.route('/records')
 def records():
     con = sqlite3.connect("users.db")
@@ -105,6 +137,8 @@ def main():
 def handle_dialog(req, res):
     user_id = req['session']['user_id']
     # если 1 раз
+    if res['response']['end_session'] is True:
+        write_in_base(user_id)
     if req['session']['new']:
         config(user_id)
         try:
@@ -136,20 +170,20 @@ def handle_dialog(req, res):
         return
 
     if sessionStorage[user_id]['nick'] is None:
-            tag = str(random.randint(0, 10001))
-            sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
-            res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-                                      'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
-                                      'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
-            res['response']['buttons'] = [
-                {'title': suggest, 'hide': False}
-                for suggest in sessionStorage[user_id]['suggests'][:3]
-            ]
-            res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
-                                               'url': 'https://alice-skills-1--t1logy.repl.co/records'})
-            res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+        tag = str(random.randint(0, 10001))
+        sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
+        res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
+                                  'Я буду спрашивать у тебя случайную дату, картину или термин. ' \
+                                  'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
+        res['response']['buttons'] = [
+            {'title': suggest, 'hide': False}
+            for suggest in sessionStorage[user_id]['suggests'][:3]
+        ]
+        res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
+                                           'url': 'https://alice-skills-1--t1logy.repl.co/records'})
+        res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
 
-            return
+        return
 
     if 'меню' in req['request']['original_utterance'].lower() or \
             'рейтинг' in req['request']['original_utterance'].lower():
@@ -180,36 +214,7 @@ def handle_dialog(req, res):
 
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
-        con = sqlite3.connect("users.db")
-        cur = con.cursor()  # Вот тут будем заносить данные в БД
-        test_count = sessionStorage[user_id]['test_count']
-        pic_count = sessionStorage[user_id]['pic_count']
-        ter_count = sessionStorage[user_id]['ter_count']
-        cur.execute(f"SELECT * FROM u WHERE nick = '{sessionStorage[user_id]['nick']}';")
-        if cur.fetchone() is None:
-            id_ = len(cur.execute("SELECT * FROM u").fetchall())
-            cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
-                        (
-                            id_ + 1,
-                            sessionStorage[user_id]['nick'],  # Заглушка для имени
-                            test_count,
-                            pic_count,
-                            ter_count,
-                            test_count + pic_count + ter_count
-                        )
-                        )
-        else:
-            cur.execute("UPDATE u SET (date_count, pic_count, ter_count, summa) = (?,?,?,?) WHERE nick = ?;",
-                        (
-                            test_count,
-                            pic_count,
-                            ter_count,
-                            test_count + pic_count + ter_count,
-                            sessionStorage[user_id]['nick']
-                        )
-                        )
-
-        con.commit()
+        write_in_base(user_id)
         res['response']['text'] = random.choice(goodbye)
         res['response']['end_session'] = True
         res['user_state_update'] = {
@@ -304,4 +309,6 @@ def handle_dialog(req, res):
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
-    #app.run()
+    # from flask_ngrok import run_with_ngrok
+    # run_with_ngrok(app)
+    # app.run()

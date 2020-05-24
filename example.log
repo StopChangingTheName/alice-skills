@@ -281,3 +281,19 @@ sqlite3.OperationalError: no such table: films
 2020-05-24 13:06:48,421 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:06:48] "[33mGET / HTTP/1.1[0m" 404 -
 2020-05-24 13:06:53,174 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:06:53] "[37mPOST /post HTTP/1.1[0m" 200 -
 2020-05-24 13:06:57,578 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:06:57] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:24:28,474 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-05-24 17:25:03,923 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:25:03] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:25:08,796 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:25:08] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:25:15,247 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:25:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:25:29,212 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:25:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:25:31,897 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:25:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:25:34,604 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:25:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:25:39,376 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:25:39] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:25:43,919 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:25:43] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:25:49,614 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:25:49] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:25:52,040 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:25:52] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:25:54,878 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:25:54] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:26:00,085 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:26:00] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:26:06,099 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:26:06] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:26:12,300 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:26:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 17:26:17,226 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:26:17] "[37mPOST /post HTTP/1.1[0m" 200 -
