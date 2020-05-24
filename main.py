@@ -148,8 +148,7 @@ def handle_dialog(req, res):
 
             res['response']['text'] = \
                 f"Привет, {req['state']['user']['nick']}! Продолжим тренировку! " \
-                    f"Твои очки (даты, картины, термины): {user[2]}, " \
-                    f"{user[3]}, {user[4]}"
+                    f"Твои очки:\nДаты: {user[2]}\nКартины: {user[3]}\nТермины: {user[4]}"
 
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = user[2]
