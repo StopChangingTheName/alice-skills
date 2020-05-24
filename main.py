@@ -206,6 +206,7 @@ def handle_dialog(req, res):
                             sessionStorage[user_id]['nick']
                         )
                         )
+
         con.commit()
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
