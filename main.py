@@ -85,6 +85,7 @@ def records():
 @app.route('/post', methods=['POST'])
 def main():
     logging.info('Request: %r', request.json)
+    logging.info('\n')
     response = {
         'session': request.json['session'],
         'version': request.json['version'],
@@ -95,6 +96,7 @@ def main():
     handle_dialog(request.json, response)
 
     logging.info('Response: %r', request.json)
+    logging.info('\n')
 
     return json.dumps(response)
 
@@ -104,7 +106,30 @@ def handle_dialog(req, res):
     # если 1 раз
     if req['session']['new']:
         config(user_id)
-        res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
+        try:
+            con = sqlite3.connect("users.db")
+            cur = con.cursor()
+            user = cur.execute(f"SELECT * FROM u WHERE nick = '{req['state']['user']['nick']}';").fetchone()
+
+            res['response']['text'] = \
+                f"Привет, {req['state']['user']['nick']} Продолжим тренировку! " \
+                    f"Твои очки (даты, картины, термины): {user[2]}, " \
+                    f"{user[3]}, {user[4]}"
+
+            sessionStorage[user_id]['nick'] = req['state']['user']['nick']
+            sessionStorage[user_id]['date_count'] = user[2]
+            sessionStorage[user_id]['pic_count'] = user[3]
+            sessionStorage[user_id]['ter_count'] = user[4]
+
+            res['response']['buttons'] = [
+                {'title': suggest, 'hide': False}
+                for suggest in sessionStorage[user_id]['suggests'][:3]
+            ]
+            res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
+                                               'url': 'https://alice-skills-1--t1logy.repl.co/records'})
+            res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+        except KeyError:
+            res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
                                   'Введи свой никнейм для сохранения:'
         return
 
@@ -185,10 +210,7 @@ def handle_dialog(req, res):
         res['response']['text'] = 'Пока!'
         res['response']['end_session'] = True
         res['user_state_update'] = {
-            'nick': sessionStorage[user_id]['nick'],
-            'test_count': sessionStorage[user_id]['test_count'],
-            'pic_count': sessionStorage[user_id]['pic_count'],
-            'ter_count': sessionStorage[user_id]['ter_count']
+            'nick': sessionStorage[user_id]['nick']
         }
         # config(user_id) # на случай если захочет заново играть БЕЗ перезапуска навыка
         return
