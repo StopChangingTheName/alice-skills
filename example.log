@@ -1,0 +1,283 @@
+2020-05-24 11:05:56,722 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-05-24 11:06:51,834 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-05-24 11:09:13,709 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 11:09:13,993 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:09:13] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 11:09:21,147 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:09:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:09:29,223 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:09:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:09:35,420 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:09:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:09:37,763 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:09:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:09:41,635 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:09:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:10:20,705 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:10:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:10:23,779 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:10:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:10:38,259 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:10:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:11:05,418 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:11:05] "[31m[1mGET /post HTTP/1.1[0m" 405 -
+2020-05-24 11:11:23,210 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:11:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:11:28,980 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:11:28] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-24 11:11:29,307 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:11:29] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-24 11:11:44,125 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:11:44] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:13:38,839 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:13:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:14:21,397 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:14:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:14:52,075 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:14:52] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 11:15:20,259 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:15:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:16:21,011 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:16:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:16:42,230 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:16:42] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:16:47,747 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:16:47] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:16:51,559 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:16:51] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:16:58,798 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:16:58] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:17:04,929 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:17:04] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:17:12,447 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:17:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:17:21,362 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:17:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:17:21,835 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:17:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:17:28,210 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:17:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:17:36,052 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:17:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:17:39,207 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:17:39] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:17:43,841 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:17:43] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:18:22,973 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:18:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:18:27,150 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:18:27] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 11:19:20,498 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:19:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:19:24,227 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:19:24] "[31m[1mGET /post HTTP/1.1[0m" 405 -
+2020-05-24 11:20:02,174 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:20:02] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:20:19,102 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 11:20:19,506 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:20:19] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 11:20:20,775 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:20:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:20:29,602 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:20:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:20:35,354 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:20:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:20:46,613 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:20:46] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:20:52,227 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:20:52] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:20:55,579 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:20:55] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:20:57,474 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:20:57] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:21:01,026 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:21:01] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:21:04,235 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:21:04] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:21:10,403 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:21:10] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:25:33,330 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:25:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:25:40,624 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:25:40] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:25:41,781 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:25:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:25:41,935 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:25:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:26:37,366 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:26:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:29:55,227 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:29:55] "[31m[1mGET /post HTTP/1.1[0m" 405 -
+2020-05-24 11:30:22,709 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:30:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:30:36,776 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:30:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:30:50,075 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:30:50] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:30:53,698 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:30:53] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:32:14,275 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:32:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:32:21,356 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:32:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:32:34,968 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:32:34] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-24 11:32:43,503 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:32:43] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 11:33:02,343 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:33:02] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:33:05,956 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:33:05] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:33:09,056 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:33:09] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:33:21,347 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:33:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:33:37,334 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:33:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:33:44,163 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:33:44] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:33:46,886 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:33:46] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:33:50,121 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:33:50] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:34:06,944 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:34:06] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:34:12,277 ERROR main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 95, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 199, in handle_dialog
+    cur.execute("UPDATE films SET (test_count, pic_count, ter_count, summa) = (?,?,?,?) WHERE nick = ?;",
+sqlite3.OperationalError: no such table: films
+2020-05-24 11:34:12,279 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:34:12] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-24 11:40:24,504 INFO werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-24 11:40:25,842 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:40:25] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 11:40:38,635 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:40:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:40:43,189 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:40:43] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:40:45,801 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:40:45] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:40:48,037 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:40:48] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:40:50,737 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:40:50] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:40:53,125 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:40:53] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:40:55,497 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:40:55] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:40:56,891 ERROR main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 95, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 199, in handle_dialog
+    cur.execute("UPDATE films SET (test_count, pic_count, ter_count, summa) = (?,?,?,?) WHERE nick = ?;",
+sqlite3.OperationalError: no such table: films
+2020-05-24 11:40:56,893 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:40:56] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-24 11:41:23,591 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:41:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:41:23,843 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:41:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:41:24,088 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:41:24] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:42:21,104 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:42:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:42:26,264 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:42:26] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 11:42:26,725 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:42:26] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 11:43:20,175 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:43:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:44:27,742 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:44:27] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:45:21,891 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:45:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:46:22,269 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:46:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:47:38,651 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:47:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:48:22,292 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:48:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:49:21,377 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:49:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:50:20,646 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:50:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:51:22,971 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:51:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:52:18,207 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:52:18] "[31m[1mGET /post HTTP/1.1[0m" 405 -
+2020-05-24 11:52:21,598 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:52:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:53:25,726 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:53:25] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:54:22,097 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:54:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:55:22,778 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:55:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:56:21,671 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:56:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:57:20,161 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:57:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:58:23,504 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:58:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 11:59:22,095 INFO werkzeug 172.18.0.1 - - [24/May/2020 11:59:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:00:23,286 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:00:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:01:36,171 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:01:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:02:39,554 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:02:39] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:02:41,709 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:02:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:02:50,530 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:02:50] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:02:57,941 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:02:57] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:03:00,164 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:03:00] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:03:02,590 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:03:02] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:03:05,909 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:03:05] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:03:08,488 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:03:08] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:03:10,115 ERROR main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 95, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 199, in handle_dialog
+    cur.execute("UPDATE films SET (test_count, pic_count, ter_count, summa) = (?,?,?,?) WHERE nick = ?;",
+sqlite3.OperationalError: no such table: films
+2020-05-24 12:03:10,116 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:03:10] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-24 12:06:21,682 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:06:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:06:26,178 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:06:26] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:06:28,032 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:06:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:06:34,987 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:06:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:07:14,057 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:07:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:09:05,515 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:09:05] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 12:09:25,703 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:09:25] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 12:09:26,321 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:09:26] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-24 12:10:13,199 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:10:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:10:13,993 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:10:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:10:33,961 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:10:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:10:58,226 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:10:58] "[31m[1mGET /post HTTP/1.1[0m" 405 -
+2020-05-24 12:11:13,008 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:11:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:11:25,756 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:11:25] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:11:57,976 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:11:57] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 12:12:12,915 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:12:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:13:13,072 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:13:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:14:15,749 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:14:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:15:12,763 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:15:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:16:14,251 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:16:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:17:11,885 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:17:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:18:16,603 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:18:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:19:13,237 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:19:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:20:14,834 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:20:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:21:14,633 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:21:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:22:11,915 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:22:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:23:13,909 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:23:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:24:23,661 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:24:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:25:16,379 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:25:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:26:11,807 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:26:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:27:14,389 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:27:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:27:46,201 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:27:46] "[31m[1mGET /post HTTP/1.1[0m" 405 -
+2020-05-24 12:28:12,803 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:28:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:29:14,611 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:29:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:30:14,261 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:30:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:33:15,801 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:33:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:33:35,581 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:33:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:33:38,899 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:33:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:34:12,822 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:34:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:36:13,854 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:36:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:36:17,815 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:36:17] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:37:11,362 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:37:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:39:13,566 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:39:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:39:13,772 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:39:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:40:12,218 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:40:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:41:12,952 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:41:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:42:12,542 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:42:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:43:16,504 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:43:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:44:13,817 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:44:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:44:30,214 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:44:30] "[31m[1mGET /post HTTP/1.1[0m" 405 -
+2020-05-24 12:45:11,469 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:45:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:46:14,442 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:46:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:47:17,058 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:47:17] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:48:16,601 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:48:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:49:15,030 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:49:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:50:15,532 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:50:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:51:11,878 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:51:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:52:13,149 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:52:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:53:11,962 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:53:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:54:14,123 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:54:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:55:13,542 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:55:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:56:11,837 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:56:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:57:18,129 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:57:18] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:58:12,264 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:58:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:58:40,043 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:58:40] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:58:44,236 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:58:44] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:58:46,164 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:58:46] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 12:58:47,492 ERROR main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 95, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 199, in handle_dialog
+    cur.execute("UPDATE films SET (test_count, pic_count, ter_count, summa) = (?,?,?,?) WHERE nick = ?;",
+sqlite3.OperationalError: no such table: films
+2020-05-24 12:58:47,493 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:58:47] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-24 12:59:00,874 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:59:00] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 12:59:13,123 INFO werkzeug 172.18.0.1 - - [24/May/2020 12:59:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:00:15,385 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:00:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:01:16,206 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:01:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:03:09,329 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:03:09] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:04:18,810 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:04:18] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:05:05,978 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:05:05] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:05:12,272 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:05:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:05:20,147 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:05:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:05:29,191 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:05:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:05:31,885 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:05:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:05:38,205 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:05:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:05:38,737 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:05:38] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 13:06:09,633 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:06:09] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:06:14,314 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:06:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:06:29,125 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:06:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:06:48,421 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:06:48] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-24 13:06:53,174 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:06:53] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 13:06:57,578 INFO werkzeug 172.18.0.1 - - [24/May/2020 13:06:57] "[37mPOST /post HTTP/1.1[0m" 200 -
