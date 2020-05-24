@@ -297,3 +297,14 @@ sqlite3.OperationalError: no such table: films
 2020-05-24 17:26:06,099 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:26:06] "[37mPOST /post HTTP/1.1[0m" 200 -
 2020-05-24 17:26:12,300 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:26:12] "[37mPOST /post HTTP/1.1[0m" 200 -
 2020-05-24 17:26:17,226 INFO werkzeug 127.0.0.1 - - [24/May/2020 17:26:17] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:52:47,506 INFO werkzeug  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-05-24 19:53:17,357 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:53:17] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:53:22,259 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:53:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:53:29,622 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:53:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:54:06,453 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:54:06] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:54:10,427 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:54:10] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:54:15,364 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:54:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:54:29,939 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:54:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:54:37,311 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:54:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:55:24,287 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:55:24] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-24 19:55:31,206 INFO werkzeug 127.0.0.1 - - [24/May/2020 19:55:31] "[37mPOST /post HTTP/1.1[0m" 200 -

@@ -258,8 +258,10 @@ def handle_dialog(req, res):
         else:
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
-            if sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower() \
-                    in req['request']['original_utterance'].lower():
+            print(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower())
+            print(req['request']['original_utterance'].lower())
+            if req['request']['original_utterance'].lower() in \
+                    sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower():
                 res['response']['card']['title'] = random.choice(right)
                 sessionStorage[user_id]['pic_count'] += 1  # Сохранение очков по картинкам
             else:
@@ -281,8 +283,8 @@ def handle_dialog(req, res):
             sessionStorage[user_id]['lastT'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
-            if sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1][
-                'answer'].lower() in req['request']['original_utterance'].lower():
+            if req['request']['original_utterance'].lower() in sessionStorage[user_id]['term'][
+                sessionStorage[user_id]['terID'] - 1]['answer'].lower():
                 res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                 sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
             else:
@@ -309,6 +311,6 @@ def handle_dialog(req, res):
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
-    # from fl ask_ngrok import run_with_ngrok
-    # run_with_ngrok(app)
-    # app.run()
+    #from flask_ngrok import run_with_ngrok
+    #run_with_ngrok(app)
+    #app.run()
