@@ -215,12 +215,18 @@ def handle_dialog(req, res):
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
         write_in_base(user_id)
-        res['response']['text'] = random.choice(goodbye) + '\nЕсли тебе понравилось, поставь нам звёздочки. Спасибо :)'
+        res['response']['text'] = random.choice(goodbye) + '\nЕсли тебе понравилось, поставь нам звёздочки. Спасибо :) И проверь своё место в рейтинге!'
         res['response']['buttons'] = [{
           'title' : 'Звёздочки ⭐️',
           'hide' : False,
           'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'
-        }]
+        },
+        {
+          'title' : 'Рейтинг 🏆',
+          'hide' : False,
+          'url': 'https://alice-skills-1--t1logy.repl.co/records'
+        }
+        ]
         res['response']['end_session'] = True
         res['user_state_update'] = {
             'nick': sessionStorage[user_id]['nick']
