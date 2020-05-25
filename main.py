@@ -5,6 +5,7 @@ import random
 import sqlite3
 from flask import Flask, request, render_template
 from portrait import portraits, hash_pass, unhash_pass
+
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
 # альтернатива для вас:
@@ -14,10 +15,12 @@ with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
 
 app = Flask(__name__)
+from flask_ngrok import run_with_ngrok
+run_with_ngrok(app)
 logging.basicConfig(
     filename='example.log',
     format='%(asctime)s %(name)s %(message)s',
-    level = logging.INFO
+    level=logging.INFO
 )
 
 sessionStorage = {}
@@ -48,6 +51,7 @@ def config(user_id):
             "Даты 🕰",
             "Картины 🌄",
             "Термины 📚",
+            "Ресурсы 📎",
             "Рейтинг 🏆",
             "Закрыть навык ❌"
         ],
@@ -149,7 +153,7 @@ def handle_dialog(req, res):
 
             res['response']['text'] = \
                 f"Привет, {req['state']['user']['nick']}! Продолжим тренировку! " \
-                    f"Твои очки:\nДаты: {user[2]}\nКартины: {user[3]}\nТермины: {user[4]}"
+                f"Твои очки:\nДаты: {user[2]}\nКартины: {user[3]}\nТермины: {user[4]}"
 
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = user[2]
@@ -158,15 +162,15 @@ def handle_dialog(req, res):
 
             res['response']['buttons'] = [
                 {'title': suggest, 'hide': False}
-                for suggest in sessionStorage[user_id]['suggests'][:3]
+                for suggest in sessionStorage[user_id]['suggests'][:4]
             ]
             res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                                'url': 'https://alice-skills-1--t1logy.repl.co/records'})
             res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
-          
+
         except Exception:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
-                                  'Введи свой никнейм для сохранения:'
+                                      'Введи свой никнейм для сохранения:'
         return
 
     if sessionStorage[user_id]['nick'] is None:
@@ -177,7 +181,7 @@ def handle_dialog(req, res):
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests'][:3]
+            for suggest in sessionStorage[user_id]['suggests'][:4]
         ]
         res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                            'url': 'https://alice-skills-1--t1logy.repl.co/records'})
@@ -194,7 +198,7 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['lastT'] = False
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests'][:3]
+            for suggest in sessionStorage[user_id]['suggests'][:4]
         ]
         res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                            'url': 'https://alice-skills-1--t1logy.repl.co/records'})
@@ -202,6 +206,9 @@ def handle_dialog(req, res):
         return
 
         # ставим режим
+    if 'ресурсы' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'ресурсы'
+
     if 'даты' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'случайные даты'
 
@@ -215,17 +222,18 @@ def handle_dialog(req, res):
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
         write_in_base(user_id)
-        res['response']['text'] = random.choice(goodbye) + '\nЕсли тебе понравилось, поставь нам звёздочки. Спасибо :) И проверь своё место в рейтинге!'
+        res['response']['text'] = random.choice(
+            goodbye) + '\nЕсли тебе понравилось, поставь нам звёздочки. Спасибо :) И проверь своё место в рейтинге!'
         res['response']['buttons'] = [{
-          'title': 'Звёздочки ⭐️',
-          'hide': False,
-          'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'
+            'title': 'Звёздочки ⭐️',
+            'hide': False,
+            'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'
         },
-        {
-          'title': 'Рейтинг 🏆',
-          'hide': False,
-          'url': 'https://alice-skills-1--t1logy.repl.co/records'
-        }
+            {
+                'title': 'Рейтинг 🏆',
+                'hide': False,
+                'url': 'https://alice-skills-1--t1logy.repl.co/records'
+            }
         ]
         res['response']['end_session'] = True
         res['user_state_update'] = {
@@ -241,9 +249,9 @@ def handle_dialog(req, res):
         else:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
             user_answer = req['request']['original_utterance'].lower()
-            print(user_answer, user_answer.find('-'), user_answer.count(' ') )
+            print(user_answer, user_answer.find('-'), user_answer.count(' '))
             if user_answer.find('-') != -1 and user_answer.count(' ') >= 2:
-                user_answer = user_answer[:user_answer.index('-')-1] + '-' + user_answer[user_answer.index('-') + 2:]
+                user_answer = user_answer[:user_answer.index('-') - 1] + '-' + user_answer[user_answer.index('-') + 2:]
                 print(user_answer)
             if sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
                 'answer'].lower() in user_answer:
@@ -307,11 +315,56 @@ def handle_dialog(req, res):
                 res['response'][
                     'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
-
+    elif sessionStorage[user_id]['mode'] == 'ресурсы':
+        res['response']['text'] = 'Здесь мы публикуем интересные материалы. Послушаем музыку или почитаем статьи?'
+        res['response']['buttons'] = [{
+            'title': 'Статьи️',
+            'hide': False,
+            'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'
+        },
+            {
+                'title': 'Музыка',
+                'hide': False,
+                'url': 'https://alice-skills-1--t1logy.repl.co/records'
+            }
+        ]
+        if 'музыка' in req['request']['original_utterance'].lower() or 'музыку' in req['request']['original_utterance'].lower():
+            res['response']['card'] = {
+                "type": "ItemsList",
+                "header": {
+                    "text": "Историческая музыка",
+                },
+                "items": [
+                    {
+                        "image_id": "937455/3a9025e4d08f2c295d85",
+                        "title": "Хиты СССР",
+                        "description": "Плейлист на Яндекс Музыке",
+                        "button": {
+                            "url": 'https://music.yandex.ru/users/sctnStudio/playlists/1002'
+                        }
+                    },
+                    {
+                        "image_id": "1521359/94ab576717d5217f7fdb",
+                        "title": "Гимны стран мира",
+                        "description": "Плейлист на Яндекс Музыке",
+                        "button": {
+                            "url": 'https://music.yandex.ru/users/sctnStudio/playlists/1004'
+                        }
+                    },
+                    {
+                        "image_id": "965417/aa2cbef4a55c41b57322",
+                        "title": "Военные песни",
+                        "description": "Плейлист на Яндекс Музыке",
+                        "button": {
+                            "url": 'https://music.yandex.ru/users/sctnStudio/playlists/1001'
+                        }
+                    }
+                ]
+            }
     else:
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests'][:3]
+            for suggest in sessionStorage[user_id]['suggests'][:4]
         ]
         res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                            'url': 'https://alice-skills-1--t1logy.repl.co/records'})
@@ -326,4 +379,5 @@ def handle_dialog(req, res):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080)
+    # app.run(host="0.0.0.0", port=8080)
+    app.run()
