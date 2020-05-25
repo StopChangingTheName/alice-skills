@@ -37,6 +37,8 @@ wtf = ['Прости, не понимаю тебя', 'Можешь повтор�
 
 goodbye = ['Пока!', 'До встречи!', 'Будем на связи!', 'Рада была пообщаться!', 'Пока-пока!']
 
+hey = ['Привет', 'Приветствую тебя', 'Отличный день сегодня', 'Хорошо, что мы снова встретились', 'Приветик', 'Здравствуй']
+
 
 def config(user_id):
     # перемешивание дат и терминов
@@ -150,8 +152,8 @@ def handle_dialog(req, res):
             user = cur.execute(f"SELECT * FROM u WHERE nick = '{req['state']['user']['nick']}';").fetchone()
 
             res['response']['text'] = \
-                f"Привет, {req['state']['user']['nick']}! Продолжим тренировку! " \
-                f"Твои очки:\nДаты: {user[2]}\nКартины: {user[3]}\nТермины: {user[4]}"
+                f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! " \
+                f"Твои очки:\nДаты: {user[2]}\nКартины: {user[3]}\nТермины: {user[4]}.\nНе забывай, что очки сохраняются только когда ты закрываешь навык!"
 
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = user[2]
@@ -247,23 +249,20 @@ def handle_dialog(req, res):
         else:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
             user_answer = req['request']['original_utterance'].lower()
-            print(user_answer, user_answer.find('-'), user_answer.count(' '))
-            if user_answer.find('-') != -1 and user_answer.count(' ') >= 2:
-                user_answer = user_answer[:user_answer.index('-') - 1] + '-' + user_answer[user_answer.index('-') + 2:]
-                print(user_answer)
-            if sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
-                'answer'].lower() in user_answer:
-                res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
-                sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
-            else:
-                answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']
-                if '-' in answer:
-                    answer += ' годах'
+            right_answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer'].lower().split('-')
+            if len(right_answer) > 1: # если у нас 2 года
+                if right_answer[0] in user_answer and right_answer[1] in user_answer:
+                  res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                  sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
                 else:
-                    answer = 'в ' + answer + ' году'
-                res['response'][
-                    'text'] = f"{random.choice(wrong)} Правильный ответ: {answer}. \n{random.choice(_next)}: {res['response']['text']}"
-
+                  res['response'][
+                        'text'] = f"{random.choice(wrong)} Правильный ответ: в {right_answer[0]}-{right_answer[1]} годах. \n{random.choice(_next)}: {res['response']['text']}"    
+            else: # если 1 год
+                if right_answer[0] in user_answer:
+                    res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                else:
+                    res['response'][
+                        'text'] = f"{random.choice(wrong)} Правильный ответ: в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['id'] += 1
 
     elif sessionStorage[user_id]['mode'] == 'картины':
