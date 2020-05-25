@@ -15,9 +15,6 @@ with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
 
 app = Flask(__name__)
-from flask_ngrok import run_with_ngrok
-
-run_with_ngrok(app)
 logging.basicConfig(
     filename='example.log',
     format='%(asctime)s %(name)s %(message)s',
@@ -175,7 +172,7 @@ def handle_dialog(req, res):
 
         except Exception:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
-                                      'Введи свой никнейм для сохранения:'
+                                      'Напиши или скажи свой никнейм для сохранения:'
         return
 
     if sessionStorage[user_id]['nick'] is None:
@@ -457,7 +454,7 @@ def station_dialog(req, res):
         sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                   ' В какой режим ты хочешь поиграть: даты или термины?' \
-                                  ' За каждый правильный ответ зачисляются очки, будь внимателен!'
+                                  ' За каждый правильный ответ зачисляются очки, будь внимателен! В любой момент ты можешь закончить наш разговор: просто скажи закрыть'
         return
 
     if 'даты' in req['request']['original_utterance'].lower():
@@ -523,5 +520,4 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    # app.run(host="0.0.0.0", port=8080)
-    app.run()
+    app.run(host="0.0.0.0", port=8080)
