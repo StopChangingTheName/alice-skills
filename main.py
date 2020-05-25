@@ -217,13 +217,13 @@ def handle_dialog(req, res):
         write_in_base(user_id)
         res['response']['text'] = random.choice(goodbye) + '\nЕсли тебе понравилось, поставь нам звёздочки. Спасибо :) И проверь своё место в рейтинге!'
         res['response']['buttons'] = [{
-          'title' : 'Звёздочки ⭐️',
-          'hide' : False,
+          'title': 'Звёздочки ⭐️',
+          'hide': False,
           'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'
         },
         {
-          'title' : 'Рейтинг 🏆',
-          'hide' : False,
+          'title': 'Рейтинг 🏆',
+          'hide': False,
           'url': 'https://alice-skills-1--t1logy.repl.co/records'
         }
         ]
@@ -240,8 +240,13 @@ def handle_dialog(req, res):
             sessionStorage[user_id]['lastQ'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
+            user_answer = req['request']['original_utterance'].lower()
+            print(user_answer, user_answer.find('-'), user_answer.count(' ') )
+            if user_answer.find('-') != -1 and user_answer.count(' ') >= 2:
+                user_answer = user_answer[:user_answer.index('-')-1] + '-' + user_answer[user_answer.index('-') + 2:]
+                print(user_answer)
             if sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
-                'answer'].lower() in req['request']['original_utterance'].lower():
+                'answer'].lower() in user_answer:
                 res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                 sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
             else:
@@ -285,7 +290,7 @@ def handle_dialog(req, res):
             res['response']['card']['image_id'] = \
                 portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
             res['response']['card']['title'] += ' Кто изображен на фотографии?'
-        res['response']['text'] = ''
+            res['response']['text'] = res['response']['card']['title']
         sessionStorage[user_id]['idPic'] += 1
 
     elif sessionStorage[user_id]['mode'] == 'термины':
