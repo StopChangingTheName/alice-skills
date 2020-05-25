@@ -272,7 +272,4 @@ KeyError: '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'
 2020-05-25 06:44:35,274 root 
 
 2020-05-25 06:44:35,276 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'c51e175f-7e09-4416-b99e-085a8630b1ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
-2020-05-25 06:44:35,276 root 
-
-
-2020-05-25 06:44:35,277 werkzeug 172.18.0.1 - - [25/May/2020 06:44:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 06:44:35,276 root
