@@ -16,7 +16,8 @@ with open('Data.json', encoding='utf8') as f:
 app = Flask(__name__)
 logging.basicConfig(
     filename='example.log',
-    format='%(asctime)s %(levelname)s %(name)s %(message)s'
+    format='%(asctime)s %(name)s %(message)s',
+    level = logging.INFO
 )
 
 sessionStorage = {}
@@ -117,7 +118,7 @@ def records():
 
 @app.route('/post', methods=['POST'])
 def main():
-    logging.info('Request: %r', request.json)
+    logging.info('REQUEST: %r', request.json)
     logging.info('\n')
     response = {
         'session': request.json['session'],
@@ -128,8 +129,8 @@ def main():
     }
     handle_dialog(request.json, response)
 
-    logging.info('Response: %r', request.json)
-    logging.info('\n')
+    logging.info('RESPONSE: %r', request.json)
+    logging.info('\n\n')
 
     return json.dumps(response)
 
@@ -148,8 +149,7 @@ def handle_dialog(req, res):
 
             res['response']['text'] = \
                 f"Привет, {req['state']['user']['nick']}! Продолжим тренировку! " \
-                    f"Твои очки (даты, картины, термины): {user[2]}, " \
-                    f"{user[3]}, {user[4]}"
+                    f"Твои очки:\nДаты: {user[2]}\nКартины: {user[3]}\nТермины: {user[4]}"
 
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = user[2]
@@ -215,7 +215,18 @@ def handle_dialog(req, res):
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
         write_in_base(user_id)
-        res['response']['text'] = random.choice(goodbye)
+        res['response']['text'] = random.choice(goodbye) + '\nЕсли тебе понравилось, поставь нам звёздочки. Спасибо :) И проверь своё место в рейтинге!'
+        res['response']['buttons'] = [{
+          'title' : 'Звёздочки ⭐️',
+          'hide' : False,
+          'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'
+        },
+        {
+          'title' : 'Рейтинг 🏆',
+          'hide' : False,
+          'url': 'https://alice-skills-1--t1logy.repl.co/records'
+        }
+        ]
         res['response']['end_session'] = True
         res['user_state_update'] = {
             'nick': sessionStorage[user_id]['nick']
