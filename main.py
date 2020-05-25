@@ -248,7 +248,8 @@ def handle_dialog(req, res):
             sessionStorage[user_id]['lastQ'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
-            right_answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer'].lower().split('-')
+            right_answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer'].lower().split(' ')
+            
             print(right_answer[0])
             user_answer = req['request']['original_utterance'].lower()
             if len(right_answer) > 1: # если у нас 2 года
