@@ -257,12 +257,15 @@ def handle_dialog(req, res):
                 if right_answer[0] in user_answer and right_answer[1] in user_answer:
                   res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                   sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
+                  write_in_base(user_id)
                 else:
                   res['response'][
                         'text'] = f"{random.choice(wrong)} Правильный ответ: в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"    
             else: # если 1 год
                 if right_answer[0] in user_answer:
                     res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                    sessionStorage[user_id]['test_count'] += 1
+                    write_in_base(user_id)
                 else:
                     res['response'][
                         'text'] = f"{random.choice(wrong)} Правильный ответ: в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
@@ -288,6 +291,7 @@ def handle_dialog(req, res):
                 if ans in req['request']['original_utterance'].lower():
                     res['response']['card']['title'] = random.choice(right)
                     sessionStorage[user_id]['pic_count'] += 1  # Сохранение очков по картинкам
+                    write_in_base(user_id)
                     break
             else:
                 res['response']['card']['title'] \
@@ -312,6 +316,7 @@ def handle_dialog(req, res):
                 sessionStorage[user_id]['terID'] - 1]['answer'].lower():
                 res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                 sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
+                write_in_base(user_id)
             else:
                 res['response'][
                     'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
