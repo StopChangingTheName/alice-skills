@@ -16,7 +16,8 @@ with open('Data.json', encoding='utf8') as f:
 app = Flask(__name__)
 logging.basicConfig(
     filename='example.log',
-    format='%(asctime)s %(levelname)s %(name)s %(message)s'
+    format='%(asctime)s %(name)s %(message)s',
+    level = logging.INFO
 )
 
 sessionStorage = {}
@@ -117,7 +118,7 @@ def records():
 
 @app.route('/post', methods=['POST'])
 def main():
-    logging.info('Request: %r', request.json)
+    logging.info('REQUEST: %r', request.json)
     logging.info('\n')
     response = {
         'session': request.json['session'],
@@ -128,8 +129,8 @@ def main():
     }
     handle_dialog(request.json, response)
 
-    logging.info('Response: %r', request.json)
-    logging.info('\n')
+    logging.info('RESPONSE: %r', request.json)
+    logging.info('\n\n')
 
     return json.dumps(response)
 
