@@ -3801,3 +3801,535 @@ KeyError: 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68'
 
 
 2020-05-25 11:26:24,669 werkzeug 172.18.0.1 - - [25/May/2020 11:26:24] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:26:54,947 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:26:54,947 root 
+
+2020-05-25 11:26:54,949 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:26:54,949 root 
+
+
+2020-05-25 11:26:54,950 werkzeug 172.18.0.1 - - [25/May/2020 11:26:54] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:27:03,113 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 1, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': 'Что ты умеешь', 'original_utterance': 'Что ты умеешь', 'nlu': {'tokens': ['что', 'ты', 'умеешь'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:27:03,113 root 
+
+2020-05-25 11:27:03,113 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 1, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': 'Что ты умеешь', 'original_utterance': 'Что ты умеешь', 'nlu': {'tokens': ['что', 'ты', 'умеешь'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:27:03,113 root 
+
+
+2020-05-25 11:27:03,114 werkzeug 172.18.0.1 - - [25/May/2020 11:27:03] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:27:05,798 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': 'Помощь', 'original_utterance': 'Помощь', 'nlu': {'tokens': ['помощь'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:27:05,798 root 
+
+2020-05-25 11:27:05,801 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': 'Помощь', 'original_utterance': 'Помощь', 'nlu': {'tokens': ['помощь'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:27:05,801 root 
+
+
+2020-05-25 11:27:05,802 werkzeug 172.18.0.1 - - [25/May/2020 11:27:05] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:27:19,459 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '5b6fbd17-d5c8-4840-a777-e36c8165778c', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:27:19,459 root 
+
+2020-05-25 11:27:19,461 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '5b6fbd17-d5c8-4840-a777-e36c8165778c', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:27:19,461 root 
+
+
+2020-05-25 11:27:19,461 werkzeug 172.18.0.1 - - [25/May/2020 11:27:19] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:27:25,268 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 3, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': 'Что ты умеешь', 'original_utterance': 'Что ты умеешь', 'nlu': {'tokens': ['что', 'ты', 'умеешь'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:27:25,268 root 
+
+2020-05-25 11:27:25,268 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 3, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': 'Что ты умеешь', 'original_utterance': 'Что ты умеешь', 'nlu': {'tokens': ['что', 'ты', 'умеешь'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:27:25,269 root 
+
+
+2020-05-25 11:27:25,269 werkzeug 172.18.0.1 - - [25/May/2020 11:27:25] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:27:34,634 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 4, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': 'Даты 🕰', 'original_utterance': 'Даты 🕰', 'nlu': {'tokens': ['даты'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:27:34,634 root 
+
+2020-05-25 11:27:34,635 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 4, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': 'Даты 🕰', 'original_utterance': 'Даты 🕰', 'nlu': {'tokens': ['даты'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:27:34,635 root 
+
+
+2020-05-25 11:27:34,635 werkzeug 172.18.0.1 - - [25/May/2020 11:27:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:27:45,140 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 5, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': '1234', 'original_utterance': '1234', 'nlu': {'tokens': ['1234'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 0, 'end': 1}, 'value': 1234}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:27:45,141 root 
+
+2020-05-25 11:27:45,141 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 5, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': '1234', 'original_utterance': '1234', 'nlu': {'tokens': ['1234'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 0, 'end': 1}, 'value': 1234}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:27:45,141 root 
+
+
+2020-05-25 11:27:45,142 werkzeug 172.18.0.1 - - [25/May/2020 11:27:45] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:27:55,049 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 6, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': '2002', 'original_utterance': '2002', 'nlu': {'tokens': ['2002'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 0, 'end': 1}, 'value': 2002}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:27:55,049 root 
+
+2020-05-25 11:27:55,049 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 6, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': '2002', 'original_utterance': '2002', 'nlu': {'tokens': ['2002'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 0, 'end': 1}, 'value': 2002}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:27:55,049 root 
+
+
+2020-05-25 11:27:55,050 werkzeug 172.18.0.1 - - [25/May/2020 11:27:55] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:28:00,573 werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-25 11:28:00,862 werkzeug 172.18.0.1 - - [25/May/2020 11:28:00] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-25 11:28:05,501 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 7, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': '23', 'original_utterance': '23', 'nlu': {'tokens': ['23'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 0, 'end': 1}, 'value': 23}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:28:05,501 root 
+
+2020-05-25 11:28:05,502 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 134, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 176, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'
+2020-05-25 11:28:05,504 werkzeug 172.18.0.1 - - [25/May/2020 11:28:05] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-25 11:28:09,427 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '475c06eb-3051-4bcd-be55-7765d19b101d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:28:09,428 root 
+
+2020-05-25 11:28:09,430 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '475c06eb-3051-4bcd-be55-7765d19b101d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:28:09,430 root 
+
+
+2020-05-25 11:28:09,431 werkzeug 172.18.0.1 - - [25/May/2020 11:28:09] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:28:11,646 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 1, 'session_id': '475c06eb-3051-4bcd-be55-7765d19b101d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'даты', 'original_utterance': 'Даты 🕰', 'nlu': {'tokens': ['даты'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:28:11,646 root 
+
+2020-05-25 11:28:11,646 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 1, 'session_id': '475c06eb-3051-4bcd-be55-7765d19b101d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'даты', 'original_utterance': 'Даты 🕰', 'nlu': {'tokens': ['даты'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:28:11,647 root 
+
+
+2020-05-25 11:28:11,647 werkzeug 172.18.0.1 - - [25/May/2020 11:28:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:28:15,764 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 7, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': '234', 'original_utterance': '234', 'nlu': {'tokens': ['234'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 0, 'end': 1}, 'value': 234}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:28:15,764 root 
+
+2020-05-25 11:28:15,765 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 134, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 176, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'
+2020-05-25 11:28:15,766 werkzeug 172.18.0.1 - - [25/May/2020 11:28:15] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-25 11:28:21,576 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': '475c06eb-3051-4bcd-be55-7765d19b101d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'в 1945', 'original_utterance': 'в тысяча девятьсот сорок пятом', 'nlu': {'tokens': ['в', '1945'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 1, 'end': 2}, 'value': 1945}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:28:21,577 root 
+
+2020-05-25 11:28:21,577 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': '475c06eb-3051-4bcd-be55-7765d19b101d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'в 1945', 'original_utterance': 'в тысяча девятьсот сорок пятом', 'nlu': {'tokens': ['в', '1945'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 1, 'end': 2}, 'value': 1945}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:28:21,577 root 
+
+
+2020-05-25 11:28:21,577 werkzeug 172.18.0.1 - - [25/May/2020 11:28:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:28:23,843 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 7, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': '1345', 'original_utterance': '1345', 'nlu': {'tokens': ['1345'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 0, 'end': 1}, 'value': 1345}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:28:23,844 root 
+
+2020-05-25 11:28:23,844 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 134, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 176, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'
+2020-05-25 11:28:23,845 werkzeug 172.18.0.1 - - [25/May/2020 11:28:23] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-25 11:28:31,023 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 7, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': 'Меню', 'original_utterance': 'Меню', 'nlu': {'tokens': ['меню'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:28:31,024 root 
+
+2020-05-25 11:28:31,024 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 134, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 176, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'
+2020-05-25 11:28:31,025 werkzeug 172.18.0.1 - - [25/May/2020 11:28:31] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-25 11:28:39,309 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 7, 'session_id': '7e4cb927-3b39-4cf6-87cb-5cdabf1c08ec', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91', 'user': {'user_id': '15F2900AEBA3FF1B6318FB2FC9F4E190D40A19AD018D6C35929765F49A7842E8'}, 'application': {'application_id': '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'}, 'new': False}, 'request': {'command': 'Помощь', 'original_utterance': 'Помощь', 'nlu': {'tokens': ['помощь'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:28:39,309 root 
+
+2020-05-25 11:28:39,310 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 134, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 176, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: '884D1C18DF8B0DD6E3583A342CBB6B213FD5A471F15249D4B0B834AFDE05CC91'
+2020-05-25 11:28:39,310 werkzeug 172.18.0.1 - - [25/May/2020 11:28:39] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-25 11:29:07,008 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4X; android 6.0.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 6, 'session_id': '21852e91-a814-43ff-8a80-91231ad2c0e7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68', 'user': {'user_id': 'EF9CB0C9612808DBAB07ACD09EB74E2F61677FD481CE2566711DB761A3213381'}, 'application': {'application_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68'}, 'new': False}, 'request': {'command': 'закрыть навык', 'original_utterance': 'Закрыть навык ❌', 'nlu': {'tokens': ['закрыть', 'навык'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'Артемий :)#8673'}}, 'version': '1.0'}
+2020-05-25 11:29:07,008 root 
+
+2020-05-25 11:29:07,009 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 134, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 176, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68'
+2020-05-25 11:29:07,010 werkzeug 172.18.0.1 - - [25/May/2020 11:29:07] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-25 11:29:14,941 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4X; android 6.0.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '1d8f9553-c426-4212-9d25-eba2112df474', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68', 'user': {'user_id': 'EF9CB0C9612808DBAB07ACD09EB74E2F61677FD481CE2566711DB761A3213381'}, 'application': {'application_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'Артемий :)#8673'}}, 'version': '1.0'}
+2020-05-25 11:29:14,941 root 
+
+2020-05-25 11:29:14,944 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4X; android 6.0.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '1d8f9553-c426-4212-9d25-eba2112df474', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68', 'user': {'user_id': 'EF9CB0C9612808DBAB07ACD09EB74E2F61677FD481CE2566711DB761A3213381'}, 'application': {'application_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'Артемий :)#8673'}}, 'version': '1.0'}
+2020-05-25 11:29:14,944 root 
+
+
+2020-05-25 11:29:14,945 werkzeug 172.18.0.1 - - [25/May/2020 11:29:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:29:20,243 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4X; android 6.0.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 1, 'session_id': '1d8f9553-c426-4212-9d25-eba2112df474', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68', 'user': {'user_id': 'EF9CB0C9612808DBAB07ACD09EB74E2F61677FD481CE2566711DB761A3213381'}, 'application': {'application_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68'}, 'new': False}, 'request': {'command': 'даты', 'original_utterance': 'Даты 🕰', 'nlu': {'tokens': ['даты'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'Артемий :)#8673'}}, 'version': '1.0'}
+2020-05-25 11:29:20,244 root 
+
+2020-05-25 11:29:20,244 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4X; android 6.0.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 1, 'session_id': '1d8f9553-c426-4212-9d25-eba2112df474', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68', 'user': {'user_id': 'EF9CB0C9612808DBAB07ACD09EB74E2F61677FD481CE2566711DB761A3213381'}, 'application': {'application_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68'}, 'new': False}, 'request': {'command': 'даты', 'original_utterance': 'Даты 🕰', 'nlu': {'tokens': ['даты'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'Артемий :)#8673'}}, 'version': '1.0'}
+2020-05-25 11:29:20,244 root 
+
+
+2020-05-25 11:29:20,244 werkzeug 172.18.0.1 - - [25/May/2020 11:29:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:29:20,547 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '0b1b5630-47d3-47db-9b14-1651477fbf9a', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:29:20,547 root 
+
+2020-05-25 11:29:20,550 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '0b1b5630-47d3-47db-9b14-1651477fbf9a', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:29:20,550 root 
+
+
+2020-05-25 11:29:20,550 werkzeug 172.18.0.1 - - [25/May/2020 11:29:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:29:21,518 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'ee1c68e6-588b-48b0-bac5-524acf04bfdd', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:29:21,518 root 
+
+2020-05-25 11:29:21,521 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'ee1c68e6-588b-48b0-bac5-524acf04bfdd', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:29:21,521 root 
+
+
+2020-05-25 11:29:21,521 werkzeug 172.18.0.1 - - [25/May/2020 11:29:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:29:28,779 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4X; android 6.0.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': '1d8f9553-c426-4212-9d25-eba2112df474', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68', 'user': {'user_id': 'EF9CB0C9612808DBAB07ACD09EB74E2F61677FD481CE2566711DB761A3213381'}, 'application': {'application_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68'}, 'new': False}, 'request': {'command': '1641', 'original_utterance': 'тысяча шестьсот сорок первый', 'nlu': {'tokens': ['1641'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 0, 'end': 1}, 'value': 1641}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'Артемий :)#8673'}}, 'version': '1.0'}
+2020-05-25 11:29:28,780 root 
+
+2020-05-25 11:29:28,780 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4X; android 6.0.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': '1d8f9553-c426-4212-9d25-eba2112df474', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68', 'user': {'user_id': 'EF9CB0C9612808DBAB07ACD09EB74E2F61677FD481CE2566711DB761A3213381'}, 'application': {'application_id': 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68'}, 'new': False}, 'request': {'command': '1641', 'original_utterance': 'тысяча шестьсот сорок первый', 'nlu': {'tokens': ['1641'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 0, 'end': 1}, 'value': 1641}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'Артемий :)#8673'}}, 'version': '1.0'}
+2020-05-25 11:29:28,780 root 
+
+
+2020-05-25 11:29:28,781 werkzeug 172.18.0.1 - - [25/May/2020 11:29:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:29:52,092 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/9.99 (BQru BQ-5521L; android 8.1.0)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'e8c25385-0b17-41a8-aaa6-c07e7380a344', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5', 'application': {'application_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}}, 'version': '1.0'}
+2020-05-25 11:29:52,092 root 
+
+2020-05-25 11:29:52,094 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/9.99 (BQru BQ-5521L; android 8.1.0)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'e8c25385-0b17-41a8-aaa6-c07e7380a344', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5', 'application': {'application_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}}, 'version': '1.0'}
+2020-05-25 11:29:52,094 root 
+
+
+2020-05-25 11:29:52,095 werkzeug 172.18.0.1 - - [25/May/2020 11:29:52] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:30:03,781 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/9.99 (BQru BQ-5521L; android 8.1.0)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 1, 'session_id': 'e8c25385-0b17-41a8-aaa6-c07e7380a344', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5', 'application': {'application_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5'}, 'new': False}, 'request': {'command': 'сонник', 'original_utterance': 'сонник', 'nlu': {'tokens': ['сонник'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}}, 'version': '1.0'}
+2020-05-25 11:30:03,781 root 
+
+2020-05-25 11:30:03,781 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/9.99 (BQru BQ-5521L; android 8.1.0)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 1, 'session_id': 'e8c25385-0b17-41a8-aaa6-c07e7380a344', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5', 'application': {'application_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5'}, 'new': False}, 'request': {'command': 'сонник', 'original_utterance': 'сонник', 'nlu': {'tokens': ['сонник'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}}, 'version': '1.0'}
+2020-05-25 11:30:03,781 root 
+
+
+2020-05-25 11:30:03,782 werkzeug 172.18.0.1 - - [25/May/2020 11:30:03] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:30:19,940 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '08597993-ae29-43bd-8783-e6c20bcc4ebb', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:30:19,940 root 
+
+2020-05-25 11:30:19,943 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '08597993-ae29-43bd-8783-e6c20bcc4ebb', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:30:19,945 root 
+
+
+2020-05-25 11:30:19,946 werkzeug 172.18.0.1 - - [25/May/2020 11:30:19] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:30:23,745 werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-25 11:30:24,132 werkzeug 172.18.0.1 - - [25/May/2020 11:30:24] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-25 11:30:24,664 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/9.99 (BQru BQ-5521L; android 8.1.0)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': 'e8c25385-0b17-41a8-aaa6-c07e7380a344', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5', 'application': {'application_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5'}, 'new': False}, 'request': {'command': 'термины', 'original_utterance': 'Термины 📚', 'nlu': {'tokens': ['термины'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}}, 'version': '1.0'}
+2020-05-25 11:30:24,664 root 
+
+2020-05-25 11:30:24,665 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 134, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 176, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5'
+2020-05-25 11:30:24,667 werkzeug 172.18.0.1 - - [25/May/2020 11:30:24] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-25 11:30:32,440 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/9.99 (BQru BQ-5521L; android 8.1.0)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': 'e8c25385-0b17-41a8-aaa6-c07e7380a344', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5', 'application': {'application_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5'}, 'new': False}, 'request': {'command': 'термины', 'original_utterance': 'Термины 📚', 'nlu': {'tokens': ['термины'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}}, 'version': '1.0'}
+2020-05-25 11:30:32,440 root 
+
+2020-05-25 11:30:32,440 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 134, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 176, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5'
+2020-05-25 11:30:32,441 werkzeug 172.18.0.1 - - [25/May/2020 11:30:32] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-25 11:30:38,949 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.searchplugin/9.99 (BQru BQ-5521L; android 8.1.0)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': 'e8c25385-0b17-41a8-aaa6-c07e7380a344', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5', 'application': {'application_id': '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5'}, 'new': False}, 'request': {'command': 'даты', 'original_utterance': 'Даты 🕰', 'nlu': {'tokens': ['даты'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}}, 'version': '1.0'}
+2020-05-25 11:30:38,949 root 
+
+2020-05-25 11:30:38,949 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 134, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 176, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: '9C08022B1E394BC040DBBC394A959F96617C3B88C9BF0E6F4BB3EA5FE51BACA5'
+2020-05-25 11:30:38,951 werkzeug 172.18.0.1 - - [25/May/2020 11:30:38] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-25 11:30:40,565 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:30:40,565 root 
+
+2020-05-25 11:30:40,568 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:30:40,568 root 
+
+
+2020-05-25 11:30:40,568 werkzeug 172.18.0.1 - - [25/May/2020 11:30:40] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:30:43,512 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 1, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'даты', 'original_utterance': 'Даты 🕰', 'nlu': {'tokens': ['даты'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:30:43,512 root 
+
+2020-05-25 11:30:43,512 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 1, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'даты', 'original_utterance': 'Даты 🕰', 'nlu': {'tokens': ['даты'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:30:43,512 root 
+
+
+2020-05-25 11:30:43,513 werkzeug 172.18.0.1 - - [25/May/2020 11:30:43] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:30:52,836 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'не знаю', 'original_utterance': 'не знаю', 'nlu': {'tokens': ['не', 'знаю'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:30:52,836 root 
+
+2020-05-25 11:30:52,837 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'не знаю', 'original_utterance': 'не знаю', 'nlu': {'tokens': ['не', 'знаю'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:30:52,837 root 
+
+
+2020-05-25 11:30:52,838 werkzeug 172.18.0.1 - - [25/May/2020 11:30:52] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:31:09,501 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 3, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'не знаю', 'original_utterance': 'не знаю', 'nlu': {'tokens': ['не', 'знаю'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:31:09,501 root 
+
+2020-05-25 11:31:09,502 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 3, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'не знаю', 'original_utterance': 'не знаю', 'nlu': {'tokens': ['не', 'знаю'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:31:09,502 root 
+
+
+2020-05-25 11:31:09,503 werkzeug 172.18.0.1 - - [25/May/2020 11:31:09] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:31:18,787 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '577bf36c-3679-4ca3-82fe-d403865b2e3a', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:31:18,787 root 
+
+2020-05-25 11:31:18,790 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '577bf36c-3679-4ca3-82fe-d403865b2e3a', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:31:18,790 root 
+
+
+2020-05-25 11:31:18,790 werkzeug 172.18.0.1 - - [25/May/2020 11:31:18] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:31:28,640 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 4, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'в 1398 году', 'original_utterance': 'в тысяча триста девяносто восьмом году', 'nlu': {'tokens': ['в', '1398', 'году'], 'entities': [{'type': 'YANDEX.DATETIME', 'tokens': {'start': 0, 'end': 3}, 'value': {'year': 1398, 'year_is_relative': False}}, {'type': 'YANDEX.NUMBER', 'tokens': {'start': 1, 'end': 2}, 'value': 1398}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:31:28,640 root 
+
+2020-05-25 11:31:28,640 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 4, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'в 1398 году', 'original_utterance': 'в тысяча триста девяносто восьмом году', 'nlu': {'tokens': ['в', '1398', 'году'], 'entities': [{'type': 'YANDEX.DATETIME', 'tokens': {'start': 0, 'end': 3}, 'value': {'year': 1398, 'year_is_relative': False}}, {'type': 'YANDEX.NUMBER', 'tokens': {'start': 1, 'end': 2}, 'value': 1398}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:31:28,641 root 
+
+
+2020-05-25 11:31:28,641 werkzeug 172.18.0.1 - - [25/May/2020 11:31:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:31:45,188 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 5, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'в 1942 году', 'original_utterance': 'в тысяча девятьсот сорок втором году', 'nlu': {'tokens': ['в', '1942', 'году'], 'entities': [{'type': 'YANDEX.DATETIME', 'tokens': {'start': 0, 'end': 3}, 'value': {'year': 1942, 'year_is_relative': False}}, {'type': 'YANDEX.NUMBER', 'tokens': {'start': 1, 'end': 2}, 'value': 1942}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:31:45,189 root 
+
+2020-05-25 11:31:45,189 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 5, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'в 1942 году', 'original_utterance': 'в тысяча девятьсот сорок втором году', 'nlu': {'tokens': ['в', '1942', 'году'], 'entities': [{'type': 'YANDEX.DATETIME', 'tokens': {'start': 0, 'end': 3}, 'value': {'year': 1942, 'year_is_relative': False}}, {'type': 'YANDEX.NUMBER', 'tokens': {'start': 1, 'end': 2}, 'value': 1942}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:31:45,189 root 
+
+
+2020-05-25 11:31:45,190 werkzeug 172.18.0.1 - - [25/May/2020 11:31:45] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:32:21,095 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'b1c8674f-c821-4528-81e9-a9251c1eeab5', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:32:21,096 root 
+
+2020-05-25 11:32:21,098 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'b1c8674f-c821-4528-81e9-a9251c1eeab5', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:32:21,098 root 
+
+
+2020-05-25 11:32:21,099 werkzeug 172.18.0.1 - - [25/May/2020 11:32:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:33:18,429 werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-25 11:33:18,610 werkzeug 172.18.0.1 - - [25/May/2020 11:33:18] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-25 11:33:20,757 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 6, 'session_id': 'b5f32839-9e63-42b2-88a6-2e195b8ba0f7', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'закрыть навык', 'original_utterance': 'Закрыть навык ❌', 'nlu': {'tokens': ['закрыть', 'навык'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:33:20,758 root 
+
+2020-05-25 11:33:20,758 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 134, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 176, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'
+2020-05-25 11:33:20,760 werkzeug 172.18.0.1 - - [25/May/2020 11:33:20] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-25 11:33:23,754 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'f8cfc684-76b9-4a05-8d7b-45819e9a509d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:33:23,755 root 
+
+2020-05-25 11:33:23,758 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'f8cfc684-76b9-4a05-8d7b-45819e9a509d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:33:23,758 root 
+
+
+2020-05-25 11:33:23,759 werkzeug 172.18.0.1 - - [25/May/2020 11:33:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:33:26,532 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 1, 'session_id': 'f8cfc684-76b9-4a05-8d7b-45819e9a509d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'даты', 'original_utterance': 'Даты 🕰', 'nlu': {'tokens': ['даты'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:33:26,532 root 
+
+2020-05-25 11:33:26,533 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 1, 'session_id': 'f8cfc684-76b9-4a05-8d7b-45819e9a509d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'даты', 'original_utterance': 'Даты 🕰', 'nlu': {'tokens': ['даты'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:33:26,533 root 
+
+
+2020-05-25 11:33:26,534 werkzeug 172.18.0.1 - - [25/May/2020 11:33:26] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:33:35,997 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': 'f8cfc684-76b9-4a05-8d7b-45819e9a509d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'не помню', 'original_utterance': 'не помню', 'nlu': {'tokens': ['не', 'помню'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:33:35,998 root 
+
+2020-05-25 11:33:35,999 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 2, 'session_id': 'f8cfc684-76b9-4a05-8d7b-45819e9a509d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'не помню', 'original_utterance': 'не помню', 'nlu': {'tokens': ['не', 'помню'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:33:35,999 root 
+
+
+2020-05-25 11:33:36,000 werkzeug 172.18.0.1 - - [25/May/2020 11:33:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:33:51,276 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 3, 'session_id': 'f8cfc684-76b9-4a05-8d7b-45819e9a509d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'в 968 году', 'original_utterance': 'в девятьсот шестьдесят восьмом году', 'nlu': {'tokens': ['в', '968', 'году'], 'entities': [{'type': 'YANDEX.DATETIME', 'tokens': {'start': 0, 'end': 3}, 'value': {'year': 968, 'year_is_relative': False}}, {'type': 'YANDEX.NUMBER', 'tokens': {'start': 1, 'end': 2}, 'value': 968}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:33:51,277 root 
+
+2020-05-25 11:33:51,278 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 3, 'session_id': 'f8cfc684-76b9-4a05-8d7b-45819e9a509d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'в 968 году', 'original_utterance': 'в девятьсот шестьдесят восьмом году', 'nlu': {'tokens': ['в', '968', 'году'], 'entities': [{'type': 'YANDEX.DATETIME', 'tokens': {'start': 0, 'end': 3}, 'value': {'year': 968, 'year_is_relative': False}}, {'type': 'YANDEX.NUMBER', 'tokens': {'start': 1, 'end': 2}, 'value': 968}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:33:51,278 root 
+
+
+2020-05-25 11:33:51,279 werkzeug 172.18.0.1 - - [25/May/2020 11:33:51] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:34:03,380 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'yabro/20.4.2.197 (none none; Windows 10.0.14393)', 'interfaces': {'screen': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'f0dcd629-8185-4c98-9ad6-f9035c463576', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '2B0BA24016E3817B19A867C2FC7F447E708F7B9E5F183BDB34238AEF367430F6', 'user': {'user_id': '706964A166AC387F338A25751BA051D8015E9104470C4A99FB3BC710C2E7E6B3'}, 'application': {'application_id': '2B0BA24016E3817B19A867C2FC7F447E708F7B9E5F183BDB34238AEF367430F6'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:34:03,381 root 
+
+2020-05-25 11:34:03,385 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'yabro/20.4.2.197 (none none; Windows 10.0.14393)', 'interfaces': {'screen': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'f0dcd629-8185-4c98-9ad6-f9035c463576', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '2B0BA24016E3817B19A867C2FC7F447E708F7B9E5F183BDB34238AEF367430F6', 'user': {'user_id': '706964A166AC387F338A25751BA051D8015E9104470C4A99FB3BC710C2E7E6B3'}, 'application': {'application_id': '2B0BA24016E3817B19A867C2FC7F447E708F7B9E5F183BDB34238AEF367430F6'}, 'new': True}, 'request': {'command': '', 'original_utterance': '', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {}}, 'version': '1.0'}
+2020-05-25 11:34:03,389 root 
+
+
+2020-05-25 11:34:03,392 werkzeug 172.18.0.1 - - [25/May/2020 11:34:03] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:34:03,661 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 4, 'session_id': 'f8cfc684-76b9-4a05-8d7b-45819e9a509d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'не помню', 'original_utterance': 'не помню', 'nlu': {'tokens': ['не', 'помню'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:34:03,661 root 
+
+2020-05-25 11:34:03,662 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 4, 'session_id': 'f8cfc684-76b9-4a05-8d7b-45819e9a509d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'не помню', 'original_utterance': 'не помню', 'nlu': {'tokens': ['не', 'помню'], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:34:03,664 root 
+
+
+2020-05-25 11:34:03,665 werkzeug 172.18.0.1 - - [25/May/2020 11:34:03] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:34:19,856 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 5, 'session_id': 'f8cfc684-76b9-4a05-8d7b-45819e9a509d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'в 1648', 'original_utterance': 'в тысяча шестьсот сорок восьмом', 'nlu': {'tokens': ['в', '1648'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 1, 'end': 2}, 'value': 1648}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:34:19,857 root 
+
+2020-05-25 11:34:19,857 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'Europe/Moscow', 'client_id': 'ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 5, 'session_id': 'f8cfc684-76b9-4a05-8d7b-45819e9a509d', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1', 'user': {'user_id': '9AB40E2B9237C61EDE3A0703760C65B26FD174AB0F4A1FF797669ED006442358'}, 'application': {'application_id': '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'}, 'new': False}, 'request': {'command': 'в 1648', 'original_utterance': 'в тысяча шестьсот сорок восьмом', 'nlu': {'tokens': ['в', '1648'], 'entities': [{'type': 'YANDEX.NUMBER', 'tokens': {'start': 1, 'end': 2}, 'value': 1648}], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'state': {'session': {}, 'user': {'nick': 'bob#4664'}}, 'version': '1.0'}
+2020-05-25 11:34:19,857 root 
+
+
+2020-05-25 11:34:19,858 werkzeug 172.18.0.1 - - [25/May/2020 11:34:19] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:34:21,132 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'd48e9f44-564f-45d2-8138-b99db3c94bea', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:34:21,132 root 
+
+2020-05-25 11:34:21,136 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'd48e9f44-564f-45d2-8138-b99db3c94bea', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:34:21,136 root 
+
+
+2020-05-25 11:34:21,137 werkzeug 172.18.0.1 - - [25/May/2020 11:34:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:34:23,595 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '7983644a-c836-4c15-a8d5-1932c671fd64', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:34:23,596 root 
+
+2020-05-25 11:34:23,599 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': '7983644a-c836-4c15-a8d5-1932c671fd64', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:34:23,599 root 
+
+
+2020-05-25 11:34:23,600 werkzeug 172.18.0.1 - - [25/May/2020 11:34:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-25 11:35:18,184 root REQUEST: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'abf40013-9dd4-4ce2-ac2c-5bcf1b7b613e', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:35:18,184 root 
+
+2020-05-25 11:35:18,187 root RESPONSE: {'meta': {'locale': 'ru-RU', 'timezone': 'UTC', 'client_id': 'ru.yandex.searchplugin/7.16 (none none; android 4.4.2)', 'interfaces': {'screen': {}, 'payments': {}, 'account_linking': {}}}, 'session': {'message_id': 0, 'session_id': 'abf40013-9dd4-4ce2-ac2c-5bcf1b7b613e', 'skill_id': '89bfd29f-f269-440c-9bb5-8a16ee77cbce', 'user_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415', 'application': {'application_id': '6ECCB8E47BAE706314842D45064281FD48A47E42C205C6F6072ED24FA2955415'}, 'new': True}, 'request': {'command': 'ping', 'original_utterance': 'ping', 'nlu': {'tokens': [], 'entities': [], 'intents': {}}, 'markup': {'dangerous_context': False}, 'type': 'SimpleUtterance'}, 'version': '1.0'}
+2020-05-25 11:35:18,187 root 
+
+
+2020-05-25 11:35:18,187 werkzeug 172.18.0.1 - - [25/May/2020 11:35:18] "[37mPOST /post HTTP/1.1[0m" 200 -
