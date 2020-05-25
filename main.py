@@ -324,19 +324,21 @@ def handle_dialog(req, res):
                 'hide': False,
             }
         ]
-        if 'музыка' in req['request']['original_utterance'].lower() or 'музыку' in req['request']['original_utterance'].lower():
-            res['response']['card'] = {
-                "type": "ItemsList",
-                "header": {
-                    "text": "Историческая музыка",
-                },
-                "items": [
-                    {
-                        "image_id": "937455/3a9025e4d08f2c295d85",
-                        "title": "Хиты СССР",
-                        "description": "Плейлист на Яндекс Музыке",
-                        "button": {
-                            "url": 'https://music.yandex.ru/users/sctnStudio/playlists/1002'
+        if 'музыка' in req['request']['original_utterance'].lower() or 'музыку' in req ['request']['original_utterance'].lower():
+          res['response']['tts'] = "Вот подборка интересной музыки"
+          res['response']['card'] = {
+              "type": "ItemsList",
+              "header": {
+                  "text": "Историческая музыка",
+              },
+              "items": [
+                  {
+                      "image_id": "937455/3a9025e4d08f2c295d85",
+                      "title": "Хиты СССР",
+                      "description": "Плейлист на Яндекс Музыке",
+                      "button": {
+                          "url":
+                          'https://music.yandex.ru/users/sctnStudio/playlists/1002'
                         }
                     },
                     {
@@ -358,6 +360,7 @@ def handle_dialog(req, res):
                 ]
             }
         if 'статьи' in req['request']['original_utterance'].lower():
+            res['response']['tts'] = "Вот подборка классных исторических статей"
             res['response']['card'] = {
                 "type": "ItemsList",
                 "header": {
