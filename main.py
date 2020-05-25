@@ -248,10 +248,11 @@ def handle_dialog(req, res):
             sessionStorage[user_id]['lastQ'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
+            user_answer = req['request']['command'].lower().split(' ')
             right_answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer'].lower().split(' ')
             
-            print(right_answer[0])
-            user_answer = req['request']['original_utterance'].lower()
+            print(right_answer)
+            print(user_answer)
             if len(right_answer) > 1: # если у нас 2 года
                 if right_answer[0] in user_answer and right_answer[1] in user_answer:
                   res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
