@@ -5,6 +5,7 @@ import random
 import sqlite3
 from flask import Flask, request, render_template
 from portrait import portraits, hash_pass, unhash_pass
+
 # не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
 # альтернатива для вас:
@@ -17,7 +18,7 @@ app = Flask(__name__)
 logging.basicConfig(
     filename='example.log',
     format='%(asctime)s %(name)s %(message)s',
-    level = logging.INFO
+    level=logging.INFO
 )
 
 sessionStorage = {}
@@ -36,6 +37,8 @@ wtf = ['Прости, не понимаю тебя', 'Можешь повтор�
 
 goodbye = ['Пока!', 'До встречи!', 'Будем на связи!', 'Рада была пообщаться!', 'Пока-пока!']
 
+hey = ['Привет', 'Приветствую тебя', 'Отличный день сегодня', 'Хорошо, что мы снова встретились', 'Приветик', 'Здравствуй']
+
 
 def config(user_id):
     # перемешивание дат и терминов
@@ -48,6 +51,7 @@ def config(user_id):
             "Даты 🕰",
             "Картины 🌄",
             "Термины 📚",
+            "Ресурсы 📎",
             "Рейтинг 🏆",
             "Закрыть навык ❌"
         ],
@@ -148,8 +152,8 @@ def handle_dialog(req, res):
             user = cur.execute(f"SELECT * FROM u WHERE nick = '{req['state']['user']['nick']}';").fetchone()
 
             res['response']['text'] = \
-                f"Привет, {req['state']['user']['nick']}! Продолжим тренировку! " \
-                    f"Твои очки:\nДаты: {user[2]}\nКартины: {user[3]}\nТермины: {user[4]}"
+                f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! " \
+                f"Твои очки:\nДаты: {user[2]}\nКартины: {user[3]}\nТермины: {user[4]}.\nНе забывай, что очки сохраняются только когда ты закрываешь навык!"
 
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = user[2]
@@ -158,15 +162,15 @@ def handle_dialog(req, res):
 
             res['response']['buttons'] = [
                 {'title': suggest, 'hide': False}
-                for suggest in sessionStorage[user_id]['suggests'][:3]
+                for suggest in sessionStorage[user_id]['suggests'][:4]
             ]
             res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                                'url': 'https://alice-skills-1--t1logy.repl.co/records'})
             res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
-          
+
         except Exception:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
-                                  'Введи свой никнейм для сохранения:'
+                                      'Введи свой никнейм для сохранения:'
         return
 
     if sessionStorage[user_id]['nick'] is None:
@@ -177,7 +181,7 @@ def handle_dialog(req, res):
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests'][:3]
+            for suggest in sessionStorage[user_id]['suggests'][:4]
         ]
         res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                            'url': 'https://alice-skills-1--t1logy.repl.co/records'})
@@ -194,7 +198,7 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['lastT'] = False
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests'][:3]
+            for suggest in sessionStorage[user_id]['suggests'][:4]
         ]
         res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                            'url': 'https://alice-skills-1--t1logy.repl.co/records'})
@@ -202,6 +206,9 @@ def handle_dialog(req, res):
         return
 
         # ставим режим
+    if 'ресурсы' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'ресурсы'
+
     if 'даты' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'случайные даты'
 
@@ -215,17 +222,18 @@ def handle_dialog(req, res):
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
         write_in_base(user_id)
-        res['response']['text'] = random.choice(goodbye) + '\nЕсли тебе понравилось, поставь нам звёздочки. Спасибо :) И проверь своё место в рейтинге!'
+        res['response']['text'] = random.choice(
+            goodbye) + '\nЕсли тебе понравилось, поставь нам звёздочки. Спасибо :) И проверь своё место в рейтинге!'
         res['response']['buttons'] = [{
-          'title': 'Звёздочки ⭐️',
-          'hide': False,
-          'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'
+            'title': 'Звёздочки ⭐️',
+            'hide': False,
+            'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'
         },
-        {
-          'title': 'Рейтинг 🏆',
-          'hide': False,
-          'url': 'https://alice-skills-1--t1logy.repl.co/records'
-        }
+            {
+                'title': 'Рейтинг 🏆',
+                'hide': False,
+                'url': 'https://alice-skills-1--t1logy.repl.co/records'
+            }
         ]
         res['response']['end_session'] = True
         res['user_state_update'] = {
@@ -240,24 +248,24 @@ def handle_dialog(req, res):
             sessionStorage[user_id]['lastQ'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
-            user_answer = req['request']['original_utterance'].lower()
-            print(user_answer, user_answer.find('-'), user_answer.count(' ') )
-            if user_answer.find('-') != -1 and user_answer.count(' ') >= 2:
-                user_answer = user_answer[:user_answer.index('-')-1] + '-' + user_answer[user_answer.index('-') + 2:]
-                print(user_answer)
-            if sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
-                'answer'].lower() in user_answer:
-                res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
-                sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
-            else:
-                answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer']
-                if '-' in answer:
-                    answer += ' годах'
+            user_answer = req['request']['command'].lower().split(' ')
+            right_answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer'].lower().split(' ')
+            
+            print(right_answer)
+            print(user_answer)
+            if len(right_answer) > 1: # если у нас 2 года
+                if right_answer[0] in user_answer and right_answer[1] in user_answer:
+                  res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                  sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
                 else:
-                    answer = 'в ' + answer + ' году'
-                res['response'][
-                    'text'] = f"{random.choice(wrong)} Правильный ответ: {answer}. \n{random.choice(_next)}: {res['response']['text']}"
-
+                  res['response'][
+                        'text'] = f"{random.choice(wrong)} Правильный ответ: в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"    
+            else: # если 1 год
+                if right_answer[0] in user_answer:
+                    res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                else:
+                    res['response'][
+                        'text'] = f"{random.choice(wrong)} Правильный ответ: в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['id'] += 1
 
     elif sessionStorage[user_id]['mode'] == 'картины':
@@ -290,7 +298,7 @@ def handle_dialog(req, res):
             res['response']['card']['image_id'] = \
                 portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
             res['response']['card']['title'] += ' Кто изображен на фотографии?'
-            res['response']['text'] = res['response']['card']['title']
+        res['response']['text'] = res['response']['card']['title']
         sessionStorage[user_id]['idPic'] += 1
 
     elif sessionStorage[user_id]['mode'] == 'термины':
@@ -307,11 +315,90 @@ def handle_dialog(req, res):
                 res['response'][
                     'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
-
+    elif sessionStorage[user_id]['mode'] == 'ресурсы':
+        res['response']['text'] = 'Здесь мы публикуем интересные материалы. Послушаем музыку или почитаем статьи?'
+        res['response']['buttons'] = [{
+            'title': 'Статьи️ 📖',
+            'hide': False,
+        },
+            {
+                'title': 'Музыка 🎵',
+                'hide': False,
+            }
+        ]
+        if 'музыка' in req['request']['original_utterance'].lower() or 'музыку' in req ['request']['original_utterance'].lower():
+          res['response']['tts'] = "Вот подборка интересной музыки"
+          res['response']['card'] = {
+              "type": "ItemsList",
+              "header": {
+                  "text": "Историческая музыка",
+              },
+              "items": [
+                  {
+                      "image_id": "937455/3a9025e4d08f2c295d85",
+                      "title": "Хиты СССР",
+                      "description": "Плейлист на Яндекс Музыке",
+                      "button": {
+                          "url":
+                          'https://music.yandex.ru/users/sctnStudio/playlists/1002'
+                        }
+                    },
+                    {
+                        "image_id": "1521359/94ab576717d5217f7fdb",
+                        "title": "Гимны стран мира",
+                        "description": "Плейлист на Яндекс Музыке",
+                        "button": {
+                            "url": 'https://music.yandex.ru/users/sctnStudio/playlists/1004'
+                        }
+                    },
+                    {
+                        "image_id": "965417/aa2cbef4a55c41b57322",
+                        "title": "Военные песни",
+                        "description": "Плейлист на Яндекс Музыке",
+                        "button": {
+                            "url": 'https://music.yandex.ru/users/sctnStudio/playlists/1001'
+                        }
+                    }
+                ]
+            }
+        if 'статьи' in req['request']['original_utterance'].lower():
+            res['response']['tts'] = "Вот подборка классных исторических статей"
+            res['response']['card'] = {
+                "type": "ItemsList",
+                "header": {
+                    "text": "Полезные статьи",
+                },
+                "items": [
+                    {
+                        # "image_id": "937455/3a9025e4d08f2c295d85",
+                        "title": "13 лучших книг по истории России",
+                        "description": "Источник: Lifehacker.ru",
+                        "button": {
+                            "url": 'https://lifehacker.ru/knigi-po-istorii/'
+                        }
+                    },
+                    {
+                        # "image_id": "1521359/94ab576717d5217f7fdb",
+                        "title": "Советы ЕГЭ по истории",
+                        "description": "Источник: Учёба.ру",
+                        "button": {
+                            "url": 'https://www.ucheba.ru/for-abiturients/ege/articles/history'
+                        }
+                    },
+                    {
+                        # "image_id": "965417/aa2cbef4a55c41b57322",
+                        "title": "Памятки и шпаргалки по истории",
+                        "description": "Источник: historystepa.ru",
+                        "button": {
+                            "url": 'http://historystepa.ru/'
+                        }
+                    }
+                ]
+            }
     else:
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests'][:3]
+            for suggest in sessionStorage[user_id]['suggests'][:4]
         ]
         res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                            'url': 'https://alice-skills-1--t1logy.repl.co/records'})
@@ -327,3 +414,4 @@ def handle_dialog(req, res):
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
+    
