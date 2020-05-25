@@ -311,6 +311,3 @@ def handle_dialog(req, res):
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
-    #from flask_ngrok import run_with_ngrok
-    #run_with_ngrok(app)
-    #app.run()
