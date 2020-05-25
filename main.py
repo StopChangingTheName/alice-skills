@@ -290,7 +290,7 @@ def handle_dialog(req, res):
             res['response']['card']['image_id'] = \
                 portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
             res['response']['card']['title'] += ' Кто изображен на фотографии?'
-            res['response']['text'] = res['response']['card']['title']
+        res['response']['text'] = res['response']['card']['title']
         sessionStorage[user_id]['idPic'] += 1
 
     elif sessionStorage[user_id]['mode'] == 'термины':
