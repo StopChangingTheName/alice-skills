@@ -284,10 +284,11 @@ def handle_dialog(req, res):
             res['response']['card']['type'] = 'BigImage'
             print(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower())
             print(req['request']['original_utterance'].lower())
-            if req['request']['original_utterance'].lower() in \
-                    sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower():
-                res['response']['card']['title'] = random.choice(right)
-                sessionStorage[user_id]['pic_count'] += 1  # Сохранение очков по картинкам
+            for ans in sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower().split('/'):
+                if ans in req['request']['original_utterance'].lower():
+                    res['response']['card']['title'] = random.choice(right)
+                    sessionStorage[user_id]['pic_count'] += 1  # Сохранение очков по картинкам
+                    break
             else:
                 res['response']['card']['title'] \
                     = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}."
@@ -414,4 +415,3 @@ def handle_dialog(req, res):
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
-    
