@@ -318,14 +318,12 @@ def handle_dialog(req, res):
     elif sessionStorage[user_id]['mode'] == 'ресурсы':
         res['response']['text'] = 'Здесь мы публикуем интересные материалы. Послушаем музыку или почитаем статьи?'
         res['response']['buttons'] = [{
-            'title': 'Статьи️',
+            'title': 'Статьи️ 📖',
             'hide': False,
-            'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'
         },
             {
-                'title': 'Музыка',
+                'title': 'Музыка 🎵',
                 'hide': False,
-                'url': 'https://alice-skills-1--t1logy.repl.co/records'
             }
         ]
         if 'музыка' in req['request']['original_utterance'].lower() or 'музыку' in req['request']['original_utterance'].lower():
@@ -357,6 +355,39 @@ def handle_dialog(req, res):
                         "description": "Плейлист на Яндекс Музыке",
                         "button": {
                             "url": 'https://music.yandex.ru/users/sctnStudio/playlists/1001'
+                        }
+                    }
+                ]
+            }
+        if 'статьи' in req['request']['original_utterance'].lower():
+            res['response']['card'] = {
+                "type": "ItemsList",
+                "header": {
+                    "text": "Полезные статьи",
+                },
+                "items": [
+                    {
+                        # "image_id": "937455/3a9025e4d08f2c295d85",
+                        "title": "13 лучших книг по истории России",
+                        "description": "Источник: Lifehacker.ru",
+                        "button": {
+                            "url": 'https://lifehacker.ru/knigi-po-istorii/'
+                        }
+                    },
+                    {
+                        # "image_id": "1521359/94ab576717d5217f7fdb",
+                        "title": "Советы ЕГЭ по истории",
+                        "description": "Источник: Учёба.ру",
+                        "button": {
+                            "url": 'https://www.ucheba.ru/for-abiturients/ege/articles/history'
+                        }
+                    },
+                    {
+                        # "image_id": "965417/aa2cbef4a55c41b57322",
+                        "title": "Памятки и шпаргалки по истории",
+                        "description": "Источник: historystepa.ru",
+                        "button": {
+                            "url": 'http://historystepa.ru/'
                         }
                     }
                 ]
