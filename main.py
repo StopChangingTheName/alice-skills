@@ -134,7 +134,6 @@ def records():
 
 @app.route('/post', methods=['POST'])
 def main():
-    logging.info(f"REQUEST COMMAND: {request.json['request']['command']} DEVICE: {request.json['meta']['client_id']} USER: {request.json['state']['user']['nick']}")
     response = {
         'session': request.json['session'],
         'version': request.json['version'],
@@ -195,7 +194,8 @@ def handle_dialog(req, res):
         return
 
     # log
-    logging.info("RESPONSE: {res['response']['text']}\n")
+    logging.info(f"RESPONSE COMMAND: {res['response']['text']}")
+    logging.info(f"REQUEST COMMAND: {req['request']['command']} DEVICE: {req['meta']['client_id']}\n")
 
     if 'меню' in req['request']['original_utterance'].lower() or \
             'рейтинг' in req['request']['original_utterance'].lower() or 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request']['original_utterance'].lower():

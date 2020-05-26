@@ -1,60 +1,13 @@
-2020-05-26 14:10:08,012 werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
-2020-05-26 14:10:08,217 werkzeug 172.18.0.1 - - [26/May/2020 14:10:08] "[33mGET / HTTP/1.1[0m" 404 -
-2020-05-26 14:10:12,240 werkzeug 172.18.0.1 - - [26/May/2020 14:10:12] "[33mGET / HTTP/1.1[0m" 404 -
-2020-05-26 14:10:25,472 main Exception on /post [POST]
-Traceback (most recent call last):
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "main.py", line 137, in main
-    logging.info(f"REQUEST COMMAND: {request.json['request']['command']} DEVICE: {request.json['meta']['client_id']} USER: {request.json['state']['user']['nick']}")
-KeyError: 'state'
-2020-05-26 14:10:25,474 werkzeug 172.18.0.1 - - [26/May/2020 14:10:25] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
-2020-05-26 14:10:57,745 werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
-2020-05-26 14:10:58,341 werkzeug 172.18.0.1 - - [26/May/2020 14:10:58] "[33mGET / HTTP/1.1[0m" 404 -
-2020-05-26 14:11:11,310 main Exception on /post [POST]
-Traceback (most recent call last):
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "main.py", line 137, in main
-    logging.info(f"REQUEST COMMAND: {request.json['request']['command']} DEVICE: {request.json['meta']['client_id']} USER: {request.json['state']['user']['nick']}")
-KeyError: 'nick'
-2020-05-26 14:11:11,315 werkzeug 172.18.0.1 - - [26/May/2020 14:11:11] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
-2020-05-26 14:11:12,233 werkzeug 172.18.0.1 - - [26/May/2020 14:11:12] "[33mGET / HTTP/1.1[0m" 404 -
-2020-05-26 14:11:27,999 main Exception on /post [POST]
-Traceback (most recent call last):
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "main.py", line 137, in main
-    logging.info(f"REQUEST COMMAND: {request.json['request']['command']} DEVICE: {request.json['meta']['client_id']} USER: {request.json['state']['user']['nick']}")
-KeyError: 'state'
-2020-05-26 14:11:28,000 werkzeug 172.18.0.1 - - [26/May/2020 14:11:28] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:22:49,356 werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-26 14:22:49,555 werkzeug 172.18.0.1 - - [26/May/2020 14:22:49] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:22:57,655 werkzeug 172.18.0.1 - - [26/May/2020 14:22:57] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:23:01,397 root RESPONSE COMMAND: {res['response']['text']}
+2020-05-26 14:23:01,398 root REQUEST COMMAND: даты DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-26 14:23:01,398 werkzeug 172.18.0.1 - - [26/May/2020 14:23:01] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:23:12,251 werkzeug 172.18.0.1 - - [26/May/2020 14:23:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:23:30,051 werkzeug 172.18.0.1 - - [26/May/2020 14:23:30] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:24:12,231 werkzeug 172.18.0.1 - - [26/May/2020 14:24:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:24:20,237 werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-26 14:24:20,425 werkzeug 172.18.0.1 - - [26/May/2020 14:24:20] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:24:28,254 werkzeug 172.18.0.1 - - [26/May/2020 14:24:28] "[37mPOST /post HTTP/1.1[0m" 200 -
