@@ -3,10 +3,9 @@ import json
 import logging
 import random
 import sqlite3
-from threading import Thread
 from flask import Flask, request, render_template
 from portrait import portraits, hash_pass, unhash_pass
-
+from threading import Thread
 #  не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
 # альтернатива для вас:
@@ -21,6 +20,13 @@ logging.basicConfig(
     format='%(asctime)s %(name)s %(message)s',
     level=logging.INFO
 )
+def run():
+  app.run(host="0.0.0.0", port=8080)
+
+  
+def keep_alive():
+    server = Thread(target=run)
+    server.start()
 
 sessionStorage = {}
 x = hash_pass('Hello')
@@ -40,15 +46,6 @@ goodbye = ['Пока!', 'До встречи!', 'Будем на связи!', '
 
 hey = ['Привет', 'Приветствую тебя', 'Отличный день сегодня', 'Хорошо, что мы снова встретились', 'Приветик',
        'Здравствуй']
-
-
-def run():
-  app.run(host="0.0.0.0", port=8080)
-
-  
-def keep_alive():
-    server = Thread(target=run)
-    server.start()
 
 
 def config(user_id):
@@ -137,6 +134,7 @@ def records():
 
 @app.route('/post', methods=['POST'])
 def main():
+    keep_alive()
     response = {
         'session': request.json['session'],
         'version': request.json['version'],
@@ -526,4 +524,4 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-  keep_alive()
+    main()
