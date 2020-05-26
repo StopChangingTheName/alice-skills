@@ -3,6 +3,7 @@ import json
 import logging
 import random
 import sqlite3
+from threading import Thread
 from flask import Flask, request, render_template
 from portrait import portraits, hash_pass, unhash_pass
 
@@ -39,6 +40,15 @@ goodbye = ['Пока!', 'До встречи!', 'Будем на связи!', '
 
 hey = ['Привет', 'Приветствую тебя', 'Отличный день сегодня', 'Хорошо, что мы снова встретились', 'Приветик',
        'Здравствуй']
+
+
+def run():
+  app.run(host="0.0.0.0", port=8080)
+
+  
+def keep_alive():
+    server = Thread(target=run)
+    server.start()
 
 
 def config(user_id):
@@ -169,7 +179,7 @@ def handle_dialog(req, res):
 
         except Exception:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
-                                      'Этот навык пока находится в стадии тестирования. Напиши или скажи свой никнейм для сохранения результатов:'
+                                      'Напиши или скажи своё имя или никнейм для сохранения результатов:'
         return
 
     if sessionStorage[user_id]['nick'] is None:
@@ -515,4 +525,4 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8080)
+  keep_alive()
