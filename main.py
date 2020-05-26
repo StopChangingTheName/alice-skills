@@ -122,6 +122,9 @@ def write_in_base(user_id):
                     )
     con.commit()
 
+@app.route('/')
+def hi():
+  return 'Hey, our app works!'
 
 @app.route('/records')
 def records():
