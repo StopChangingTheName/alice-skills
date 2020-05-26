@@ -134,7 +134,6 @@ def records():
 
 @app.route('/post', methods=['POST'])
 def main():
-    keep_alive()
     response = {
         'session': request.json['session'],
         'version': request.json['version'],
@@ -524,4 +523,4 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    main()
+    keep_alive()
