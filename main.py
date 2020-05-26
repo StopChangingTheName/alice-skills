@@ -3,6 +3,7 @@ import json
 import logging
 import random
 import sqlite3
+import pymorphy2
 from flask import Flask, request, render_template
 from portrait import portraits, hash_pass, unhash_pass
 from threading import Thread
@@ -20,6 +21,8 @@ logging.basicConfig(
     format='%(asctime)s %(name)s %(message)s',
     level=logging.INFO
 )
+morph = pymorphy2.MorphAnalyzer()
+
 def run():
   app.run(host="0.0.0.0", port=8080)
 
@@ -170,7 +173,8 @@ def handle_dialog(req, res):
             ]
             res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                                'url': 'https://alice-skills-1--t1logy.repl.co/records'})
-            res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+            #res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+            res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
 
         except Exception:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
@@ -189,7 +193,8 @@ def handle_dialog(req, res):
         ]
         res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                            'url': 'https://alice-skills-1--t1logy.repl.co/records'})
-        res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+        #res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+        res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
 
         return
 
@@ -209,10 +214,14 @@ def handle_dialog(req, res):
         ]
         res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                            'url': 'https://alice-skills-1--t1logy.repl.co/records'})
+        res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
         res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
         return
+    #print(req['request']['original_utterance'].lower(), 'уровень' in req['request']['original_utterance'].lower())
 
-        # ставим режим
+
+
+    # ставим режим
     if 'развлечения' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'ресурсы'
 
@@ -225,6 +234,9 @@ def handle_dialog(req, res):
 
     if 'термины' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'термины'
+
+    if 'уровень' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'уровень'
 
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
@@ -411,6 +423,31 @@ def handle_dialog(req, res):
                     }
                 ]
             }
+    elif sessionStorage[user_id]['mode'] == 'уровень':
+        test_count = sessionStorage[user_id]['test_count']
+        pic_count = sessionStorage[user_id]['pic_count']
+        ter_count = sessionStorage[user_id]['ter_count']
+        summa = test_count + pic_count + ter_count
+        word = morph.parse('очки')[-1]
+        res['response']['card'] = {}
+        res['response']['card']['type'] = 'BigImage'
+        res['response']['tts'] = '<speaker audio="alice-sounds-game-win-1.opus">'
+        if summa < 20:
+            res['response']['text'] = f'Ты еще новичок, 1 уровень! ' \
+                f'Поднажми: до 2ого уровня осталось {20 - summa} {word.make_agree_with_number(20 - summa).word}'
+            res['response']['card']['image_id'] = '1540737/62bffa1f1c62a4c6812c'
+        elif summa < 40:
+            res['response']['text'] = f'Круто! 2 уровень. Рекомендую поднажать:' \
+                f' до 3ого уровня осталось {40 - summa} {word.make_agree_with_number(40 - summa).word}'
+            res['response']['card']['image_id'] = '213044/e3649e3e18880a531e76'
+        elif summa < 60:
+            res['response']['text'] = f'Ого-го! Ты на третьем уровене. Совсем чуть-чуть до победы, осталось ' \
+                f'{60 - summa} {word.make_agree_with_number(60 - summa).word}'
+            res['response']['card']['image_id'] = '1652229/aadaf325e34cb47c7401'
+        else:
+            res['response']['text'] = f'Поздравляю! С увереностью могу назвать тебя настоящим историком!'
+            res['response']['card']['image_id'] = '1540737/674b982eaca1f8245da4'
+        res['response']['card']['title'] = res['response']['text']
     else:
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
@@ -523,4 +560,7 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    keep_alive()
+    #keep_alive()
+    from flask_ngrok import run_with_ngrok
+    run_with_ngrok(app)
+    app.run()
