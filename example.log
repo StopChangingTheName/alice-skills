@@ -11,3 +11,338 @@
 2020-05-26 14:24:20,237 werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
 2020-05-26 14:24:20,425 werkzeug 172.18.0.1 - - [26/May/2020 14:24:20] "[33mGET / HTTP/1.1[0m" 404 -
 2020-05-26 14:24:28,254 werkzeug 172.18.0.1 - - [26/May/2020 14:24:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:25:00,436 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 180, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: '3D9D48A5529C8EF76797F9F60B4D66DCA62C8674A5E2A2147CE9F84B9295DEA1'
+2020-05-26 14:25:00,438 werkzeug 172.18.0.1 - - [26/May/2020 14:25:00] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:25:05,129 werkzeug 172.18.0.1 - - [26/May/2020 14:25:05] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:25:07,913 werkzeug 172.18.0.1 - - [26/May/2020 14:25:07] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:25:09,531 werkzeug 172.18.0.1 - - [26/May/2020 14:25:09] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:25:12,232 werkzeug 172.18.0.1 - - [26/May/2020 14:25:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:25:25,910 werkzeug 172.18.0.1 - - [26/May/2020 14:25:25] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:25:30,335 werkzeug 172.18.0.1 - - [26/May/2020 14:25:30] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:25:43,384 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 197, in handle_dialog
+    logging.info(f"RESPONSE COMMAND: {res['response']['text']}")
+KeyError: 'text'
+2020-05-26 14:25:43,385 werkzeug 172.18.0.1 - - [26/May/2020 14:25:43] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:25:49,272 werkzeug 172.18.0.1 - - [26/May/2020 14:25:49] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:25:55,592 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 197, in handle_dialog
+    logging.info(f"RESPONSE COMMAND: {res['response']['text']}")
+KeyError: 'text'
+2020-05-26 14:25:55,593 werkzeug 172.18.0.1 - - [26/May/2020 14:25:55] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:25:59,728 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 197, in handle_dialog
+    logging.info(f"RESPONSE COMMAND: {res['response']['text']}")
+KeyError: 'text'
+2020-05-26 14:25:59,729 werkzeug 172.18.0.1 - - [26/May/2020 14:25:59] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:26:02,284 werkzeug 172.18.0.1 - - [26/May/2020 14:26:02] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:26:03,697 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 197, in handle_dialog
+    logging.info(f"RESPONSE COMMAND: {res['response']['text']}")
+KeyError: 'text'
+2020-05-26 14:26:03,699 werkzeug 172.18.0.1 - - [26/May/2020 14:26:03] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:26:06,195 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 197, in handle_dialog
+    logging.info(f"RESPONSE COMMAND: {res['response']['text']}")
+KeyError: 'text'
+2020-05-26 14:26:06,196 werkzeug 172.18.0.1 - - [26/May/2020 14:26:06] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:26:12,240 werkzeug 172.18.0.1 - - [26/May/2020 14:26:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:26:13,332 werkzeug 172.18.0.1 - - [26/May/2020 14:26:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:26:19,428 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 197, in handle_dialog
+    logging.info(f"RESPONSE COMMAND: {res['response']['text']}")
+KeyError: 'text'
+2020-05-26 14:26:19,429 werkzeug 172.18.0.1 - - [26/May/2020 14:26:19] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:26:24,785 werkzeug 172.18.0.1 - - [26/May/2020 14:26:24] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:26:28,482 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 197, in handle_dialog
+    logging.info(f"RESPONSE COMMAND: {res['response']['text']}")
+KeyError: 'text'
+2020-05-26 14:26:28,484 werkzeug 172.18.0.1 - - [26/May/2020 14:26:28] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:26:33,060 werkzeug 172.18.0.1 - - [26/May/2020 14:26:33] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:27:12,234 werkzeug 172.18.0.1 - - [26/May/2020 14:27:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:27:16,770 werkzeug 172.18.0.1 - - [26/May/2020 14:27:16] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:27:28,932 werkzeug 172.18.0.1 - - [26/May/2020 14:27:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:28:06,907 werkzeug 172.18.0.1 - - [26/May/2020 14:28:06] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:28:09,236 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 197, in handle_dialog
+    logging.info(f"RESPONSE COMMAND: {res['response']['text']}")
+KeyError: 'text'
+2020-05-26 14:28:09,237 werkzeug 172.18.0.1 - - [26/May/2020 14:28:09] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:28:12,242 werkzeug 172.18.0.1 - - [26/May/2020 14:28:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:28:12,481 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 197, in handle_dialog
+    logging.info(f"RESPONSE COMMAND: {res['response']['text']}")
+KeyError: 'text'
+2020-05-26 14:28:12,482 werkzeug 172.18.0.1 - - [26/May/2020 14:28:12] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:28:13,063 werkzeug 172.18.0.1 - - [26/May/2020 14:28:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:28:25,710 werkzeug 172.18.0.1 - - [26/May/2020 14:28:25] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:28:26,575 werkzeug 172.18.0.1 - - [26/May/2020 14:28:26] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:28:30,336 werkzeug 172.18.0.1 - - [26/May/2020 14:28:30] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:28:34,196 werkzeug 172.18.0.1 - - [26/May/2020 14:28:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:28:46,583 werkzeug 172.18.0.1 - - [26/May/2020 14:28:46] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:28:49,564 werkzeug 172.18.0.1 - - [26/May/2020 14:28:49] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:28:54,517 werkzeug 172.18.0.1 - - [26/May/2020 14:28:54] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:29:04,342 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 197, in handle_dialog
+    # logging.info(f"RESPONSE COMMAND: {res['response']['text']}")
+KeyError: 'text'
+2020-05-26 14:29:04,344 werkzeug 172.18.0.1 - - [26/May/2020 14:29:04] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:29:08,182 werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-26 14:29:08,411 werkzeug 172.18.0.1 - - [26/May/2020 14:29:08] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:29:12,236 werkzeug 172.18.0.1 - - [26/May/2020 14:29:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:29:26,846 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 180, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: '20A63DD5CE484E93B2C75E2D1ED77D3986DE232BC4AD6775C2FD0F026A188755'
+2020-05-26 14:29:26,851 werkzeug 172.18.0.1 - - [26/May/2020 14:29:26] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:29:28,833 werkzeug 172.18.0.1 - - [26/May/2020 14:29:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:29:40,678 main Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 144, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 180, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: '20A63DD5CE484E93B2C75E2D1ED77D3986DE232BC4AD6775C2FD0F026A188755'
+2020-05-26 14:29:40,679 werkzeug 172.18.0.1 - - [26/May/2020 14:29:40] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-26 14:29:41,077 werkzeug 172.18.0.1 - - [26/May/2020 14:29:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:29:43,073 werkzeug 172.18.0.1 - - [26/May/2020 14:29:43] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:29:44,940 werkzeug 172.18.0.1 - - [26/May/2020 14:29:44] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:29:46,841 werkzeug 172.18.0.1 - - [26/May/2020 14:29:46] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:29:53,000 werkzeug 172.18.0.1 - - [26/May/2020 14:29:53] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:30:06,815 werkzeug 172.18.0.1 - - [26/May/2020 14:30:06] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:30:12,218 werkzeug 172.18.0.1 - - [26/May/2020 14:30:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:30:24,529 werkzeug 172.18.0.1 - - [26/May/2020 14:30:24] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:30:32,407 werkzeug 172.18.0.1 - - [26/May/2020 14:30:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:30:34,231 werkzeug 172.18.0.1 - - [26/May/2020 14:30:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:30:36,433 werkzeug 172.18.0.1 - - [26/May/2020 14:30:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:30:45,986 werkzeug 172.18.0.1 - - [26/May/2020 14:30:45] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:30:53,953 werkzeug 172.18.0.1 - - [26/May/2020 14:30:53] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:31:03,008 werkzeug 172.18.0.1 - - [26/May/2020 14:31:03] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:31:10,653 werkzeug 172.18.0.1 - - [26/May/2020 14:31:10] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:31:12,229 werkzeug 172.18.0.1 - - [26/May/2020 14:31:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:31:22,062 werkzeug 172.18.0.1 - - [26/May/2020 14:31:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:31:32,693 werkzeug 172.18.0.1 - - [26/May/2020 14:31:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:31:41,261 werkzeug 172.18.0.1 - - [26/May/2020 14:31:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:31:46,312 werkzeug 172.18.0.1 - - [26/May/2020 14:31:46] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:31:53,630 werkzeug 172.18.0.1 - - [26/May/2020 14:31:53] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:32:01,730 werkzeug 172.18.0.1 - - [26/May/2020 14:32:01] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:32:12,213 werkzeug 172.18.0.1 - - [26/May/2020 14:32:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:32:59,317 werkzeug 172.18.0.1 - - [26/May/2020 14:32:59] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:33:12,242 werkzeug 172.18.0.1 - - [26/May/2020 14:33:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:33:16,618 werkzeug 172.18.0.1 - - [26/May/2020 14:33:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:33:22,294 werkzeug 172.18.0.1 - - [26/May/2020 14:33:22] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:33:36,818 werkzeug 172.18.0.1 - - [26/May/2020 14:33:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:42:04,053 werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-26 14:42:04,665 werkzeug 172.18.0.1 - - [26/May/2020 14:42:04] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:42:12,253 werkzeug 172.18.0.1 - - [26/May/2020 14:42:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:42:39,694 werkzeug 172.18.0.1 - - [26/May/2020 14:42:39] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:42:41,605 root ------REQUEST COMMAND: даты DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-26 14:42:41,606 werkzeug 172.18.0.1 - - [26/May/2020 14:42:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:42:44,405 root ------REQUEST COMMAND: меню DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-26 14:42:44,406 werkzeug 172.18.0.1 - - [26/May/2020 14:42:44] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:42:47,704 werkzeug 172.18.0.1 - - [26/May/2020 14:42:47] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:42:59,889 root ------REQUEST COMMAND: сучки DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-26 14:42:59,890 werkzeug 172.18.0.1 - - [26/May/2020 14:42:59] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:43:08,415 werkzeug 172.18.0.1 - - [26/May/2020 14:43:08] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:43:12,273 werkzeug 172.18.0.1 - - [26/May/2020 14:43:12] "[33mGET / HTTP/1.1[0m" 404 -
+2020-05-26 14:43:39,106 werkzeug 172.18.0.1 - - [26/May/2020 14:43:39] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-26 14:44:12,227 werkzeug 172.18.0.1 - - [26/May/2020 14:44:12] "[33mGET / HTTP/1.1[0m" 404 -

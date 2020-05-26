@@ -194,8 +194,7 @@ def handle_dialog(req, res):
         return
 
     # log
-    logging.info(f"RESPONSE COMMAND: {res['response']['text']}")
-    logging.info(f"REQUEST COMMAND: {req['request']['command']} DEVICE: {req['meta']['client_id']}\n")
+    logging.info(f"------REQUEST COMMAND: {req['request']['command']} DEVICE: {req['meta']['client_id']}\n")
 
     if 'меню' in req['request']['original_utterance'].lower() or \
             'рейтинг' in req['request']['original_utterance'].lower() or 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request']['original_utterance'].lower():
