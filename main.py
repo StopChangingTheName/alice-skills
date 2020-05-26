@@ -6,7 +6,7 @@ import sqlite3
 from flask import Flask, request, render_template
 from portrait import portraits, hash_pass, unhash_pass
 
-# не удаляйте этот путь т.к. у меня проблема с открытием data.json
+#  не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
 # альтернатива для вас:
 with open('Data.json', encoding='utf8') as f:
@@ -52,7 +52,7 @@ def config(user_id):
             "Даты 🕰",
             "Картины 🌄",
             "Термины 📚",
-            "Ресурсы 📎",
+            "Развлечения 🧩",
             "Рейтинг 🏆",
             "Закрыть навык ❌"
         ],
@@ -177,7 +177,7 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                   'У меня есть несколько режимов, просто нажми на кнопку 👇, чтобы выбрать их.' \
-                                  'Не забывай, твои ответы влияют на место в рейтинге, будь внимателен! 😁'
+                                  ' Не забывай, твои ответы влияют на место в рейтинге, будь внимателен! 😁'
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests'][:4]
@@ -190,7 +190,7 @@ def handle_dialog(req, res):
 
     if 'меню' in req['request']['original_utterance'].lower() or \
             'рейтинг' in req['request']['original_utterance'].lower() or 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request']['original_utterance'].lower():
-        res['response']['text'] =   'У меня есть несколько режимов, просто нажми на кнопку 👇, чтобы выбрать их.' \
+        res['response']['text'] =   'У меня есть несколько режимов, просто нажми на кнопку 👇, чтобы выбрать их. ' \
                                     'Не забывай, твои ответы влияют на место в рейтинге, будь внимателен! 😁'
         sessionStorage[user_id]['lastQ'] = False
         sessionStorage[user_id]['lastPic'] = False
@@ -205,7 +205,7 @@ def handle_dialog(req, res):
         return
 
         # ставим режим
-    if 'ресурсы' in req['request']['original_utterance'].lower():
+    if 'развлечения' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'ресурсы'
 
     if 'даты' in req['request']['original_utterance'].lower():
@@ -240,7 +240,7 @@ def handle_dialog(req, res):
         }
         # config(user_id) # на случай если захочет заново играть БЕЗ перезапуска навыка
         return
-
+    
     if sessionStorage[user_id]['mode'] == 'случайные даты':
         if not sessionStorage[user_id]['lastQ']:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
