@@ -134,8 +134,8 @@ def main():
     }
     if 'screen' in request.json['meta']['interfaces']:
         handle_dialog(request.json, response)
-    if not 'screen' in request.json['meta']['interfaces']:
-        station_dialog(request.json, response)
+    # if not 'screen' in request.json['meta']['interfaces']:
+    #     station_dialog(request.json, response)
     logging.info('RESPONSE: %r', request.json)
     logging.info('\n\n')
 
@@ -453,7 +453,10 @@ def station_dialog(req, res):
                                   ' В какой режим ты хочешь поиграть: даты или термины?' \
                                   ' За каждый правильный ответ зачисляются очки, будь внимателен! В любой момент ты можешь закончить наш разговор: просто скажи закрыть'
         return
-
+    if 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request']['original_utterance'].lower() or 'меню' in req['request']['original_utterance'].lower():
+        res['response']['text'] = 'На устройствах без экрана у меня есть 2 режима: даты или термины. В какой режим поиграем?'
+        sessionStorage[user_id]['lastQ'] = False
+        sessionStorage[user_id]['lastT'] = False
     if 'даты' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'случайные даты'
     if 'термины' in req['request']['original_utterance'].lower():
@@ -514,7 +517,8 @@ def station_dialog(req, res):
                 res['response'][
                     'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
-
+    else:
+      res['response']['text'] = 'На устройствах без экрана у меня есть 2 режима: даты или термины. В какой режим поиграем?'  
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=8080)
