@@ -134,8 +134,7 @@ def records():
 
 @app.route('/post', methods=['POST'])
 def main():
-    logging.info('REQUEST: %r', request.json)
-    logging.info('\n')
+    logging.info(f"REQUEST COMMAND: {request.json['request']['command']} DEVICE: {request.json['meta']['client_id']} USER: {request.json['state']['user']['nick']}")
     response = {
         'session': request.json['session'],
         'version': request.json['version'],
@@ -144,9 +143,6 @@ def main():
         },
     }
     handle_dialog(request.json, response)
-    logging.info('RESPONSE: %r', request.json)
-    logging.info('\n\n')
-
     return json.dumps(response)
 
 
@@ -197,6 +193,9 @@ def handle_dialog(req, res):
         res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
 
         return
+
+    # log
+    logging.info("RESPONSE: {res['response']['text']}\n")
 
     if 'меню' in req['request']['original_utterance'].lower() or \
             'рейтинг' in req['request']['original_utterance'].lower() or 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request']['original_utterance'].lower():
