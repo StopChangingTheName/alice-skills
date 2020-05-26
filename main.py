@@ -191,7 +191,7 @@ def handle_dialog(req, res):
         return
 
     if 'меню' in req['request']['original_utterance'].lower() or \
-            'рейтинг' in req['request']['original_utterance'].lower():
+            'рейтинг' in req['request']['original_utterance'].lower() or 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'У меня есть несколько режимов, просто нажми на кнопку, чтобы выбрать их. ' \
                                   'За каждый правильный ответ в любом режиме зачисляются очки, будь внимателен! 😁'
         sessionStorage[user_id]['lastQ'] = False
@@ -289,8 +289,6 @@ def handle_dialog(req, res):
         else:
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
-            print(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower())
-            print(req['request']['original_utterance'].lower())
             for ans in sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower().split('/'):
                 if ans in req['request']['original_utterance'].lower():
                     res['response']['card']['title'] = random.choice(right)
