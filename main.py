@@ -348,20 +348,24 @@ def handle_dialog(req, res):
     elif sessionStorage[user_id]['mode'] == 'ресурсы':
         res['response']['buttons'] = [{
             'title': 'Статьи️ 📖',
-            'hide': False,
+            'hide': True,
         },
             {
                 'title': 'Музыка 🎵',
-                'hide': False,
+                'hide': True,
             }
         ]
-        res['response']['buttons'].append(
-            [{'title': suggest, 'hide': True} for suggest in sessionStorage[user_id]['slicedsuggests']])
-        if 'ресурсы' in req['request']['original_utterance'].lower():
+        res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': True})
+        res['response']['buttons'].append({'title': 'Меню', 'hide': True})
+        res['response']['buttons'].append({'title': 'Оценить ⭐', 'hide': True,
+                                           'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'})
+
+        if 'развлечения' in req['request']['original_utterance'].lower():
             res['response']['text'] = 'Здесь мы публикуем интересные материалы. Послушаем музыку или почитаем статьи?'
         elif 'музыка' in req['request']['original_utterance'].lower() or 'музыку' in req['request'][
             'original_utterance'].lower():
             res['response']['tts'] = "Вот подборка интересной музыки"
+            res['response']['text'] = res['response']['tts']
             res['response']['card'] = {
                 "type": "ItemsList",
                 "header": {
@@ -397,6 +401,7 @@ def handle_dialog(req, res):
             }
         elif 'статьи' in req['request']['original_utterance'].lower():
             res['response']['tts'] = "Вот подборка классных исторических статей"
+            res['response']['text'] = res['response']['tts']
             res['response']['card'] = {
                 "type": "ItemsList",
                 "header": {
@@ -472,6 +477,9 @@ def handle_dialog(req, res):
         {'title': suggest, 'hide': True}
         for suggest in sessionStorage[user_id]['slicedsuggests']
     ]
+
+    res['response']['buttons'].append({'title': 'Оценить ⭐', 'hide': True,
+                                           'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'})
 
 
 def station_dialog(req, res):
