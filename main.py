@@ -183,18 +183,21 @@ def handle_dialog(req, res):
 
     if sessionStorage[user_id]['nick'] is None:
         tag = str(random.randint(0, 10001))
-        sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
-        res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-                                  'У меня есть несколько режимов, просто нажми на кнопку 👇, чтобы выбрать их.' \
-                                  ' Не забывай, твои ответы влияют на место в рейтинге, будь внимателен! 😁'
-        res['response']['buttons'] = [
-            {'title': suggest, 'hide': False}
-            for suggest in sessionStorage[user_id]['suggests'][:4]
-        ]
-        res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
-                                           'url': 'https://alice-skills-1--t1logy.repl.co/records'})
-        #res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
-        res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
+        if len(req['request']['original_utterance']) > 30:
+            res['response']['text'] = 'Ваше имя или никнейм занимает больше 30 символов. Пожалуйста, исправьте.'
+        else:
+            sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
+            res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
+                                      'У меня есть несколько режимов, просто нажми на кнопку 👇, чтобы выбрать их.' \
+                                      ' Не забывай, твои ответы влияют на место в рейтинге, будь внимателен! 😁'
+            res['response']['buttons'] = [
+                {'title': suggest, 'hide': False}
+                for suggest in sessionStorage[user_id]['suggests'][:4]
+            ]
+            res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
+                                               'url': 'https://alice-skills-1--t1logy.repl.co/records'})
+            #res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+            res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
 
         return
 
