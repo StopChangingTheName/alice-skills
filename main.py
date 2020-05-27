@@ -71,7 +71,7 @@ def config(user_id):
             "Закрыть навык ❌"
         ],
         'slicedsuggests': [
-            "Закрыть навык ❌",
+            "Закрыть ❌",
             "Меню",
             "Не знаю"
         ],
@@ -218,6 +218,7 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['lastQ'] = False
         sessionStorage[user_id]['lastPic'] = False
         sessionStorage[user_id]['lastT'] = False
+        sessionStorage[user_id]['mode'] = ''
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
             for suggest in sessionStorage[user_id]['suggests'][:4]
@@ -483,7 +484,7 @@ def handle_dialog(req, res):
                 f' до 3ого уровня осталось {40 - summa} {word.make_agree_with_number(40 - summa).word}'
             res['response']['card']['image_id'] = '213044/e3649e3e18880a531e76'
         elif summa < 60:
-            res['response']['text'] = f'Ого-го! Ты на третьем уровене. Совсем чуть-чуть до победы, осталось ' \
+            res['response']['text'] = f'Ого-го! Ты на третьем уровне. Совсем чуть-чуть до победы, осталось ' \
                 f'{60 - summa} {word.make_agree_with_number(60 - summa).word}'
             res['response']['card']['image_id'] = '1652229/aadaf325e34cb47c7401'
         else:
@@ -507,6 +508,7 @@ def handle_dialog(req, res):
         res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                            'url': 'https://alice-skills-1--t1logy.repl.co/records'})
         res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+        res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
         res['response']['text'] = f"{random.choice(wtf)}\nВыбери вариант из предложенных :)"
         return
 
