@@ -346,7 +346,6 @@ def handle_dialog(req, res):
                     'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
     elif sessionStorage[user_id]['mode'] == 'ресурсы':
-        res['response']['text'] = 'Здесь мы публикуем интересные материалы. Послушаем музыку или почитаем статьи?'
         res['response']['buttons'] = [{
             'title': 'Статьи️ 📖',
             'hide': False,
@@ -356,7 +355,11 @@ def handle_dialog(req, res):
                 'hide': False,
             }
         ]
-        if 'музыка' in req['request']['original_utterance'].lower() or 'музыку' in req['request'][
+        res['response']['buttons'].append(
+            [{'title': suggest, 'hide': True} for suggest in sessionStorage[user_id]['slicedsuggests']])
+        if 'ресурсы' in req['request']['original_utterance'].lower():
+            res['response']['text'] = 'Здесь мы публикуем интересные материалы. Послушаем музыку или почитаем статьи?'
+        elif 'музыка' in req['request']['original_utterance'].lower() or 'музыку' in req['request'][
             'original_utterance'].lower():
             res['response']['tts'] = "Вот подборка интересной музыки"
             res['response']['card'] = {
@@ -392,7 +395,7 @@ def handle_dialog(req, res):
                     }
                 ]
             }
-        if 'статьи' in req['request']['original_utterance'].lower():
+        elif 'статьи' in req['request']['original_utterance'].lower():
             res['response']['tts'] = "Вот подборка классных исторических статей"
             res['response']['card'] = {
                 "type": "ItemsList",
@@ -426,6 +429,9 @@ def handle_dialog(req, res):
                     }
                 ]
             }
+        else:
+            res['response']['text'] = f"{random.choice(wtf)}\nВыбери вариант из предложенных, пожалуйста!"
+        return
     elif sessionStorage[user_id]['mode'] == 'уровень':
         test_count = sessionStorage[user_id]['test_count']
         pic_count = sessionStorage[user_id]['pic_count']
