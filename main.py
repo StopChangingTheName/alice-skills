@@ -7,6 +7,7 @@ import pymorphy2
 from flask import Flask, request, render_template
 from portrait import portraits, hash_pass, unhash_pass
 from threading import Thread
+
 #  не удаляйте этот путь т.к. у меня проблема с открытием data.json
 # with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
 # альтернатива для вас:
@@ -21,15 +22,18 @@ logging.basicConfig(
     format='%(asctime)s %(name)s %(message)s',
     level=logging.INFO
 )
+
 morph = pymorphy2.MorphAnalyzer()
 
-def run():
-  app.run(host="0.0.0.0", port=8080)
 
-  
+def run():
+    app.run(host="0.0.0.0", port=8080)
+
+
 def keep_alive():
     server = Thread(target=run)
     server.start()
+
 
 sessionStorage = {}
 x = hash_pass('Hello')
@@ -122,9 +126,11 @@ def write_in_base(user_id):
                     )
     con.commit()
 
+
 @app.route('/')
 def hi():
-  return 'Hey, our app works!'
+    return 'Hey, our app works!'
+
 
 @app.route('/records')
 def records():
@@ -161,7 +167,7 @@ def handle_dialog(req, res):
 
             res['response']['text'] = \
                 f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! " \
-                f"Твои очки:\nДаты: {user[2]}\nКартины: {user[3]}\nТермины: {user[4]}."
+                    f"Твои очки:\nДаты: {user[2]}\nКартины: {user[3]}\nТермины: {user[4]}."
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = user[2]
             sessionStorage[user_id]['pic_count'] = user[3]
@@ -173,8 +179,8 @@ def handle_dialog(req, res):
             ]
             res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                                'url': 'https://alice-skills-1--t1logy.repl.co/records'})
-            #res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
             res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
+            res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
 
         except Exception:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
@@ -188,15 +194,15 @@ def handle_dialog(req, res):
         else:
             sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
             res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-                                      'У меня есть несколько режимов, просто нажми на кнопку 👇, чтобы выбрать их.' \
-                                      ' Не забывай, твои ответы влияют на место в рейтинге, будь внимателен! 😁'
+                'У меня есть несколько режимов, просто нажми на кнопку 👇, чтобы выбрать их.' \
+                ' Не забывай, твои ответы влияют на место в рейтинге, будь внимателен! 😁'
             res['response']['buttons'] = [
                 {'title': suggest, 'hide': False}
                 for suggest in sessionStorage[user_id]['suggests'][:4]
             ]
             res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                                'url': 'https://alice-skills-1--t1logy.repl.co/records'})
-            #res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+            # res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
             res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
 
         return
@@ -205,9 +211,10 @@ def handle_dialog(req, res):
     logging.info(f"------REQUEST COMMAND: {req['request']['command']} DEVICE: {req['meta']['client_id']}\n")
 
     if 'меню' in req['request']['original_utterance'].lower() or \
-            'рейтинг' in req['request']['original_utterance'].lower() or 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request']['original_utterance'].lower():
-        res['response']['text'] =   'У меня есть несколько режимов, просто нажми на кнопку 👇, чтобы выбрать их. ' \
-                                    'Не забывай, твои ответы влияют на место в рейтинге, будь внимателен! 😁'
+            'рейтинг' in req['request']['original_utterance'].lower() or 'помощь' in req['request'][
+        'original_utterance'].lower() or 'что ты умеешь' in req['request']['original_utterance'].lower():
+        res['response']['text'] = 'У меня есть несколько режимов, просто нажми на кнопку 👇, чтобы выбрать их. ' \
+                                  'Не забывай, твои ответы влияют на место в рейтинге, будь внимателен! 😁'
         sessionStorage[user_id]['lastQ'] = False
         sessionStorage[user_id]['lastPic'] = False
         sessionStorage[user_id]['lastT'] = False
@@ -220,11 +227,8 @@ def handle_dialog(req, res):
         res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
         res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
         return
-    #print(req['request']['original_utterance'].lower(), 'уровень' in req['request']['original_utterance'].lower())
 
-
-
-    # ставим режим
+        # ставим режим
     if 'развлечения' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'ресурсы'
 
@@ -263,7 +267,7 @@ def handle_dialog(req, res):
         }
         # config(user_id) # на случай если захочет заново играть БЕЗ перезапуска навыка
         return
-    
+
     if sessionStorage[user_id]['mode'] == 'случайные даты':
         if not sessionStorage[user_id]['lastQ']:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
@@ -283,8 +287,8 @@ def handle_dialog(req, res):
                     sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
                     write_in_base(user_id)
                 else:
-                    res['response'][
-                        'text'] = f"{random.choice(wrong)} Правильный ответ: в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
+                    res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                        f"в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
             else:  # если 1 год
                 if right_answer[0] in user_answer:
                     res['response'][
@@ -293,7 +297,8 @@ def handle_dialog(req, res):
                     write_in_base(user_id)
                 else:
                     res['response'][
-                        'text'] = f"{random.choice(wrong)} Правильный ответ: в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
+                        'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                        f"в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['id'] += 1
 
     elif sessionStorage[user_id]['mode'] == 'картины':
@@ -318,7 +323,8 @@ def handle_dialog(req, res):
                     break
             else:
                 res['response']['card']['title'] \
-                    = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}."
+                    = f"{random.choice(wrong)} Правильный ответ: " \
+                    f"{sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}."
 
             if sessionStorage[user_id]['idPic'] == len(sessionStorage[user_id]['arrayPic']):
                 random.shuffle(sessionStorage[user_id]['arrayPic'])
@@ -335,35 +341,38 @@ def handle_dialog(req, res):
             sessionStorage[user_id]['lastT'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
-            for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer'].lower().split('/'):
+            for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer'].lower().split(
+                    '/'):
                 if ans in req['request']['original_utterance'].lower():
-                    res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                    res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response'][ 'text']}"
                     sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
                     write_in_base(user_id)
                     break
             else:
                 res['response'][
-                    'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
+                    'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                    f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
+                    f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
     elif sessionStorage[user_id]['mode'] == 'ресурсы':
-        res['response']['buttons'] = [{
-            'title': 'Статьи️ 📖',
-            'hide': True,
-        },
-            {
-                'title': 'Музыка 🎵',
-                'hide': True,
-            }
-        ]
-        res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': True})
-        res['response']['buttons'].append({'title': 'Меню', 'hide': True})
-        res['response']['buttons'].append({'title': 'Оценить ⭐', 'hide': True,
-                                           'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'})
 
         if 'развлечения' in req['request']['original_utterance'].lower():
+            res['response']['buttons'] = [{
+                'title': 'Статьи️ 📖',
+                'hide': True,
+            },
+                {
+                    'title': 'Музыка 🎵',
+                    'hide': True,
+                }
+            ]
             res['response']['text'] = 'Здесь мы публикуем интересные материалы. Послушаем музыку или почитаем статьи?'
         elif 'музыка' in req['request']['original_utterance'].lower() or 'музыку' in req['request'][
             'original_utterance'].lower():
+            res['response']['buttons'] = [{
+                'title': 'Статьи️ 📖',
+                'hide': True,
+            }]
             res['response']['tts'] = "Вот подборка интересной музыки"
             res['response']['text'] = res['response']['tts']
             res['response']['card'] = {
@@ -400,6 +409,12 @@ def handle_dialog(req, res):
                 ]
             }
         elif 'статьи' in req['request']['original_utterance'].lower():
+            res['response']['buttons'] = [
+                {
+                    'title': 'Музыка 🎵',
+                    'hide': True,
+                }
+            ]
             res['response']['tts'] = "Вот подборка классных исторических статей"
             res['response']['text'] = res['response']['tts']
             res['response']['card'] = {
@@ -435,7 +450,20 @@ def handle_dialog(req, res):
                 ]
             }
         else:
+            res['response']['buttons'] = [{
+                'title': 'Статьи️ 📖',
+                'hide': True,
+            },
+                {
+                    'title': 'Музыка 🎵',
+                    'hide': True,
+                }
+            ]
             res['response']['text'] = f"{random.choice(wtf)}\nВыбери вариант из предложенных, пожалуйста!"
+        res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': True})
+        res['response']['buttons'].append({'title': 'Меню', 'hide': True})
+        res['response']['buttons'].append({'title': 'Оценить ⭐', 'hide': True,
+                                           'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'})
         return
     elif sessionStorage[user_id]['mode'] == 'уровень':
         test_count = sessionStorage[user_id]['test_count']
@@ -462,6 +490,15 @@ def handle_dialog(req, res):
             res['response']['text'] = f'Поздравляю! С увереностью могу назвать тебя настоящим историком!'
             res['response']['card']['image_id'] = '1540737/674b982eaca1f8245da4'
         res['response']['card']['title'] = res['response']['text']
+        res['response']['tts'] += res['response']['text']
+        res['response']['buttons'] = [
+            {'title': suggest, 'hide': True}
+            for suggest in sessionStorage[user_id]['slicedsuggests'][:2]
+        ]
+
+        res['response']['buttons'].append({'title': 'Оценить ⭐', 'hide': True,
+                                           'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'})
+        return
     else:
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
@@ -479,7 +516,7 @@ def handle_dialog(req, res):
     ]
 
     res['response']['buttons'].append({'title': 'Оценить ⭐', 'hide': True,
-                                           'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'})
+                                       'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'})
 
 
 def station_dialog(req, res):
@@ -495,8 +532,8 @@ def station_dialog(req, res):
 
             res['response']['text'] = \
                 f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! В любой момент ты можешь " \
-                f"сказать: закрыть, чтобы закончить наш разговор." \
-                f"\nВ какой режим ты хочешь поиграть: даты или термины?"
+                    f"сказать: закрыть, чтобы закончить наш разговор." \
+                    f"\nВ какой режим ты хочешь поиграть: даты или термины?"
 
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = user[2]
@@ -511,8 +548,8 @@ def station_dialog(req, res):
         tag = str(random.randint(0, 10001))
         sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-                                  ' В какой режим ты хочешь поиграть: даты или термины?' \
-                                  ' За каждый правильный ответ зачисляются очки, будь внимателен! В любой момент ты можешь закончить наш разговор: просто скажи закрыть'
+            ' В какой режим ты хочешь поиграть: даты или термины?' \
+            ' За каждый правильный ответ зачисляются очки, будь внимателен! В любой момент ты можешь закончить наш разговор: просто скажи закрыть'
         return
 
     if 'даты' in req['request']['original_utterance'].lower():
@@ -547,7 +584,8 @@ def station_dialog(req, res):
                     write_in_base(user_id)
                 else:
                     res['response'][
-                        'text'] = f"{random.choice(wrong)} Правильный ответ: в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
+                        'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                        f"в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
             else:  # если 1 год
                 if right_answer[0] in user_answer:
                     res['response'][
@@ -556,7 +594,8 @@ def station_dialog(req, res):
                     write_in_base(user_id)
                 else:
                     res['response'][
-                        'text'] = f"{random.choice(wrong)} Правильный ответ: в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
+                        'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                        f"в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['id'] += 1
 
     elif sessionStorage[user_id]['mode'] == 'термины':
@@ -565,14 +604,13 @@ def station_dialog(req, res):
             sessionStorage[user_id]['lastT'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
-            if req['request']['original_utterance'].lower() in sessionStorage[user_id]['term'][
-                sessionStorage[user_id]['terID'] - 1]['answer'].lower():
+            if req['request']['original_utterance'].lower() in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer'].lower():
                 res['response']['text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                 sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
                 write_in_base(user_id)
             else:
-                res['response'][
-                    'text'] = f"{random.choice(wrong)} Правильный ответ: {sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
+                res['response']['text'] = f"{random.choice(wrong)} " \
+                    f"Правильный ответ: { sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
 
 
