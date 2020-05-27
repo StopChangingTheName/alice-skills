@@ -25,16 +25,6 @@ logging.basicConfig(
 
 morph = pymorphy2.MorphAnalyzer()
 
-
-def run():
-    app.run(host="0.0.0.0", port=8080)
-
-
-def keep_alive():
-    server = Thread(target=run)
-    server.start()
-
-
 sessionStorage = {}
 x = hash_pass('Hello')
 # print(x)
@@ -617,4 +607,4 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    keep_alive()
+    app.run(host="0.0.0.0", port=8080)
