@@ -73,6 +73,8 @@ def config(user_id):
             "Меню",
             "Не знаю"
         ],
+        'want_to_change_nick': False,
+        'old_nick': '',
         "nick": None,
         'id': 0,
         'mode': '',
@@ -193,7 +195,16 @@ def handle_dialog(req, res):
         if len(req['request']['original_utterance']) > 30:
             res['response']['text'] = 'Ваше имя или никнейм занимает больше 30 символов. Пожалуйста, исправьте.'
         else:
-            sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
+            new_nick = req['request']['original_utterance'] + "#" + tag
+            if sessionStorage[user_id]['want_to_change_nick']:
+                con = sqlite3.connect("users.db")
+                cur = con.cursor()
+                print(new_nick, sessionStorage[user_id]['nick'])
+                cur.execute(f"UPDATE u SET nick = '{new_nick}' WHERE nick = '{sessionStorage[user_id]['old_nick']}'")
+                con.commit()
+                sessionStorage[user_id]['want_to_change_nick'] = False
+            sessionStorage[user_id]['nick'] = new_nick
+            #write_in_base(user_id)
             res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                       'У меня есть несколько режимов, просто нажми на кнопку 👇, чтобы выбрать их.' \
                                       ' Не забывай, твои ответы влияют на место в рейтинге, будь внимателен! 😁'
@@ -205,6 +216,9 @@ def handle_dialog(req, res):
                                                'url': 'https://alice-skills-1--t1logy.repl.co/records'})
             # res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
             res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
+            res['user_state_update'] = {
+                'nick': sessionStorage[user_id]['nick']
+            }
 
         return
 
@@ -216,6 +230,7 @@ def handle_dialog(req, res):
         'original_utterance'].lower() or 'что ты умеешь' in req['request']['original_utterance'].lower():
         res['response']['text'] = 'У меня есть несколько режимов, просто нажми на кнопку 👇, чтобы выбрать их. ' \
                                   'Не забывай, твои ответы влияют на место в рейтинге, будь внимателен! 😁'
+        res['response']['tts'] = res['response']['text'] + 'Если хочешь, чтобы я называла тебя по-другому, скажи сменить имя или сменить ник'
         sessionStorage[user_id]['lastQ'] = False
         sessionStorage[user_id]['lastPic'] = False
         sessionStorage[user_id]['lastT'] = False
@@ -228,6 +243,14 @@ def handle_dialog(req, res):
                                            'url': 'https://alice-skills-1--t1logy.repl.co/records'})
         res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
         res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
+        return
+
+    if 'сменить ник' in req['request']['original_utterance'].lower() or \
+            'сменить имя' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['old_nick'] = sessionStorage[user_id]['nick']
+        sessionStorage[user_id]['nick'] = None
+        res['response']['text'] = 'Как я могу тебя называть?'
+        sessionStorage[user_id]['want_to_change_nick'] = True
         return
 
         # ставим режим
@@ -264,9 +287,6 @@ def handle_dialog(req, res):
             }
         ]
         res['response']['end_session'] = True
-        res['user_state_update'] = {
-            'nick': sessionStorage[user_id]['nick']
-        }
         # config(user_id) # на случай если захочет заново играть БЕЗ перезапуска навыка
         return
 
@@ -508,8 +528,8 @@ def handle_dialog(req, res):
         ]
         res['response']['buttons'].append({'title': 'Рейтинг 🏆', 'hide': False,
                                            'url': 'https://alice-skills-1--t1logy.repl.co/records'})
-        res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
         res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
+        res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
         res['response']['text'] = f"{random.choice(wtf)}\nВыбери вариант из предложенных :)"
         return
 
