@@ -5720,3 +5720,635 @@ IndexError: list index out of range
 2020-05-28 16:42:59,470 root ------REQUEST COMMAND: музыка DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
 
 2020-05-28 16:42:59,471 werkzeug 172.18.0.1 - - [28/May/2020 16:42:59] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:43:35,021 werkzeug 172.18.0.1 - - [28/May/2020 16:43:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:44:31,380 werkzeug 172.18.0.1 - - [28/May/2020 16:44:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:45:11,199 werkzeug 172.18.0.1 - - [28/May/2020 16:45:11] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 16:45:38,924 werkzeug 172.18.0.1 - - [28/May/2020 16:45:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:46:52,838 werkzeug 172.18.0.1 - - [28/May/2020 16:46:52] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:47:35,877 werkzeug 172.18.0.1 - - [28/May/2020 16:47:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:47:58,059 werkzeug 172.18.0.1 - - [28/May/2020 16:47:58] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:48:31,781 werkzeug 172.18.0.1 - - [28/May/2020 16:48:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:49:34,920 werkzeug 172.18.0.1 - - [28/May/2020 16:49:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:50:11,254 werkzeug 172.18.0.1 - - [28/May/2020 16:50:11] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 16:50:33,198 werkzeug 172.18.0.1 - - [28/May/2020 16:50:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:51:31,437 werkzeug 172.18.0.1 - - [28/May/2020 16:51:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:52:34,625 werkzeug 172.18.0.1 - - [28/May/2020 16:52:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:53:31,555 werkzeug 172.18.0.1 - - [28/May/2020 16:53:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:54:33,803 werkzeug 172.18.0.1 - - [28/May/2020 16:54:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:55:11,214 werkzeug 172.18.0.1 - - [28/May/2020 16:55:11] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 16:55:36,890 werkzeug 172.18.0.1 - - [28/May/2020 16:55:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:56:42,648 werkzeug 172.18.0.1 - - [28/May/2020 16:56:42] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:57:30,458 werkzeug 172.18.0.1 - - [28/May/2020 16:57:30] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:58:34,671 werkzeug 172.18.0.1 - - [28/May/2020 16:58:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 16:59:41,245 werkzeug 172.18.0.1 - - [28/May/2020 16:59:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:00:11,213 werkzeug 172.18.0.1 - - [28/May/2020 17:00:11] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 17:00:32,741 werkzeug 172.18.0.1 - - [28/May/2020 17:00:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:00:54,824 werkzeug 172.18.0.1 - - [28/May/2020 17:00:54] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:01:34,407 werkzeug 172.18.0.1 - - [28/May/2020 17:01:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:02:33,327 werkzeug 172.18.0.1 - - [28/May/2020 17:02:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:03:45,414 werkzeug 172.18.0.1 - - [28/May/2020 17:03:45] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:04:46,900 werkzeug 172.18.0.1 - - [28/May/2020 17:04:46] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:05:00,818 werkzeug 172.18.0.1 - - [28/May/2020 17:05:00] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:05:11,203 werkzeug 172.18.0.1 - - [28/May/2020 17:05:11] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 17:05:24,813 root ------REQUEST COMMAND: и DEVICE: yabro/20.4.2.197 (none none; Windows 10.0.17134)
+
+2020-05-28 17:05:24,814 werkzeug 172.18.0.1 - - [28/May/2020 17:05:24] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:05:34,948 root ------REQUEST COMMAND: уровень DEVICE: yabro/20.4.2.197 (none none; Windows 10.0.17134)
+
+2020-05-28 17:05:34,948 werkzeug 172.18.0.1 - - [28/May/2020 17:05:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:05:41,232 root ------REQUEST COMMAND: закрыть DEVICE: yabro/20.4.2.197 (none none; Windows 10.0.17134)
+
+2020-05-28 17:05:41,279 werkzeug 172.18.0.1 - - [28/May/2020 17:05:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:05:41,842 werkzeug 172.18.0.1 - - [28/May/2020 17:05:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:09:49,676 werkzeug 172.18.0.1 - - [28/May/2020 17:09:49] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:10:06,425 werkzeug 172.18.0.1 - - [28/May/2020 17:10:06] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:10:11,209 werkzeug 172.18.0.1 - - [28/May/2020 17:10:11] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 17:10:14,878 root ------REQUEST COMMAND: даты DEVICE: ru.yandex.searchplugin/10.80 (HONOR OXF-AN10; android 10)
+
+2020-05-28 17:10:14,878 werkzeug 172.18.0.1 - - [28/May/2020 17:10:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:10:32,408 root ------REQUEST COMMAND: термины DEVICE: ru.yandex.searchplugin/10.80 (HONOR OXF-AN10; android 10)
+
+2020-05-28 17:10:32,409 werkzeug 172.18.0.1 - - [28/May/2020 17:10:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:10:43,670 werkzeug 172.18.0.1 - - [28/May/2020 17:10:43] "[37mGET / HTTP/1.1[0m" 200 -
+2020-05-28 17:10:48,525 root ------REQUEST COMMAND: кунсткамера DEVICE: ru.yandex.searchplugin/10.80 (HONOR OXF-AN10; android 10)
+
+2020-05-28 17:10:48,526 werkzeug 172.18.0.1 - - [28/May/2020 17:10:48] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:11:14,226 werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-28 17:11:14,473 werkzeug 172.18.0.1 - - [28/May/2020 17:11:14] "[37mGET / HTTP/1.1[0m" 200 -
+2020-05-28 17:11:19,989 werkzeug 172.18.0.1 - - [28/May/2020 17:11:19] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:11:23,266 werkzeug 172.18.0.1 - - [28/May/2020 17:11:23] "[37mGET / HTTP/1.1[0m" 200 -
+2020-05-28 17:11:23,823 werkzeug 172.18.0.1 - - [28/May/2020 17:11:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-28 17:11:31,647 werkzeug 172.18.0.1 - - [28/May/2020 17:11:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:12:28,932 werkzeug 172.18.0.1 - - [28/May/2020 17:12:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:12:32,747 werkzeug 172.18.0.1 - - [28/May/2020 17:12:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:12:46,006 werkzeug 172.18.0.1 - - [28/May/2020 17:12:46] "[37mGET / HTTP/1.1[0m" 200 -
+2020-05-28 17:12:49,868 werkzeug 172.18.0.1 - - [28/May/2020 17:12:49] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:13:20,935 werkzeug 172.18.0.1 - - [28/May/2020 17:13:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:13:31,012 werkzeug 172.18.0.1 - - [28/May/2020 17:13:31] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 17:13:42,110 werkzeug 172.18.0.1 - - [28/May/2020 17:13:42] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:14:37,653 werkzeug 172.18.0.1 - - [28/May/2020 17:14:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:15:11,213 werkzeug 172.18.0.1 - - [28/May/2020 17:15:11] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 17:15:34,469 werkzeug 172.18.0.1 - - [28/May/2020 17:15:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:16:04,211 werkzeug 172.18.0.1 - - [28/May/2020 17:16:04] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:16:16,675 werkzeug 172.18.0.1 - - [28/May/2020 17:16:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:16:34,267 root ------REQUEST COMMAND: термины DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-28 17:16:34,268 werkzeug 172.18.0.1 - - [28/May/2020 17:16:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:16:35,524 werkzeug 172.18.0.1 - - [28/May/2020 17:16:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:16:49,268 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-28 17:16:49,269 werkzeug 172.18.0.1 - - [28/May/2020 17:16:49] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:17:36,177 werkzeug 172.18.0.1 - - [28/May/2020 17:17:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:18:36,552 werkzeug 172.18.0.1 - - [28/May/2020 17:18:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:19:34,498 werkzeug 172.18.0.1 - - [28/May/2020 17:19:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:20:37,827 werkzeug 172.18.0.1 - - [28/May/2020 17:20:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:21:10,847 werkzeug 172.18.0.1 - - [28/May/2020 17:21:10] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:21:24,619 werkzeug 172.18.0.1 - - [28/May/2020 17:21:24] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:21:31,044 werkzeug 172.18.0.1 - - [28/May/2020 17:21:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:21:34,290 werkzeug 172.18.0.1 - - [28/May/2020 17:21:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:21:35,660 werkzeug 172.18.0.1 - - [28/May/2020 17:21:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:21:50,458 werkzeug 172.18.0.1 - - [28/May/2020 17:21:50] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:21:59,892 werkzeug 172.18.0.1 - - [28/May/2020 17:21:59] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:22:06,191 werkzeug 172.18.0.1 - - [28/May/2020 17:22:06] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:22:12,376 werkzeug 172.18.0.1 - - [28/May/2020 17:22:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:22:20,287 werkzeug 172.18.0.1 - - [28/May/2020 17:22:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:22:22,386 werkzeug 172.18.0.1 - - [28/May/2020 17:22:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:22:28,138 werkzeug 172.18.0.1 - - [28/May/2020 17:22:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:22:31,932 werkzeug 172.18.0.1 - - [28/May/2020 17:22:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:22:36,087 werkzeug 172.18.0.1 - - [28/May/2020 17:22:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:22:38,252 werkzeug 172.18.0.1 - - [28/May/2020 17:22:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:22:53,993 werkzeug 172.18.0.1 - - [28/May/2020 17:22:53] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 17:23:33,256 werkzeug 172.18.0.1 - - [28/May/2020 17:23:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:23:43,679 werkzeug 172.18.0.1 - - [28/May/2020 17:23:43] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:23:58,173 werkzeug 172.18.0.1 - - [28/May/2020 17:23:58] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:24:15,888 root ------REQUEST COMMAND: даты DEVICE: ru.yandex.searchplugin/7.80 (OPPO CPH1909; android 8.1.0)
+
+2020-05-28 17:24:15,889 werkzeug 172.18.0.1 - - [28/May/2020 17:24:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:24:28,335 root ------REQUEST COMMAND: 1948 DEVICE: ru.yandex.searchplugin/7.80 (OPPO CPH1909; android 8.1.0)
+
+2020-05-28 17:24:28,336 werkzeug 172.18.0.1 - - [28/May/2020 17:24:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:24:36,943 werkzeug 172.18.0.1 - - [28/May/2020 17:24:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:24:41,262 root ------REQUEST COMMAND: 1950 DEVICE: ru.yandex.searchplugin/7.80 (OPPO CPH1909; android 8.1.0)
+
+2020-05-28 17:24:41,263 werkzeug 172.18.0.1 - - [28/May/2020 17:24:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:24:46,179 root ------REQUEST COMMAND: термины DEVICE: ru.yandex.searchplugin/7.80 (OPPO CPH1909; android 8.1.0)
+
+2020-05-28 17:24:46,180 werkzeug 172.18.0.1 - - [28/May/2020 17:24:46] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:25:02,836 root ------REQUEST COMMAND: вайн DEVICE: ru.yandex.searchplugin/7.80 (OPPO CPH1909; android 8.1.0)
+
+2020-05-28 17:25:02,837 werkzeug 172.18.0.1 - - [28/May/2020 17:25:02] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:25:31,572 werkzeug 172.18.0.1 - - [28/May/2020 17:25:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:25:32,484 root ------REQUEST COMMAND: это же ужасная революция DEVICE: ru.yandex.searchplugin/7.80 (OPPO CPH1909; android 8.1.0)
+
+2020-05-28 17:25:32,484 werkzeug 172.18.0.1 - - [28/May/2020 17:25:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:25:35,931 werkzeug 172.18.0.1 - - [28/May/2020 17:25:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:25:42,364 root ------REQUEST COMMAND: закрыть DEVICE: ru.yandex.searchplugin/7.80 (OPPO CPH1909; android 8.1.0)
+
+2020-05-28 17:25:42,402 werkzeug 172.18.0.1 - - [28/May/2020 17:25:42] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:25:47,035 werkzeug 172.18.0.1 - - [28/May/2020 17:25:47] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-28 17:25:47,270 werkzeug 172.18.0.1 - - [28/May/2020 17:25:47] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-28 17:25:48,164 werkzeug 172.18.0.1 - - [28/May/2020 17:25:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-28 17:26:42,547 werkzeug 172.18.0.1 - - [28/May/2020 17:26:42] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:27:33,329 werkzeug 172.18.0.1 - - [28/May/2020 17:27:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:27:53,991 werkzeug 172.18.0.1 - - [28/May/2020 17:27:53] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 17:28:01,742 werkzeug 172.18.0.1 - - [28/May/2020 17:28:01] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:28:14,782 werkzeug 172.18.0.1 - - [28/May/2020 17:28:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:28:26,995 root ------REQUEST COMMAND: картины DEVICE: com.yandex.browser/20.4.0.237 (samsung SM-A520F; android 8.0.0)
+
+2020-05-28 17:28:26,996 werkzeug 172.18.0.1 - - [28/May/2020 17:28:26] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:28:35,906 root ------REQUEST COMMAND: например DEVICE: com.yandex.browser/20.4.0.237 (samsung SM-A520F; android 8.0.0)
+
+2020-05-28 17:28:35,907 werkzeug 172.18.0.1 - - [28/May/2020 17:28:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:28:36,966 werkzeug 172.18.0.1 - - [28/May/2020 17:28:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:28:43,491 root ------REQUEST COMMAND: закрыть DEVICE: com.yandex.browser/20.4.0.237 (samsung SM-A520F; android 8.0.0)
+
+2020-05-28 17:28:43,572 werkzeug 172.18.0.1 - - [28/May/2020 17:28:43] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:29:20,577 werkzeug 172.18.0.1 - - [28/May/2020 17:29:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:29:31,910 werkzeug 172.18.0.1 - - [28/May/2020 17:29:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:29:33,128 werkzeug 172.18.0.1 - - [28/May/2020 17:29:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:29:42,282 werkzeug 172.18.0.1 - - [28/May/2020 17:29:42] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:29:47,323 root ------REQUEST COMMAND: развлечения DEVICE: com.yandex.browser/20.4.0.237 (samsung SM-A520F; android 8.0.0)
+
+2020-05-28 17:29:47,324 werkzeug 172.18.0.1 - - [28/May/2020 17:29:47] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:30:26,193 werkzeug 172.18.0.1 - - [28/May/2020 17:30:26] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:30:29,226 werkzeug 172.18.0.1 - - [28/May/2020 17:30:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:30:50,910 werkzeug 172.18.0.1 - - [28/May/2020 17:30:50] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:31:50,202 werkzeug 172.18.0.1 - - [28/May/2020 17:31:50] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:32:41,748 werkzeug 172.18.0.1 - - [28/May/2020 17:32:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:33:34,292 werkzeug 172.18.0.1 - - [28/May/2020 17:33:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:34:39,565 werkzeug 172.18.0.1 - - [28/May/2020 17:34:39] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:35:35,789 werkzeug 172.18.0.1 - - [28/May/2020 17:35:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:36:37,430 werkzeug 172.18.0.1 - - [28/May/2020 17:36:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:38:08,254 werkzeug 172.18.0.1 - - [28/May/2020 17:38:08] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:38:27,462 werkzeug 172.18.0.1 - - [28/May/2020 17:38:27] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:39:31,029 werkzeug 172.18.0.1 - - [28/May/2020 17:39:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:40:28,113 werkzeug 172.18.0.1 - - [28/May/2020 17:40:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:41:30,465 werkzeug 172.18.0.1 - - [28/May/2020 17:41:30] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:41:39,961 werkzeug 172.18.0.1 - - [28/May/2020 17:41:39] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 17:42:29,376 werkzeug 172.18.0.1 - - [28/May/2020 17:42:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:43:33,392 werkzeug 172.18.0.1 - - [28/May/2020 17:43:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:43:41,615 werkzeug 172.18.0.1 - - [28/May/2020 17:43:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:44:27,850 werkzeug 172.18.0.1 - - [28/May/2020 17:44:27] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:45:31,124 werkzeug 172.18.0.1 - - [28/May/2020 17:45:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:45:34,529 werkzeug 172.18.0.1 - - [28/May/2020 17:45:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:46:21,494 werkzeug 172.18.0.1 - - [28/May/2020 17:46:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:46:32,008 werkzeug 172.18.0.1 - - [28/May/2020 17:46:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:46:39,206 werkzeug 172.18.0.1 - - [28/May/2020 17:46:39] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 17:46:59,724 werkzeug 172.18.0.1 - - [28/May/2020 17:46:59] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:47:26,104 werkzeug 172.18.0.1 - - [28/May/2020 17:47:26] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:47:33,951 werkzeug 172.18.0.1 - - [28/May/2020 17:47:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:47:39,325 root ------REQUEST COMMAND: картины DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:47:39,326 werkzeug 172.18.0.1 - - [28/May/2020 17:47:39] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:48:15,144 werkzeug 172.18.0.1 - - [28/May/2020 17:48:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:48:22,013 root ------REQUEST COMMAND: павел 1 DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:48:22,057 werkzeug 172.18.0.1 - - [28/May/2020 17:48:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:48:28,718 root ------REQUEST COMMAND: павел 1 DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:48:28,719 werkzeug 172.18.0.1 - - [28/May/2020 17:48:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:48:28,865 werkzeug 172.18.0.1 - - [28/May/2020 17:48:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:48:40,432 werkzeug 172.18.0.1 - - [28/May/2020 17:48:40] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:48:48,168 root ------REQUEST COMMAND: картины DEVICE: ru.yandex.searchplugin/9.20 (HONOR DLI-TL20; android 7.0)
+
+2020-05-28 17:48:48,169 werkzeug 172.18.0.1 - - [28/May/2020 17:48:48] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:48:59,934 root ------REQUEST COMMAND: меню DEVICE: ru.yandex.searchplugin/9.20 (HONOR DLI-TL20; android 7.0)
+
+2020-05-28 17:48:59,935 werkzeug 172.18.0.1 - - [28/May/2020 17:48:59] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:49:04,650 root ------REQUEST COMMAND: президент кеннеди DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:49:04,651 werkzeug 172.18.0.1 - - [28/May/2020 17:49:04] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:49:07,505 root ------REQUEST COMMAND: даты DEVICE: ru.yandex.searchplugin/9.20 (HONOR DLI-TL20; android 7.0)
+
+2020-05-28 17:49:07,506 werkzeug 172.18.0.1 - - [28/May/2020 17:49:07] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:49:14,950 root ------REQUEST COMMAND: что забирать транспортир DEVICE: ru.yandex.searchplugin/9.20 (HONOR DLI-TL20; android 7.0)
+
+2020-05-28 17:49:14,951 werkzeug 172.18.0.1 - - [28/May/2020 17:49:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:49:25,681 root ------REQUEST COMMAND: меню DEVICE: ru.yandex.searchplugin/9.20 (HONOR DLI-TL20; android 7.0)
+
+2020-05-28 17:49:25,682 werkzeug 172.18.0.1 - - [28/May/2020 17:49:25] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:49:31,734 root ------REQUEST COMMAND: развлечения DEVICE: ru.yandex.searchplugin/9.20 (HONOR DLI-TL20; android 7.0)
+
+2020-05-28 17:49:31,734 werkzeug 172.18.0.1 - - [28/May/2020 17:49:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:49:32,352 werkzeug 172.18.0.1 - - [28/May/2020 17:49:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:49:32,933 root ------REQUEST COMMAND: александр 3 DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:49:32,971 werkzeug 172.18.0.1 - - [28/May/2020 17:49:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:49:38,444 root ------REQUEST COMMAND: статьи DEVICE: ru.yandex.searchplugin/9.20 (HONOR DLI-TL20; android 7.0)
+
+2020-05-28 17:49:38,444 werkzeug 172.18.0.1 - - [28/May/2020 17:49:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:49:45,559 root ------REQUEST COMMAND: поезда DEVICE: ru.yandex.searchplugin/9.20 (HONOR DLI-TL20; android 7.0)
+
+2020-05-28 17:49:45,560 werkzeug 172.18.0.1 - - [28/May/2020 17:49:45] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:49:45,807 root ------REQUEST COMMAND: меню DEVICE: ru.yandex.searchplugin/9.20 (HONOR DLI-TL20; android 7.0)
+
+2020-05-28 17:49:45,808 werkzeug 172.18.0.1 - - [28/May/2020 17:49:45] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:49:47,135 root ------REQUEST COMMAND: александр невский DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:49:47,198 werkzeug 172.18.0.1 - - [28/May/2020 17:49:47] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:49:50,856 root ------REQUEST COMMAND: термины DEVICE: ru.yandex.searchplugin/9.20 (HONOR DLI-TL20; android 7.0)
+
+2020-05-28 17:49:50,857 werkzeug 172.18.0.1 - - [28/May/2020 17:49:50] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:50:05,003 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.searchplugin/9.20 (HONOR DLI-TL20; android 7.0)
+
+2020-05-28 17:50:05,003 werkzeug 172.18.0.1 - - [28/May/2020 17:50:05] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:50:08,394 root ------REQUEST COMMAND: василий чапаев DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:50:08,432 werkzeug 172.18.0.1 - - [28/May/2020 17:50:08] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:50:32,359 root ------REQUEST COMMAND: циолковский DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:50:32,396 werkzeug 172.18.0.1 - - [28/May/2020 17:50:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:50:32,405 werkzeug 172.18.0.1 - - [28/May/2020 17:50:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:50:41,126 werkzeug 172.18.0.1 - - [28/May/2020 17:50:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:50:53,674 werkzeug 172.18.0.1 - - [28/May/2020 17:50:53] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:50:56,594 root ------REQUEST COMMAND: скобелев DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:50:56,633 werkzeug 172.18.0.1 - - [28/May/2020 17:50:56] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:51:05,426 root ------REQUEST COMMAND: даты DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:51:05,427 werkzeug 172.18.0.1 - - [28/May/2020 17:51:05] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:51:14,238 werkzeug 172.18.0.1 - - [28/May/2020 17:51:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:51:15,517 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:51:15,517 werkzeug 172.18.0.1 - - [28/May/2020 17:51:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:51:29,378 root ------REQUEST COMMAND: дмитрий донской DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:51:29,417 werkzeug 172.18.0.1 - - [28/May/2020 17:51:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:51:31,682 werkzeug 172.18.0.1 - - [28/May/2020 17:51:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:51:32,573 root ------REQUEST COMMAND: 1425 DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:51:32,573 werkzeug 172.18.0.1 - - [28/May/2020 17:51:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:51:39,197 werkzeug 172.18.0.1 - - [28/May/2020 17:51:39] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 17:51:45,329 root ------REQUEST COMMAND: эйнштейн DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:51:45,370 werkzeug 172.18.0.1 - - [28/May/2020 17:51:45] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:51:52,668 root ------REQUEST COMMAND: 1200 в каком крае DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:51:52,669 werkzeug 172.18.0.1 - - [28/May/2020 17:51:52] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:52:06,459 root ------REQUEST COMMAND: наполеон 3 DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:52:06,507 werkzeug 172.18.0.1 - - [28/May/2020 17:52:06] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:52:07,324 root ------REQUEST COMMAND: в 1933 я и так знала DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:52:07,367 werkzeug 172.18.0.1 - - [28/May/2020 17:52:07] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:52:16,777 root ------REQUEST COMMAND: маяковский DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:52:16,816 werkzeug 172.18.0.1 - - [28/May/2020 17:52:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:52:22,000 root ------REQUEST COMMAND: 1400 1700 DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:52:22,002 werkzeug 172.18.0.1 - - [28/May/2020 17:52:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:52:27,106 root ------REQUEST COMMAND: 1703 DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:52:27,108 werkzeug 172.18.0.1 - - [28/May/2020 17:52:27] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:52:30,594 werkzeug 172.18.0.1 - - [28/May/2020 17:52:30] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:52:40,868 root ------REQUEST COMMAND: в 1875 DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:52:40,869 werkzeug 172.18.0.1 - - [28/May/2020 17:52:40] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:52:47,374 root ------REQUEST COMMAND: меню DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:52:47,375 werkzeug 172.18.0.1 - - [28/May/2020 17:52:47] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:52:49,976 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:52:49,977 werkzeug 172.18.0.1 - - [28/May/2020 17:52:49] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:52:56,066 root ------REQUEST COMMAND: развлечения DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:52:56,067 werkzeug 172.18.0.1 - - [28/May/2020 17:52:56] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:53:07,277 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:53:07,278 werkzeug 172.18.0.1 - - [28/May/2020 17:53:07] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:53:09,139 root ------REQUEST COMMAND: термины DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:53:09,140 werkzeug 172.18.0.1 - - [28/May/2020 17:53:09] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:53:29,453 root ------REQUEST COMMAND: колхоз DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:53:29,517 werkzeug 172.18.0.1 - - [28/May/2020 17:53:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:53:35,346 werkzeug 172.18.0.1 - - [28/May/2020 17:53:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:53:39,531 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:53:39,532 werkzeug 172.18.0.1 - - [28/May/2020 17:53:39] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:53:47,907 root ------REQUEST COMMAND: круто DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:53:47,909 werkzeug 172.18.0.1 - - [28/May/2020 17:53:47] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:53:57,284 root ------REQUEST COMMAND: что мы ошиблись DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:53:57,284 werkzeug 172.18.0.1 - - [28/May/2020 17:53:57] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:53:59,978 root ------REQUEST COMMAND: георгий жуков DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:54:00,022 werkzeug 172.18.0.1 - - [28/May/2020 17:54:00] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:54:12,348 root ------REQUEST COMMAND: черчиль DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:54:12,349 werkzeug 172.18.0.1 - - [28/May/2020 17:54:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:54:23,077 root ------REQUEST COMMAND: ленин DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:54:23,119 werkzeug 172.18.0.1 - - [28/May/2020 17:54:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:54:30,567 root ------REQUEST COMMAND: петр 1 DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:54:30,606 werkzeug 172.18.0.1 - - [28/May/2020 17:54:30] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:54:31,054 werkzeug 172.18.0.1 - - [28/May/2020 17:54:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:54:31,100 root ------REQUEST COMMAND: боярская дума DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:54:31,101 werkzeug 172.18.0.1 - - [28/May/2020 17:54:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:54:59,384 root ------REQUEST COMMAND: титул наследство DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:54:59,385 werkzeug 172.18.0.1 - - [28/May/2020 17:54:59] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:55:09,823 root ------REQUEST COMMAND: елизавета петровна DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:55:09,824 werkzeug 172.18.0.1 - - [28/May/2020 17:55:09] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:55:24,107 root ------REQUEST COMMAND: сталин DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:55:24,145 werkzeug 172.18.0.1 - - [28/May/2020 17:55:24] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:55:32,872 root ------REQUEST COMMAND: освобождение DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:55:32,873 werkzeug 172.18.0.1 - - [28/May/2020 17:55:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:55:37,353 werkzeug 172.18.0.1 - - [28/May/2020 17:55:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:55:50,210 root ------REQUEST COMMAND: холопы DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:55:50,210 werkzeug 172.18.0.1 - - [28/May/2020 17:55:50] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:56:15,266 root ------REQUEST COMMAND: граф григорий орлов DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:56:15,266 werkzeug 172.18.0.1 - - [28/May/2020 17:56:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:56:16,287 root ------REQUEST COMMAND: сеча DEVICE: ru.yandex.searchplugin/10.80 (HONOR HRY-LX1; android 10)
+
+2020-05-28 17:56:16,287 werkzeug 172.18.0.1 - - [28/May/2020 17:56:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:56:33,177 root ------REQUEST COMMAND: вещий олег DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:56:33,247 werkzeug 172.18.0.1 - - [28/May/2020 17:56:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:56:33,257 werkzeug 172.18.0.1 - - [28/May/2020 17:56:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:56:39,208 werkzeug 172.18.0.1 - - [28/May/2020 17:56:39] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 17:56:48,076 root ------REQUEST COMMAND: николай 1 DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:56:48,112 werkzeug 172.18.0.1 - - [28/May/2020 17:56:48] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:57:10,845 root ------REQUEST COMMAND: академик сахаров DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:57:10,883 werkzeug 172.18.0.1 - - [28/May/2020 17:57:10] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:57:35,362 werkzeug 172.18.0.1 - - [28/May/2020 17:57:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:57:47,549 root ------REQUEST COMMAND: кутузов DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:57:47,582 werkzeug 172.18.0.1 - - [28/May/2020 17:57:47] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:58:08,017 root ------REQUEST COMMAND: президент путин DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:58:08,058 werkzeug 172.18.0.1 - - [28/May/2020 17:58:08] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:58:23,155 root ------REQUEST COMMAND: иван грозный DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:58:23,241 werkzeug 172.18.0.1 - - [28/May/2020 17:58:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:58:35,780 root ------REQUEST COMMAND: кутузов DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:58:35,781 werkzeug 172.18.0.1 - - [28/May/2020 17:58:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:58:37,024 root ------REQUEST COMMAND: хрущев DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:58:37,025 werkzeug 172.18.0.1 - - [28/May/2020 17:58:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:58:45,692 werkzeug 172.18.0.1 - - [28/May/2020 17:58:45] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:58:55,855 root ------REQUEST COMMAND: николай 2 DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:58:55,894 werkzeug 172.18.0.1 - - [28/May/2020 17:58:55] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:59:37,413 root ------REQUEST COMMAND: джордж буш младший DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 17:59:37,463 werkzeug 172.18.0.1 - - [28/May/2020 17:59:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 17:59:41,599 werkzeug 172.18.0.1 - - [28/May/2020 17:59:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:00:02,913 root ------REQUEST COMMAND: конструктор калашников DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 18:00:02,953 werkzeug 172.18.0.1 - - [28/May/2020 18:00:02] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:00:32,066 werkzeug 172.18.0.1 - - [28/May/2020 18:00:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:00:40,481 root ------REQUEST COMMAND: скобелев DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 18:00:40,522 werkzeug 172.18.0.1 - - [28/May/2020 18:00:40] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:01:16,519 root ------REQUEST COMMAND: владимир маяковский DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 18:01:16,572 werkzeug 172.18.0.1 - - [28/May/2020 18:01:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:01:35,398 root ------REQUEST COMMAND: ленин DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 18:01:35,443 werkzeug 172.18.0.1 - - [28/May/2020 18:01:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:01:39,209 werkzeug 172.18.0.1 - - [28/May/2020 18:01:39] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 18:01:39,688 werkzeug 172.18.0.1 - - [28/May/2020 18:01:39] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:01:54,434 root ------REQUEST COMMAND: уваров DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 18:01:54,472 werkzeug 172.18.0.1 - - [28/May/2020 18:01:54] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:02:06,740 root ------REQUEST COMMAND: циолковский DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 18:02:06,778 werkzeug 172.18.0.1 - - [28/May/2020 18:02:06] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:02:21,830 root ------REQUEST COMMAND: калашников DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 18:02:21,878 werkzeug 172.18.0.1 - - [28/May/2020 18:02:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:02:33,377 werkzeug 172.18.0.1 - - [28/May/2020 18:02:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:02:35,692 root ------REQUEST COMMAND: александр 3 DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 18:02:35,739 werkzeug 172.18.0.1 - - [28/May/2020 18:02:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:03:05,536 werkzeug 172.18.0.1 - - [28/May/2020 18:03:05] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:03:21,710 root ------REQUEST COMMAND: термины DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 18:03:21,711 werkzeug 172.18.0.1 - - [28/May/2020 18:03:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:03:36,750 root ------REQUEST COMMAND: ты что ебу что ли DEVICE: ru.yandex.searchplugin/10.70 (samsung SM-A605FN; android 9)
+
+2020-05-28 18:03:36,751 werkzeug 172.18.0.1 - - [28/May/2020 18:03:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:05:34,273 werkzeug 172.18.0.1 - - [28/May/2020 18:05:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:05:55,322 werkzeug 172.18.0.1 - - [28/May/2020 18:05:55] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:06:39,215 werkzeug 172.18.0.1 - - [28/May/2020 18:06:39] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 18:07:03,714 werkzeug 172.18.0.1 - - [28/May/2020 18:07:03] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:07:15,800 werkzeug 172.18.0.1 - - [28/May/2020 18:07:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:07:19,297 werkzeug 172.18.0.1 - - [28/May/2020 18:07:19] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:07:32,681 werkzeug 172.18.0.1 - - [28/May/2020 18:07:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:07:51,213 werkzeug 172.18.0.1 - - [28/May/2020 18:07:51] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-28 18:07:51,606 werkzeug 172.18.0.1 - - [28/May/2020 18:07:51] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-28 18:07:52,655 werkzeug 172.18.0.1 - - [28/May/2020 18:07:52] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-28 18:08:05,780 werkzeug 172.18.0.1 - - [28/May/2020 18:08:05] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:08:20,474 werkzeug 172.18.0.1 - - [28/May/2020 18:08:20] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:08:36,886 root ------REQUEST COMMAND: даты DEVICE: yabro/20.4.2.197 (none none; Windows 10.0.18363)
+
+2020-05-28 18:08:36,887 werkzeug 172.18.0.1 - - [28/May/2020 18:08:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:08:42,722 root ------REQUEST COMMAND: меню DEVICE: yabro/20.4.2.197 (none none; Windows 10.0.18363)
+
+2020-05-28 18:08:42,723 werkzeug 172.18.0.1 - - [28/May/2020 18:08:42] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:09:02,724 root ------REQUEST COMMAND: смотреть DEVICE: yabro/20.4.2.197 (none none; Windows 10.0.18363)
+
+2020-05-28 18:09:02,724 werkzeug 172.18.0.1 - - [28/May/2020 18:09:02] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:09:12,885 root ------REQUEST COMMAND: закрыть навык DEVICE: yabro/20.4.2.197 (none none; Windows 10.0.18363)
+
+2020-05-28 18:09:12,922 werkzeug 172.18.0.1 - - [28/May/2020 18:09:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:09:35,259 werkzeug 172.18.0.1 - - [28/May/2020 18:09:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:09:46,534 werkzeug 172.18.0.1 - - [28/May/2020 18:09:46] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:09:49,415 werkzeug 172.18.0.1 - - [28/May/2020 18:09:49] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:11:39,211 werkzeug 172.18.0.1 - - [28/May/2020 18:11:39] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 18:12:34,082 werkzeug 172.18.0.1 - - [28/May/2020 18:12:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:12:49,084 werkzeug 172.18.0.1 - - [28/May/2020 18:12:49] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:12:54,142 werkzeug 172.18.0.1 - - [28/May/2020 18:12:54] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:13:33,525 werkzeug 172.18.0.1 - - [28/May/2020 18:13:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:14:04,355 werkzeug 172.18.0.1 - - [28/May/2020 18:14:04] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-28 18:14:04,728 werkzeug 172.18.0.1 - - [28/May/2020 18:14:04] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-28 18:14:06,185 werkzeug 172.18.0.1 - - [28/May/2020 18:14:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-28 18:14:38,499 werkzeug 172.18.0.1 - - [28/May/2020 18:14:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:15:33,228 werkzeug 172.18.0.1 - - [28/May/2020 18:15:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:16:10,126 werkzeug 172.18.0.1 - - [28/May/2020 18:16:10] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:16:14,130 werkzeug 172.18.0.1 - - [28/May/2020 18:16:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:16:32,110 werkzeug 172.18.0.1 - - [28/May/2020 18:16:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:16:39,204 werkzeug 172.18.0.1 - - [28/May/2020 18:16:39] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 18:17:32,080 werkzeug 172.18.0.1 - - [28/May/2020 18:17:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:18:32,810 werkzeug 172.18.0.1 - - [28/May/2020 18:18:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:18:35,131 werkzeug 172.18.0.1 - - [28/May/2020 18:18:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:18:48,686 werkzeug 172.18.0.1 - - [28/May/2020 18:18:48] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:19:35,402 werkzeug 172.18.0.1 - - [28/May/2020 18:19:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:20:41,511 werkzeug 172.18.0.1 - - [28/May/2020 18:20:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:21:34,080 werkzeug 172.18.0.1 - - [28/May/2020 18:21:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:21:38,202 werkzeug 172.18.0.1 - - [28/May/2020 18:21:38] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 18:22:34,470 werkzeug 172.18.0.1 - - [28/May/2020 18:22:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:23:34,221 werkzeug 172.18.0.1 - - [28/May/2020 18:23:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:23:56,072 werkzeug 172.18.0.1 - - [28/May/2020 18:23:56] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:24:34,897 werkzeug 172.18.0.1 - - [28/May/2020 18:24:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:24:52,429 werkzeug 172.18.0.1 - - [28/May/2020 18:24:52] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:25:11,548 werkzeug 172.18.0.1 - - [28/May/2020 18:25:11] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:25:25,142 root ------REQUEST COMMAND: сменить имя DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-28 18:25:25,143 werkzeug 172.18.0.1 - - [28/May/2020 18:25:25] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:25:31,888 werkzeug 172.18.0.1 - - [28/May/2020 18:25:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:25:34,379 werkzeug 172.18.0.1 - - [28/May/2020 18:25:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:26:32,121 werkzeug 172.18.0.1 - - [28/May/2020 18:26:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:26:38,206 werkzeug 172.18.0.1 - - [28/May/2020 18:26:38] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 18:27:14,471 werkzeug 172.18.0.1 - - [28/May/2020 18:27:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:27:28,641 werkzeug 172.18.0.1 - - [28/May/2020 18:27:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:27:33,828 werkzeug 172.18.0.1 - - [28/May/2020 18:27:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:27:40,917 root ------REQUEST COMMAND: даты DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-28 18:27:40,918 werkzeug 172.18.0.1 - - [28/May/2020 18:27:40] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:27:41,398 root ------REQUEST COMMAND: молодец DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-28 18:27:41,400 werkzeug 172.18.0.1 - - [28/May/2020 18:27:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:27:47,833 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-28 18:27:47,834 werkzeug 172.18.0.1 - - [28/May/2020 18:27:47] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:27:48,151 root ------REQUEST COMMAND: ну скажи DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-28 18:27:48,152 werkzeug 172.18.0.1 - - [28/May/2020 18:27:48] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:28:04,776 root ------REQUEST COMMAND: не знаю сейчас двойку получу DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-28 18:28:04,784 werkzeug 172.18.0.1 - - [28/May/2020 18:28:04] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:28:09,795 root ------REQUEST COMMAND: меню DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.4.1)
+
+2020-05-28 18:28:09,796 werkzeug 172.18.0.1 - - [28/May/2020 18:28:09] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:29:08,249 werkzeug 172.18.0.1 - - [28/May/2020 18:29:08] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:29:37,651 werkzeug 172.18.0.1 - - [28/May/2020 18:29:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:30:35,596 werkzeug 172.18.0.1 - - [28/May/2020 18:30:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:31:36,515 werkzeug 172.18.0.1 - - [28/May/2020 18:31:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:31:38,213 werkzeug 172.18.0.1 - - [28/May/2020 18:31:38] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 18:32:34,133 werkzeug 172.18.0.1 - - [28/May/2020 18:32:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:32:56,858 werkzeug 172.18.0.1 - - [28/May/2020 18:32:56] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:33:13,319 werkzeug 172.18.0.1 - - [28/May/2020 18:33:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:33:28,831 root ------REQUEST COMMAND: уровень DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:33:28,832 werkzeug 172.18.0.1 - - [28/May/2020 18:33:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:33:31,075 werkzeug 172.18.0.1 - - [28/May/2020 18:33:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:33:38,065 root ------REQUEST COMMAND: даты DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:33:38,065 werkzeug 172.18.0.1 - - [28/May/2020 18:33:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:33:48,321 root ------REQUEST COMMAND: не знаю DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:33:48,322 werkzeug 172.18.0.1 - - [28/May/2020 18:33:48] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:34:02,832 root ------REQUEST COMMAND: 1668 DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:34:02,833 werkzeug 172.18.0.1 - - [28/May/2020 18:34:02] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:34:14,177 root ------REQUEST COMMAND: погоду пришла японская DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:34:14,177 werkzeug 172.18.0.1 - - [28/May/2020 18:34:14] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:34:30,400 root ------REQUEST COMMAND: 1933 по 1935 DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:34:30,401 werkzeug 172.18.0.1 - - [28/May/2020 18:34:30] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:34:34,910 werkzeug 172.18.0.1 - - [28/May/2020 18:34:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:34:46,239 root ------REQUEST COMMAND: не знаю DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:34:46,240 werkzeug 172.18.0.1 - - [28/May/2020 18:34:46] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:35:02,916 root ------REQUEST COMMAND: 1503 году DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:35:02,917 werkzeug 172.18.0.1 - - [28/May/2020 18:35:02] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:35:17,642 root ------REQUEST COMMAND: в 1914 DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:35:17,685 werkzeug 172.18.0.1 - - [28/May/2020 18:35:17] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:35:31,051 root ------REQUEST COMMAND: 1600 какой то DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:35:31,052 werkzeug 172.18.0.1 - - [28/May/2020 18:35:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:35:34,267 werkzeug 172.18.0.1 - - [28/May/2020 18:35:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:35:45,122 root ------REQUEST COMMAND: не знаю DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:35:45,122 werkzeug 172.18.0.1 - - [28/May/2020 18:35:45] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:35:58,625 root ------REQUEST COMMAND: в 1523 DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:35:58,626 werkzeug 172.18.0.1 - - [28/May/2020 18:35:58] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:36:13,346 root ------REQUEST COMMAND: 1945 DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:36:13,346 werkzeug 172.18.0.1 - - [28/May/2020 18:36:13] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:36:27,675 root ------REQUEST COMMAND: 1939 DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:36:27,676 werkzeug 172.18.0.1 - - [28/May/2020 18:36:27] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:36:30,678 werkzeug 172.18.0.1 - - [28/May/2020 18:36:30] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:36:38,204 werkzeug 172.18.0.1 - - [28/May/2020 18:36:38] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 18:36:42,245 root ------REQUEST COMMAND: 1840 по моему DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:36:42,246 werkzeug 172.18.0.1 - - [28/May/2020 18:36:42] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:36:56,522 root ------REQUEST COMMAND: не знаю DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:36:56,524 werkzeug 172.18.0.1 - - [28/May/2020 18:36:56] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:37:12,129 root ------REQUEST COMMAND: в 33 1933 DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:37:12,166 werkzeug 172.18.0.1 - - [28/May/2020 18:37:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:37:23,019 root ------REQUEST COMMAND: знаю DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:37:23,020 werkzeug 172.18.0.1 - - [28/May/2020 18:37:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:37:34,788 werkzeug 172.18.0.1 - - [28/May/2020 18:37:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:37:36,442 root ------REQUEST COMMAND: не знаю DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:37:36,443 werkzeug 172.18.0.1 - - [28/May/2020 18:37:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:37:53,672 root ------REQUEST COMMAND: в 988 году DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:37:53,673 werkzeug 172.18.0.1 - - [28/May/2020 18:37:53] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:38:04,326 root ------REQUEST COMMAND: не знаю DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:38:04,327 werkzeug 172.18.0.1 - - [28/May/2020 18:38:04] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:38:21,889 root ------REQUEST COMMAND: не знаю DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:38:21,890 werkzeug 172.18.0.1 - - [28/May/2020 18:38:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:38:30,926 werkzeug 172.18.0.1 - - [28/May/2020 18:38:30] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:38:38,170 root ------REQUEST COMMAND: не знаю DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:38:38,170 werkzeug 172.18.0.1 - - [28/May/2020 18:38:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:38:56,051 root ------REQUEST COMMAND: 1840 DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:38:56,051 werkzeug 172.18.0.1 - - [28/May/2020 18:38:56] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:39:07,621 root ------REQUEST COMMAND: не знаю DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:39:07,622 werkzeug 172.18.0.1 - - [28/May/2020 18:39:07] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:39:22,417 root ------REQUEST COMMAND: нет DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:39:22,424 werkzeug 172.18.0.1 - - [28/May/2020 18:39:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:39:36,344 root ------REQUEST COMMAND: не знаю DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:39:36,345 werkzeug 172.18.0.1 - - [28/May/2020 18:39:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:39:37,972 werkzeug 172.18.0.1 - - [28/May/2020 18:39:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:39:51,129 root ------REQUEST COMMAND: ни в каком DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:39:51,130 werkzeug 172.18.0.1 - - [28/May/2020 18:39:51] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:40:37,357 werkzeug 172.18.0.1 - - [28/May/2020 18:40:37] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:40:38,373 root ------REQUEST COMMAND: а как это DEVICE: yabro/20.2.3.213 (none none; Windows 10.0.18362)
+
+2020-05-28 18:40:38,374 werkzeug 172.18.0.1 - - [28/May/2020 18:40:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:41:38,220 werkzeug 172.18.0.1 - - [28/May/2020 18:41:38] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 18:41:48,433 werkzeug 172.18.0.1 - - [28/May/2020 18:41:48] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:42:33,744 werkzeug 172.18.0.1 - - [28/May/2020 18:42:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:43:34,706 werkzeug 172.18.0.1 - - [28/May/2020 18:43:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:44:34,616 werkzeug 172.18.0.1 - - [28/May/2020 18:44:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:45:31,957 werkzeug 172.18.0.1 - - [28/May/2020 18:45:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:46:38,251 werkzeug 172.18.0.1 - - [28/May/2020 18:46:38] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 18:46:51,231 werkzeug 172.18.0.1 - - [28/May/2020 18:46:51] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:46:58,521 werkzeug 172.18.0.1 - - [28/May/2020 18:46:58] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-28 18:46:58,759 werkzeug 172.18.0.1 - - [28/May/2020 18:46:58] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-28 18:46:59,673 werkzeug 172.18.0.1 - - [28/May/2020 18:46:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-28 18:47:03,366 werkzeug 172.18.0.1 - - [28/May/2020 18:47:03] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:47:33,364 werkzeug 172.18.0.1 - - [28/May/2020 18:47:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:48:46,628 werkzeug 172.18.0.1 - - [28/May/2020 18:48:46] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:49:51,378 werkzeug 172.18.0.1 - - [28/May/2020 18:49:51] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:50:31,149 werkzeug 172.18.0.1 - - [28/May/2020 18:50:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:51:31,987 werkzeug 172.18.0.1 - - [28/May/2020 18:51:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:51:38,219 werkzeug 172.18.0.1 - - [28/May/2020 18:51:38] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-28 18:52:35,193 werkzeug 172.18.0.1 - - [28/May/2020 18:52:35] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:53:31,394 werkzeug 172.18.0.1 - - [28/May/2020 18:53:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:54:50,004 werkzeug 172.18.0.1 - - [28/May/2020 18:54:50] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:55:30,815 werkzeug 172.18.0.1 - - [28/May/2020 18:55:30] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:55:42,293 werkzeug 172.18.0.1 - - [28/May/2020 18:55:42] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-28 18:55:53,087 werkzeug 172.18.0.1 - - [28/May/2020 18:55:53] "[37mGET / HTTP/1.1[0m" 200 -
+2020-05-28 18:56:02,332 werkzeug 172.18.0.1 - - [28/May/2020 18:56:02] "[37mPOST /post HTTP/1.1[0m" 200 -
