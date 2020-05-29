@@ -104,7 +104,7 @@ def write_in_base(user_id):
     cur.execute(f"SELECT * FROM u WHERE nick = '{sessionStorage[user_id]['nick']}';")
     if cur.fetchone() is None:
         id_ = len(cur.execute("SELECT * FROM u").fetchall())
-        cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
+        cur.execute("INSERT OR REPLACE INTO u VALUES (?,?,?,?,?,?);",
                     (
                         id_ + 1,
                         sessionStorage[user_id]['nick'],  # Заглушка для имени
