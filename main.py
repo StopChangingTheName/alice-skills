@@ -104,7 +104,7 @@ def write_in_base(user_id):
     ter_count = sessionStorage[user_id]['ter_count']
     cur.execute(f"SELECT * FROM u WHERE nick = '{sessionStorage[user_id]['nick']}';")
     if cur.fetchone() is None:
-        id_ = len(cur.execute("SELECT * FROM u").fetchall())
+        id_ = len(cur.execute('SELECT * FROM u').fetchall())
         cur.execute("INSERT OR REPLACE INTO u VALUES (?,?,?,?,?,?);",
                     (
                         id_ + 1,
@@ -150,7 +150,7 @@ def ask_question():
         with open('questions.txt', 'w', encoding='utf-8') as f:
             f.write(f'Вопрос: {form.question.data}; Ответ: {form.answer.data}')
         return 'Ваш вопрос получен. Спасибо!'
-    return render_template('ask.html', title='Задать свой вопрос', form=form)
+    return render_template('ask.html', title='Задать свой вопрос', form=form)2
 
 
 @app.route('/post', methods=['POST'])
@@ -699,6 +699,10 @@ def station_dialog(req, res):
         sessionStorage[user_id]['terID'] += 1
     else:
         res['response']['text'] = f'{random.choice(wtf)}. В какой режим ты хочешь сыграть: даты или термины?'
+
+    res['response']['buttons'] = [
+        {'title': 'помощь', 'hide': True}
+    ]
 
 
 if __name__ == '__main__':
