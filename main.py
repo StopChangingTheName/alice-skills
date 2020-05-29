@@ -5,7 +5,7 @@ import random
 import sqlite3
 from threading import Thread
 from flask import Flask, request, render_template
-
+from form import AnswQuest
 from portrait import portraits, hash_pass
 
 #  не удаляйте этот путь т.к. у меня проблема с открытием data.json
@@ -17,6 +17,7 @@ with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
 
 app = Flask('')
+app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
     filename='example.log',
     format='%(asctime)s %(name)s %(message)s',
@@ -140,6 +141,16 @@ def records():
     persons = cur.execute("SELECT * FROM u").fetchall()
     persons = sorted(persons, key=lambda x: -x[-1])
     return render_template('records.html', title='Рекорды | ЕГЭ', persons=persons)
+
+
+@app.route('/ask_question', methods=['GET', 'POST'])
+def ask_question():
+    form = AnswQuest()
+    if form.validate_on_submit():
+        with open('questions.txt', 'w', encoding='utf-8') as f:
+            f.write(f'Вопрос: {form.question.data}; Ответ: {form.answer.data}')
+        return 'Ваш вопрос получен. Спасибо!'
+    return render_template('ask.html', title='Задать свой вопрос', form=form)
 
 
 @app.route('/post', methods=['POST'])
@@ -277,7 +288,9 @@ def handle_dialog(req, res):
     if 'закрыть' in req['request']['original_utterance'].lower():
         write_in_base(user_id)
         res['response']['text'] = random.choice(
-            goodbye) + '\nЕсли тебе понравилось, поставь нам оценку 👇. Спасибо :) И проверь своё место в рейтинге!'
+            goodbye) + '\nЕсли тебе понравилось, поставь нам оценку 👇. Спасибо :)\nПроверь своё место в рейтинге!\n' \
+                       'Ты можешь помочь нам с вопросами! Переходи по вкладке "Задать свой вопрос", и, ' \
+                       'может быть, мы его добавим в тест!'
         res['response']['buttons'] = [{
             'title': 'Оценить ⭐️',
             'hide': False,
@@ -287,6 +300,11 @@ def handle_dialog(req, res):
                 'title': 'Рейтинг 🏆',
                 'hide': False,
                 'url': 'https://alice-skills-1--t1logy.repl.co/records'
+            },
+            {
+                'title': 'Задай свой вопрос 💬',
+                'hide': False,
+                'url': 'https://alice-skills-1--t1logy.repl.co/ask_question'
             }
         ]
         res['response']['end_session'] = True
