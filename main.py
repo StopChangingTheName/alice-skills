@@ -125,6 +125,7 @@ def write_in_base(user_id):
                     )
                     )
     con.commit()
+    con.close()
 
 
 @app.route('/')
@@ -202,6 +203,7 @@ def handle_dialog(req, res):
                 print(new_nick, sessionStorage[user_id]['nick'])
                 cur.execute(f"UPDATE u SET nick = '{new_nick}' WHERE nick = '{sessionStorage[user_id]['old_nick']}'")
                 con.commit()
+                con.close()
                 sessionStorage[user_id]['want_to_change_nick'] = False
             sessionStorage[user_id]['nick'] = new_nick
             # write_in_base(user_id)
