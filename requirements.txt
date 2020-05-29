@@ -1,5 +1,0 @@
-flask
-gunicorn
-flask-login
-Werkzeug
-flask-wtf
