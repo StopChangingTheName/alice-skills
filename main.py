@@ -150,7 +150,7 @@ def ask_question():
         with open('questions.txt', 'w', encoding='utf-8') as f:
             f.write(f'Вопрос: {form.question.data}; Ответ: {form.answer.data}')
         return 'Ваш вопрос получен. Спасибо!'
-    return render_template('ask.html', title='Задать свой вопрос', form=form)2
+    return render_template('ask.html', title='Задать свой вопрос', form=form)
 
 
 @app.route('/post', methods=['POST'])
@@ -594,7 +594,7 @@ def station_dialog(req, res):
 
         except Exception:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории. Так как у тебя устройство ' \
-                                     'без экрана, я могу предложить тебе только 2 режима. ' \
+                                     'без экрана или Навигатор, я могу предложить тебе только 2 режима. ' \
                                      'Скажи своё имя для сохранения результатов:'
         return
 
@@ -611,7 +611,7 @@ def station_dialog(req, res):
         sessionStorage[user_id]['mode'] = 'случайные даты'
     if 'термины' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'термины'
-    if 'закрыть' in req['request']['original_utterance'].lower():
+    if 'закрыть' in req['request']['original_utterance'].lower() or res['response']['end_session'] == True:
         write_in_base(user_id)
         res['response']['text'] = random.choice(
             goodbye) + '\nЕсли тебе понравилось, поставь нам звёздочки на сайте Яндекс Диалогов. Спасибо :)'
@@ -701,7 +701,7 @@ def station_dialog(req, res):
         res['response']['text'] = f'{random.choice(wtf)}. В какой режим ты хочешь сыграть: даты или термины?'
 
     res['response']['buttons'] = [
-        {'title': 'помощь', 'hide': True}
+        {'title': 'Помощь', 'hide': True}
     ]
 
 
