@@ -105,7 +105,7 @@ def write_in_base(user_id):
     cur.execute(f"SELECT * FROM u WHERE nick = '{sessionStorage[user_id]['nick']}';")
     if cur.fetchone() is None:
         id_ = len(cur.execute('SELECT * FROM u').fetchall())
-        cur.execute("INSERT OR REPLACE INTO u VALUES (?,?,?,?,?,?);",
+        cur.execute("INSERT INTO u VALUES (?,?,?,?,?,?);",
                     (
                         id_ + 1,
                         sessionStorage[user_id]['nick'],  # Заглушка для имени
@@ -600,7 +600,19 @@ def station_dialog(req, res):
 
     if sessionStorage[user_id]['nick'] is None:
         tag = str(random.randint(0, 10001))
-        sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
+        if len(req['request']['original_utterance']) > 30:
+            res['response']['text'] = 'Ваше имя или никнейм занимает больше 30 символов. Пожалуйста, исправьте.'
+        else:
+            new_nick = req['request']['original_utterance'] + "#" + tag
+            if sessionStorage[user_id]['want_to_change_nick']:
+                con = sqlite3.connect("users.db")
+                cur = con.cursor()
+                print(new_nick, sessionStorage[user_id]['nick'])
+                cur.execute(f"UPDATE u SET nick = '{new_nick}' WHERE nick = '{sessionStorage[user_id]['old_nick']}'")
+                con.commit()
+                con.close()
+                sessionStorage[user_id]['want_to_change_nick'] = False
+        sessionStorage[user_id]['nick'] = new_nick
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                  'Если тебе надоест играть, скажи закрыть, а если понадобится помощь, скажи помощь. ' \
                                  'В какой режим сыграем: даты или термины?'
