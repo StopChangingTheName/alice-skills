@@ -377,7 +377,7 @@ def handle_dialog(req, res):
             else:
                 res['response'][
                     'text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                              f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
+                              f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer'][0]}. \n" \
                               f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
     elif sessionStorage[user_id]['mode'] == 'ресурсы':
