@@ -367,7 +367,7 @@ def handle_dialog(req, res):
             else:
                 res['response']['card']['title'] \
                     = f"{random.choice(wrong)} Правильный ответ: " \
-                      f"{sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1]}."
+                      f"{random.choice(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].split('/'))}."
 
             if sessionStorage[user_id]['idPic'] == len(sessionStorage[user_id]['arrayPic']):
                 random.shuffle(sessionStorage[user_id]['arrayPic'])
@@ -395,7 +395,7 @@ def handle_dialog(req, res):
             else:
                 res['response'][
                     'text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                              f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer'][0]}. \n" \
+                              f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
                               f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
     elif sessionStorage[user_id]['mode'] == 'ресурсы':
