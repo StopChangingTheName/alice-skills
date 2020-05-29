@@ -6564,3 +6564,180 @@ sqlite3.IntegrityError: UNIQUE constraint failed: u.id
 2020-05-29 06:13:48,364 werkzeug 172.18.0.1 - - [29/May/2020 06:13:48] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
 2020-05-29 06:14:15,653 werkzeug 172.18.0.1 - - [29/May/2020 06:14:15] "[37mPOST /post HTTP/1.1[0m" 200 -
 2020-05-29 06:14:26,961 werkzeug 172.18.0.1 - - [29/May/2020 06:14:26] "[37mGET / HTTP/1.1[0m" 200 -
+2020-05-29 06:15:28,016 werkzeug 172.18.0.1 - - [29/May/2020 06:15:28] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:16:21,479 werkzeug 172.18.0.1 - - [29/May/2020 06:16:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:17:15,196 werkzeug 172.18.0.1 - - [29/May/2020 06:17:15] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-29 06:17:23,822 werkzeug 172.18.0.1 - - [29/May/2020 06:17:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:20:16,120 werkzeug 172.18.0.1 - - [29/May/2020 06:20:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:20:32,992 werkzeug 172.18.0.1 - - [29/May/2020 06:20:32] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:20:38,660 werkzeug 172.18.0.1 - - [29/May/2020 06:20:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:21:19,992 werkzeug 172.18.0.1 - - [29/May/2020 06:21:19] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:22:15,221 werkzeug 172.18.0.1 - - [29/May/2020 06:22:15] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-29 06:22:17,171 werkzeug 172.18.0.1 - - [29/May/2020 06:22:17] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:22:22,683 werkzeug  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+2020-05-29 06:22:22,913 werkzeug 172.18.0.1 - - [29/May/2020 06:22:22] "[37mGET / HTTP/1.1[0m" 200 -
+2020-05-29 06:22:38,675 werkzeug 172.18.0.1 - - [29/May/2020 06:22:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-29 06:22:59,776 werkzeug 172.18.0.1 - - [29/May/2020 06:22:59] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-29 06:23:12,417 werkzeug 172.18.0.1 - - [29/May/2020 06:23:12] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:23:19,320 werkzeug 172.18.0.1 - - [29/May/2020 06:23:19] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:23:21,348 werkzeug 172.18.0.1 - - [29/May/2020 06:23:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:23:27,370 root ------REQUEST COMMAND: картины DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.5)
+
+2020-05-29 06:23:27,371 werkzeug 172.18.0.1 - - [29/May/2020 06:23:27] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:23:32,997 root ------REQUEST COMMAND: чапаев DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.5)
+
+2020-05-29 06:23:33,040 werkzeug 172.18.0.1 - - [29/May/2020 06:23:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:23:36,607 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.5)
+
+2020-05-29 06:23:36,608 werkzeug 172.18.0.1 - - [29/May/2020 06:23:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:23:39,569 root ------REQUEST COMMAND: меню DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.5)
+
+2020-05-29 06:23:39,570 werkzeug 172.18.0.1 - - [29/May/2020 06:23:39] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:23:41,641 root ------REQUEST COMMAND: закрыть навык DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.5)
+
+2020-05-29 06:23:41,684 werkzeug 172.18.0.1 - - [29/May/2020 06:23:41] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:23:44,676 werkzeug 172.18.0.1 - - [29/May/2020 06:23:44] "[37mGET /records HTTP/1.1[0m" 200 -
+2020-05-29 06:23:44,954 werkzeug 172.18.0.1 - - [29/May/2020 06:23:44] "[33mGET /static/css/style.css HTTP/1.1[0m" 404 -
+2020-05-29 06:24:00,380 werkzeug 172.18.0.1 - - [29/May/2020 06:24:00] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:24:06,451 werkzeug 172.18.0.1 - - [29/May/2020 06:24:06] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-29 06:24:07,384 werkzeug 172.18.0.1 - - [29/May/2020 06:24:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-29 06:24:10,125 werkzeug 172.18.0.1 - - [29/May/2020 06:24:10] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:24:15,868 werkzeug 172.18.0.1 - - [29/May/2020 06:24:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:24:18,842 werkzeug 172.18.0.1 - - [29/May/2020 06:24:18] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:24:33,793 werkzeug 172.18.0.1 - - [29/May/2020 06:24:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-29 06:24:35,093 werkzeug 172.18.0.1 - - [29/May/2020 06:24:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-29 06:24:35,254 werkzeug 172.18.0.1 - - [29/May/2020 06:24:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-29 06:24:35,432 werkzeug 172.18.0.1 - - [29/May/2020 06:24:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2020-05-29 06:25:16,631 werkzeug 172.18.0.1 - - [29/May/2020 06:25:16] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:26:21,766 werkzeug 172.18.0.1 - - [29/May/2020 06:26:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:26:38,979 werkzeug 172.18.0.1 - - [29/May/2020 06:26:38] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:26:44,150 werkzeug 172.18.0.1 - - [29/May/2020 06:26:44] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:26:48,745 root ------REQUEST COMMAND: термины DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:26:48,745 werkzeug 172.18.0.1 - - [29/May/2020 06:26:48] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:26:51,431 root ------REQUEST COMMAND: уровень DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:26:51,431 werkzeug 172.18.0.1 - - [29/May/2020 06:26:51] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:27:01,268 root ------REQUEST COMMAND: закрыть DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:27:01,330 werkzeug 172.18.0.1 - - [29/May/2020 06:27:01] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:27:10,114 werkzeug 172.18.0.1 - - [29/May/2020 06:27:10] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:27:15,203 werkzeug 172.18.0.1 - - [29/May/2020 06:27:15] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-29 06:27:15,218 werkzeug 172.18.0.1 - - [29/May/2020 06:27:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:27:15,657 werkzeug 172.18.0.1 - - [29/May/2020 06:27:15] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:27:21,014 root ------REQUEST COMMAND: термины DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:27:21,014 werkzeug 172.18.0.1 - - [29/May/2020 06:27:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:27:31,012 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:27:31,013 werkzeug 172.18.0.1 - - [29/May/2020 06:27:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:27:36,847 root ------REQUEST COMMAND: картины DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:27:36,848 werkzeug 172.18.0.1 - - [29/May/2020 06:27:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:27:42,607 root ------REQUEST COMMAND: подсказка DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:27:42,608 werkzeug 172.18.0.1 - - [29/May/2020 06:27:42] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:27:54,264 root ------REQUEST COMMAND: черти DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:27:54,265 werkzeug 172.18.0.1 - - [29/May/2020 06:27:54] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:28:08,847 root ------REQUEST COMMAND: даты DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:28:08,847 werkzeug 172.18.0.1 - - [29/May/2020 06:28:08] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:28:18,502 root ------REQUEST COMMAND: 1301 DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:28:18,503 werkzeug 172.18.0.1 - - [29/May/2020 06:28:18] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:28:31,048 werkzeug 172.18.0.1 - - [29/May/2020 06:28:31] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:28:33,608 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:28:33,609 werkzeug 172.18.0.1 - - [29/May/2020 06:28:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:28:51,140 root ------REQUEST COMMAND: меню DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:28:51,141 werkzeug 172.18.0.1 - - [29/May/2020 06:28:51] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:28:55,621 root ------REQUEST COMMAND: развлечения DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:28:55,621 werkzeug 172.18.0.1 - - [29/May/2020 06:28:55] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:28:59,293 root ------REQUEST COMMAND: музыка DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:28:59,293 werkzeug 172.18.0.1 - - [29/May/2020 06:28:59] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:29:03,410 root ------REQUEST COMMAND: статьи DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:29:03,410 werkzeug 172.18.0.1 - - [29/May/2020 06:29:03] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:29:09,852 root ------REQUEST COMMAND: термины DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:29:09,853 werkzeug 172.18.0.1 - - [29/May/2020 06:29:09] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:29:18,620 werkzeug 172.18.0.1 - - [29/May/2020 06:29:18] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:29:29,688 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:29:29,688 werkzeug 172.18.0.1 - - [29/May/2020 06:29:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:29:53,937 root ------REQUEST COMMAND: вече DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:29:53,981 werkzeug 172.18.0.1 - - [29/May/2020 06:29:53] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:30:08,451 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:30:08,451 werkzeug 172.18.0.1 - - [29/May/2020 06:30:08] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:30:22,421 werkzeug 172.18.0.1 - - [29/May/2020 06:30:22] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:30:23,821 werkzeug 172.18.0.1 - - [29/May/2020 06:30:23] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:30:29,642 werkzeug 172.18.0.1 - - [29/May/2020 06:30:29] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:30:34,344 root ------REQUEST COMMAND: уровень DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:30:34,345 werkzeug 172.18.0.1 - - [29/May/2020 06:30:34] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:30:40,680 root ------REQUEST COMMAND: термины DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:30:40,681 werkzeug 172.18.0.1 - - [29/May/2020 06:30:40] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:31:27,405 werkzeug 172.18.0.1 - - [29/May/2020 06:31:27] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:31:31,118 root Exception on /post [POST]
+Traceback (most recent call last):
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/virtualenvs/python3/lib/python3.8/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "main.py", line 155, in main
+    handle_dialog(request.json, response)
+  File "main.py", line 194, in handle_dialog
+    if sessionStorage[user_id]['nick'] is None:
+KeyError: 'B340D4CBB0CA67CCF72C3C679FE9803951CE9188119CC764BBBD136A5A5CBC68'
+2020-05-29 06:31:31,120 werkzeug 172.18.0.1 - - [29/May/2020 06:31:31] "[35m[1mPOST /post HTTP/1.1[0m" 500 -
+2020-05-29 06:32:15,212 werkzeug 172.18.0.1 - - [29/May/2020 06:32:15] "[37mHEAD / HTTP/1.1[0m" 200 -
+2020-05-29 06:32:17,646 werkzeug 172.18.0.1 - - [29/May/2020 06:32:17] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:32:17,850 root ------REQUEST COMMAND: меню DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:32:17,851 werkzeug 172.18.0.1 - - [29/May/2020 06:32:17] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:32:21,991 root ------REQUEST COMMAND: термины DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:32:21,992 werkzeug 172.18.0.1 - - [29/May/2020 06:32:21] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:32:24,549 werkzeug 172.18.0.1 - - [29/May/2020 06:32:24] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:32:33,573 werkzeug 172.18.0.1 - - [29/May/2020 06:32:33] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:32:36,949 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:32:36,950 werkzeug 172.18.0.1 - - [29/May/2020 06:32:36] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:32:39,562 root ------REQUEST COMMAND: картины DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.5)
+
+2020-05-29 06:32:39,563 werkzeug 172.18.0.1 - - [29/May/2020 06:32:39] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:32:45,003 root ------REQUEST COMMAND: сахаров DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.5)
+
+2020-05-29 06:32:45,057 werkzeug 172.18.0.1 - - [29/May/2020 06:32:45] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:32:52,944 root ------REQUEST COMMAND: николай 2 DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.5)
+
+2020-05-29 06:32:52,945 werkzeug 172.18.0.1 - - [29/May/2020 06:32:52] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:32:58,684 root ------REQUEST COMMAND: суворов DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.5)
+
+2020-05-29 06:32:58,734 werkzeug 172.18.0.1 - - [29/May/2020 06:32:58] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:33:03,114 root ------REQUEST COMMAND: кутузов DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.5)
+
+2020-05-29 06:33:03,176 werkzeug 172.18.0.1 - - [29/May/2020 06:33:03] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:33:04,716 root ------REQUEST COMMAND: закрыть DEVICE: ru.yandex.mobile/3100 (Apple iPhone; iphone 13.5)
+
+2020-05-29 06:33:04,756 werkzeug 172.18.0.1 - - [29/May/2020 06:33:04] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:33:06,072 root ------REQUEST COMMAND: не знаю DEVICE: ru.yandex.searchplugin/10.70 (xiaomi Redmi Note 4; android 7.0)
+
+2020-05-29 06:33:06,073 werkzeug 172.18.0.1 - - [29/May/2020 06:33:06] "[37mPOST /post HTTP/1.1[0m" 200 -
+2020-05-29 06:33:14,879 werkzeug 172.18.0.1 - - [29/May/2020 06:33:14] "[37mGET / HTTP/1.1[0m" 200 -
+2020-05-29 06:33:18,513 werkzeug 172.18.0.1 - - [29/May/2020 06:33:18] "[37mPOST /post HTTP/1.1[0m" 200 -
