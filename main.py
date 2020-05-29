@@ -594,14 +594,14 @@ def station_dialog(req, res):
 
         except Exception:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории. Так как у тебя устройство ' \
-                                     'без экрана или Навигатор, я могу предложить тебе только 2 режима. ' \
-                                     'Скажи своё имя для сохранения результатов:'
+                                      'без экрана или Навигатор, я могу предложить тебе только 2 режима. ' \
+                                      'Скажи своё имя для сохранения результатов:'
         return
 
     if sessionStorage[user_id]['nick'] is None:
         tag = str(random.randint(0, 10001))
         if len(req['request']['original_utterance']) > 30:
-            res['response']['text'] = 'Ваше имя или никнейм занимает больше 30 символов. Пожалуйста, исправьте.'
+            res['response']['text'] = 'Твоё имя или никнейм занимает больше 30 символов. Пожалуйста, исправь.'
         else:
             new_nick = req['request']['original_utterance'] + "#" + tag
             if sessionStorage[user_id]['want_to_change_nick']:
@@ -614,8 +614,8 @@ def station_dialog(req, res):
                 sessionStorage[user_id]['want_to_change_nick'] = False
         sessionStorage[user_id]['nick'] = new_nick
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-                                 'Если тебе надоест играть, скажи закрыть, а если понадобится помощь, скажи помощь. ' \
-                                 'В какой режим сыграем: даты или термины?'
+                                  'Если тебе надоест играть, скажи закрыть, а если понадобится помощь, скажи помощь. ' \
+                                  'В какой режим сыграем: даты или термины?'
         return
 
     if 'даты' in req['request']['original_utterance'].lower() or 'да ты' in req['request']['original_utterance'].lower() \
@@ -637,7 +637,7 @@ def station_dialog(req, res):
     if 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request'][
         'original_utterance'].lower():
         res['response']['text'] = 'Я буду задавать вопросы в случайном порядке, а ты старайся отвечать правильно! ' \
-                                 'У меня есть 2 режима: даты и термины, в какой сыграем?'
+                                  'У меня есть 2 режима: даты и термины, в какой сыграем?'
         sessionStorage[user_id]['mode'] = ''
         return
     if sessionStorage[user_id]['mode'] == 'случайные даты':
@@ -660,7 +660,7 @@ def station_dialog(req, res):
                     write_in_base(user_id)
                 else:
                     res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                             f"в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
+                                              f"в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
             else:  # если 1 год
                 if right_answer[0] in user_answer:
                     res['response'][
@@ -670,23 +670,18 @@ def station_dialog(req, res):
                 else:
                     res['response'][
                         'text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                 f"в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
+                                  f"в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['id'] += 1
 
     elif sessionStorage[user_id]['mode'] == 'термины':
 
         if not sessionStorage[user_id]['lastT']:
-
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
-
             sessionStorage[user_id]['lastT'] = True
-
         else:
-
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
 
             for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer'].lower().split(
-
                     '/'):
 
                 if ans in req['request']['original_utterance'].lower():
@@ -694,21 +689,18 @@ def station_dialog(req, res):
                         'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
 
                     sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
-
                     write_in_base(user_id)
-
                     break
 
-            else:
-
-                res['response'][
-
-                    'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                else:
+                    res['response'][
+                        'text'] = f"{random.choice(wrong)} Правильный ответ: " \
  \
-                             f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
+                                  f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
  \
-                             f"{random.choice(_next)}: {res['response']['text']}"
-        sessionStorage[user_id]['terID'] += 1
+                                  f"{random.choice(_next)}: {res['response']['text']}"
+                    sessionStorage[user_id]['terID'] += 1
+                    write_in_base(user_id)
     else:
         res['response']['text'] = f'{random.choice(wtf)}. В какой режим ты хочешь сыграть: даты или термины?'
 
