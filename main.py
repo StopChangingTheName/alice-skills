@@ -3,6 +3,8 @@ import json
 import logging
 import random
 import sqlite3
+import schedule
+from git_task import commiting
 from threading import Thread
 from flask import Flask, request, render_template
 from form import AnswQuest
@@ -24,6 +26,8 @@ logging.basicConfig(
     level=logging.INFO
 )
 
+# commiting
+schedule.every().hour.do(commiting)
 
 def run():
     app.run(host="0.0.0.0", port=8080)
