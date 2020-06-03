@@ -19,8 +19,8 @@ with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
 
 app = Flask('')
-
-
+from  flask_ngrok import run_with_ngrok
+run_with_ngrok(app)
 app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
     filename='example.log',
@@ -69,18 +69,18 @@ def config(user_id):
     random.shuffle(term)
     sessionStorage[user_id] = {
         'suggests': [
-            "Викторина",
-            "Развлечения 🧩",
-            "Полезное"
+            "Викторина 🎯",
+            "Развлечения 🎮",
+            # "Полезное ✅"
         ],
         'slicedsuggests': [
             "Меню",
-            "Не знаю"
+            "Не знаю 🤷‍️"
         ],
         'test_buttons': [
-            "Даты",
-            "Картины",
-            "Термины",
+            "Даты ⌛️",
+            "Картины 🏞",
+            "Термины 📖",
             "Меню"
         ],
         'want_to_change_nick': False,
@@ -324,13 +324,41 @@ def handle_dialog(req, res):
     if sessionStorage[user_id]['mode'] == 'викторина':
 
         if 'викторина' in req['request']['original_utterance'].lower():
-            res['response']['text'] = 'Добро пожаловать в викторину!'
-            res['response']['buttons'] = [
-                {'title': suggest, 'hide': False}
-                for suggest in sessionStorage[user_id]['test_buttons']
-            ]
+            res['response']['text'] = 'В викторине я предалагю тебе поиграть в несколько режимов: даты, картины или термины. В каждом режиме ' \
+                                      'за правильные ответы будут зачисляться очки, будь внимателен!'
+            res['response']['card'] = {
+                "type": "ItemsList",
+                "header": {
+                    "text": "Викторина 🎯"
+                },
+                "items":[
+                    {
+                        "title": "Даты",
+                        "description": "В этом режиме я буду спрашивать у тебя случайные даты и события, "
+                                       "а ты постарайся "
+                                       "ответить правильно ",
+                        "button":{
+                            "text": "Даты"
+                        }
+                    },
+                    {
+                        "title": "Картины",
+                        "description": "Здесь я покажу тебе портреты исторических личностей, а тебе нужно угадать, "
+                                       "кто на них изображён ",
+                        "button": {
+                            "text": "Картины"
+                        }
+                    },
+                    {
+                        "title": "Термины",
+                        "description": "А тут я спрошу у тебя термины :)",
+                        "button": {
+                            "text": "Термины"
+                        }
+                    },
+                ]
+            }
             return
-
     if 'даты' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'даты'
     if 'картины' in req['request']['original_utterance'].lower():
@@ -453,11 +481,11 @@ def handle_dialog(req, res):
                     sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
                     write_in_base(user_id)
                     break
-                else:
-                    res['response'][
-                        'text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                  f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
-                                  f"{random.choice(_next)}: {res['response']['text']}"
+            else:
+                res['response'][
+                    'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                            f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
+                            f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
         res['response']['buttons'] = [
             {'title': suggest, 'hide': True}
@@ -608,6 +636,8 @@ def handle_dialog(req, res):
         res['response']['buttons'].append({'title': 'Оценить ⭐', 'hide': True,
                                            'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'})
         return
+
+
     else:
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
@@ -746,4 +776,5 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    keep_alive()
+    # keep_alive()
+    app.run()
