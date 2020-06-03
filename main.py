@@ -345,30 +345,56 @@ def handle_dialog(req, res):
             sessionStorage[user_id]['lastQ'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
-            user_answer = req['request']['command'].lower().split(' ')
-            right_answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
-                'answer'].lower().split(
-                ' ')
+            user_answer = req['request']['command'].lower()
+            right_answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer'].lower().split(
+                '/')
+            years = right_answer[0].split(' ')
+            centuries = right_answer[1].split(' ')
 
-            if len(right_answer) > 1:  # если у нас 2 года
-                if right_answer[0] in user_answer and right_answer[1] in user_answer:
-                    res['response'][
-                        'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
-                    sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
-                    write_in_base(user_id)
+            print(years, centuries)
+            print(user_answer)
+            if 'век' not in user_answer:
+                if len(years) > 1:  # если у нас 2 года
+                    if years[0] in user_answer and years[1] in user_answer:
+                        res['response'][
+                            'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                        sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
+                        write_in_base(user_id)
+                    else:
+                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                                                  f"в {years[0]}-{years[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
+                    print(years[0] in user_answer, years[1] in user_answer)
+                else:  # если 1 год
+                    if years[0] in user_answer:
+                        res['response'][
+                            'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                        sessionStorage[user_id]['test_count'] += 1
+                        write_in_base(user_id)
+                    else:
+                        res['response'][
+                            'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                                      f"в {years[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
+            else:
+                if len(centuries) == 2:  # один век + слово "век"
+                    if centuries[0] in user_answer and centuries[1] in user_answer:
+                        res['response'][
+                            'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                        sessionStorage[user_id]['test_count'] += 0.5
+                        write_in_base(user_id)
+
+                    else:
+                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                                                  f"в {centuries[0]} веке \n{random.choice(_next)}: {res['response']['text']}"
                 else:
-                    res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                              f"в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
-            else:  # если 1 год
-                if right_answer[0] in user_answer:
-                    res['response'][
-                        'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
-                    sessionStorage[user_id]['test_count'] += 1
-                    write_in_base(user_id)
-                else:
-                    res['response'][
-                        'text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                  f"в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
+                    if centuries[0] in user_answer and centuries[1] in user_answer and centuries[2] in user_answer:
+                        res['response'][
+                            'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                        sessionStorage[user_id]['test_count'] += 0.5
+                        write_in_base(user_id)
+                    else:
+                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                                                  f"в {centuries[0]}-{centuries[1]} веках \n{random.choice(_next)}: {res['response']['text']}"
+
         sessionStorage[user_id]['id'] += 1
         res['response']['buttons'] = [
             {'title': suggest, 'hide': True}
