@@ -4,7 +4,7 @@ import logging
 import random
 import sqlite3
 import schedule
-from git_task import commiting
+#from git_task import commiting
 from threading import Thread
 from flask import Flask, request, render_template
 from form import AnswQuest
@@ -20,9 +20,7 @@ with open('Data.json', encoding='utf8') as f:
 
 app = Flask('')
 
-from flask_ngrok import run_with_ngrok
 
-run_with_ngrok(app)
 app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
     filename='example.log',
@@ -31,7 +29,7 @@ logging.basicConfig(
 )
 
 # commiting
-schedule.every().hour.do(commiting)
+#schedule.every().hour.do(commiting)
 
 
 def run():
@@ -411,6 +409,7 @@ def handle_dialog(req, res):
             res['response']['card']['title'] = 'Кто изображен на фотографии?'
             res['response']['card']['image_id'] = \
                 portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
+            res['response']['text'] = 'Кто изображен на фотографии?'
             sessionStorage[user_id]['lastPic'] = True
         else:
             res['response']['card'] = {}
@@ -426,9 +425,9 @@ def handle_dialog(req, res):
                         = f"{random.choice(wrong)} Правильный ответ: " \
                           f"{random.choice(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].split('/'))}."
 
-        if sessionStorage[user_id]['idPic'] == len(sessionStorage[user_id]['arrayPic']):
-            random.shuffle(sessionStorage[user_id]['arrayPic'])
-            sessionStorage[user_id]['idPic'] = 0
+            if sessionStorage[user_id]['idPic'] == len(sessionStorage[user_id]['arrayPic']):
+                random.shuffle(sessionStorage[user_id]['arrayPic'])
+                sessionStorage[user_id]['idPic'] = 0
             res['response']['card']['image_id'] = \
                 portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
             res['response']['card']['title'] += ' Кто изображен на фотографии?'
@@ -721,48 +720,30 @@ def station_dialog(req, res):
         sessionStorage[user_id]['id'] += 1
 
     elif sessionStorage[user_id]['mode'] == 'термины':
-
         if not sessionStorage[user_id]['lastT']:
-
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
-
             sessionStorage[user_id]['lastT'] = True
-
         else:
-
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
-
-            for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer'].lower().split(
-
-                    '/'):
-
+            for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer'].lower().split( '/'):
                 if ans in req['request']['original_utterance'].lower():
                     res['response'][
                         'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
-
                     sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
-
                     write_in_base(user_id)
-
                     break
-
             else:
-
                 res['response'][
-
                     'text'] = f"{random.choice(wrong)} Правильный ответ: " \
- \
                               f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
- \
                               f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
     else:
         res['response']['text'] = f'{random.choice(wtf)}. В какой режим ты хочешь сыграть: даты или термины?'
-
     res['response']['buttons'] = [
         {'title': 'Помощь', 'hide': True}
     ]
 
 
 if __name__ == '__main__':
-    app.run()
+    keep_alive()
