@@ -19,6 +19,7 @@ with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
 
 app = Flask('')
+
 app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
     filename='example.log',
@@ -28,6 +29,7 @@ logging.basicConfig(
 
 # commiting
 schedule.every().hour.do(commiting)
+
 
 def run():
     app.run(host="0.0.0.0", port=8080)
@@ -202,8 +204,13 @@ def handle_dialog(req, res):
             res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
 
         except Exception:
-            res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ' \
-                                      'Напиши или скажи своё имя или никнейм для сохранения результатов:'
+            res['response']['card'] = {
+                "type": "BigImage",
+                "image_id": "",
+                "title": "Привет!",
+                "description": 'Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ''Напиши или скажи своё имя '
+                               'или никнейм для сохранения результатов: '
+            }
         return
 
     if sessionStorage[user_id]['nick'] is None:
@@ -598,16 +605,16 @@ def station_dialog(req, res):
 
         except Exception:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории. Так как у тебя устройство ' \
-                                     'без экрана или Навигатор, я могу предложить тебе только 2 режима. ' \
-                                     'Скажи своё имя для сохранения результатов:'
+                                      'без экрана или Навигатор, я могу предложить тебе только 2 режима. ' \
+                                      'Скажи своё имя для сохранения результатов:'
         return
 
     if sessionStorage[user_id]['nick'] is None:
         tag = str(random.randint(0, 10001))
         sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-                                 'Если тебе надоест играть, скажи закрыть, а если понадобится помощь, скажи помощь. ' \
-                                 'В какой режим сыграем: даты или термины?'
+                                  'Если тебе надоест играть, скажи закрыть, а если понадобится помощь, скажи помощь. ' \
+                                  'В какой режим сыграем: даты или термины?'
         return
 
     if 'даты' in req['request']['original_utterance'].lower() or 'да ты' in req['request']['original_utterance'].lower() \
@@ -629,7 +636,7 @@ def station_dialog(req, res):
     if 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request'][
         'original_utterance'].lower():
         res['response']['text'] = 'Я буду задавать вопросы в случайном порядке, а ты старайся отвечать правильно! ' \
-                                 'У меня есть 2 режима: даты и термины, в какой сыграем?'
+                                  'У меня есть 2 режима: даты и термины, в какой сыграем?'
         sessionStorage[user_id]['mode'] = ''
         return
     if sessionStorage[user_id]['mode'] == 'случайные даты':
@@ -652,7 +659,7 @@ def station_dialog(req, res):
                     write_in_base(user_id)
                 else:
                     res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                             f"в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
+                                              f"в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
             else:  # если 1 год
                 if right_answer[0] in user_answer:
                     res['response'][
@@ -662,7 +669,7 @@ def station_dialog(req, res):
                 else:
                     res['response'][
                         'text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                 f"в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
+                                  f"в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['id'] += 1
 
     elif sessionStorage[user_id]['mode'] == 'термины':
@@ -697,9 +704,9 @@ def station_dialog(req, res):
 
                     'text'] = f"{random.choice(wrong)} Правильный ответ: " \
  \
-                             f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
+                              f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
  \
-                             f"{random.choice(_next)}: {res['response']['text']}"
+                              f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
     else:
         res['response']['text'] = f'{random.choice(wtf)}. В какой режим ты хочешь сыграть: даты или термины?'
