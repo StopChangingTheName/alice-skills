@@ -21,6 +21,7 @@ with open('Data.json', encoding='utf8') as f:
 app = Flask('')
 
 from flask_ngrok import run_with_ngrok
+
 run_with_ngrok(app)
 app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
@@ -78,7 +79,7 @@ def config(user_id):
             "Меню",
             "Не знаю"
         ],
-        'test_buttons':[
+        'test_buttons': [
             "Даты",
             "Картины",
             "Термины",
@@ -325,122 +326,118 @@ def handle_dialog(req, res):
     if sessionStorage[user_id]['mode'] == 'викторина':
 
         if 'викторина' in req['request']['original_utterance'].lower():
-            res['response']['text'] = 'Добро пожаловать в виктторину!'
+            res['response']['text'] = 'Добро пожаловать в викторину!'
             res['response']['buttons'] = [
                 {'title': suggest, 'hide': False}
                 for suggest in sessionStorage[user_id]['test_buttons']
             ]
+            return
 
-        elif 'даты' in req['request']['original_utterance'].lower():
-            if not sessionStorage[user_id]['lastQ']:
-                res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
-                sessionStorage[user_id]['lastQ'] = True
-            else:
-                res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
-                user_answer = req['request']['command'].lower().split(' ')
-                right_answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
-                    'answer'].lower().split(
-                    ' ')
+    if 'даты' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'даты'
+    if 'картины' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'картины'
+    if 'термины' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'термины'
+    if sessionStorage[user_id]['mode'] == 'даты':
+        if not sessionStorage[user_id]['lastQ']:
+            res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
+            sessionStorage[user_id]['lastQ'] = True
+        else:
+            res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
+            user_answer = req['request']['command'].lower().split(' ')
+            right_answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1][
+                'answer'].lower().split(
+                ' ')
 
-                print(right_answer)
-                print(user_answer)
-                if len(right_answer) > 1:  # если у нас 2 года
-                    if right_answer[0] in user_answer and right_answer[1] in user_answer:
-                        res['response'][
-                            'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
-                        sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
-                        write_in_base(user_id)
-                    else:
-                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                                  f"в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
-                else:  # если 1 год
-                    if right_answer[0] in user_answer:
-                        res['response'][
-                            'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
-                        sessionStorage[user_id]['test_count'] += 1
-                        write_in_base(user_id)
-                    else:
-                        res['response'][
-                            'text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                      f"в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
-            sessionStorage[user_id]['id'] += 1
-            res['response']['buttons'] = [
-                {'title': suggest, 'hide': True}
-                for suggest in sessionStorage[user_id]['slicedsuggests']
-            ]
+            if len(right_answer) > 1:  # если у нас 2 года
+                if right_answer[0] in user_answer and right_answer[1] in user_answer:
+                    res['response'][
+                        'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                    sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
+                    write_in_base(user_id)
+                else:
+                    res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                                              f"в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
+            else:  # если 1 год
+                if right_answer[0] in user_answer:
+                    res['response'][
+                        'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                    sessionStorage[user_id]['test_count'] += 1
+                    write_in_base(user_id)
+                else:
+                    res['response'][
+                        'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                                  f"в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
+        sessionStorage[user_id]['id'] += 1
+        res['response']['buttons'] = [
+            {'title': suggest, 'hide': True}
+            for suggest in sessionStorage[user_id]['slicedsuggests']
+        ]
 
-        elif 'картины' in req['request']['original_utterance'].lower():
-            if not sessionStorage[user_id]['lastPic']:
-                sessionStorage[user_id]['arrayPic'] = list(portraits)
-                random.shuffle(sessionStorage[user_id]['arrayPic'])
-                sessionStorage[user_id]['idPic'] = 0
-                res['response']['card'] = {}
-                res['response']['card']['type'] = 'BigImage'
-                res['response']['card']['title'] = 'Кто изображен на фотографии?'
-                res['response']['card']['image_id'] = \
-                    portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
-                res['response']['text'] = res['response']['card']['title']
-                sessionStorage[user_id]['lastPic'] = True
-            else:
-                res['response']['card'] = {}
-                res['response']['card']['type'] = 'BigImage'
-                for ans in sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower().split('/'):
-                    if ans in req['request']['original_utterance'].lower():
-                        res['response']['card']['title'] = random.choice(right)
-                        sessionStorage[user_id]['pic_count'] += 1  # Сохранение очков по картинкам
-                        write_in_base(user_id)
-                        break
-                    else:
-                        res['response']['card']['title'] \
-                            = f"{random.choice(wrong)} Правильный ответ: " \
-                              f"{random.choice(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].split('/'))}."
+    elif sessionStorage[user_id]['mode'] == 'картины':
+        if not sessionStorage[user_id]['lastPic']:
+            sessionStorage[user_id]['arrayPic'] = list(portraits)
+            random.shuffle(sessionStorage[user_id]['arrayPic'])
+            sessionStorage[user_id]['idPic'] = 0
+            res['response']['card'] = {}
+            res['response']['card']['type'] = 'BigImage'
+            res['response']['card']['title'] = 'Кто изображен на фотографии?'
+            res['response']['card']['image_id'] = \
+                portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
+            sessionStorage[user_id]['lastPic'] = True
+        else:
+            res['response']['card'] = {}
+            res['response']['card']['type'] = 'BigImage'
+            for ans in sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower().split('/'):
+                if ans in req['request']['original_utterance'].lower():
+                    res['response']['card']['title'] = random.choice(right)
+                    sessionStorage[user_id]['pic_count'] += 1  # Сохранение очков по картинкам
+                    write_in_base(user_id)
+                    break
+                else:
+                    res['response']['card']['title'] \
+                        = f"{random.choice(wrong)} Правильный ответ: " \
+                          f"{random.choice(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].split('/'))}."
 
-            if sessionStorage[user_id]['idPic'] == len(sessionStorage[user_id]['arrayPic']):
-                random.shuffle(sessionStorage[user_id]['arrayPic'])
-                sessionStorage[user_id]['idPic'] = 0
-                res['response']['card']['image_id'] = \
-                    portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
-                res['response']['card']['title'] += ' Кто изображен на фотографии?'
-                res['response']['text'] = res['response']['card']['title']
-            sessionStorage[user_id]['idPic'] += 1
-            res['response']['buttons'] = [
-                {'title': suggest, 'hide': True}
-                for suggest in sessionStorage[user_id]['slicedsuggests']
-            ]
+        if sessionStorage[user_id]['idPic'] == len(sessionStorage[user_id]['arrayPic']):
+            random.shuffle(sessionStorage[user_id]['arrayPic'])
+            sessionStorage[user_id]['idPic'] = 0
+            res['response']['card']['image_id'] = \
+                portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
+            res['response']['card']['title'] += ' Кто изображен на фотографии?'
+            res['response']['text'] = res['response']['card']['title']
+        sessionStorage[user_id]['idPic'] += 1
+        res['response']['buttons'] = [
+            {'title': suggest, 'hide': True}
+            for suggest in sessionStorage[user_id]['slicedsuggests']
+        ]
 
-        elif 'термины' in req['request']['original_utterance'].lower():
-            if not sessionStorage[user_id]['lastT']:
-                res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
-                sessionStorage[user_id]['lastT'] = True
-            else:
-                res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
-                for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1][
-                    'answer'].lower().split(
-                    '/'):
-                    if ans in req['request']['original_utterance'].lower():
-                        res['response'][
-                            'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
-                        sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
-                        write_in_base(user_id)
-                        break
-                    else:
-                        res['response'][
-                            'text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                      f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
-                                      f"{random.choice(_next)}: {res['response']['text']}"
-            sessionStorage[user_id]['terID'] += 1
-            res['response']['buttons'] = [
-                {'title': suggest, 'hide': True}
-                for suggest in sessionStorage[user_id]['slicedsuggests']
-            ]
-
-        # else:
-        #     res['response']['text'] = f"{random.choice(wtf)}\nВыбери вариант из предложенных, пожалуйста!"
-        #     res['response']['buttons'] = [
-        #         {'title': suggest, 'hide': False}
-        #         for suggest in sessionStorage[user_id]['test_buttons']
-        #     ]
-        return
+    elif sessionStorage[user_id]['mode'] == 'термины':
+        if not sessionStorage[user_id]['lastT']:
+            res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
+            sessionStorage[user_id]['lastT'] = True
+        else:
+            res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
+            for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1][
+                'answer'].lower().split(
+                '/'):
+                if ans in req['request']['original_utterance'].lower():
+                    res['response'][
+                        'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                    sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
+                    write_in_base(user_id)
+                    break
+                else:
+                    res['response'][
+                        'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                                  f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
+                                  f"{random.choice(_next)}: {res['response']['text']}"
+        sessionStorage[user_id]['terID'] += 1
+        res['response']['buttons'] = [
+            {'title': suggest, 'hide': True}
+            for suggest in sessionStorage[user_id]['slicedsuggests']
+        ]
 
     elif sessionStorage[user_id]['mode'] == 'ресурсы':
 
@@ -596,7 +593,7 @@ def handle_dialog(req, res):
         res['response']['buttons'].append({'title': 'Уровень 💪🏻', 'hide': False})
         res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
         res['response']['text'] = f"{random.choice(wtf)}\nВыбери вариант из предложенных :)"
-        return
+    return
 
 
 def count_naming(level, summa):
