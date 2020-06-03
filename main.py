@@ -206,7 +206,7 @@ def handle_dialog(req, res):
         except Exception:
             res['response']['card'] = {
                 "type": "BigImage",
-                "image_id": "",
+                "image_id": "1652229/5e36801cfeeb15d16905",
                 "title": "Привет!",
                 "description": 'Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ''Напиши или скажи своё имя '
                                'или никнейм для сохранения результатов: '
