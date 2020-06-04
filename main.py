@@ -4,7 +4,7 @@ import logging
 import random
 import sqlite3
 import schedule
-#from git_task import commiting
+# from git_task import commiting
 from threading import Thread
 from flask import Flask, request, render_template
 from form import AnswQuest
@@ -20,7 +20,9 @@ with open('Data.json', encoding='utf8') as f:
 with open('Data.json', encoding='utf8') as f:
     facts = json.loads(f.read())['facts']  # same из фактов
 app = Flask('')
+from flask_ngrok import run_with_ngrok
 
+run_with_ngrok(app)
 app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
     filename='example.log',
@@ -28,8 +30,9 @@ logging.basicConfig(
     level=logging.INFO
 )
 
+
 # commiting
-#schedule.every().hour.do(commiting)
+# schedule.every().hour.do(commiting)
 
 
 def run():
@@ -71,7 +74,7 @@ def config(user_id):
         'suggests': [
             "Викторина 🎯",
             "Развлечения 🎮",
-            # "Полезное ✅"
+            "Полезное ✅"
         ],
         'slicedsuggests': [
             "Меню",
@@ -185,14 +188,14 @@ def handle_dialog(req, res):
     if req['session']['new']:
         config(user_id)
         try:
-            #con = sqlite3.connect("users.db")
-            #cur = con.cursor()
-            #user = cur.execute(f"SELECT * FROM u WHERE nick = '{req['state']['user']['nick']}';").fetchone()
+            # con = sqlite3.connect("users.db")
+            # cur = con.cursor()
+            # user = cur.execute(f"SELECT * FROM u WHERE nick = '{req['state']['user']['nick']}';").fetchone()
 
             res['response']['text'] = \
                 f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! " \
                 f"Твои очки:\nДаты: {req['state']['user']['test_count']}\nКартины: {req['state']['user']['pic_count']}\n" \
-                    f"Термины: {req['state']['user']['ter_count']}."
+                f"Термины: {req['state']['user']['ter_count']}."
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = req['state']['user']['test_count']
             sessionStorage[user_id]['pic_count'] = req['state']['user']['pic_count']
@@ -291,6 +294,8 @@ def handle_dialog(req, res):
 
     if 'викторина' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'викторина'
+    if 'полезное' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'полезное'
 
     if 'уровень' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'уровень'
@@ -328,23 +333,52 @@ def handle_dialog(req, res):
         # config(user_id) # на случай если захочет заново играть БЕЗ перезапуска навыка
         return
 
-    if sessionStorage[user_id]['mode'] == 'викторина':
+    if 'даты' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'даты'
+    if 'картины' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'картины'
+    if 'термины' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'термины'
+
+    if sessionStorage[user_id]['mode'] == 'полезное':
+        if 'полезное' in req['request']['original_utterance'].lower():
+            res['response'][
+                'text'] = 'Здесь находятся интересные факты, а также научные статьи по истории. Этот раздел еще ' \
+                          'дополняется, приходи ещё! '
+            res['response']['card'] = {
+                "type": "ItemsList",
+                "header": {
+                    "text": "Полезное ✅"
+                },
+                "items": [
+                    {
+                        "title": "Факты двух столиц",
+                        "description": "Узнай необычные факты о Москве и Санкт-Петербурге!",
+                        "button": {
+                            "text": "Факты двух столиц"
+                        }
+                    }
+                ]
+            }
+        return
+    elif sessionStorage[user_id]['mode'] == 'викторина':
 
         if 'викторина' in req['request']['original_utterance'].lower():
-            res['response']['text'] = 'В викторине я предалагю тебе поиграть в несколько режимов: даты, картины или термины. В каждом режиме ' \
-                                      'за правильные ответы будут зачисляться очки, будь внимателен!'
+            res['response'][
+                'text'] = 'В викторине я предалагю тебе поиграть в несколько режимов: даты, картины или термины. В каждом режиме ' \
+                          'за правильные ответы будут зачисляться очки, будь внимателен!'
             res['response']['card'] = {
                 "type": "ItemsList",
                 "header": {
                     "text": "Викторина 🎯"
                 },
-                "items":[
+                "items": [
                     {
                         "title": "Даты",
                         "description": "В этом режиме я буду спрашивать у тебя случайные даты и события, "
                                        "а ты постарайся "
                                        "ответить правильно ",
-                        "button":{
+                        "button": {
                             "text": "Даты"
                         }
                     },
@@ -366,13 +400,7 @@ def handle_dialog(req, res):
                 ]
             }
             return
-    if 'даты' in req['request']['original_utterance'].lower():
-        sessionStorage[user_id]['mode'] = 'даты'
-    if 'картины' in req['request']['original_utterance'].lower():
-        sessionStorage[user_id]['mode'] = 'картины'
-    if 'термины' in req['request']['original_utterance'].lower():
-        sessionStorage[user_id]['mode'] = 'термины'
-    if sessionStorage[user_id]['mode'] == 'даты':
+    elif sessionStorage[user_id]['mode'] == 'даты':
         if not sessionStorage[user_id]['lastQ']:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
             sessionStorage[user_id]['lastQ'] = True
@@ -527,8 +555,8 @@ def handle_dialog(req, res):
             else:
                 res['response'][
                     'text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                            f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
-                            f"{random.choice(_next)}: {res['response']['text']}"
+                              f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
+                              f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
         res['response']['buttons'] = [
             {'title': suggest, 'hide': True}
@@ -686,8 +714,10 @@ def handle_dialog(req, res):
         if 'photo_id' in sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]:
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
-            res['response']['card']['title'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['title']
-            res['response']['card']['image_id'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['photo_id']
+            res['response']['card']['title'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']][
+                'title']
+            res['response']['card']['image_id'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']][
+                'photo_id']
         sessionStorage[user_id]['factID'] += 1
         if sessionStorage[user_id]['factID'] == len(facts):
             sessionStorage[user_id]['factID'] = 0
@@ -812,7 +842,8 @@ def station_dialog(req, res):
             sessionStorage[user_id]['lastT'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
-            for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer'].lower().split( '/'):
+            for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer'].lower().split(
+                    '/'):
                 if ans in req['request']['original_utterance'].lower():
                     res['response'][
                         'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
@@ -833,7 +864,5 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    #keep_alive()
-    from flask_ngrok import run_with_ngrok
-    run_with_ngrok(app)
+    # keep_alive()
     app.run()
