@@ -17,7 +17,8 @@ with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей дат
 with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
-
+with open('Data.json', encoding='utf8') as f:
+    facts = json.loads(f.read())['facts']  # same из фактов
 app = Flask('')
 
 app.config['SECRET_KEY'] = 'alice'
@@ -100,7 +101,7 @@ def config(user_id):
         # переменные для терминов
         'term': term,
         'lastT': False,
-        'terID': 0
+        'terID': 0,
     }
 
 
@@ -293,6 +294,12 @@ def handle_dialog(req, res):
     if 'уровень' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'уровень'
 
+    if 'факты двух столиц' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'факты'
+        sessionStorage[user_id]['factID'] = 0
+        fact = copy.deepcopy(facts)
+        random.shuffle(fact)
+        sessionStorage[user_id]['facts'] = fact
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
         write_in_base(user_id)
@@ -636,7 +643,21 @@ def handle_dialog(req, res):
                                            'url': 'https://dialogs.yandex.ru/store/skills/1424e7f5-ege-po-istorii'})
         return
 
-
+    elif sessionStorage[user_id]['mode'] == 'факты':
+        res['response']['buttons'] = []
+        res['response']['text'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
+        if 'photo_id' in sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]:
+            res['response']['card'] = {}
+            res['response']['card']['type'] = 'BigImage'
+            res['response']['card']['title'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['title']
+            res['response']['card']['image_id'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['photo_id']
+        sessionStorage[user_id]['factID'] += 1
+        if sessionStorage[user_id]['factID'] == len(facts):
+            sessionStorage[user_id]['factID'] = 0
+            res['response']['text'] += '\nНаши факты закончились! Переходи в другие режимы, будет весело!'
+        else:
+            res['response']['buttons'].append({'title': 'Дальше', 'hide': True})
+        res['response']['buttons'].append({'title': 'Меню', 'hide': True})
     else:
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
@@ -775,4 +796,7 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    keep_alive()
+    #keep_alive()
+    from flask_ngrok import run_with_ngrok
+    run_with_ngrok(app)
+    app.run()
