@@ -186,54 +186,62 @@ def main():
 
 def victorina_list():
     return {
-                "type": "ItemsList",
-                "header": {
-                    "text": "Викторина 🎯"
-                },
-                "items": [
-                    {
-                        "title": "Даты",
-                        "description": "В этом режиме я буду спрашивать, когда произошло то или иное событие. "
-                                       "За правильно названный век ты получаешь 0.5 балла, а за точную дату - 1 ",
-                        "button": {
-                            "text": "Даты"
-                        }
-                    },
-                    {
-                        "title": "Картины",
-                        "description": "Здесь я покажу тебе портреты исторических личностей, а тебе нужно угадать, "
-                                       "кто на них изображён ",
-                        "button": {
-                            "text": "Картины"
-                        }
-                    },
-                    {
-                        "title": "Термины",
-                        "description": "А тут я спрошу у тебя термины :)",
-                        "button": {
-                            "text": "Термины"
-                        }
-                    },
-                ]
-            }
+        "type": "ItemsList",
+        "header": {
+            "text": "Викторина 🎯"
+        },
+        "items": [
+            {
+                "title": "Даты",
+                "description": "В этом режиме я буду спрашивать, когда произошло то или иное событие. "
+                               "За правильно названный век ты получаешь 0.5 балла, а за точную дату - 1 ",
+                "button": {
+                    "text": "Даты"
+                }
+            },
+            {
+                "title": "Картины",
+                "description": "Здесь я покажу тебе портреты исторических личностей, а тебе нужно угадать, "
+                               "кто на них изображён ",
+                "button": {
+                    "text": "Картины"
+                }
+            },
+            {
+                "title": "Культура",
+                "description": "В данном режиме я спрошу у тебя о различных соборах и постройках",
+                "button": {
+                    "text": "Культура"
+                }
+            },
+            {
+                "title": "Термины",
+                "description": "А тут я спрошу у тебя термины :)",
+                "button": {
+                    "text": "Термины"
+                }
+            },
+        ]
+    }
 
 
 def useful_list():
     return {
-                "type": "ItemsList",
-                "header": {
-                    "text": "Полезное ✅"
-                },
-                "items": [
-                    {
-                        "title": "Факты двух столиц",
-                        "description": "Узнай необычные факты о Москве и Санкт-Петербурге!",
-                        "button": {
-                            "text": "Факты двух столиц"
-                        }
-                    }
-                ]
+        "type": "ItemsList",
+        "header": {
+            "text": "Полезное ✅"
+        },
+        "items": [
+            {
+                "title": "Факты двух столиц",
+                "description": "Узнай необычные факты о Москве и Санкт-Петербурге!",
+                "button": {
+                    "text": "Факты двух столиц"
+                }
             }
+        ]
+    }
+
 
 def handle_dialog(req, res):
     user_id = req['session']['user_id']
@@ -255,7 +263,6 @@ def handle_dialog(req, res):
             sessionStorage[user_id]['test_count'] = req['state']['user']['test_count']
             sessionStorage[user_id]['pic_count'] = req['state']['user']['pic_count']
             sessionStorage[user_id]['ter_count'] = req['state']['user']['ter_count']
-
 
             res['response']['buttons'] = [
                 {'title': suggest, 'hide': False}
@@ -596,8 +603,10 @@ def handle_dialog(req, res):
         if not sessionStorage[user_id]['lastС']:
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
-            res['response']['card']['title'] = sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID']]['question']
-            res['response']['card']['image_id'] = sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID']]['photo_id']
+            res['response']['card']['title'] = sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID']][
+                'question']
+            res['response']['card']['image_id'] = sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID']][
+                'photo_id']
             sessionStorage[user_id]['lastС'] = True
         else:
             res['response']['card'] = {}
@@ -606,9 +615,11 @@ def handle_dialog(req, res):
             res['response']['card']['image_id'] = sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID']][
                 'photo_id']
             res['response']['text'] = sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID']]['question']
-            for ans in sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID'] - 1]['answer'].lower().split('/'):
+            for ans in sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID'] - 1][
+                'answer'].lower().split('/'):
                 if ans in req['request']['original_utterance'].lower():
-                    res['response']['card']['title'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                    res['response']['card'][
+                        'title'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                     sessionStorage[user_id]['cul_count'] += 1  # Сохранение очков по терминам
                     res['user_state_update'] = {
                         'nick': sessionStorage[user_id]['nick'],
@@ -621,8 +632,8 @@ def handle_dialog(req, res):
                     break
             else:
                 res['response']['card']['title'] = f"{random.choice(wrong)} Правильный ответ: " \
-                    f"{random.choice(sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID'] - 1]['answer'].split('/'))}. \n" \
-                    f"{random.choice(_next)}: {res['response']['text']}"
+                                                   f"{random.choice(sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID'] - 1]['answer'].split('/'))}. \n" \
+                                                   f"{random.choice(_next)}: {res['response']['text']}"
         res['response']['text'] = res['response']['card']['title']
         sessionStorage[user_id]['cultID'] += 1
         res['response']['buttons'] = [
