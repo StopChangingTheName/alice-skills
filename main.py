@@ -117,26 +117,29 @@ def write_in_base(user_id):
     test_count = sessionStorage[user_id]['test_count']
     pic_count = sessionStorage[user_id]['pic_count']
     ter_count = sessionStorage[user_id]['ter_count']
+    cul_count = sessionStorage[user_id]['cul_count']
     cur.execute(f"SELECT * FROM u WHERE nick = '{sessionStorage[user_id]['nick']}';")
     if cur.fetchone() is None:
         id_ = len(cur.execute('SELECT * FROM u').fetchall())
-        cur.execute("INSERT OR REPLACE INTO u VALUES (?,?,?,?,?,?);",
+        cur.execute("INSERT OR REPLACE INTO u VALUES (?,?,?,?,?,?,?);",
                     (
                         id_ + 1,
                         sessionStorage[user_id]['nick'],  # Заглушка для имени
                         test_count,
                         pic_count,
                         ter_count,
-                        test_count + pic_count + ter_count
+                        cul_count,
+                        test_count + pic_count + ter_count + cul_count
                     )
                     )
     else:
-        cur.execute("UPDATE u SET (date_count, pic_count, ter_count, summa) = (?,?,?,?) WHERE nick = ?;",
+        cur.execute("UPDATE u SET (date_count, pic_count, ter_count, cul_count, summa) = (?,?,?,?,?) WHERE nick = ?;",
                     (
                         test_count,
                         pic_count,
                         ter_count,
-                        test_count + pic_count + ter_count,
+                        cul_count,
+                        test_count + pic_count + ter_count + cul_count,
                         sessionStorage[user_id]['nick']
                     )
                     )
