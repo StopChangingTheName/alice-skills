@@ -19,6 +19,8 @@ with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
 with open('Data.json', encoding='utf8') as f:
     facts = json.loads(f.read())['facts']  # same из фактов
+with open('Data.json', encoding='utf8') as f:
+    culture = json.loads(f.read())['culture']  # same из фактов
 app = Flask('')
 from flask_ngrok import run_with_ngrok
 
@@ -100,6 +102,7 @@ def config(user_id):
         'test_count': 0,
         'pic_count': 0,
         'ter_count': 0,
+        'cul_count': 0,
 
         # переменные для терминов
         'term': term,
@@ -242,15 +245,17 @@ def handle_dialog(req, res):
             # con = sqlite3.connect("users.db")
             # cur = con.cursor()
             # user = cur.execute(f"SELECT * FROM u WHERE nick = '{req['state']['user']['nick']}';").fetchone()
-
+            if not 'cul_count' in req['state']['user']:
+                sessionStorage[user_id]['cul_count'] = 0
             res['response']['text'] = \
                 f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! " \
                 f"Твои очки:\nДаты: {req['state']['user']['test_count']}\nКартины: {req['state']['user']['pic_count']}\n" \
-                f"Термины: {req['state']['user']['ter_count']}."
+                f"Термины: {req['state']['user']['ter_count']}\nКультура: {sessionStorage[user_id]['cul_count']}"
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = req['state']['user']['test_count']
             sessionStorage[user_id]['pic_count'] = req['state']['user']['pic_count']
             sessionStorage[user_id]['ter_count'] = req['state']['user']['ter_count']
+
 
             res['response']['buttons'] = [
                 {'title': suggest, 'hide': False}
@@ -390,6 +395,13 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['mode'] = 'картины'
     if 'термины' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'термины'
+    if 'культура' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'культура'
+        sessionStorage[user_id]['cultID'] = 0
+        sessionStorage[user_id]['lastС'] = False
+        cult = copy.deepcopy(culture)
+        random.shuffle(cult)
+        sessionStorage[user_id]['culture'] = cult
 
     if sessionStorage[user_id]['mode'] == 'полезное':
         if 'полезное' in req['request']['original_utterance'].lower():
@@ -438,7 +450,8 @@ def handle_dialog(req, res):
                             'nick': sessionStorage[user_id]['nick'],
                             'test_count': sessionStorage[user_id]['test_count'],
                             'pic_count': sessionStorage[user_id]['pic_count'],
-                            'ter_count': sessionStorage[user_id]['ter_count']
+                            'ter_count': sessionStorage[user_id]['ter_count'],
+                            'cul_count': sessionStorage[user_id]['cul_count']
                         }
                         write_in_base(user_id)
                     else:
@@ -523,7 +536,8 @@ def handle_dialog(req, res):
                         'nick': sessionStorage[user_id]['nick'],
                         'test_count': sessionStorage[user_id]['test_count'],
                         'pic_count': sessionStorage[user_id]['pic_count'],
-                        'ter_count': sessionStorage[user_id]['ter_count']
+                        'ter_count': sessionStorage[user_id]['ter_count'],
+                        'cul_count': sessionStorage[user_id]['cul_count']
                     }
                     write_in_base(user_id)
                     break
@@ -562,7 +576,8 @@ def handle_dialog(req, res):
                         'nick': sessionStorage[user_id]['nick'],
                         'test_count': sessionStorage[user_id]['test_count'],
                         'pic_count': sessionStorage[user_id]['pic_count'],
-                        'ter_count': sessionStorage[user_id]['ter_count']
+                        'ter_count': sessionStorage[user_id]['ter_count'],
+                        'cul_count': sessionStorage[user_id]['cul_count']
                     }
                     write_in_base(user_id)
                     break
@@ -572,6 +587,44 @@ def handle_dialog(req, res):
                               f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
                               f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
+        res['response']['buttons'] = [
+            {'title': suggest, 'hide': True}
+            for suggest in sessionStorage[user_id]['slicedsuggests']
+        ]
+
+    elif sessionStorage[user_id]['mode'] == 'культура':
+        if not sessionStorage[user_id]['lastС']:
+            res['response']['card'] = {}
+            res['response']['card']['type'] = 'BigImage'
+            res['response']['card']['title'] = sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID']]['question']
+            res['response']['card']['image_id'] = sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID']]['photo_id']
+            sessionStorage[user_id]['lastС'] = True
+        else:
+            res['response']['card'] = {}
+            res['response']['card']['type'] = 'BigImage'
+
+            res['response']['card']['image_id'] = sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID']][
+                'photo_id']
+            res['response']['text'] = sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID']]['question']
+            for ans in sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID'] - 1]['answer'].lower().split('/'):
+                if ans in req['request']['original_utterance'].lower():
+                    res['response']['card']['title'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                    sessionStorage[user_id]['cul_count'] += 1  # Сохранение очков по терминам
+                    res['user_state_update'] = {
+                        'nick': sessionStorage[user_id]['nick'],
+                        'test_count': sessionStorage[user_id]['test_count'],
+                        'pic_count': sessionStorage[user_id]['pic_count'],
+                        'ter_count': sessionStorage[user_id]['ter_count'],
+                        'cul_count': sessionStorage[user_id]['cul_count']
+                    }
+                    write_in_base(user_id)
+                    break
+            else:
+                res['response']['card']['title'] = f"{random.choice(wrong)} Правильный ответ: " \
+                    f"{random.choice(sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID'] - 1]['answer'].split('/'))}. \n" \
+                    f"{random.choice(_next)}: {res['response']['text']}"
+        res['response']['text'] = res['response']['card']['title']
+        sessionStorage[user_id]['cultID'] += 1
         res['response']['buttons'] = [
             {'title': suggest, 'hide': True}
             for suggest in sessionStorage[user_id]['slicedsuggests']
