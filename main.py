@@ -181,6 +181,57 @@ def main():
     return json.dumps(response)
 
 
+def victorina_list():
+    return {
+                "type": "ItemsList",
+                "header": {
+                    "text": "Викторина 🎯"
+                },
+                "items": [
+                    {
+                        "title": "Даты",
+                        "description": "В этом режиме я буду спрашивать, когда произошло то или иное событие. "
+                                       "За правильно названный век ты получаешь 0.5 балла, а за точную дату - 1 ",
+                        "button": {
+                            "text": "Даты"
+                        }
+                    },
+                    {
+                        "title": "Картины",
+                        "description": "Здесь я покажу тебе портреты исторических личностей, а тебе нужно угадать, "
+                                       "кто на них изображён ",
+                        "button": {
+                            "text": "Картины"
+                        }
+                    },
+                    {
+                        "title": "Термины",
+                        "description": "А тут я спрошу у тебя термины :)",
+                        "button": {
+                            "text": "Термины"
+                        }
+                    },
+                ]
+            }
+
+
+def useful_list():
+    return {
+                "type": "ItemsList",
+                "header": {
+                    "text": "Полезное ✅"
+                },
+                "items": [
+                    {
+                        "title": "Факты двух столиц",
+                        "description": "Узнай необычные факты о Москве и Санкт-Петербурге!",
+                        "button": {
+                            "text": "Факты двух столиц"
+                        }
+                    }
+                ]
+            }
+
 def handle_dialog(req, res):
     user_id = req['session']['user_id']
     if res['response']['end_session'] is True:
@@ -343,23 +394,13 @@ def handle_dialog(req, res):
     if sessionStorage[user_id]['mode'] == 'полезное':
         if 'полезное' in req['request']['original_utterance'].lower():
             res['response'][
-                'text'] = 'Здесь находятся интересные факты, а также научные статьи по истории. Этот раздел еще ' \
+                'text'] = 'Здесь находятся интересные факты, а также научные статьи по истории. Этот раздел' \
                           'дополняется, приходи ещё! '
-            res['response']['card'] = {
-                "type": "ItemsList",
-                "header": {
-                    "text": "Полезное ✅"
-                },
-                "items": [
-                    {
-                        "title": "Факты двух столиц",
-                        "description": "Узнай необычные факты о Москве и Санкт-Петербурге!",
-                        "button": {
-                            "text": "Факты двух столиц"
-                        }
-                    }
-                ]
-            }
+            res['response']['card'] = useful_list()
+        else:
+            res['response'][
+                'text'] = 'Не понимаю. Выбери, пожалуйста, вариант из предложенных! '
+            res['response']['card'] = useful_list()
         return
     elif sessionStorage[user_id]['mode'] == 'викторина':
 
@@ -367,39 +408,12 @@ def handle_dialog(req, res):
             res['response'][
                 'text'] = 'В викторине я предалагю тебе поиграть в несколько режимов: даты, картины или термины. В каждом режиме ' \
                           'за правильные ответы будут зачисляться очки, будь внимателен!'
-            res['response']['card'] = {
-                "type": "ItemsList",
-                "header": {
-                    "text": "Викторина 🎯"
-                },
-                "items": [
-                    {
-                        "title": "Даты",
-                        "description": "В этом режиме я буду спрашивать у тебя случайные даты и события, "
-                                       "а ты постарайся "
-                                       "ответить правильно ",
-                        "button": {
-                            "text": "Даты"
-                        }
-                    },
-                    {
-                        "title": "Картины",
-                        "description": "Здесь я покажу тебе портреты исторических личностей, а тебе нужно угадать, "
-                                       "кто на них изображён ",
-                        "button": {
-                            "text": "Картины"
-                        }
-                    },
-                    {
-                        "title": "Термины",
-                        "description": "А тут я спрошу у тебя термины :)",
-                        "button": {
-                            "text": "Термины"
-                        }
-                    },
-                ]
-            }
-            return
+            res['response']['card'] = victorina_list()
+        else:
+            res['response'][
+                'text'] = 'Не понимаю. Выбери вариант из предложенных, пожалуйста!'
+            res['response']['card'] = victorina_list()
+        return
     elif sessionStorage[user_id]['mode'] == 'даты':
         if not sessionStorage[user_id]['lastQ']:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
@@ -429,7 +443,7 @@ def handle_dialog(req, res):
                         write_in_base(user_id)
                     else:
                         res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                                  f"в {years[0]}-{years[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
+                                                  f"с {years[0]} год по {years[1]} год. \n{random.choice(_next)}: {res['response']['text']}"
                     print(years[0] in user_answer, years[1] in user_answer)
                 else:  # если 1 год
                     if years[0] in user_answer:
@@ -446,7 +460,7 @@ def handle_dialog(req, res):
                     else:
                         res['response'][
                             'text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                      f"в {years[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
+                                      f"в {years[0]} году. \n{random.choice(_next)}: {res['response']['text']}"
             else:
                 if len(centuries) == 2:  # один век + слово "век"
                     if centuries[0] in user_answer and centuries[1] in user_answer:
@@ -463,7 +477,7 @@ def handle_dialog(req, res):
 
                     else:
                         res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                                  f"в {centuries[0]} веке \n{random.choice(_next)}: {res['response']['text']}"
+                                                  f"в {centuries[0]}-ом веке \n{random.choice(_next)}: {res['response']['text']}"
                 else:
                     if centuries[0] in user_answer and centuries[1] in user_answer and centuries[2] in user_answer:
                         res['response'][
@@ -478,7 +492,7 @@ def handle_dialog(req, res):
                         write_in_base(user_id)
                     else:
                         res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                                  f"в {centuries[0]}-{centuries[1]} веках \n{random.choice(_next)}: {res['response']['text']}"
+                                                  f"с {centuries[0]}-ый век по {centuries[1]}-ый век \n{random.choice(_next)}: {res['response']['text']}"
 
         sessionStorage[user_id]['id'] += 1
         res['response']['buttons'] = [
