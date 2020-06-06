@@ -258,6 +258,8 @@ def handle_dialog(req, res):
             # user = cur.execute(f"SELECT * FROM u WHERE nick = '{req['state']['user']['nick']}';").fetchone()
             if not 'cul_count' in req['state']['user']:
                 sessionStorage[user_id]['cul_count'] = 0
+            else:
+                sessionStorage[user_id]['cul_count'] = req['state']['user']['cul_count']
             res['response']['text'] = \
                 f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! " \
                 f"Твои очки:\nДаты: {req['state']['user']['test_count']}\nКартины: {req['state']['user']['pic_count']}\n" \
@@ -826,9 +828,9 @@ def handle_dialog(req, res):
 
 
 def count_naming(level, summa):
-    if level - summa == 1:
+    if level - summa >= 1:
         return 'очко'
-    if 2 <= level - summa <= 4:
+    if 2 <= level - summa < 5:
         return 'очка'
     if 5 <= level - summa <= 20:
         return 'очков'
