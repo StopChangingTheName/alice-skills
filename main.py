@@ -597,6 +597,9 @@ def handle_dialog(req, res):
                               f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
                               f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
+        if sessionStorage[user_id]['terID'] == len(sessionStorage[user_id]['term']):
+            random.shuffle(sessionStorage[user_id]['term'])
+            sessionStorage[user_id]['terID'] = 0
         res['response']['buttons'] = [
             {'title': suggest, 'hide': True}
             for suggest in sessionStorage[user_id]['slicedsuggests']
@@ -639,6 +642,9 @@ def handle_dialog(req, res):
                                                    f"{random.choice(_next)}: {res['response']['text']}"
         res['response']['text'] = res['response']['card']['title']
         sessionStorage[user_id]['cultID'] += 1
+        if sessionStorage[user_id]['cultID'] == len(sessionStorage[user_id]['culture']):
+            random.shuffle(sessionStorage[user_id]['culture'])
+            sessionStorage[user_id]['cultID'] = 0
         res['response']['buttons'] = [
             {'title': suggest, 'hide': True}
             for suggest in sessionStorage[user_id]['slicedsuggests']
