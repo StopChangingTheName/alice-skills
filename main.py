@@ -10,9 +10,7 @@ from flask import Flask, request, render_template
 from form import AnswQuest
 from portrait import portraits, hash_pass
 
-#  не удаляйте этот путь т.к. у меня проблема с открытием data.json
-# with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
-# альтернатива для вас:
+
 with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей дат
 with open('Data.json', encoding='utf8') as f:
@@ -45,9 +43,6 @@ def keep_alive():
 
 
 sessionStorage = {}
-x = hash_pass('Hello')
-# print(x)
-# print(unhash_pass(x, 'Hello'))
 
 # реакции для более живого разговора
 right = ['Отлично!', 'Правильно!', 'Супер!', 'Точно!', 'Верно!', 'Хорошо!', 'Неплохо!']
@@ -63,7 +58,25 @@ goodbye = ['Пока!', 'До встречи!', 'Будем на связи!', '
 hey = ['Привет', 'Приветствую тебя', 'Отличный день сегодня', 'Хорошо, что мы снова встретились', 'Приветик',
        'Здравствуй']
 
+do_not_know = ['Не знаешь? Запоминай, все получится!',
+               'Обидно, что не знаешь, но мы это исправим!',
+               'Ничего, все ещё впереди!',
+               'Постоянной практикой можно достичь совершенства, старайся!',
+               'Запоминай, тогда в следующий раз ответишь правильно!']
 
+
+# Функция для записи результатов в хранилище Алисы
+def write_in_state(user_id):
+    return {
+        'nick': sessionStorage[user_id]['nick'],
+        'test_count': sessionStorage[user_id]['test_count'],
+        'pic_count': sessionStorage[user_id]['pic_count'],
+        'ter_count': sessionStorage[user_id]['ter_count'],
+        'cul_count': sessionStorage[user_id]['cul_count']
+        }
+
+
+# Конфигурация для новой сессии
 def config(user_id):
     # перемешивание дат и терминов
     arr = copy.deepcopy(data)
@@ -109,9 +122,10 @@ def config(user_id):
     }
 
 
+# Запись в БД
 def write_in_base(user_id):
     con = sqlite3.connect("users.db")
-    cur = con.cursor()  # Вот тут будем заносить данные в БД
+    cur = con.cursor()
     test_count = sessionStorage[user_id]['test_count']
     pic_count = sessionStorage[user_id]['pic_count']
     ter_count = sessionStorage[user_id]['ter_count']
@@ -122,7 +136,7 @@ def write_in_base(user_id):
         cur.execute("INSERT OR REPLACE INTO u VALUES (?,?,?,?,?,?,?);",
                     (
                         id_ + 1,
-                        sessionStorage[user_id]['nick'],  # Заглушка для имени
+                        sessionStorage[user_id]['nick'],
                         test_count,
                         pic_count,
                         ter_count,
@@ -150,6 +164,7 @@ def hi():
     return 'Hey, our app works!'
 
 
+# Таблица рекордов, сортировка по сумме очков
 @app.route('/records')
 def records():
     con = sqlite3.connect("users.db")
@@ -157,16 +172,6 @@ def records():
     persons = cur.execute("SELECT * FROM u").fetchall()
     persons = sorted(persons, key=lambda x: -x[-1])
     return render_template('records.html', title='Рекорды | ЕГЭ', persons=persons)
-
-
-@app.route('/ask_question', methods=['GET', 'POST'])
-def ask_question():
-    form = AnswQuest()
-    if form.validate_on_submit():
-        with open('questions.txt', 'w', encoding='utf-8') as f:
-            f.write(f'Вопрос: {form.question.data}; Ответ: {form.answer.data}')
-        return 'Ваш вопрос получен. Спасибо!'
-    return render_template('ask.html', title='Задать свой вопрос', form=form)
 
 
 @app.route('/post', methods=['POST'])
@@ -185,6 +190,7 @@ def main():
     return json.dumps(response)
 
 
+# Список для режима "Викторина"
 def victorina_list():
     return {
         "type": "ItemsList",
@@ -226,6 +232,7 @@ def victorina_list():
     }
 
 
+# Список для режима "Полезное"
 def useful_list():
     return {
         "type": "ItemsList",
@@ -244,12 +251,21 @@ def useful_list():
     }
 
 
+# Реакция Алисы на неверный ответ пользователя
+def alice_reaction_to_dont_know_or_wrong_answer(user_answer):
+    if 'не знаю' in user_answer or 'хз' in user_answer or 'не помню' in user_answer:
+        return random.choice(do_not_know)
+    return random.choice(wrong)
+
+
+# Для устройств с экраном
 def handle_dialog(req, res):
     user_id = req['session']['user_id']
     if res['response']['end_session'] is True:
         write_in_base(user_id)
     if req['session']['new']:
         config(user_id)
+        # Попытка: пользователь заходит в навык не в первый раз
         try:
             # con = sqlite3.connect("users.db")
             # cur = con.cursor()
@@ -284,9 +300,7 @@ def handle_dialog(req, res):
                 "description": 'Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ''Напиши или скажи своё имя '
                                'или никнейм для сохранения результатов: '
             }
-            res['response'][
-                'text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ''Напиши или скажи своё имя или ' \
-                          'никнейм для сохранения результатов: '
+            res['response']['text'] = res['response']['card']['description']
         return
 
     if sessionStorage[user_id]['nick'] is None:
@@ -321,6 +335,7 @@ def handle_dialog(req, res):
             }
 
         return
+
     if res['response']['end_session'] is True:
         write_in_base(user_id)
         res['user_state_update'] = {
@@ -329,6 +344,7 @@ def handle_dialog(req, res):
     # log
     logging.info(f"------REQUEST COMMAND: {req['request']['command']} DEVICE: {req['meta']['client_id']}\n")
 
+    # Меню
     if 'меню' in req['request']['original_utterance'].lower() or \
             'рейтинг' in req['request']['original_utterance'].lower() or 'помощь' in req['request'][
         'original_utterance'].lower() or 'что ты умеешь' in req['request']['original_utterance'].lower():
@@ -350,6 +366,7 @@ def handle_dialog(req, res):
         res['response']['buttons'].append({'title': 'Закрыть навык ❌', 'hide': False})
         return
 
+    # Для смены ника
     if 'сменить ник' in req['request']['original_utterance'].lower() or \
             'сменить имя' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['old_nick'] = sessionStorage[user_id]['nick']
@@ -358,7 +375,7 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['want_to_change_nick'] = True
         return
 
-        # ставим режим
+    # ставим режим
     if 'развлечения' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'ресурсы'
 
@@ -376,6 +393,7 @@ def handle_dialog(req, res):
         fact = copy.deepcopy(facts)
         random.shuffle(fact)
         sessionStorage[user_id]['facts'] = fact
+
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
         res['response']['text'] = random.choice(
@@ -390,11 +408,6 @@ def handle_dialog(req, res):
                 'title': 'Рейтинг 🏆',
                 'hide': False,
                 'url': 'https://alice-skills-1--t1logy.repl.co/records'
-            },
-            {
-                'title': 'Задай свой вопрос 💬',
-                'hide': False,
-                'url': 'https://alice-skills-1--t1logy.repl.co/ask_question'
             }
         ]
         res['response']['end_session'] = True
@@ -415,34 +428,31 @@ def handle_dialog(req, res):
         random.shuffle(cult)
         sessionStorage[user_id]['culture'] = cult
 
+    # Обработка каждого режима
     if sessionStorage[user_id]['mode'] == 'полезное':
+        res['response']['card'] = useful_list()
         if 'полезное' in req['request']['original_utterance'].lower():
             res['response'][
                 'text'] = 'Здесь находятся интересные факты, а также научные статьи по истории. Этот раздел' \
                           'дополняется, приходи ещё! '
-            res['response']['card'] = useful_list()
         else:
-            res['response'][
-                'text'] = 'Не понимаю. Выбери, пожалуйста, вариант из предложенных! '
-            res['response']['card'] = useful_list()
+            res['response']['text'] = 'Не понимаю. Выбери, пожалуйста, вариант из предложенных! '
         return
     elif sessionStorage[user_id]['mode'] == 'викторина':
-
+        res['response']['card'] = victorina_list()
         if 'викторина' in req['request']['original_utterance'].lower():
-            res['response'][
-                'text'] = 'В викторине я предалагю тебе поиграть в несколько режимов: даты, картины или термины. В каждом режиме ' \
-                          'за правильные ответы будут зачисляться очки, будь внимателен!'
-            res['response']['card'] = victorina_list()
+            res['response'][ 'text'] = 'В викторине я предлагю тебе поиграть в несколько режимов: ' \
+                                       'даты, картины, культура или термины. В каждом режиме за ' \
+                                       'правильные ответы будут зачисляться очки, будь внимателен!'
         else:
             res['response'][
                 'text'] = 'Не понимаю. Выбери вариант из предложенных, пожалуйста!'
-            res['response']['card'] = victorina_list()
         return
     elif sessionStorage[user_id]['mode'] == 'даты':
-        if not sessionStorage[user_id]['lastQ']:
+        if not sessionStorage[user_id]['lastQ']: # Обработка первого вопроса
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
             sessionStorage[user_id]['lastQ'] = True
-        else:
+        else:  # остальные вопросы
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
             user_answer = req['request']['command'].lower()
             right_answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer'].lower().split(
@@ -458,16 +468,11 @@ def handle_dialog(req, res):
                         res['response'][
                             'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                         sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
-                        res['user_state_update'] = {
-                            'nick': sessionStorage[user_id]['nick'],
-                            'test_count': sessionStorage[user_id]['test_count'],
-                            'pic_count': sessionStorage[user_id]['pic_count'],
-                            'ter_count': sessionStorage[user_id]['ter_count'],
-                            'cul_count': sessionStorage[user_id]['cul_count']
-                        }
+                        res['user_state_update'] = write_in_state(user_id)
                         write_in_base(user_id)
                     else:
-                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                        word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
+                        res['response']['text'] = f"{word} Правильный ответ: " \
                                                   f"с {years[0]} год по {years[1]} год. \n{random.choice(_next)}: {res['response']['text']}"
                     print(years[0] in user_answer, years[1] in user_answer)
                 else:  # если 1 год
@@ -475,16 +480,12 @@ def handle_dialog(req, res):
                         res['response'][
                             'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                         sessionStorage[user_id]['test_count'] += 1
-                        res['user_state_update'] = {
-                            'nick': sessionStorage[user_id]['nick'],
-                            'test_count': sessionStorage[user_id]['test_count'],
-                            'pic_count': sessionStorage[user_id]['pic_count'],
-                            'ter_count': sessionStorage[user_id]['ter_count']
-                        }
+                        res['user_state_update'] = write_in_state(user_id)
                         write_in_base(user_id)
                     else:
+                        word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
                         res['response'][
-                            'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                            'text'] = f"{word} Правильный ответ: " \
                                       f"в {years[0]} году. \n{random.choice(_next)}: {res['response']['text']}"
             else:
                 if len(centuries) == 2:  # один век + слово "век"
@@ -492,41 +493,36 @@ def handle_dialog(req, res):
                         res['response'][
                             'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                         sessionStorage[user_id]['test_count'] += 0.5
-                        res['user_state_update'] = {
-                            'nick': sessionStorage[user_id]['nick'],
-                            'test_count': sessionStorage[user_id]['test_count'],
-                            'pic_count': sessionStorage[user_id]['pic_count'],
-                            'ter_count': sessionStorage[user_id]['ter_count']
-                        }
+                        res['user_state_update'] = write_in_state(user_id)
                         write_in_base(user_id)
 
                     else:
-                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                        word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
+                        res['response']['text'] = f"{word} Правильный ответ: " \
                                                   f"в {centuries[0]}-ом веке \n{random.choice(_next)}: {res['response']['text']}"
                 else:
                     if centuries[0] in user_answer and centuries[1] in user_answer and centuries[2] in user_answer:
                         res['response'][
                             'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                         sessionStorage[user_id]['test_count'] += 0.5
-                        res['user_state_update'] = {
-                            'nick': sessionStorage[user_id]['nick'],
-                            'test_count': sessionStorage[user_id]['test_count'],
-                            'pic_count': sessionStorage[user_id]['pic_count'],
-                            'ter_count': sessionStorage[user_id]['ter_count']
-                        }
+                        res['user_state_update'] = write_in_state(user_id)
                         write_in_base(user_id)
                     else:
-                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                        word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
+                        res['response']['text'] = f"{word} Правильный ответ: " \
                                                   f"с {centuries[0]}-ый век по {centuries[1]}-ый век \n{random.choice(_next)}: {res['response']['text']}"
 
         sessionStorage[user_id]['id'] += 1
+        if sessionStorage[user_id]['id'] == len(sessionStorage[user_id]['test']):
+            sessionStorage[user_id]['id'] = 0
+            random.shuffle(sessionStorage[user_id]['test'])
         res['response']['buttons'] = [
             {'title': suggest, 'hide': True}
             for suggest in sessionStorage[user_id]['slicedsuggests']
         ]
 
     elif sessionStorage[user_id]['mode'] == 'картины':
-        if not sessionStorage[user_id]['lastPic']:
+        if not sessionStorage[user_id]['lastPic']:  # Первый вопрос
             sessionStorage[user_id]['arrayPic'] = list(portraits)
             random.shuffle(sessionStorage[user_id]['arrayPic'])
             sessionStorage[user_id]['idPic'] = 0
@@ -537,25 +533,20 @@ def handle_dialog(req, res):
                 portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
             res['response']['text'] = 'Кто изображен на фотографии?'
             sessionStorage[user_id]['lastPic'] = True
-        else:
+        else: # Остальные
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
             for ans in sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower().split('/'):
                 if ans in req['request']['original_utterance'].lower():
                     res['response']['card']['title'] = random.choice(right)
                     sessionStorage[user_id]['pic_count'] += 1  # Сохранение очков по картинкам
-                    res['user_state_update'] = {
-                        'nick': sessionStorage[user_id]['nick'],
-                        'test_count': sessionStorage[user_id]['test_count'],
-                        'pic_count': sessionStorage[user_id]['pic_count'],
-                        'ter_count': sessionStorage[user_id]['ter_count'],
-                        'cul_count': sessionStorage[user_id]['cul_count']
-                    }
+                    res['user_state_update'] = write_in_state(user_id)
                     write_in_base(user_id)
                     break
                 else:
+                    word = alice_reaction_to_dont_know_or_wrong_answer(req['request']['original_utterance'].lower())
                     res['response']['card']['title'] \
-                        = f"{random.choice(wrong)} Правильный ответ: " \
+                        = f"{word} Правильный ответ: " \
                           f"{random.choice(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].split('/'))}."
 
             if sessionStorage[user_id]['idPic'] == len(sessionStorage[user_id]['arrayPic']):
@@ -578,24 +569,18 @@ def handle_dialog(req, res):
         else:
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
             for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1][
-                'answer'].lower().split(
-                '/'):
+                'answer'].lower().split('/'):
                 if ans in req['request']['original_utterance'].lower():
                     res['response'][
                         'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                     sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
-                    res['user_state_update'] = {
-                        'nick': sessionStorage[user_id]['nick'],
-                        'test_count': sessionStorage[user_id]['test_count'],
-                        'pic_count': sessionStorage[user_id]['pic_count'],
-                        'ter_count': sessionStorage[user_id]['ter_count'],
-                        'cul_count': sessionStorage[user_id]['cul_count']
-                    }
+                    res['user_state_update'] = write_in_state(user_id)
                     write_in_base(user_id)
                     break
             else:
+                word = alice_reaction_to_dont_know_or_wrong_answer(req['request']['original_utterance'].lower())
                 res['response'][
-                    'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                    'text'] = f"{word} Правильный ответ: " \
                               f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
                               f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
@@ -629,17 +614,12 @@ def handle_dialog(req, res):
                     res['response']['card'][
                         'title'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                     sessionStorage[user_id]['cul_count'] += 1  # Сохранение очков по терминам
-                    res['user_state_update'] = {
-                        'nick': sessionStorage[user_id]['nick'],
-                        'test_count': sessionStorage[user_id]['test_count'],
-                        'pic_count': sessionStorage[user_id]['pic_count'],
-                        'ter_count': sessionStorage[user_id]['ter_count'],
-                        'cul_count': sessionStorage[user_id]['cul_count']
-                    }
+                    res['user_state_update'] = write_in_state(user_id)
                     write_in_base(user_id)
                     break
             else:
-                res['response']['card']['title'] = f"{random.choice(wrong)} Правильный ответ: " \
+                word = alice_reaction_to_dont_know_or_wrong_answer(req['request']['original_utterance'].lower())
+                res['response']['card']['title'] = f"{word} Правильный ответ: " \
                                                    f"{random.choice(sessionStorage[user_id]['culture'][sessionStorage[user_id]['cultID'] - 1]['answer'].split('/'))}. \n" \
                                                    f"{random.choice(_next)}: {res['response']['text']}"
         res['response']['text'] = res['response']['card']['title']
@@ -780,11 +760,11 @@ def handle_dialog(req, res):
                                       f' до 3ого уровня осталось {40 - summa} {count_naming(40, summa)}'
             res['response']['card']['image_id'] = '213044/e3649e3e18880a531e76'
         elif summa < 60:
-            res['response']['text'] = f'Ого-го! Ты на третьем уровне. Совсем чуть-чуть до победы, осталось ' \
+            res['response']['text'] = f'Ого! Ты на третьем уровне. Совсем чуть-чуть до победы, осталось ' \
                                       f'{60 - summa} {count_naming(60, summa)}'
             res['response']['card']['image_id'] = '1652229/aadaf325e34cb47c7401'
         else:
-            res['response']['text'] = f'Поздравляю! С увереностью могу назвать тебя настоящим историком!'
+            res['response']['text'] = f'Поздравляю! С уверенностью могу назвать тебя настоящим историком!'
             res['response']['card']['image_id'] = '1540737/674b982eaca1f8245da4'
         res['response']['card']['title'] = res['response']['text']
         res['response']['tts'] += res['response']['text']
@@ -828,6 +808,7 @@ def handle_dialog(req, res):
     return
 
 
+# Функция для верного произношения слова "очков" в режиме "Уровень"
 def count_naming(level, summa):
     if level - summa >= 1:
         return 'очко'
@@ -837,6 +818,7 @@ def count_naming(level, summa):
         return 'очков'
 
 
+# Функция для устройств без экрана (Я.Станция, Я.Навигатор)
 def station_dialog(req, res):
     user_id = req['session']['user_id']
     if res['response']['end_session'] is True:
@@ -932,16 +914,11 @@ def station_dialog(req, res):
                         res['response'][
                             'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                         sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
-                        res['user_state_update'] = {
-                            'nick': sessionStorage[user_id]['nick'],
-                            'test_count': sessionStorage[user_id]['test_count'],
-                            'pic_count': sessionStorage[user_id]['pic_count'],
-                            'ter_count': sessionStorage[user_id]['ter_count'],
-                            'cul_count': sessionStorage[user_id]['cul_count']
-                        }
+                        res['user_state_update'] = write_in_state(user_id)
                         write_in_base(user_id)
                     else:
-                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                        word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
+                        res['response']['text'] = f"{word} Правильный ответ: " \
                                                   f"с {years[0]} год по {years[1]} год. \n{random.choice(_next)}: {res['response']['text']}"
                     print(years[0] in user_answer, years[1] in user_answer)
                 else:  # если 1 год
@@ -949,14 +926,10 @@ def station_dialog(req, res):
                         res['response'][
                             'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                         sessionStorage[user_id]['test_count'] += 1
-                        res['user_state_update'] = {
-                            'nick': sessionStorage[user_id]['nick'],
-                            'test_count': sessionStorage[user_id]['test_count'],
-                            'pic_count': sessionStorage[user_id]['pic_count'],
-                            'ter_count': sessionStorage[user_id]['ter_count']
-                        }
+                        res['user_state_update'] = write_in_state(user_id)
                         write_in_base(user_id)
                     else:
+                        word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
                         res['response'][
                             'text'] = f"{random.choice(wrong)} Правильный ответ: " \
                                       f"в {years[0]} году. \n{random.choice(_next)}: {res['response']['text']}"
@@ -966,36 +939,28 @@ def station_dialog(req, res):
                         res['response'][
                             'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                         sessionStorage[user_id]['test_count'] += 0.5
-                        res['user_state_update'] = {
-                            'nick': sessionStorage[user_id]['nick'],
-                            'test_count': sessionStorage[user_id]['test_count'],
-                            'pic_count': sessionStorage[user_id]['pic_count'],
-                            'ter_count': sessionStorage[user_id]['ter_count']
-                        }
+                        res['user_state_update'] = write_in_state(user_id)
                         write_in_base(user_id)
 
                     else:
-                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                        word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
+                        res['response']['text'] = f"{word} Правильный ответ: " \
                                                   f"в {centuries[0]}-ом веке \n{random.choice(_next)}: {res['response']['text']}"
                 else:
                     if centuries[0] in user_answer and centuries[1] in user_answer and centuries[2] in user_answer:
                         res['response'][
                             'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                         sessionStorage[user_id]['test_count'] += 0.5
-                        res['user_state_update'] = {
-                            'nick': sessionStorage[user_id]['nick'],
-                            'test_count': sessionStorage[user_id]['test_count'],
-                            'pic_count': sessionStorage[user_id]['pic_count'],
-                            'ter_count': sessionStorage[user_id]['ter_count']
-                        }
+                        res['user_state_update'] = write_in_state(user_id)
                         write_in_base(user_id)
                     else:
+                        word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
                         res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
                                                   f"с {centuries[0]}-ый век по {centuries[1]}-ый век \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['id'] += 1
         if sessionStorage[user_id]['id'] == len(sessionStorage[user_id]['test']):
-            random.shuffle(sessionStorage[user_id]['test'])
             sessionStorage[user_id]['id'] = 0
+            random.shuffle(sessionStorage[user_id]['test'])
 
     elif sessionStorage[user_id]['mode'] == 'термины':
         if not sessionStorage[user_id]['lastT']:
@@ -1010,18 +975,13 @@ def station_dialog(req, res):
                     res['response'][
                         'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                     sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
-                    res['user_state_update'] = {
-                        'nick': sessionStorage[user_id]['nick'],
-                        'test_count': sessionStorage[user_id]['test_count'],
-                        'pic_count': sessionStorage[user_id]['pic_count'],
-                        'ter_count': sessionStorage[user_id]['ter_count'],
-                        'cul_count': sessionStorage[user_id]['cul_count']
-                    }
+                    res['user_state_update'] = write_in_state(user_id)
                     write_in_base(user_id)
                     break
             else:
+                word = alice_reaction_to_dont_know_or_wrong_answer(req['request']['original_utterance'].lower())
                 res['response'][
-                    'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                    'text'] = f"{word} Правильный ответ: " \
                               f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
                               f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
@@ -1029,11 +989,13 @@ def station_dialog(req, res):
             random.shuffle(sessionStorage[user_id]['term'])
             sessionStorage[user_id]['terID'] = 0
     elif sessionStorage[user_id]['mode'] == 'факты':
+        res['response']['text'] = ''
+        res['response']['tts'] = ''
         if sessionStorage[user_id]['factID'] == 0:
             res['response']['text'] = 'Чтобы перейти к следующему факту, скажи далее'
             res['response']['tts'] = res['response']['text']
-        res['response']['text'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
-        res['response']['tts'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
+        res['response']['text'] += sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
+        res['response']['tts'] += sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
         sessionStorage[user_id]['factID'] += 1
         if sessionStorage[user_id]['factID'] == len(facts):
             sessionStorage[user_id]['factID'] = 0
@@ -1051,4 +1013,7 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    keep_alive()
+    #keep_alive()
+    from flask_ngrok import run_with_ngrok
+    run_with_ngrok(app)
+    app.run()
