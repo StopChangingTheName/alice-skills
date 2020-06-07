@@ -826,30 +826,49 @@ def station_dialog(req, res):
     if req['session']['new']:
         config(user_id)
         try:
-            con = sqlite3.connect("users.db")
-            cur = con.cursor()
-            user = cur.execute(f"SELECT * FROM u WHERE nick = '{req['state']['user']['nick']}';").fetchone()
-
+            # con = sqlite3.connect("users.db")
+            # cur = con.cursor()
+            # user = cur.execute(f"SELECT * FROM u WHERE nick = '{req['state']['user']['nick']}';").fetchone()
+            if not 'cul_count' in req['state']['user']:
+                sessionStorage[user_id]['cul_count'] = 0
+            else:
+                sessionStorage[user_id]['cul_count'] = req['state']['user']['cul_count']
             res['response']['text'] = \
-                f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку!" \
-                f"\nВ какой режим ты хочешь поиграть: даты или термины. А может, ты хочешь послушать интересные факты?"
-
+                f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! " \
+                f"Твои очки:\nДаты: {req['state']['user']['test_count']}\nКартины: {req['state']['user']['pic_count']}\n" \
+                f"Термины: {req['state']['user']['ter_count']}\nКультура: {sessionStorage[user_id]['cul_count']}"
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
-            sessionStorage[user_id]['test_count'] = user[2]
-            sessionStorage[user_id]['ter_count'] = user[4]
+            sessionStorage[user_id]['test_count'] = req['state']['user']['test_count']
+            sessionStorage[user_id]['pic_count'] = req['state']['user']['pic_count']
+            sessionStorage[user_id]['ter_count'] = req['state']['user']['ter_count']
 
-        except Exception:
-            res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории. Так как у тебя устройство ' \
+    except Exception:
+            res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории, или просто освежить свои знания по истории. Так как у тебя устройство ' \
                                       'без экрана или Навигатор, я могу предложить тебе только 3 режима. ' \
                                       'Скажи своё имя для сохранения результатов:'
         return
 
     if sessionStorage[user_id]['nick'] is None:
         tag = str(random.randint(0, 10001))
-        sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
+        if len(req['request']['original_utterance']) > 30:
+            res['response']['text'] = 'Ваше имя или никнейм занимает больше 30 символов. Пожалуйста, исправьте.'
+        else:
+            new_nick = req['request']['original_utterance'] + "#" + tag
+            if sessionStorage[user_id]['want_to_change_nick']:
+                con = sqlite3.connect("users.db")
+                cur = con.cursor()
+                print(new_nick, sessionStorage[user_id]['nick'])
+                cur.execute(f"UPDATE u SET nick = '{new_nick}' WHERE nick = '{sessionStorage[user_id]['old_nick']}'")
+                con.commit()
+                con.close()
+                sessionStorage[user_id]['want_to_change_nick'] = False
+            sessionStorage[user_id]['nick'] = new_nick
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-                                  'Если тебе надоест играть, скажи закрыть, а если понадобится помощь, скажи помощь. ' \
-                                  'Сыграем в даты или термины, или ты хочешь послушать интересные факты?'
+                                    'У меня есть 3 режима: даты, где я буду спрашивать тебя о случайных исторических событиях, и термины, где я спрошу у тебя различные исторические определения. Или ты можешь послушать интересные исторические факты. Во что из этого поиграем? Если ты что-то пропустил, просто скажи: "помощь".'
+
+        res['user_state_update'] = {
+            'nick': sessionStorage[user_id]['nick']
+        }
         return
     if res['response']['end_session'] is True:
         write_in_base(user_id)
@@ -872,8 +891,7 @@ def station_dialog(req, res):
 
     if 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request'][
         'original_utterance'].lower():
-        res['response']['text'] = 'Я буду задавать вопросы в случайном порядке, а ты старайся отвечать правильно! ' \
-                                  'У меня есть 3 режима: даты и термины или факты, в какой сыграем?'
+        res['response']['text'] = 'У меня есть 3 режима: даты, где я буду спрашивать тебя о случайных исторических событиях, и термины, где я спрошу у тебя различные исторические определения. Или ты можешь послушать интересные исторические факты. Во что из этого поиграем?'
         sessionStorage[user_id]['mode'] = ''
         return
     if sessionStorage[user_id]['mode'] == 'случайные даты':
@@ -939,7 +957,6 @@ def station_dialog(req, res):
                         word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
                         res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
                                                   f"с {centuries[0]}-ый век по {centuries[1]}-ый век \n{random.choice(_next)}: {res['response']['text']}"
-
         sessionStorage[user_id]['id'] += 1
         if sessionStorage[user_id]['id'] == len(sessionStorage[user_id]['test']):
             sessionStorage[user_id]['id'] = 0
