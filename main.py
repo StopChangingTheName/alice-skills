@@ -874,7 +874,7 @@ def station_dialog(req, res):
         sessionStorage[user_id]['mode'] = 'случайные даты'
     if 'термины' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'термины'
-    if 'закрыть' in req['request']['original_utterance'].lower() or res['response']['end_session'] == True:
+    if 'закрыть' in req['request']['original_utterance'].lower() or (res['response']['end_session'] is True):
         write_in_base(user_id)
         res['response']['text'] = random.choice(
             goodbye) + '\nИ помни, только постоянной практикой можно достичь успехов в истории'
@@ -1012,16 +1012,23 @@ def station_dialog(req, res):
             random.shuffle(sessionStorage[user_id]['term'])
             sessionStorage[user_id]['terID'] = 0
     elif sessionStorage[user_id]['mode'] == 'факты':
+        if sessionStorage[user_id]['factID'] == 0:
+            res['response']['text'] = 'Чтобы перейти к следующему факту, скажи далее'
+            res['response']['tts'] = res['response']['text']
         res['response']['text'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
         res['response']['tts'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
         sessionStorage[user_id]['factID'] += 1
         if sessionStorage[user_id]['factID'] == len(facts):
             sessionStorage[user_id]['factID'] = 0
             res['response']['text'] += '\nНаши факты закончились! Переходи в другие режимы, будет весело!'
+            res['response']['tts'] = res['response']['text']
+            return
     else:
-        res['response']['text'] = f'{random.choice(wtf)}. В какой режим ты хочешь сыграть: даты, термины или послушать интересные факты?'
+        res['response'][
+            'text'] = f'{random.choice(wtf)}. В какой режим ты хочешь сыграть: даты, термины или послушать интересные факты?'
     res['response']['buttons'] = [
-        {'title': 'Помощь', 'hide': True}
+        {'title': 'Помощь', 'hide': True},
+        {'title': 'Закрыть', 'hide': True}
     ]
     return
 
