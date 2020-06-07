@@ -58,7 +58,11 @@ goodbye = ['Пока!', 'До встречи!', 'Будем на связи!', '
 hey = ['Привет', 'Приветствую тебя', 'Отличный день сегодня', 'Хорошо, что мы снова встретились', 'Приветик',
        'Здравствуй']
 
-do_not_know = ['Не знаешь? Тогда запоминай!', 'Жаль, что не знаешь!']
+do_not_know = ['Не знаешь? Запоминай, все получится!',
+               'Обидно, что не знаешь, но мы это исправим!',
+               'Ничего, все ещё впереди!',
+               'Постоянной практикой можно достичь совершенства, старайся!',
+               'Запоминай, тогда в следующий раз ответишь правильно!']
 
 
 # Функция для записи результатов в хранилище Алисы
@@ -895,7 +899,8 @@ def station_dialog(req, res):
                         res['user_state_update'] = write_in_state(user_id)
                         write_in_base(user_id)
                     else:
-                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                        word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
+                        res['response']['text'] = f"{word} Правильный ответ: " \
                                                   f"с {years[0]} год по {years[1]} год. \n{random.choice(_next)}: {res['response']['text']}"
                     print(years[0] in user_answer, years[1] in user_answer)
                 else:  # если 1 год
@@ -906,6 +911,7 @@ def station_dialog(req, res):
                         res['user_state_update'] = write_in_state(user_id)
                         write_in_base(user_id)
                     else:
+                        word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
                         res['response'][
                             'text'] = f"{random.choice(wrong)} Правильный ответ: " \
                                       f"в {years[0]} году. \n{random.choice(_next)}: {res['response']['text']}"
@@ -919,7 +925,8 @@ def station_dialog(req, res):
                         write_in_base(user_id)
 
                     else:
-                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                        word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
+                        res['response']['text'] = f"{word} Правильный ответ: " \
                                                   f"в {centuries[0]}-ом веке \n{random.choice(_next)}: {res['response']['text']}"
                 else:
                     if centuries[0] in user_answer and centuries[1] in user_answer and centuries[2] in user_answer:
@@ -929,6 +936,7 @@ def station_dialog(req, res):
                         res['user_state_update'] = write_in_state(user_id)
                         write_in_base(user_id)
                     else:
+                        word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
                         res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
                                                   f"с {centuries[0]}-ый век по {centuries[1]}-ый век \n{random.choice(_next)}: {res['response']['text']}"
 
@@ -954,8 +962,9 @@ def station_dialog(req, res):
                     write_in_base(user_id)
                     break
             else:
+                word = alice_reaction_to_dont_know_or_wrong_answer(req['request']['original_utterance'].lower())
                 res['response'][
-                    'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                    'text'] = f"{word} Правильный ответ: " \
                               f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
                               f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
