@@ -321,7 +321,11 @@ def handle_dialog(req, res):
             }
 
         return
-
+    if res['response']['end_session'] is True:
+        write_in_base(user_id)
+        res['user_state_update'] = {
+            'nick': sessionStorage[user_id]['nick']
+        }
     # log
     logging.info(f"------REQUEST COMMAND: {req['request']['command']} DEVICE: {req['meta']['client_id']}\n")
 
@@ -374,11 +378,9 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['facts'] = fact
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
-        write_in_base(user_id)
         res['response']['text'] = random.choice(
             goodbye) + '\nЕсли тебе понравилось, поставь нам оценку 👇. Спасибо :)\nПроверь своё место в рейтинге!\n' \
-                       'Ты можешь помочь нам с вопросами! Переходи по вкладке "Задать свой вопрос", и, ' \
-                       'может быть, мы его добавим в тест!'
+                       'Возвращайся почаще, ведь только постоянная практика может привести к успеху!'
         res['response']['buttons'] = [{
             'title': 'Оценить ⭐️',
             'hide': False,
@@ -847,8 +849,7 @@ def station_dialog(req, res):
             user = cur.execute(f"SELECT * FROM u WHERE nick = '{req['state']['user']['nick']}';").fetchone()
 
             res['response']['text'] = \
-                f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! В любой момент ты можешь " \
-                f"сказать: закрыть, чтобы закончить наш разговор." \
+                f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку!" \
                 f"\nВ какой режим ты хочешь поиграть: даты или термины. А может, ты хочешь послушать интересные факты?"
 
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
@@ -868,22 +869,18 @@ def station_dialog(req, res):
                                   'Если тебе надоест играть, скажи закрыть, а если понадобится помощь, скажи помощь. ' \
                                   'Сыграем в даты или термины, или ты хочешь послушать интересные факты?'
         return
-
-    if 'даты' in req['request']['original_utterance'].lower() or 'да ты' in req['request']['original_utterance'].lower() \
-            or 'дата' in req['request']['original_utterance'].lower():
-        sessionStorage[user_id]['mode'] = 'случайные даты'
-    if 'термины' in req['request']['original_utterance'].lower():
-        sessionStorage[user_id]['mode'] = 'термины'
-    if 'закрыть' in req['request']['original_utterance'].lower() or (res['response']['end_session'] is True):
+    if res['response']['end_session'] is True:
         write_in_base(user_id)
-        res['response']['text'] = random.choice(
-            goodbye) + '\nИ помни, только постоянной практикой можно достичь успехов в истории'
-        res['response']['end_session'] = True
         res['user_state_update'] = {
             'nick': sessionStorage[user_id]['nick']
         }
         # config(user_id) # на случай если захочет заново играть БЕЗ перезапуска навыка
         return
+    if 'даты' in req['request']['original_utterance'].lower() or 'да ты' in req['request']['original_utterance'].lower() \
+            or 'дата' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'случайные даты'
+    if 'термины' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'термины'
     if 'факты' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'факты'
         sessionStorage[user_id]['factID'] = 0
@@ -1025,10 +1022,10 @@ def station_dialog(req, res):
             return
     else:
         res['response'][
-            'text'] = f'{random.choice(wtf)}. В какой режим ты хочешь сыграть: даты, термины или послушать интересные факты?'
+            'text'] = f'В какой режим ты хочешь сыграть: даты, термины или послушать интересные ' \
+                      f'факты? '
     res['response']['buttons'] = [
-        {'title': 'Помощь', 'hide': True},
-        {'title': 'Закрыть', 'hide': True}
+        {'title': 'Помощь', 'hide': True}
     ]
     return
 
