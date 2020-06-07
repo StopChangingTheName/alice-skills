@@ -849,7 +849,7 @@ def station_dialog(req, res):
             res['response']['text'] = \
                 f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! В любой момент ты можешь " \
                 f"сказать: закрыть, чтобы закончить наш разговор." \
-                f"\nВ какой режим ты хочешь поиграть: даты или термины?"
+                f"\nВ какой режим ты хочешь поиграть: даты или термины. А может, ты хочешь послушать интересные факты?"
 
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = user[2]
@@ -886,6 +886,10 @@ def station_dialog(req, res):
         return
     if 'факты' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'факты'
+        sessionStorage[user_id]['factID'] = 0
+        fact = copy.deepcopy(facts)
+        random.shuffle(fact)
+        sessionStorage[user_id]['facts'] = fact
 
     if 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request'][
         'original_utterance'].lower():
