@@ -22,9 +22,7 @@ with open('Data.json', encoding='utf8') as f:
 with open('Data.json', encoding='utf8') as f:
     culture = json.loads(f.read())['culture']  # same из фактов
 app = Flask('')
-from flask_ngrok import run_with_ngrok
 
-run_with_ngrok(app)
 app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
     filename='example.log',
@@ -258,6 +256,8 @@ def handle_dialog(req, res):
             # user = cur.execute(f"SELECT * FROM u WHERE nick = '{req['state']['user']['nick']}';").fetchone()
             if not 'cul_count' in req['state']['user']:
                 sessionStorage[user_id]['cul_count'] = 0
+            else:
+                sessionStorage[user_id]['cul_count'] = req['state']['user']['cul_count']
             res['response']['text'] = \
                 f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! " \
                 f"Твои очки:\nДаты: {req['state']['user']['test_count']}\nКартины: {req['state']['user']['pic_count']}\n" \
@@ -798,6 +798,7 @@ def handle_dialog(req, res):
     elif sessionStorage[user_id]['mode'] == 'факты':
         res['response']['buttons'] = []
         res['response']['text'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
+        res['response']['tts'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
         if 'photo_id' in sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]:
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
@@ -826,9 +827,9 @@ def handle_dialog(req, res):
 
 
 def count_naming(level, summa):
-    if level - summa == 1:
+    if level - summa >= 1:
         return 'очко'
-    if 2 <= level - summa <= 4:
+    if 2 <= level - summa < 5:
         return 'очка'
     if 5 <= level - summa <= 20:
         return 'очков'
@@ -848,7 +849,7 @@ def station_dialog(req, res):
             res['response']['text'] = \
                 f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! В любой момент ты можешь " \
                 f"сказать: закрыть, чтобы закончить наш разговор." \
-                f"\nВ какой режим ты хочешь поиграть: даты или термины?"
+                f"\nВ какой режим ты хочешь поиграть: даты или термины. А может, ты хочешь послушать интересные факты?"
 
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = user[2]
@@ -856,7 +857,7 @@ def station_dialog(req, res):
 
         except Exception:
             res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории. Так как у тебя устройство ' \
-                                      'без экрана или Навигатор, я могу предложить тебе только 2 режима. ' \
+                                      'без экрана или Навигатор, я могу предложить тебе только 3 режима. ' \
                                       'Скажи своё имя для сохранения результатов:'
         return
 
@@ -865,7 +866,7 @@ def station_dialog(req, res):
         sessionStorage[user_id]['nick'] = req['request']['original_utterance'] + "#" + tag
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
                                   'Если тебе надоест играть, скажи закрыть, а если понадобится помощь, скажи помощь. ' \
-                                  'В какой режим сыграем: даты или термины?'
+                                  'Сыграем в даты или термины, или ты хочешь послушать интересные факты?'
         return
 
     if 'даты' in req['request']['original_utterance'].lower() or 'да ты' in req['request']['original_utterance'].lower() \
@@ -873,21 +874,27 @@ def station_dialog(req, res):
         sessionStorage[user_id]['mode'] = 'случайные даты'
     if 'термины' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'термины'
-    if 'закрыть' in req['request']['original_utterance'].lower() or res['response']['end_session'] == True:
+    if 'закрыть' in req['request']['original_utterance'].lower() or (res['response']['end_session'] is True):
         write_in_base(user_id)
         res['response']['text'] = random.choice(
-            goodbye) + '\nЕсли тебе понравилось, поставь нам звёздочки на сайте Яндекс Диалогов. Спасибо :)'
+            goodbye) + '\nИ помни, только постоянной практикой можно достичь успехов в истории'
         res['response']['end_session'] = True
         res['user_state_update'] = {
             'nick': sessionStorage[user_id]['nick']
         }
         # config(user_id) # на случай если захочет заново играть БЕЗ перезапуска навыка
         return
+    if 'факты' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'факты'
+        sessionStorage[user_id]['factID'] = 0
+        fact = copy.deepcopy(facts)
+        random.shuffle(fact)
+        sessionStorage[user_id]['facts'] = fact
 
     if 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request'][
         'original_utterance'].lower():
         res['response']['text'] = 'Я буду задавать вопросы в случайном порядке, а ты старайся отвечать правильно! ' \
-                                  'У меня есть 2 режима: даты и термины, в какой сыграем?'
+                                  'У меня есть 3 режима: даты и термины или факты, в какой сыграем?'
         sessionStorage[user_id]['mode'] = ''
         return
     if sessionStorage[user_id]['mode'] == 'случайные даты':
@@ -896,31 +903,81 @@ def station_dialog(req, res):
             sessionStorage[user_id]['lastQ'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
-            user_answer = req['request']['command'].lower().split(' ')
+            user_answer = req['request']['command'].lower()
             right_answer = sessionStorage[user_id]['test'][sessionStorage[user_id]['id'] - 1]['answer'].lower().split(
-                ' ')
+                '/')
+            years = right_answer[0].split(' ')
+            centuries = right_answer[1].split(' ')
 
-            print(right_answer)
+            print(years, centuries)
             print(user_answer)
-            if len(right_answer) > 1:  # если у нас 2 года
-                if right_answer[0] in user_answer and right_answer[1] in user_answer:
-                    res['response'][
-                        'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
-                    sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
-                    write_in_base(user_id)
+            if 'век' not in user_answer:
+                if len(years) > 1:  # если у нас 2 года
+                    if years[0] in user_answer and years[1] in user_answer:
+                        res['response'][
+                            'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                        sessionStorage[user_id]['test_count'] += 1  # Сохранение очков по датам
+                        res['user_state_update'] = {
+                            'nick': sessionStorage[user_id]['nick'],
+                            'test_count': sessionStorage[user_id]['test_count'],
+                            'pic_count': sessionStorage[user_id]['pic_count'],
+                            'ter_count': sessionStorage[user_id]['ter_count'],
+                            'cul_count': sessionStorage[user_id]['cul_count']
+                        }
+                        write_in_base(user_id)
+                    else:
+                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                                                  f"с {years[0]} год по {years[1]} год. \n{random.choice(_next)}: {res['response']['text']}"
+                    print(years[0] in user_answer, years[1] in user_answer)
+                else:  # если 1 год
+                    if years[0] in user_answer:
+                        res['response'][
+                            'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                        sessionStorage[user_id]['test_count'] += 1
+                        res['user_state_update'] = {
+                            'nick': sessionStorage[user_id]['nick'],
+                            'test_count': sessionStorage[user_id]['test_count'],
+                            'pic_count': sessionStorage[user_id]['pic_count'],
+                            'ter_count': sessionStorage[user_id]['ter_count']
+                        }
+                        write_in_base(user_id)
+                    else:
+                        res['response'][
+                            'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                                      f"в {years[0]} году. \n{random.choice(_next)}: {res['response']['text']}"
+            else:
+                if len(centuries) == 2:  # один век + слово "век"
+                    if centuries[0] in user_answer and centuries[1] in user_answer:
+                        res['response'][
+                            'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                        sessionStorage[user_id]['test_count'] += 0.5
+                        res['user_state_update'] = {
+                            'nick': sessionStorage[user_id]['nick'],
+                            'test_count': sessionStorage[user_id]['test_count'],
+                            'pic_count': sessionStorage[user_id]['pic_count'],
+                            'ter_count': sessionStorage[user_id]['ter_count']
+                        }
+                        write_in_base(user_id)
+
+                    else:
+                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                                                  f"в {centuries[0]}-ом веке \n{random.choice(_next)}: {res['response']['text']}"
                 else:
-                    res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                              f"в {right_answer[0]}-{right_answer[1]} гг. \n{random.choice(_next)}: {res['response']['text']}"
-            else:  # если 1 год
-                if right_answer[0] in user_answer:
-                    res['response'][
-                        'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
-                    sessionStorage[user_id]['test_count'] += 1
-                    write_in_base(user_id)
-                else:
-                    res['response'][
-                        'text'] = f"{random.choice(wrong)} Правильный ответ: " \
-                                  f"в {right_answer[0]} г. \n{random.choice(_next)}: {res['response']['text']}"
+                    if centuries[0] in user_answer and centuries[1] in user_answer and centuries[2] in user_answer:
+                        res['response'][
+                            'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                        sessionStorage[user_id]['test_count'] += 0.5
+                        res['user_state_update'] = {
+                            'nick': sessionStorage[user_id]['nick'],
+                            'test_count': sessionStorage[user_id]['test_count'],
+                            'pic_count': sessionStorage[user_id]['pic_count'],
+                            'ter_count': sessionStorage[user_id]['ter_count']
+                        }
+                        write_in_base(user_id)
+                    else:
+                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                                                  f"с {centuries[0]}-ый век по {centuries[1]}-ый век \n{random.choice(_next)}: {res['response']['text']}"
+
         sessionStorage[user_id]['id'] += 1
 
     elif sessionStorage[user_id]['mode'] == 'термины':
@@ -929,12 +986,20 @@ def station_dialog(req, res):
             sessionStorage[user_id]['lastT'] = True
         else:
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
-            for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer'].lower().split(
-                    '/'):
+            for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1][
+                'answer'].lower().split(
+                '/'):
                 if ans in req['request']['original_utterance'].lower():
                     res['response'][
                         'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
                     sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
+                    res['user_state_update'] = {
+                        'nick': sessionStorage[user_id]['nick'],
+                        'test_count': sessionStorage[user_id]['test_count'],
+                        'pic_count': sessionStorage[user_id]['pic_count'],
+                        'ter_count': sessionStorage[user_id]['ter_count'],
+                        'cul_count': sessionStorage[user_id]['cul_count']
+                    }
                     write_in_base(user_id)
                     break
             else:
@@ -943,13 +1008,30 @@ def station_dialog(req, res):
                               f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
                               f"{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['terID'] += 1
+        if sessionStorage[user_id]['terID'] == len(sessionStorage[user_id]['term']):
+            random.shuffle(sessionStorage[user_id]['term'])
+            sessionStorage[user_id]['terID'] = 0
+    elif sessionStorage[user_id]['mode'] == 'факты':
+        if sessionStorage[user_id]['factID'] == 0:
+            res['response']['text'] = 'Чтобы перейти к следующему факту, скажи далее'
+            res['response']['tts'] = res['response']['text']
+        res['response']['text'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
+        res['response']['tts'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
+        sessionStorage[user_id]['factID'] += 1
+        if sessionStorage[user_id]['factID'] == len(facts):
+            sessionStorage[user_id]['factID'] = 0
+            res['response']['text'] += '\nНаши факты закончились! Переходи в другие режимы, будет весело!'
+            res['response']['tts'] = res['response']['text']
+            return
     else:
-        res['response']['text'] = f'{random.choice(wtf)}. В какой режим ты хочешь сыграть: даты или термины?'
+        res['response'][
+            'text'] = f'{random.choice(wtf)}. В какой режим ты хочешь сыграть: даты, термины или послушать интересные факты?'
     res['response']['buttons'] = [
-        {'title': 'Помощь', 'hide': True}
+        {'title': 'Помощь', 'hide': True},
+        {'title': 'Закрыть', 'hide': True}
     ]
+    return
 
 
 if __name__ == '__main__':
-    # keep_alive()
-    app.run()
+    keep_alive()
