@@ -747,7 +747,8 @@ def handle_dialog(req, res):
         test_count = sessionStorage[user_id]['test_count']
         pic_count = sessionStorage[user_id]['pic_count']
         ter_count = sessionStorage[user_id]['ter_count']
-        summa = test_count + pic_count + ter_count
+        cul_count = sessionStorage[user_id]['cul_count']
+        summa = test_count + pic_count + ter_count + cul_count
         res['response']['card'] = {}
         res['response']['card']['type'] = 'BigImage'
         res['response']['tts'] = '<speaker audio="alice-sounds-game-win-1.opus">'
@@ -932,7 +933,7 @@ def station_dialog(req, res):
                     else:
                         word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
                         res['response'][
-                            'text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                            'text'] = f"{word} Правильный ответ: " \
                                       f"в {years[0]} году. \n{random.choice(_next)}: {res['response']['text']}"
             else:
                 if len(centuries) == 2:  # один век + слово "век"
@@ -956,7 +957,7 @@ def station_dialog(req, res):
                         write_in_base(user_id)
                     else:
                         word = alice_reaction_to_dont_know_or_wrong_answer(user_answer)
-                        res['response']['text'] = f"{random.choice(wrong)} Правильный ответ: " \
+                        res['response']['text'] = f"{word} Правильный ответ: " \
                                                   f"с {centuries[0]}-ый век по {centuries[1]}-ый век \n{random.choice(_next)}: {res['response']['text']}"
         sessionStorage[user_id]['id'] += 1
         if sessionStorage[user_id]['id'] == len(sessionStorage[user_id]['test']):
@@ -1015,7 +1016,4 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    #keep_alive()
-    from flask_ngrok import run_with_ngrok
-    run_with_ngrok(app)
-    app.run()
+    keep_alive()
