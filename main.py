@@ -800,6 +800,7 @@ def handle_dialog(req, res):
     elif sessionStorage[user_id]['mode'] == 'факты':
         res['response']['buttons'] = []
         res['response']['text'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
+        res['response']['tts'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
         if 'photo_id' in sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]:
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
