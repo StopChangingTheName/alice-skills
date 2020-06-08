@@ -20,7 +20,8 @@ with open('Data.json', encoding='utf8') as f:
 with open('Data.json', encoding='utf8') as f:
     culture = json.loads(f.read())['culture']  # same из фактов
 app = Flask('')
-
+from flask_ngrok import run_with_ngrok
+run_with_ngrok(app)
 app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
     filename='example.log',
@@ -124,7 +125,11 @@ def config(user_id):
 
 # Запись в БД
 def write_in_base(user_id):
-    con = sqlite3.connect("users.db")
+    con = psycopg2.connect(user="kndwjclu",
+                                  password="WQZM309s2Rd4dUUbl1l3v_zicW2ghkYv",
+                                  host="dumbo.db.elephantsql.com",
+                                  port="5432",
+                                  database="kndwjclu")
     cur = con.cursor()
     test_count = sessionStorage[user_id]['test_count']
     pic_count = sessionStorage[user_id]['pic_count']
@@ -167,7 +172,11 @@ def hi():
 # Таблица рекордов, сортировка по сумме очков
 @app.route('/records')
 def records():
-    con = sqlite3.connect("users.db")
+    con = psycopg2.connect(user="kndwjclu",
+                                  password="WQZM309s2Rd4dUUbl1l3v_zicW2ghkYv",
+                                  host="dumbo.db.elephantsql.com",
+                                  port="5432",
+                                  database="kndwjclu")
     cur = con.cursor()
     persons = cur.execute("SELECT * FROM u").fetchall()
     persons = sorted(persons, key=lambda x: -x[-1])
@@ -1016,4 +1025,5 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    keep_alive()
+    # keep_alive()
+    app.run()
