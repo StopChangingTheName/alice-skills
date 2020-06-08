@@ -161,7 +161,9 @@ def records():
                                   port="5432",
                                   database="kndwjclu")
     cur = con.cursor()
-    persons = cur.execute("SELECT * FROM u").fetchall()
+    persons = cur.execute("SELECT * FROM u;").fetchall()
+    con.commit()
+    con.close()
     persons = sorted(persons, key=lambda x: -x[-1])
     return render_template('records.html', title='Рекорды | ЕГЭ', persons=persons)
 
