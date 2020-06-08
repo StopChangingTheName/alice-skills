@@ -161,7 +161,8 @@ def records():
                                   port="5432",
                                   database="kndwjclu")
     cur = con.cursor()
-    persons = cur.execute("SELECT * FROM u;").fetchall()
+    cur.execute("SELECT * FROM u;").fetchall()
+    persons = cur.fetchall()
     con.commit()
     con.close()
     persons = sorted(persons, key=lambda x: -x[-1])
