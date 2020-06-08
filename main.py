@@ -3,6 +3,8 @@ import json
 import logging
 import random
 import sqlite3
+
+import psycopg2
 import schedule
 # from git_task import commiting
 from threading import Thread
@@ -137,29 +139,10 @@ def write_in_base(user_id):
     cul_count = sessionStorage[user_id]['cul_count']
     cur.execute(f"SELECT * FROM u WHERE nick = '{sessionStorage[user_id]['nick']}';")
     if cur.fetchone() is None:
-        id_ = len(cur.execute('SELECT * FROM u').fetchall())
-        cur.execute("INSERT OR REPLACE INTO u VALUES (?,?,?,?,?,?,?);",
-                    (
-                        id_ + 1,
-                        sessionStorage[user_id]['nick'],
-                        test_count,
-                        pic_count,
-                        ter_count,
-                        cul_count,
-                        test_count + pic_count + ter_count + cul_count
-                    )
-                    )
+
+        cur.execute(f"INSERT INTO u VALUES (DEFAULT,'{sessionStorage[user_id]['nick']}',{test_count},{pic_count},{ter_count},{cul_count},{test_count + pic_count + ter_count + cul_count});")
     else:
-        cur.execute("UPDATE u SET (date_count, pic_count, ter_count, cul_count, summa) = (?,?,?,?,?) WHERE nick = ?;",
-                    (
-                        test_count,
-                        pic_count,
-                        ter_count,
-                        cul_count,
-                        test_count + pic_count + ter_count + cul_count,
-                        sessionStorage[user_id]['nick']
-                    )
-                    )
+        cur.execute(f"UPDATE u SET (date_count, pic_count, ter_count, cul_count, summa) = ({test_count},{pic_count},{ter_count},{cul_count},{test_count + pic_count + ter_count + cul_count}) WHERE nick = '{sessionStorage[user_id]['nick']}';")
     con.commit()
     con.close()
 
@@ -319,7 +302,11 @@ def handle_dialog(req, res):
         else:
             new_nick = req['request']['original_utterance'] + "#" + tag
             if sessionStorage[user_id]['want_to_change_nick']:
-                con = sqlite3.connect("users.db")
+                con = psycopg2.connect(user="kndwjclu",
+                                       password="WQZM309s2Rd4dUUbl1l3v_zicW2ghkYv",
+                                       host="dumbo.db.elephantsql.com",
+                                       port="5432",
+                                       database="kndwjclu")
                 cur = con.cursor()
                 print(new_nick, sessionStorage[user_id]['nick'])
                 cur.execute(f"UPDATE u SET nick = '{new_nick}' WHERE nick = '{sessionStorage[user_id]['old_nick']}'")
@@ -866,7 +853,11 @@ def station_dialog(req, res):
         else:
             new_nick = req['request']['original_utterance'] + "#" + tag
             if sessionStorage[user_id]['want_to_change_nick']:
-                con = sqlite3.connect("users.db")
+                con = psycopg2.connect(user="kndwjclu",
+                                       password="WQZM309s2Rd4dUUbl1l3v_zicW2ghkYv",
+                                       host="dumbo.db.elephantsql.com",
+                                       port="5432",
+                                       database="kndwjclu")
                 cur = con.cursor()
                 print(new_nick, sessionStorage[user_id]['nick'])
                 cur.execute(f"UPDATE u SET nick = '{new_nick}' WHERE nick = '{sessionStorage[user_id]['old_nick']}'")
