@@ -1010,4 +1010,4 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    keep_alive()
+    app.run(host="0.0.0.0", port=8080)
