@@ -161,7 +161,7 @@ def records():
                                   port="5432",
                                   database="kndwjclu")
     cur = con.cursor()
-    cur.execute("SELECT * FROM u;").fetchall()
+    cur.execute("SELECT * FROM u;")
     persons = cur.fetchall()
     con.commit()
     con.close()
