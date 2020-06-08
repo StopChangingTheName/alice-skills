@@ -2,11 +2,7 @@ import copy
 import json
 import logging
 import random
-import sqlite3
-
 import psycopg2
-import schedule
-# from git_task import commiting
 from threading import Thread
 from flask import Flask, request, render_template
 from form import AnswQuest
@@ -22,8 +18,6 @@ with open('Data.json', encoding='utf8') as f:
 with open('Data.json', encoding='utf8') as f:
     culture = json.loads(f.read())['culture']  # same из фактов
 app = Flask('')
-from flask_ngrok import run_with_ngrok
-run_with_ngrok(app)
 app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
     filename='example.log',
@@ -31,9 +25,6 @@ logging.basicConfig(
     level=logging.INFO
 )
 
-
-# commiting
-# schedule.every().hour.do(commiting)
 
 
 def run():
@@ -1019,5 +1010,4 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    # keep_alive()
-    app.run()
+    app.run(host="0.0.0.0", port=8080)
