@@ -790,8 +790,7 @@ def handle_dialog(req, res):
     elif sessionStorage[user_id]['mode'] == 'факты':
         res['response']['buttons'] = []
         res['response']['text'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
-        if 'tts' in sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]:
-            res['response']['tts'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['tts']
+        res['response']['tts'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['tts']
         if 'photo_id' in sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]:
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
@@ -1012,9 +1011,7 @@ def station_dialog(req, res):
         if sessionStorage[user_id]['factID'] == 0:
             res['response']['text'] = 'Чтобы перейти к следующему факту, скажи далее. '
         res['response']['text'] += sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
-        if 'tts' in sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]:
-            res['response']['tts'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['tts']
-
+        res['response']['tts'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['tts']
         sessionStorage[user_id]['factID'] += 1
         if sessionStorage[user_id]['factID'] == len(facts):
             sessionStorage[user_id]['factID'] = 0
