@@ -837,7 +837,8 @@ def station_dialog(req, res):
             res['response']['text'] = \
                 f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! " \
                 f"Твои очки:\nДаты: {req['state']['user']['test_count']}\nКартины: {req['state']['user']['pic_count']}\n" \
-                f"Термины: {req['state']['user']['ter_count']}\nКультура: {sessionStorage[user_id]['cul_count']}"
+                f"Термины: {req['state']['user']['ter_count']}\nКультура: {sessionStorage[user_id]['cul_count']}\nВ " \
+                f"какой режим ты хочешь сыграть: даты, термины или послушать интересные факты?"
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = req['state']['user']['test_count']
             sessionStorage[user_id]['pic_count'] = req['state']['user']['pic_count']
