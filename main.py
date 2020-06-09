@@ -277,7 +277,7 @@ def handle_dialog(req, res):
             sessionStorage[user_id]['test_count'] = req['state']['user']['test_count']
             sessionStorage[user_id]['pic_count'] = req['state']['user']['pic_count']
             sessionStorage[user_id]['ter_count'] = req['state']['user']['ter_count']
-            res['response']['tts'] = res['response']['text'] + '<speaker audio="dialogs-upload/89bfd29f-f269-440c-9bb5-8a16ee77cbce/9437b79d-0c46-4403-bb45-2dc5ab35ef0d.opus">'
+            res['response']['tts'] = f'<speaker audio="dialogs-upload/89bfd29f-f269-440c-9bb5-8a16ee77cbce/9437b79d-0c46-4403-bb45-2dc5ab35ef0d.opus">{res["response"]["text"]}<speaker audio="-">'
             res['response']['buttons'] = [
                 {'title': suggest, 'hide': False}
                 for suggest in sessionStorage[user_id]['suggests']
