@@ -19,9 +19,9 @@ with open('Data.json', encoding='utf8') as f:
 with open('Data.json', encoding='utf8') as f:
     culture = json.loads(f.read())['culture']  # same из фактов
 app = Flask('')
-from flask_ngrok import run_with_ngrok
-
-run_with_ngrok(app)
+# from flask_ngrok import run_with_ngrok
+#
+# run_with_ngrok(app)
 app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
     filename='example.log',
@@ -1001,7 +1001,6 @@ def station_dialog(req, res):
         res['response']['tts'] = ''
         if sessionStorage[user_id]['factID'] == 0:
             res['response']['text'] = 'Чтобы перейти к следующему факту, скажи далее. '
-            res['response']['tts'] = res['response']['text']
         res['response']['text'] += sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
         if 'tts' in sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]:
             res['response']['tts'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['tts']
@@ -1022,5 +1021,5 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    # keep_alive()
-    app.run()
+    keep_alive()
+    # app.run()
