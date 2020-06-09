@@ -432,7 +432,7 @@ def handle_dialog(req, res):
         res['response']['card'] = useful_list()
         if 'полезное' in req['request']['original_utterance'].lower():
             res['response'][
-                'text'] = 'Здесь находятся интересные факты, а также научные статьи по истории. Этот раздел' \
+                'tts'] = 'Здесь находятся интересные факты, а также научные статьи по истории. Этот раздел' \
                           'дополняется, приходи ещё! '
         else:
             res['response']['text'] = 'Не понимаю. Выбери, пожалуйста, вариант из предложенных! '
@@ -440,7 +440,7 @@ def handle_dialog(req, res):
     elif sessionStorage[user_id]['mode'] == 'викторина':
         res['response']['card'] = victorina_list()
         if 'викторина' in req['request']['original_utterance'].lower():
-            res['response']['text'] = 'В викторине я предлагю тебе поиграть в несколько режимов: ' \
+            res['response']['text'] = 'В викторине я предлагаю тебе поиграть в несколько режимов: ' \
                                       'даты, картины, культура или термины. В каждом режиме за ' \
                                       'правильные ответы будут зачисляться очки, будь внимателен!'
         else:
