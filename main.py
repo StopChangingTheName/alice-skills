@@ -2,16 +2,13 @@ import copy
 import json
 import logging
 import random
-import sqlite3
-
-import psycopg2
-import schedule
 # from git_task import commiting
 from threading import Thread
-from flask import Flask, request, render_template
-from form import AnswQuest
-from portrait import portraits, hash_pass
 
+import psycopg2
+from flask import Flask, request, render_template
+
+from portrait import portraits
 
 with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей дат
@@ -23,6 +20,7 @@ with open('Data.json', encoding='utf8') as f:
     culture = json.loads(f.read())['culture']  # same из фактов
 app = Flask('')
 from flask_ngrok import run_with_ngrok
+
 run_with_ngrok(app)
 app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
@@ -76,7 +74,7 @@ def write_in_state(user_id):
         'pic_count': sessionStorage[user_id]['pic_count'],
         'ter_count': sessionStorage[user_id]['ter_count'],
         'cul_count': sessionStorage[user_id]['cul_count']
-        }
+    }
 
 
 # Конфигурация для новой сессии
@@ -128,10 +126,10 @@ def config(user_id):
 # Запись в БД
 def write_in_base(user_id):
     con = psycopg2.connect(user="kndwjclu",
-                                  password="WQZM309s2Rd4dUUbl1l3v_zicW2ghkYv",
-                                  host="dumbo.db.elephantsql.com",
-                                  port="5432",
-                                  database="kndwjclu")
+                           password="WQZM309s2Rd4dUUbl1l3v_zicW2ghkYv",
+                           host="dumbo.db.elephantsql.com",
+                           port="5432",
+                           database="kndwjclu")
     cur = con.cursor()
     test_count = sessionStorage[user_id]['test_count']
     pic_count = sessionStorage[user_id]['pic_count']
@@ -140,9 +138,11 @@ def write_in_base(user_id):
     cur.execute(f"SELECT * FROM u WHERE nick = '{sessionStorage[user_id]['nick']}';")
     if cur.fetchone() is None:
 
-        cur.execute(f"INSERT INTO u VALUES (DEFAULT,'{sessionStorage[user_id]['nick']}',{test_count},{pic_count},{ter_count},{cul_count},{test_count + pic_count + ter_count + cul_count});")
+        cur.execute(
+            f"INSERT INTO u VALUES (DEFAULT,'{sessionStorage[user_id]['nick']}',{test_count},{pic_count},{ter_count},{cul_count},{test_count + pic_count + ter_count + cul_count});")
     else:
-        cur.execute(f"UPDATE u SET (date_count, pic_count, ter_count, cul_count, summa) = ({test_count},{pic_count},{ter_count},{cul_count},{test_count + pic_count + ter_count + cul_count}) WHERE nick = '{sessionStorage[user_id]['nick']}';")
+        cur.execute(
+            f"UPDATE u SET (date_count, pic_count, ter_count, cul_count, summa) = ({test_count},{pic_count},{ter_count},{cul_count},{test_count + pic_count + ter_count + cul_count}) WHERE nick = '{sessionStorage[user_id]['nick']}';")
     con.commit()
     con.close()
 
@@ -156,10 +156,10 @@ def hi():
 @app.route('/records')
 def records():
     con = psycopg2.connect(user="kndwjclu",
-                                  password="WQZM309s2Rd4dUUbl1l3v_zicW2ghkYv",
-                                  host="dumbo.db.elephantsql.com",
-                                  port="5432",
-                                  database="kndwjclu")
+                           password="WQZM309s2Rd4dUUbl1l3v_zicW2ghkYv",
+                           host="dumbo.db.elephantsql.com",
+                           port="5432",
+                           database="kndwjclu")
     cur = con.cursor()
     cur.execute("SELECT * FROM u;")
     persons = cur.fetchall()
@@ -440,15 +440,15 @@ def handle_dialog(req, res):
     elif sessionStorage[user_id]['mode'] == 'викторина':
         res['response']['card'] = victorina_list()
         if 'викторина' in req['request']['original_utterance'].lower():
-            res['response'][ 'text'] = 'В викторине я предлагю тебе поиграть в несколько режимов: ' \
-                                       'даты, картины, культура или термины. В каждом режиме за ' \
-                                       'правильные ответы будут зачисляться очки, будь внимателен!'
+            res['response']['text'] = 'В викторине я предлагю тебе поиграть в несколько режимов: ' \
+                                      'даты, картины, культура или термины. В каждом режиме за ' \
+                                      'правильные ответы будут зачисляться очки, будь внимателен!'
         else:
             res['response'][
                 'text'] = 'Не понимаю. Выбери вариант из предложенных, пожалуйста!'
         return
     elif sessionStorage[user_id]['mode'] == 'даты':
-        if not sessionStorage[user_id]['lastQ']: # Обработка первого вопроса
+        if not sessionStorage[user_id]['lastQ']:  # Обработка первого вопроса
             res['response']['text'] = sessionStorage[user_id]['test'][sessionStorage[user_id]['id']]['question']
             sessionStorage[user_id]['lastQ'] = True
         else:  # остальные вопросы
@@ -532,7 +532,7 @@ def handle_dialog(req, res):
                 portraits.get(sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic']])
             res['response']['text'] = 'Кто изображен на фотографии?'
             sessionStorage[user_id]['lastPic'] = True
-        else: # Остальные
+        else:  # Остальные
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
             for ans in sessionStorage[user_id]['arrayPic'][sessionStorage[user_id]['idPic'] - 1].lower().split('/'):
@@ -844,9 +844,10 @@ def station_dialog(req, res):
             sessionStorage[user_id]['ter_count'] = req['state']['user']['ter_count']
 
         except Exception:
-            res['response']['text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории, или просто освежить свои знания по истории. Так как у тебя устройство ' \
-                                      'без экрана или Навигатор, я могу предложить тебе только 3 режима. ' \
-                                      'Скажи своё имя для сохранения результатов:'
+            res['response'][
+                'text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории, или просто освежить свои знания по истории. Так как у тебя устройство ' \
+                          'без экрана или Навигатор, я могу предложить тебе только 3 режима. ' \
+                          'Скажи своё имя для сохранения результатов:'
         return
 
     if sessionStorage[user_id]['nick'] is None:
@@ -869,7 +870,7 @@ def station_dialog(req, res):
                 sessionStorage[user_id]['want_to_change_nick'] = False
             sessionStorage[user_id]['nick'] = new_nick
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-                                    'У меня есть 3 режима: даты, где я буду спрашивать тебя о случайных исторических событиях, и термины, где я спрошу у тебя различные исторические определения. Или ты можешь послушать интересные исторические факты. Во что из этого поиграем? Если ты что-то пропустил, просто скажи: "помощь".'
+                                  'У меня есть 3 режима: даты, где я буду спрашивать тебя о случайных исторических событиях, и термины, где я спрошу у тебя различные исторические определения. Или ты можешь послушать интересные исторические факты. Во что из этого поиграем? Если ты что-то пропустил, просто скажи: "помощь".'
 
         res['user_state_update'] = {
             'nick': sessionStorage[user_id]['nick']
@@ -896,7 +897,8 @@ def station_dialog(req, res):
 
     if 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request'][
         'original_utterance'].lower():
-        res['response']['text'] = 'У меня есть 3 режима: даты, где я буду спрашивать тебя о случайных исторических событиях, и термины, где я спрошу у тебя различные исторические определения. Или ты можешь послушать интересные исторические факты. Во что из этого поиграем?'
+        res['response'][
+            'text'] = 'У меня есть 3 режима: даты, где я буду спрашивать тебя о случайных исторических событиях, и термины, где я спрошу у тебя различные исторические определения. Или ты можешь послушать интересные исторические факты. Во что из этого поиграем?'
         sessionStorage[user_id]['mode'] = ''
         return
     if sessionStorage[user_id]['mode'] == 'случайные даты':
@@ -997,17 +999,17 @@ def station_dialog(req, res):
         res['response']['text'] = ''
         res['response']['tts'] = ''
         if sessionStorage[user_id]['factID'] == 0:
-            res['response']['text'] = 'Чтобы перейти к следующему факту, скажи далее'
+            res['response']['text'] = 'Чтобы перейти к следующему факту, скажи далее. '
             res['response']['tts'] = res['response']['text']
         res['response']['text'] += sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['fact']
         if 'tts' in sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]:
             res['response']['tts'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['factID']]['tts']
+
         sessionStorage[user_id]['factID'] += 1
         if sessionStorage[user_id]['factID'] == len(facts):
             sessionStorage[user_id]['factID'] = 0
             res['response']['text'] += '\nНаши факты закончились! Переходи в другие режимы, будет весело!'
             res['response']['tts'] = res['response']['text']
-            return
     else:
         res['response'][
             'text'] = f'В какой режим ты хочешь сыграть: даты, термины или послушать интересные ' \
