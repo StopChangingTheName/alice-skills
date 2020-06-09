@@ -296,7 +296,7 @@ def handle_dialog(req, res):
                                'или никнейм для сохранения результатов: '
             }
             res['response']['text'] = res['response']['card']['description']
-            res['response']['tts'] = res['response']['text'] + '<speaker audio="dialogs-upload/89bfd29f-f269-440c-9bb5-8a16ee77cbce/1ee5a483-a179-4a5e-9731-07bc05fb8708.opus">'
+            res['response']['tts'] = f'<speaker audio="dialogs-upload/89bfd29f-f269-440c-9bb5-8a16ee77cbce/1ee5a483-a179-4a5e-9731-07bc05fb8708.opus">{res["response"]["text"]}<speaker audio="-">'
         return
 
     if sessionStorage[user_id]['nick'] is None:
