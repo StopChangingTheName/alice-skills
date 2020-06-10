@@ -136,11 +136,11 @@ def config(user_id):
 
 # Запись в БД
 def write_in_base(user_id):
-    con = psycopg2.connect(user="kndwjclu",
-                           password="WQZM309s2Rd4dUUbl1l3v_zicW2ghkYv",
-                           host="dumbo.db.elephantsql.com",
+    con = psycopg2.connect(user="cbbdrghpynreoq",
+                           password="97ef09f2e8c1be408a28e5bcef9597dbd01dc8b75be2c364b540f3f1e1c51d7c",
+                           host="ec2-54-75-246-118.eu-west-1.compute.amazonaws.com",
                            port="5432",
-                           database="kndwjclu")
+                           database="d7m2s796gtnbj0")
     cur = con.cursor()
     test_count = sessionStorage[user_id]['test_count']
     pic_count = sessionStorage[user_id]['pic_count']
@@ -315,11 +315,11 @@ def handle_dialog(req, res):
         else:
             new_nick = req['request']['original_utterance'] + "#" + tag
             if sessionStorage[user_id]['want_to_change_nick']:
-                con = psycopg2.connect(user="kndwjclu",
-                                       password="WQZM309s2Rd4dUUbl1l3v_zicW2ghkYv",
-                                       host="dumbo.db.elephantsql.com",
+                con = psycopg2.connect(user="cbbdrghpynreoq",
+                                       password="97ef09f2e8c1be408a28e5bcef9597dbd01dc8b75be2c364b540f3f1e1c51d7c",
+                                       host="ec2-54-75-246-118.eu-west-1.compute.amazonaws.com",
                                        port="5432",
-                                       database="kndwjclu")
+                                       database="d7m2s796gtnbj0")
                 cur = con.cursor()
                 print(new_nick, sessionStorage[user_id]['nick'])
                 cur.execute(f"UPDATE u SET nick = '{new_nick}' WHERE nick = '{sessionStorage[user_id]['old_nick']}'")
@@ -867,11 +867,11 @@ def station_dialog(req, res):
         else:
             new_nick = req['request']['original_utterance'] + "#" + tag
             if sessionStorage[user_id]['want_to_change_nick']:
-                con = psycopg2.connect(user="kndwjclu",
-                                       password="WQZM309s2Rd4dUUbl1l3v_zicW2ghkYv",
-                                       host="dumbo.db.elephantsql.com",
+                con = psycopg2.connect(user="cbbdrghpynreoq",
+                                       password="97ef09f2e8c1be408a28e5bcef9597dbd01dc8b75be2c364b540f3f1e1c51d7c",
+                                       host="ec2-54-75-246-118.eu-west-1.compute.amazonaws.com",
                                        port="5432",
-                                       database="kndwjclu")
+                                       database="d7m2s796gtnbj0")
                 cur = con.cursor()
                 print(new_nick, sessionStorage[user_id]['nick'])
                 cur.execute(f"UPDATE u SET nick = '{new_nick}' WHERE nick = '{sessionStorage[user_id]['old_nick']}'")
