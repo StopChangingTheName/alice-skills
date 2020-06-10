@@ -166,11 +166,11 @@ def hi():
 # Таблица рекордов, сортировка по сумме очков
 @app.route('/records')
 def records():
-    con = psycopg2.connect(user="kndwjclu",
-                           password="WQZM309s2Rd4dUUbl1l3v_zicW2ghkYv",
-                           host="dumbo.db.elephantsql.com",
+    con = psycopg2.connect(user="cbbdrghpynreoq",
+                           password="97ef09f2e8c1be408a28e5bcef9597dbd01dc8b75be2c364b540f3f1e1c51d7c",
+                           host="ec2-54-75-246-118.eu-west-1.compute.amazonaws.com",
                            port="5432",
-                           database="kndwjclu")
+                           database="d7m2s796gtnbj0")
     cur = con.cursor()
     cur.execute("SELECT * FROM u;")
     persons = cur.fetchall()
