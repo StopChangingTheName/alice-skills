@@ -364,7 +364,7 @@ def handle_dialog(req, res):
             'nick': sessionStorage[user_id]['nick']
         }
     # log
-    # logging.info(f"------REQUEST COMMAND: {req['request']['command']} DEVICE: {req['meta']['client_id']}\n")
+    logging.info(f"------REQUEST COMMAND: {req['request']['original_utterance']} DEVICE: {req['meta']['client_id']}\n")
 
     # Меню
     if 'меню' in req['request']['original_utterance'].lower() or \
@@ -827,6 +827,10 @@ def handle_dialog(req, res):
 
     elif sessionStorage[user_id]['mode'] == 'война':
         res['response']['buttons'] = []
+        if 'назад' in req['request']['original_utterance'].lower():
+            sessionStorage[user_id]['ww2_id'] -= 1
+        if 'далее' in req['request']['original_utterance'].lower():
+            sessionStorage[user_id]['ww2_id'] += 1
         res['response']['text'] = sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['text']
         # res['response']['tts'] = sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['tts']
         if sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['pic_id'] != '':
@@ -834,18 +838,25 @@ def handle_dialog(req, res):
             res['response']['card']['type'] = 'BigImage'
             res['response']['card']['title'] = sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']][
                 'title']
-            res['response']['card']['image_id'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['ww2_id']][
-                'pic_id']
-        if 'назад' in req['request']['original_utterance'].lower():
-            sessionStorage[user_id]['ww2_id'] -= 1
-        if 'далее' in req['request']['original_utterance'].lower():
-            sessionStorage[user_id]['ww2_id'] += 1
-        if sessionStorage[user_id]['ww2_id'] == len(sessionStorage[user_id]['ww2']):
+            res['response']['card']['image_id'] = \
+                sessionStorage[user_id]['facts'][sessionStorage[user_id]['ww2_id']][
+                    'pic_id']
+        if sessionStorage[user_id]['ww2_id'] == len(sessionStorage[user_id]['ww2']) - 1:
             res['response']['buttons'] = []
-            res['response']['text'] = 'История войны закончилась. Переходи в другие режимы'
+            res['response']['text'] += 'История войны закончилась. Переходи в другие режимы'
             res['response']['buttons'] = [
+                {'title': 'Назад', 'hide': True},
                 {'title': 'Меню', 'hide': True},
-                ]
+            ]
+            return
+        if sessionStorage[user_id]['ww2_id'] == 0:
+            res['response']['buttons'] = []
+            res['response']['buttons'] = [
+                {'title': 'Далее', 'hide': True},
+                {'title': 'Меню', 'hide': True},
+            ]
+            return
+
         res['response']['buttons'] = [
             {'title': 'Назад', 'hide': True},
             {'title': 'Далее', 'hide': True},
