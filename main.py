@@ -17,6 +17,8 @@ with open('Data.json', encoding='utf8') as f:
     facts = json.loads(f.read())['facts']  # same из фактов
 with open('Data.json', encoding='utf8') as f:
     culture = json.loads(f.read())['culture']  # same из фактов
+with open('Data.json', encoding='utf8') as f:
+    ww2 = json.loads(f.read())['ww2'] # same из вов
 
 app = Flask('')
 from flask_ngrok import run_with_ngrok
