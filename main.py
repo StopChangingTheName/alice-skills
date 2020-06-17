@@ -9,19 +9,20 @@ from flask import Flask, request, render_template
 
 from portrait import portraits
 
-with open('Data.json', encoding='utf8') as f:
+with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей дат
-with open('Data.json', encoding='utf8') as f:
+with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
-with open('Data.json', encoding='utf8') as f:
+with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
     facts = json.loads(f.read())['facts']  # same из фактов
-with open('Data.json', encoding='utf8') as f:
+with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
     culture = json.loads(f.read())['culture']  # same из фактов
-with open('Data.json', encoding='utf8') as f:
-    ww2 = json.loads(f.read())['ww2'] # same из вов
+with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
+    war = json.loads(f.read())['ww2']  # same из вов
 
 app = Flask('')
 from flask_ngrok import run_with_ngrok
+
 run_with_ngrok(app)
 app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
@@ -257,6 +258,13 @@ def useful_list():
                 "button": {
                     "text": "Факты двух столиц"
                 }
+            },
+            {
+                "title": "Великая Отечественная война",
+                "description": "Вся история великой войны",
+                "button": {
+                    "text": "Великая Отечественная война"
+                }
             }
         ]
     }
@@ -356,7 +364,7 @@ def handle_dialog(req, res):
             'nick': sessionStorage[user_id]['nick']
         }
     # log
-    logging.info(f"------REQUEST COMMAND: {req['request']['command']} DEVICE: {req['meta']['client_id']}\n")
+    # logging.info(f"------REQUEST COMMAND: {req['request']['command']} DEVICE: {req['meta']['client_id']}\n")
 
     # Меню
     if 'меню' in req['request']['original_utterance'].lower() or \
@@ -408,10 +416,11 @@ def handle_dialog(req, res):
         random.shuffle(fact)
         sessionStorage[user_id]['facts'] = fact
 
-    if 'история великой отечественной войны' in req['request']['original_utterance'].lower():
-        sessionStorage[user_id]['mode'] = 'война'
+    if 'великая отечественная война' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['ww2_id'] = 0
+        ww2 = copy.deepcopy(war)
         sessionStorage[user_id]['ww2'] = ww2
+        sessionStorage[user_id]['mode'] = 'война'
 
     # если в нашем запросе 'закрыть' заканчиваем сессию
     if 'закрыть' in req['request']['original_utterance'].lower():
@@ -817,22 +826,31 @@ def handle_dialog(req, res):
         res['response']['buttons'].append({'title': 'Меню', 'hide': True})
 
     elif sessionStorage[user_id]['mode'] == 'война':
+        res['response']['buttons'] = []
         res['response']['text'] = sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['text']
-        res['response']['tts'] = sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['tts']
-        if 'pic_id' in sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]:
+        # res['response']['tts'] = sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['tts']
+        if sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['pic_id'] != '':
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
-            res['response']['card']['title'] = sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['title']
-            res['response']['card']['image_id'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['ww2_id']]['pic_id']
+            res['response']['card']['title'] = sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']][
+                'title']
+            res['response']['card']['image_id'] = sessionStorage[user_id]['facts'][sessionStorage[user_id]['ww2_id']][
+                'pic_id']
         if 'назад' in req['request']['original_utterance'].lower():
             sessionStorage[user_id]['ww2_id'] -= 1
-        if 'дальше' in req['request']['original_utterance'].lower():
+        if 'далее' in req['request']['original_utterance'].lower():
             sessionStorage[user_id]['ww2_id'] += 1
-        if sessionStorage[user_id]['ww2_id'] == len(ww2):
+        if sessionStorage[user_id]['ww2_id'] == len(sessionStorage[user_id]['ww2']):
+            res['response']['buttons'] = []
             res['response']['text'] = 'История войны закончилась. Переходи в другие режимы'
-            sessionStorage[user_id]['ww2_id'] = 0
-        if sessionStorage[user_id]['ww2_id'] < 0:
-            sessionStorage[user_id]['ww2_id'] = 0
+            res['response']['buttons'] = [
+                {'title': 'Меню', 'hide': True},
+                ]
+        res['response']['buttons'] = [
+            {'title': 'Назад', 'hide': True},
+            {'title': 'Далее', 'hide': True},
+            {'title': 'Меню', 'hide': True},
+        ]
     else:
         res['response']['buttons'] = [
             {'title': suggest, 'hide': False}
