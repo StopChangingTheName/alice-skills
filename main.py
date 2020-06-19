@@ -335,7 +335,7 @@ def handle_dialog(req, res):
                                        database="d7m2s796gtnbj0")
                 cur = con.cursor()
                 print(new_nick, sessionStorage[user_id]['nick'])
-                cur.execute(f"UPDATE u SET nick = '{new_nick}' WHERE nick = '{sessionStorage[user_id]['old_nick']}'")
+                cur.execute(f"UPDATE u SET nick = '{new_nick}' WHERE nick = '{sessionStorage[user_id]['nick']}'")
                 con.commit()
                 con.close()
                 sessionStorage[user_id]['want_to_change_nick'] = False
