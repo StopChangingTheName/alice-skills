@@ -9,15 +9,15 @@ from flask import Flask, request, render_template
 
 from portrait import portraits
 
-with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
+with open('Data.json', encoding='utf8') as f:
     data = json.loads(f.read())['test']  # массив из словарей дат
-with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
+with open('Data.json', encoding='utf8') as f:
     terms = json.loads(f.read())['terms']  # same из терминов
-with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
+with open('Data.json', encoding='utf8') as f:
     facts = json.loads(f.read())['facts']  # same из фактов
-with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
+with open('Data.json', encoding='utf8') as f:
     culture = json.loads(f.read())['culture']  # same из фактов
-with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') as f:
+with open('Data.json', encoding='utf8') as f:
     war = json.loads(f.read())['ww2']  # same из вов
 
 app = Flask('')
@@ -839,7 +839,7 @@ def handle_dialog(req, res):
             res['response']['card']['title'] = sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']][
                 'title']
             res['response']['card']['image_id'] = \
-                sessionStorage[user_id]['facts'][sessionStorage[user_id]['ww2_id']][
+                sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']][
                     'pic_id']
         if sessionStorage[user_id]['ww2_id'] == len(sessionStorage[user_id]['ww2']) - 1:
             res['response']['buttons'] = []
