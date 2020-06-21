@@ -22,7 +22,6 @@ with open('C:/Users/Daniel/dev/github/alice-skills/Data.json', encoding='utf8') 
 
 app = Flask('')
 from flask_ngrok import run_with_ngrok
-
 run_with_ngrok(app)
 app.config['SECRET_KEY'] = 'alice'
 logging.basicConfig(
@@ -832,7 +831,8 @@ def handle_dialog(req, res):
         if 'далее' in req['request']['original_utterance'].lower():
             sessionStorage[user_id]['ww2_id'] += 1
         res['response']['text'] = sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['text']
-        # res['response']['tts'] = sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['tts']
+        if sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['tts'] != '':
+            res['response']['tts'] = sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['tts']
         if sessionStorage[user_id]['ww2'][sessionStorage[user_id]['ww2_id']]['pic_id'] != '':
             res['response']['card'] = {}
             res['response']['card']['type'] = 'BigImage'
