@@ -21,8 +21,8 @@ with open('Data.json', encoding='utf8') as f:
     war = json.loads(f.read())['ww2']  # same из вов
 
 app = Flask('')
-from flask_ngrok import run_with_ngrok
-run_with_ngrok(app)
+# from flask_ngrok import run_with_ngrok
+# run_with_ngrok(app)
 app.config['SECRET_KEY'] = 'alice'
 # logging.basicConfig(
 #     filename='example.log',
@@ -305,7 +305,7 @@ def handle_dialog(req, res):
         except Exception:
             res['response']['card'] = {
                 "type": "BigImage",
-                "image_id": "965417/78be888e04cf5c61fb9a",
+                "image_id": "1030494/24c5d25eff634432c3ef",
                 "title": "Привет!",
                 "description": 'Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ''Напиши или скажи своё имя '
                                'или никнейм для сохранения результатов: '
@@ -1052,5 +1052,5 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    # keep_alive()
-    app.run()
+    keep_alive()
+    # app.run()
