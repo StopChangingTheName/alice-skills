@@ -1,5 +1,3 @@
-from werkzeug.security import generate_password_hash, check_password_hash
-
 portraits = {
     'Петр 1/Петр Первый/Петр Великий/Пётр 1/Пётр Первый': '965417/24d6b2e32bbbd4bbc005',
     'Владимир  Ленин/Ленин': '213044/830f4c53cf86a3202b93',
@@ -85,9 +83,3 @@ def get_last_name(req):
             return entity['value'].get('last_name', None)
 
 
-def hash_pass(pswd):
-    return generate_password_hash(pswd)
-
-
-def unhash_pass(hash, user_id):
-    return check_password_hash(hash, user_id)
