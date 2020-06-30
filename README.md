@@ -14,4 +14,6 @@ run_with_ngrok(app)
 app.run() # эту раскомментируем (она для запуска в режиме тестирования)
 ```
 3. Вставьте в поле Webhook URL в [Диалогах](https://dialogs.yandex.ru/developer) ссылку, который сгенерировал ngrok, с /post на конце.
-   Пример: https://a9f03915.ngrok.io/post
+  Пример: https://a9f03915.ngrok.io/post
+4. Тестируйте :)
+  ![Imgur](https://i.imgur.com/txwTYJr.png)
