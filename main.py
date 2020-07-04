@@ -232,6 +232,13 @@ def victorina_list():
                     "text": "Культура"
                 }
             },
+            {
+                "title": "Термины",
+                "description": "Возвращение любимого режима для подготовки к №4 ЕГЭ. Создан при поддержке проекта 'ЕГЭ близко'",
+                "button": {
+                    "text": "Термины"
+                }
+            }
         ]
     }
 
@@ -256,6 +263,13 @@ def useful_list():
                 "description": "Вся история великой войны",
                 "button": {
                     "text": "Великая Отечественная война"
+                }
+            },
+            {
+                "title": "Проект \"ЕГЭ близко\"",
+                "description": "Наш партнерский проект в ВКонтакте. Присоединяйтесь!",
+                "button": {
+                    "url": "https://vk.com/ege72"
                 }
             }
         ]
@@ -285,9 +299,9 @@ def handle_dialog(req, res):
                 sessionStorage[user_id]['cul_count'] = 0
             else:
                 sessionStorage[user_id]['cul_count'] = req['state']['user']['cul_count']
-            res['response']['text'] = \
-                f"{random.choice(hey)}, {req['state']['user']['nick']}! Продолжим тренировку! " \
-                f"Твои очки:\nДаты: {req['state']['user']['test_count']}\nКартины: {req['state']['user']['pic_count']}\n" \
+            res['response']['text'] = f"{random.choice(hey)}, {req['state']['user']['nick']}! " \
+                f"Продолжим тренировку! Твои очки:\nДаты: {req['state']['user']['test_count']}\n" \
+                f"Картины: {req['state']['user']['pic_count']}\nТермины: {req['state']['user']['ter_count']}\n" \
                 f"Культура: {sessionStorage[user_id]['cul_count']}"
             sessionStorage[user_id]['nick'] = req['state']['user']['nick']
             sessionStorage[user_id]['test_count'] = req['state']['user']['test_count']
@@ -438,6 +452,8 @@ def handle_dialog(req, res):
         sessionStorage[user_id]['mode'] = 'даты'
     if 'картины' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'картины'
+    if 'термины' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'термины'
     if 'культура' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'культура'
         sessionStorage[user_id]['cultID'] = 0
@@ -451,8 +467,8 @@ def handle_dialog(req, res):
         res['response']['card'] = useful_list()
         if 'полезное' in req['request']['original_utterance'].lower():
             res['response'][
-                'text'] = 'Здесь находятся интересные факты, а также научные статьи по истории. Этот раздел' \
-                          'дополняется, приходи ещё! '
+                'text'] = 'Здесь находятся интересные факты о Москве и Санкт-Петербурге,' \
+                          ' а так же история Великой Отечественной войны. Выбирай, что хочешь послушать.'
         else:
             res['response']['text'] = 'Не понимаю. Выбери, пожалуйста, вариант из предложенных! '
         return
@@ -460,8 +476,8 @@ def handle_dialog(req, res):
         res['response']['card'] = victorina_list()
         if 'викторина' in req['request']['original_utterance'].lower():
             res['response']['text'] = 'В викторине я предлагаю тебе поиграть в несколько режимов: ' \
-                                      'даты, картины, культура. В каждом режиме за ' \
-                                      'правильные ответы будут зачисляться очки, будь внимателен! По техническим причинам режим "Термины" убран. Загляни в новый режим в "Полезном": Великая Отечественная война'
+                                      'даты, картины, культура и термины. В каждом режиме за ' \
+                                      'правильные ответы будут зачисляться очки, будь внимателен!'
         else:
             res['response'][
                 'text'] = 'Не понимаю. Выбери вариант из предложенных, пожалуйста!'
@@ -579,7 +595,35 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': True}
             for suggest in sessionStorage[user_id]['slicedsuggests']
         ]
-
+    elif sessionStorage[user_id]['mode'] == 'термины':
+        if not sessionStorage[user_id]['lastT']:
+            res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
+            sessionStorage[user_id]['lastT'] = True
+        else:
+            res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
+            for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1][
+                'answer'].lower().split('/'):
+                if ans in req['request']['original_utterance'].lower():
+                    res['response'][
+                        'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                    sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
+                    res['user_state_update'] = write_in_state(user_id)
+                    write_in_base(user_id)
+                    break
+            else:
+                word = alice_reaction_to_dont_know_or_wrong_answer(req['request']['original_utterance'].lower())
+                res['response'][
+                    'text'] = f"{word} Правильный ответ: " \
+                    f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
+                    f"{random.choice(_next)}: {res['response']['text']}"
+        sessionStorage[user_id]['terID'] += 1
+        if sessionStorage[user_id]['terID'] == len(sessionStorage[user_id]['term']):
+            random.shuffle(sessionStorage[user_id]['term'])
+            sessionStorage[user_id]['terID'] = 0
+        res['response']['buttons'] = [
+            {'title': suggest, 'hide': True}
+            for suggest in sessionStorage[user_id]['slicedsuggests']
+        ]
     elif sessionStorage[user_id]['mode'] == 'культура':
         if not sessionStorage[user_id]['lastС']:
             res['response']['card'] = {}
@@ -873,7 +917,7 @@ def station_dialog(req, res):
         except Exception:
             res['response'][
                 'text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории, или просто освежить свои знания по истории. Так как у тебя устройство ' \
-                          'без экрана или Навигатор, я могу предложить тебе только 3 режима. ' \
+                          'без экрана или Навигатор, я могу предложить тебе только 4 режима. ' \
                           'Скажи своё имя для сохранения результатов:'
         return
 
@@ -897,8 +941,9 @@ def station_dialog(req, res):
                 sessionStorage[user_id]['want_to_change_nick'] = False
             sessionStorage[user_id]['nick'] = new_nick
         res['response']['text'] = f'Приятно познакомиться! Твой ник с тэгом: {sessionStorage[user_id]["nick"]}\n' \
-                                  'У меня есть 3 режима: даты, где я буду спрашивать тебя о случайных исторических ' \
-                                  'событиях, и война, где я расскажу тебе о Великой Отечественной войне. Или ты ' \
+                                  'У меня есть 4 режима: даты, где я буду спрашивать тебя о случайных исторических ' \
+                                  'событиях, и война, где я расскажу тебе о Великой Отечественной войне. ' \
+                                  'Режим термины позволит подготовиться к четвертому номеру в ЕГЭ.Или ты ' \
                                   'можешь послушать интересные исторические факты. Во что из этого поиграем? Если ты ' \
                                   'что-то пропустил, просто скажи: "помощь". '
 
@@ -916,6 +961,8 @@ def station_dialog(req, res):
     if 'даты' in req['request']['original_utterance'].lower() or 'да ты' in req['request']['original_utterance'].lower() \
             or 'дата' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'случайные даты'
+    if 'термины' in req['request']['original_utterance'].lower():
+        sessionStorage[user_id]['mode'] = 'термины'
     if 'факты' in req['request']['original_utterance'].lower():
         sessionStorage[user_id]['mode'] = 'факты'
         sessionStorage[user_id]['factID'] = 0
@@ -931,8 +978,9 @@ def station_dialog(req, res):
     if 'помощь' in req['request']['original_utterance'].lower() or 'что ты умеешь' in req['request'][
         'original_utterance'].lower():
         res['response'][
-            'text'] = 'У меня есть 3 режима: даты, где я буду спрашивать тебя о случайных исторических событиях, ' \
-                      'и война, где я расскажу тебе о Великой Отечественной войне. Или ты можешь послушать интересные ' \
+            'text'] = 'У меня есть 4 режима: даты, где я буду спрашивать тебя о случайных исторических событиях, ' \
+                      'и война, где я расскажу тебе о Великой Отечественной войне. ' \
+                      'Режим термины позволит подготовиться к четвертому номеру в ЕГЭ. Или ты можешь послушать интересные ' \
                       'исторические факты. Во что из этого поиграем? '
         sessionStorage[user_id]['mode'] = ''
         return
@@ -1016,7 +1064,32 @@ def station_dialog(req, res):
             sessionStorage[user_id]['factID'] = 0
             res['response']['text'] += '\nНаши факты закончились! Переходи в другие режимы, будет весело!'
             res['response']['tts'] = res['response']['text']
-
+    elif sessionStorage[user_id]['mode'] == 'термины':
+        if not sessionStorage[user_id]['lastT']:
+            res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
+            sessionStorage[user_id]['lastT'] = True
+        else:
+            res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
+            for ans in sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1][
+                'answer'].lower().split(
+                '/'):
+                if ans in req['request']['original_utterance'].lower():
+                    res['response'][
+                        'text'] = f"{random.choice(right)} {random.choice(_next)}: {res['response']['text']}"
+                    sessionStorage[user_id]['ter_count'] += 1  # Сохранение очков по терминам
+                    res['user_state_update'] = write_in_state(user_id)
+                    write_in_base(user_id)
+                    break
+            else:
+                word = alice_reaction_to_dont_know_or_wrong_answer(req['request']['original_utterance'].lower())
+                res['response'][
+                    'text'] = f"{word} Правильный ответ: " \
+                    f"{sessionStorage[user_id]['term'][sessionStorage[user_id]['terID'] - 1]['answer']}. \n" \
+                    f"{random.choice(_next)}: {res['response']['text']}"
+        sessionStorage[user_id]['terID'] += 1
+        if sessionStorage[user_id]['terID'] == len(sessionStorage[user_id]['term']):
+            random.shuffle(sessionStorage[user_id]['term'])
+            sessionStorage[user_id]['terID'] = 0
     elif sessionStorage[user_id]['mode'] == 'война':
         res['response']['buttons'] = []
         if 'назад' in req['request']['original_utterance'].lower():
@@ -1043,7 +1116,7 @@ def station_dialog(req, res):
             return
     else:
         res['response'][
-            'text'] = f'В какой режим ты хочешь сыграть: даты, войну или послушать интересные ' \
+            'text'] = f'В какой режим ты хочешь сыграть: даты, термины, войну или послушать интересные ' \
                       f'факты? '
     res['response']['buttons'] = [
         {'title': 'Помощь', 'hide': True}
@@ -1052,5 +1125,8 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    keep_alive()
+    #keep_alive()
+    from flask_ngrok import run_with_ngrok
+    run_with_ngrok(app)
+    app.run()
     # app.run()
