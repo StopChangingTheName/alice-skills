@@ -321,10 +321,10 @@ def handle_dialog(req, res):
                 "type": "BigImage",
                 "image_id": "1030494/24c5d25eff634432c3ef",
                 "title": "Привет!",
-                "description": 'Я помогу тебе подготовиться к ЕГЭ по истории ✨\n ''Напиши или скажи своё имя '
+                "description": 'Давай изучать историю вместе! ✨\n ''Напиши или скажи своё имя '
                                'или никнейм для сохранения результатов: '
             }
-            res['response']['text'] = res['response']['card']['description']
+            res['response']['text'] = 'Привет! ' + res['response']['card']['description']
         return
 
     if sessionStorage[user_id]['nick'] is None:
@@ -916,7 +916,7 @@ def station_dialog(req, res):
 
         except Exception:
             res['response'][
-                'text'] = 'Привет! Я помогу тебе подготовиться к ЕГЭ по истории, или просто освежить свои знания по истории. Так как у тебя устройство ' \
+                'text'] = 'Привет! Давай изучать историю вместе! Так как у тебя устройство ' \
                           'без экрана или Навигатор, я могу предложить тебе только 4 режима. ' \
                           'Скажи своё имя для сохранения результатов:'
         return
@@ -1125,8 +1125,5 @@ def station_dialog(req, res):
 
 
 if __name__ == '__main__':
-    #keep_alive()
-    from flask_ngrok import run_with_ngrok
-    run_with_ngrok(app)
-    app.run()
+    keep_alive()
     # app.run()
