@@ -554,7 +554,8 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': True}
             for suggest in sessionStorage[user_id]['slicedsuggests']
         ]
-
+        res['response']['buttons'].append({'title': 'Игра "ПАС" 📝', 'hide': True,
+                                           'url': 'https://dialogs.yandex.ru/store/skills/d285273f-igra-pas'})
     elif sessionStorage[user_id]['mode'] == 'картины':
         if not sessionStorage[user_id]['lastPic']:  # Первый вопрос
             sessionStorage[user_id]['arrayPic'] = list(portraits)
@@ -595,6 +596,8 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': True}
             for suggest in sessionStorage[user_id]['slicedsuggests']
         ]
+        res['response']['buttons'].append({'title': 'Игра "ПАС" 📝', 'hide': True,
+                                           'url': 'https://dialogs.yandex.ru/store/skills/d285273f-igra-pas'})
     elif sessionStorage[user_id]['mode'] == 'термины':
         if not sessionStorage[user_id]['lastT']:
             res['response']['text'] = sessionStorage[user_id]['term'][sessionStorage[user_id]['terID']]['question']
@@ -624,6 +627,8 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': True}
             for suggest in sessionStorage[user_id]['slicedsuggests']
         ]
+        res['response']['buttons'].append({'title': 'Игра "ПАС" 📝', 'hide': True,
+                                           'url': 'https://dialogs.yandex.ru/store/skills/d285273f-igra-pas'})
     elif sessionStorage[user_id]['mode'] == 'культура':
         if not sessionStorage[user_id]['lastС']:
             res['response']['card'] = {}
@@ -663,6 +668,8 @@ def handle_dialog(req, res):
             {'title': suggest, 'hide': True}
             for suggest in sessionStorage[user_id]['slicedsuggests']
         ]
+        res['response']['buttons'].append({'title': 'Игра "ПАС" 📝', 'hide': True,
+                                           'url': 'https://dialogs.yandex.ru/store/skills/d285273f-igra-pas'})
 
     elif sessionStorage[user_id]['mode'] == 'ресурсы':
 
